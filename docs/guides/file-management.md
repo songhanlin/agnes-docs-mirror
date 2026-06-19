@@ -2,18 +2,18 @@
 title: File Access and Management
 sidebar_position: 70
 sidebar_label: File Management
-description: Efficiently find and reference files in Agnes Desktop and follow best practices for safe file operations
+description: Efficiently find and reference files in agnes Desktop and follow best practices for safe file operations
 ---
 
-As an autonomous agent, Agnes is designed to carry out tasks following specified instructions. This often involves working with local files - both finding the right files to work with and modifying them safely.
+As an autonomous agent, agnes is designed to carry out tasks following specified instructions. This often involves working with local files - both finding the right files to work with and modifying them safely.
 
-This guide covers how to efficiently access and reference files in Agnes. It also includes essential best practices for safe file operations, such as monitoring changes and reverting them when necessary, to maintain the integrity of your codebase.
+This guide covers how to efficiently access and reference files in agnes. It also includes essential best practices for safe file operations, such as monitoring changes and reverting them when necessary, to maintain the integrity of your codebase.
 
 ## File Access
 
-### Quick File Search in Agnes Desktop
+### Quick File Search in agnes Desktop
 
-Agnes Desktop includes a fuzzy file search feature that makes it easy to reference files from within the chat interface without manually navigating through file system dialogs. This feature helps you quickly find and include files in your messages to Agnes.
+agnes Desktop includes a fuzzy file search feature that makes it easy to reference files from within the chat interface without manually navigating through file system dialogs. This feature helps you quickly find and include files in your messages to agnes.
 
 1. Type `@` in the chat input to open the file search box
 2. Continue typing to filter files using case-insensitive, fuzzy matching (e.g., `@readme`, `@config.js`, `@src/main`)
@@ -22,7 +22,7 @@ Agnes Desktop includes a fuzzy file search feature that makes it easy to referen
    - Use arrow keys (↑/↓) to move through the search results
    - Click or press `Enter` to insert the selected file path into your message
    
-3. That's it! When you're ready, send your message to Agnes
+3. That's it! When you're ready, send your message to agnes
 
 :::info
 To close the search box without selecting a file, press `Esc` or click in the chat input.
@@ -31,7 +31,7 @@ To close the search box without selecting a file, press `Esc` or click in the ch
 **Smart features:**
 - **Fuzzy matching**: Intelligently matches partial text and prioritizes matches at word boundaries
 - **Highlighted results**: Shows matched characters highlighted in the search results
-- **Performance optimized**: Scans up to 5 directory levels deep with intelligent filtering
+- **Performance optimized**: Scans up toundefineddirectory levels deep with intelligent filtering
 - **Auto-filtering**: Automatically excludes common directories like `.git`, `node_modules`, `__pycache__`, `target`, `dist`, and `build`
 - **Hidden folder support**: Includes important configuration directories like `.github`, `.vscode`, `.idea`, `.config`, and other CI/CD folders (`.circleci`, `.gitlab`, `.azure`, `.jenkins`)
 - **Cross-platform**: Searches from user directories (`/Users` on macOS, `C:\Users` on Windows, `/home` on Linux)
@@ -41,16 +41,16 @@ To close the search box without selecting a file, press `Esc` or click in the ch
 
 ### Version Control
 
-Always use a version control system like Git to track changes to your codebase. This prevents accidental overwriting and allows you to revert back to previous states easily. Ensure you commit changes before running Agnes on your codebase. Use branches to separate experimental changes from the main codebase.
+Always use a version control system like Git to track changes to your codebase. This prevents accidental overwriting and allows you to revert back to previous states easily. Ensure you commit changes before running agnes on your codebase. Use branches to separate experimental changes from the main codebase.
 
 ### Validation and Testing
 
-Implement validation and testing steps before and after Agnes modifies any files. Run your unit tests to verify changes made by Agnes. Use a staging environment to ensure changes integrate well with the entire system.
+Implement validation and testing steps before and after agnes modifies any files. Run your unit tests to verify changes made by agnes. Use a staging environment to ensure changes integrate well with the entire system.
 
 ### Change Review
 
-Manually review or use automated code reviews to ensure the quality of generated code or changes. Integrate tools such as diff tools to visualize changes made by Agnes. Implement a review process with team members or CI/CD pipelines.
+Manually review or use automated code reviews to ensure the quality of generated code or changes. Integrate tools such as diff tools to visualize changes made by agnes. Implement a review process with team members or CI/CD pipelines.
 
 ### Codebase Organization
 
-Structure your codebase into well-defined modules or subdirectories to manage them efficiently. Use a modular approach to isolate parts of the code Agnes needs to access. You can also provide specific directories or file paths you want Agnes to work on.
+Structure your codebase into well-defined modules or subdirectories to manage them efficiently. Use a modular approach to isolate parts of the code agnes needs to access. You can also provide specific directories or file paths you want agnes to work on.

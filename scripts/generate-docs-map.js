@@ -31,7 +31,6 @@ async function run() {
     { name: 'Guides', pattern: 'guides/**/*.md' },
   ];
 
-  const docsBase = cfg.options.replaceDocsDomain || 'https://goose-docs.ai/';
   let output = `# ${cfg.BRAND} Documentation Map\n\n> Auto-generated. Do not edit by hand.\n\n`;
 
   let total = 0;
@@ -59,7 +58,7 @@ async function run() {
     }
   }
 
-  output += `---\n\n> Full docs: ${docsBase}\n`;
+  output += `---\n`;
   fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
   fs.writeFileSync(OUTPUT_FILE, output);
   console.log(`[map] 已生成地图,收录 ${total} 个页面 → ${OUTPUT_FILE}`);

@@ -11,7 +11,7 @@ import { OnboardingProviderSetup } from '@site/src/components/OnboardingProvider
 
 # Supported LLM Providers
 
-Agnes is compatible with a wide range of LLM providers, allowing you to choose and integrate your preferred model.
+agnes is compatible with a wide range of LLM providers, allowing you to choose and integrate your preferred model.
 
 :::tip Model Selection
 <ModelSelectionTip/>
@@ -22,7 +22,7 @@ Agnes is compatible with a wide range of LLM providers, allowing you to choose a
 
 | Provider                                                                    | Description                                                                                                                                                                                                               | Parameters                                                                                                                                                                          |
 |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Amazon Bedrock](https://aws.amazon.com/bedrock/)                           | Offers a variety of foundation models, including Claude, Jurassic-2, and others. **AWS environment variables must be set in advance, not configured through `goose configure`**                                           | Credential auth: `AWS_PROFILE`, or `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`<br /><br />Bearer token auth: `AWS_BEARER_TOKEN_BEDROCK` and `AWS_REGION`, `AWS_DEFAULT_REGION`, or `AWS_PROFILE` |
+| [Amazon Bedrock](https://aws.amazon.com/bedrock/)                           | Offers a variety of foundation models, including Claude, Jurassic-2, and others. **AWS environment variables must be set in advance, not configured through `agnes configure`**                                           | Credential auth: `AWS_PROFILE`, or `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`<br /><br />Bearer token auth: `AWS_BEARER_TOKEN_BEDROCK` and `AWS_REGION`, `AWS_DEFAULT_REGION`, or `AWS_PROFILE` |
 | [Amazon SageMaker TGI](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html) | Run Text Generation Inference models through Amazon SageMaker endpoints. **AWS credentials must be configured in advance.** | `SAGEMAKER_ENDPOINT_NAME`, `AWS_REGION` (optional), `AWS_PROFILE` (optional)  |
 | [Anthropic](https://www.anthropic.com/)                                     | Offers Claude, an advanced AI model for natural language tasks.                                                                                                                                                           | `ANTHROPIC_API_KEY`, `ANTHROPIC_HOST` (optional)                                                                                                                                                                 |
 | [Atomic Chat](https://github.com/AtomicBot-ai/Atomic-Chat)                | Run local models with Atomic Chat's OpenAI-compatible server. **Because this provider runs locally, you must first [download a model](#local-llms).** | None required. Connects to local server at `localhost:1337` by default. |
@@ -33,7 +33,7 @@ Agnes is compatible with a wide range of LLM providers, allowing you to choose a
 | [Docker Model Runner](https://docs.docker.com/ai/model-runner/)                             | Local models running in Docker Desktop or Docker CE with OpenAI-compatible API endpoints. **Because this provider runs locally, you must first [download a model](#local-llms).**                     | `OPENAI_HOST`, `OPENAI_BASE_PATH`   |
 | [EmpirioLabs](https://empiriolabs.ai/)                                      | Frontier open and proprietary chat models (Qwen, DeepSeek, GLM, Kimi, MiniMax) through one OpenAI-compatible API with streaming. Catalog available at `https://api.empiriolabs.ai/v1/models`.        | `EMPIRIOLABS_API_KEY`                                                                                                                                                              |
 | [FuturMix](https://futurmix.ai/)                                            | Unified AI gateway providing access to models from Anthropic, Google, OpenAI, and DeepSeek through an OpenAI-compatible API.                                                                          | `FUTURMIX_API_KEY`                                                                                                                                                                  |
-| [Gemini](https://ai.google.dev/gemini-api/docs)                             | Advanced LLMs by Google with multimodal capabilities (text, images). Gemini 3 models support configurable [thinking levels](#gemini-3-thinking-levels).                                                                                                | `GOOGLE_API_KEY`, `GEMINI3_THINKING_LEVEL` (optional)                                                                                                                              |
+| [Gemini](https://ai.google.dev/gemini-api/docs)                             | Advanced LLMs by Google with multimodal capabilities (text, images). Geminiundefinedmodels support configurable [thinking levels](#gemini-3-thinking-levels).                                                                                                | `GOOGLE_API_KEY`, `GEMINI3_THINKING_LEVEL` (optional)                                                                                                                              |
 | [GCP Vertex AI](https://cloud.google.com/vertex-ai)                         | Google Cloud's Vertex AI platform, supporting Gemini and Claude models. **Credentials must be [configured in advance](https://cloud.google.com/vertex-ai/docs/authentication).** Filters for allowed models by organization policy (if configured). | `GCP_PROJECT_ID`, `GCP_LOCATION` and optionally `GCP_MAX_RATE_LIMIT_RETRIES` (5), `GCP_MAX_OVERLOADED_RETRIES` (5), `GCP_INITIAL_RETRY_INTERVAL_MS` (5000), `GCP_BACKOFF_MULTIPLIER` (2.0), `GCP_MAX_RETRY_INTERVAL_MS` (320_000). |
 | [GitHub Copilot](https://docs.github.com/en/copilot/using-github-copilot/ai-models) | Access to AI models from OpenAI, Anthropic, Google, and other providers through GitHub's Copilot infrastructure. **GitHub account with Copilot access required.** | No manual key. Uses [device flow authentication](#github-copilot-authentication) for both CLI and Desktop. |
 | [Groq](https://groq.com/)                                                   | High-performance inference hardware and tools for LLMs.                                                                                                                                                                   | `GROQ_API_KEY`                                                                                                                                                                      |
@@ -44,12 +44,12 @@ Agnes is compatible with a wide range of LLM providers, allowing you to choose a
 | [Novita AI](https://novita.ai/)                                             | 90+ open-source models with OpenAI-compatible API and competitive pricing. Supports Kimi K2.5, DeepSeek, GLM, MiniMax, Qwen, and more.                                                                       | `NOVITA_API_KEY`                                                                                                  |
 | [Ollama](https://ollama.com/)                                               | Local model runner supporting Qwen, Llama, DeepSeek, and other open-source models. **Because this provider runs locally, you must first [download and run a model](#local-llms).**  | `OLLAMA_HOST`                                                                                                                                                                       |
 | [Ollama Cloud](https://ollama.com/)                                         | Access hosted models on ollama.com via OpenAI-compatible API. Requires an Ollama account and API key.  | `OLLAMA_CLOUD_API_KEY`                                                                                                                                                                       |
-| [OpenAI](https://platform.openai.com/api-keys)                              | Provides gpt-4o, o1, and other advanced language models. Also supports OpenAI-compatible endpoints (e.g., self-hosted LLaMA, vLLM, KServe). **o1-mini and o1-preview are not supported because Agnes uses tool calling.** | `OPENAI_API_KEY`, `OPENAI_HOST` (optional), `OPENAI_ORGANIZATION` (optional), `OPENAI_PROJECT` (optional), `OPENAI_CUSTOM_HEADERS` (optional)                                       |
+| [OpenAI](https://platform.openai.com/api-keys)                              | Provides gpt-4o, o1, and other advanced language models. Also supports OpenAI-compatible endpoints (e.g., self-hosted LLaMA, vLLM, KServe). **o1-mini and o1-preview are not supported because agnes uses tool calling.** | `OPENAI_API_KEY`, `OPENAI_HOST` (optional), `OPENAI_ORGANIZATION` (optional), `OPENAI_PROJECT` (optional), `OPENAI_CUSTOM_HEADERS` (optional)                                       |
 | [OpenRouter](https://openrouter.ai/)                                        | API gateway for unified access to various models with features like rate-limiting management.                                                                                                                             | `OPENROUTER_API_KEY`                                                                                                                                                                |
 | [Perplexity](https://www.perplexity.ai/)                                    | Chat models with built-in real-time web search grounding. OpenAI-compatible chat completions API at `https://api.perplexity.ai`.                                                                                          | `PERPLEXITY_API_KEY`                                                                                                                                                                |
 | [OVHcloud AI](https://www.ovhcloud.com/en/public-cloud/ai-endpoints/)       | Provides access to open-source models including Qwen, Llama, Mistral, and DeepSeek through AI Endpoints service.                                                       | `OVHCLOUD_API_KEY`                                                                                                                                                                  |
-| [Ramalama](https://ramalama.ai/)                                            | Local model using native [OCI](https://opencontainers.org/) container runtimes, [CNCF](https://www.cncf.io/) tools, and supporting models as OCI artifacts. Ramalama API is a compatible alternative to Ollama and can be used with the Agnes Ollama provider. Supports Qwen, Llama, DeepSeek, and other open-source models. **Because this provider runs locally, you must first [download and run a model](#local-llms).**  | `OLLAMA_HOST`                                                                                                                                                                       |
-| [Routstr](https://routstr.com/)                                             | OpenAI-compatible aggregator that fronts dozens of upstream providers (Anthropic, OpenAI, Google, DeepSeek, Llama, …) behind a single API. Authenticate with an `sk-...` bearer issued by your Routstr instance — payment is handled outside Agnes.                                                                                                                                                                       | `ROUTSTR_API_KEY`, `ROUTSTR_HOST` (optional, default `https://api.routstr.com`)                                                                                                     |
+| [Ramalama](https://ramalama.ai/)                                            | Local model using native [OCI](https://opencontainers.org/) container runtimes, [CNCF](https://www.cncf.io/) tools, and supporting models as OCI artifacts. Ramalama API is a compatible alternative to Ollama and can be used with the agnes Ollama provider. Supports Qwen, Llama, DeepSeek, and other open-source models. **Because this provider runs locally, you must first [download and run a model](#local-llms).**  | `OLLAMA_HOST`                                                                                                                                                                       |
+| [Routstr](https://routstr.com/)                                             | OpenAI-compatible aggregator that fronts dozens of upstream providers (Anthropic, OpenAI, Google, DeepSeek, Llama, …) behind a single API. Authenticate with an `sk-...` bearer issued by your Routstr instance — payment is handled outside agnes.                                                                                                                                                                       | `ROUTSTR_API_KEY`, `ROUTSTR_HOST` (optional, default `https://api.routstr.com`)                                                                                                     |
 | [SaladCloud AI Gateway](https://salad.com/)                                 | OpenAI-compatible access to SaladCloud-hosted open-source models, including Qwen, Gemma, and others.                                                                                                          | `SALAD_CLOUD_API_KEY`                                                                                                                                                              |
 | [Scaleway](https://www.scaleway.com/en/generative-apis/)                    | European cloud offering OpenAI-compatible access to models like Mistral, Qwen, and open-source weights. Ensures data residency and GDPR compliance.                                                                                                                                                                                                                                                                | `SCW_SECRET_KEY`      |
 | [Snowflake](https://docs.snowflake.com/user-guide/snowflake-cortex/aisql#choosing-a-model) | Access the latest models using Snowflake Cortex services, including Claude models. **Requires a Snowflake account and programmatic access token (PAT)**.                                                     | `SNOWFLAKE_HOST`, `SNOWFLAKE_TOKEN`                                                                                                                                                                 |
@@ -60,7 +60,7 @@ Agnes is compatible with a wide range of LLM providers, allowing you to choose a
 | [xAI](https://x.ai/)                                                        | Access to xAI's Grok models including grok-3, grok-3-mini, and grok-3-fast with 131,072 token context window.                                                                                                            | `XAI_API_KEY`, `XAI_HOST` (optional)                                                                                                                                                |
 
 :::tip Prompt Caching for Claude Models
-Agnes automatically enables Anthropic's [prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching) when using Claude models via Anthropic, Amazon Bedrock, Databricks, OpenRouter, and LiteLLM providers. This adds `cache_control` markers to requests, which can reduce costs for longer conversations by caching frequently-used context. See the [provider implementations](https://github.com/aaif-goose/agnes/tree/main/crates/goose/src/providers) for technical details.
+agnes automatically enables Anthropic's [prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching) when using Claude models via Anthropic, Amazon Bedrock, Databricks, OpenRouter, and LiteLLM providers. This adds `cache_control` markers to requests, which can reduce costs for longer conversations by caching frequently-used context. See the [provider implementations](https://github.com/aaif-goose/agnes/tree/main/crates/agnes/src/providers) for technical details.
 :::
 
 ### CLI Providers
@@ -71,12 +71,12 @@ Agnes automatically enables Anthropic's [prompt caching](https://platform.claude
 
 ### ACP Providers
 
-Agnes supports [Agent Client Protocol (ACP)](https://agentclientprotocol.com/) agents as providers. ACP providers pass Agnes extensions through to the agent as MCP servers.
+agnes supports [Agent Client Protocol (ACP)](https://agentclientprotocol.com/) agents as providers. ACP providers pass agnes extensions through to the agent as MCP servers.
 
 | Provider                                                                    | Description                                                                                                                                                                                                               | Requirements                                                                                                                                                                          |
 |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Claude ACP](https://github.com/agentclientprotocol/claude-agent-acp) (`claude-acp`) | Uses Claude Code via ACP. Passes Agnes extensions to the agent as MCP servers. | `npm install -g @agentclientprotocol/claude-agent-acp`, active Claude Code subscription |
-| [Codex ACP](https://github.com/zed-industries/codex-acp) (`codex-acp`) | Uses OpenAI Codex via ACP. Passes Agnes extensions to the agent as MCP servers. | `npm install -g @zed-industries/codex-acp`, active ChatGPT Plus/Pro subscription |
+| [Claude ACP](https://github.com/agentclientprotocol/claude-agent-acp) (`claude-acp`) | Uses Claude Code via ACP. Passes agnes extensions to the agent as MCP servers. | `npm install -g @agentclientprotocol/claude-agent-acp`, active Claude Code subscription |
+| [Codex ACP](https://github.com/zed-industries/codex-acp) (`codex-acp`) | Uses OpenAI Codex via ACP. Passes agnes extensions to the agent as MCP servers. | `npm install -g @zed-industries/codex-acp`, active ChatGPT Plus/Pro subscription |
 
 :::tip ACP Providers
 See the [ACP Providers guide](/docs/guides/acp-providers) for detailed setup instructions.
@@ -84,13 +84,13 @@ See the [ACP Providers guide](/docs/guides/acp-providers) for detailed setup ins
 
 ## Configure Provider and Model
 
-To configure your chosen provider, see available options, or select a model, visit the `Models` tab in Agnes Desktop or run `goose configure` in the CLI.
+To configure your chosen provider, see available options, or select a model, visit the `Models` tab in agnes Desktop or run `agnes configure` in the CLI.
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
   **First-time users:**
   
-  On the welcome screen the first time you open Agnes, you have these options:
+  On the welcome screen the first time you open agnes, you have these options:
   
   <OnboardingProviderSetup />
   
@@ -98,35 +98,35 @@ To configure your chosen provider, see available options, or select a model, vis
     <TabItem value="apikey" label="Quick Setup" default>
     1. Choose `Quick Setup with API Key`.
     2. Enter your API key from your provider (for example, OpenAI, Anthropic, or Google).
-    3. Agnes will automatically detect your provider and configure the connection.
+    3. agnes will automatically detect your provider and configure the connection.
     4. When setup is complete, you're ready to begin your first session.
     </TabItem>
 
     <TabItem value="chatgpt" label="ChatGPT Subscription">
     1. Choose `ChatGPT Subscription`.
-    2. Agnes will open a browser window for you to sign in with the credentials of your active ChatGPT Plus or Pro subscription.
-    3. Authorize Agnes to access your ChatGPT subscription.
-    4. When you return to Agnes Desktop, you're ready to begin your first session.
+    2. agnes will open a browser window for you to sign in with the credentials of your active ChatGPT Plus or Pro subscription.
+    3. Authorize agnes to access your ChatGPT subscription.
+    4. When you return to agnes Desktop, you're ready to begin your first session.
     </TabItem>
     <TabItem value="tetrate" label="Agent Router">
     We recommend new users start with Agent Router by Tetrate. Tetrate provides access to multiple AI models with built-in rate limiting and automatic failover. 
 
     :::info Free Credits Offer
-    You'll receive $10 in free credits the first time you automatically authenticate with Tetrate through Agnes. This offer is available to both new and existing Tetrate users.
+    You'll receive $10 in free credits the first time you automatically authenticate with Tetrate through agnes. This offer is available to both new and existing Tetrate users.
     :::
     1. Choose `Agent Router by Tetrate`. 
-    2. Agnes will open a browser window for you to authenticate with Tetrate, or create a new account if you don't have one already.
-    3. When you return to Agnes Desktop, you're ready to begin your first session.
+    2. agnes will open a browser window for you to authenticate with Tetrate, or create a new account if you don't have one already.
+    3. When you return to agnes Desktop, you're ready to begin your first session.
     </TabItem>
 
     <TabItem value="openrouter" label="OpenRouter">
     1. Choose `Automatic setup with OpenRouter`. 
-    2. Agnes will open a browser window for you to authenticate with OpenRouter, or create a new account if you don't have one already.
-    3. When you return to the Agnes Desktop, you're ready to begin your first session.
+    2. agnes will open a browser window for you to authenticate with OpenRouter, or create a new account if you don't have one already.
+    3. When you return to the agnes Desktop, you're ready to begin your first session.
     </TabItem>
 
     <TabItem value="others" label="Other Providers">
-    1. If you have a specific provider you want to use with Agnes, and an API key from that provider, choose `Other Providers`. 
+    1. If you have a specific provider you want to use with agnes, and an API key from that provider, choose `Other Providers`. 
     2. Find the provider of your choice and click its `Configure` button. If you don't see your provider in the list, click `Add Custom Provider` at the bottom of the window to [configure a custom provider](#configure-custom-provider). 
     3. Depending on your provider, you'll need to input your API Key, API Host, or other optional [parameters](#available-providers). Click the `Submit` button to authenticate and begin your first session.
 
@@ -163,17 +163,17 @@ To configure your chosen provider, see available options, or select a model, vis
   3. Click the `Models` tab
   4. Click `Reset Provider and Model` to clear your current settings and return to the welcome screen
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     1. In your terminal, run the following command: 
 
        ```sh
-       goose configure
+       agnes configure
        ```
 
     2. Select `Configure Providers` from the menu and press `Enter`.
 
        ```
-       ┌   Agnes-configure 
+       ┌   agnes-configure 
        │
        ◆  What would you like to configure?
        // highlight-start
@@ -183,13 +183,13 @@ To configure your chosen provider, see available options, or select a model, vis
        │  ○ Add Extension 
        │  ○ Toggle Extensions 
        │  ○ Remove Extension 
-       │  ○ Agnes Settings 
+       │  ○ agnes Settings 
        └  
        ```
     3. Choose a model provider and press `Enter`. Use the arrow keys (↑/↓) to move through the options, or start typing to filter the list.
 
        ```
-       ┌   Agnes-configure 
+       ┌   agnes-configure 
        │
        ◇  What would you like to configure?
        │  Configure Providers 
@@ -208,7 +208,7 @@ To configure your chosen provider, see available options, or select a model, vis
     4. Enter your API key (and any other configuration details) when prompted.
 
        ```
-       ┌   Agnes-configure 
+       ┌   agnes-configure 
        │
        ◇  What would you like to configure?
        │  Configure Providers 
@@ -254,14 +254,14 @@ To configure your chosen provider, see available options, or select a model, vis
        This change takes effect the next time you start a session.
 
   :::note
-  `goose configure` doesn't support entering custom model names. To use a model not in the provider's list, use Agnes Desktop or edit the `AGNES_MODEL` variable in your [`config.yaml`](/docs/guides/config-files) directly.
+  `agnes configure` doesn't support entering custom model names. To use a model not in the provider's list, use agnes Desktop or edit the `AGNES_MODEL` variable in your [`config.yaml`](/docs/guides/config-files) directly.
   :::
 
   :::tip
-  Set the model for an individual session using the [`run` command](/docs/guides/goose-cli-commands#run-options):
+  Set the model for an individual session using the [`run` command](/docs/guides/agnes-cli-commands#run-options):
 
   ```bash
-  goose run --model claude-sonnet-4-0 -t "initial prompt"
+  agnes run --model claude-sonnet-4-0 -t "initial prompt"
   ```
   :::
 
@@ -331,7 +331,7 @@ Need to connect to multiple OpenAI-compatible endpoints? [Configure custom provi
 #### Setup Instructions
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
     2. Click the `Settings` button on the sidebar
     3. Click the `Models` tab
@@ -344,8 +344,8 @@ Need to connect to multiple OpenAI-compatible endpoints? [Configure custom provi
        - Project (for resource management)
     7. Click `Submit`
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
-    1. Run `goose configure`
+  <TabItem value="cli" label="agnes CLI">
+    1. Run `agnes configure`
     2. Select `Configure Providers`
     3. Choose `OpenAI` as the provider
     4. Enter your configuration when prompted:
@@ -362,7 +362,7 @@ For enterprise deployments, you can pre-configure these values using environment
 
 ## Configure Custom Provider
 
-Create custom providers to connect to services that aren't [already supported](#available-providers) or customize how you connect to them. Custom providers appear in Agnes's provider list and can be selected like any other provider.
+Create custom providers to connect to services that aren't [already supported](#available-providers) or customize how you connect to them. Custom providers appear in agnes's provider list and can be selected like any other provider.
 
 **Benefits:**
 - **Multiple endpoints**: Switch between different services (e.g., vLLM, corporate proxy, OpenAI)
@@ -375,7 +375,7 @@ Custom providers must use OpenAI, Anthropic, or Ollama compatible API formats. T
 
 **To add a custom provider:**
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
     2. Click the `Settings` button on the sidebar
     3. Click the `Models` tab
@@ -396,21 +396,21 @@ Custom providers must use OpenAI, Anthropic, or Ollama compatible API formats. T
     7. Click `Create Provider`
 
     :::info Custom Headers
-    Currently, custom headers can't be defined in Agnes Desktop. As a workaround, edit the provider configuration file after creation.
+    Currently, custom headers can't be defined in agnes Desktop. As a workaround, edit the provider configuration file after creation.
     :::
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     1. In your terminal, run the following command: 
 
        ```sh
-       goose configure
+       agnes configure
        ```
 
     2. Select `Custom Providers`. Use the arrow keys (↑/↓) to move through the options.
 
        ```sh
-       ┌   Agnes-configure 
+       ┌   agnes-configure 
        │
        ◆  What would you like to configure?
        │  ○ Configure Providers
@@ -420,14 +420,14 @@ Custom providers must use OpenAI, Anthropic, or Ollama compatible API formats. T
        │  ○ Add Extension 
        │  ○ Toggle Extensions 
        │  ○ Remove Extension 
-       │  ○ Agnes Settings 
+       │  ○ agnes Settings 
        └  
        ```
 
     3. Select `Add A Custom Provider`
 
        ```sh
-       ┌   Agnes-configure 
+       ┌   agnes-configure 
        │
        ◇  What would you like to configure?
        │  Custom Providers 
@@ -462,8 +462,8 @@ Custom providers must use OpenAI, Anthropic, or Ollama compatible API formats. T
   <TabItem value="config" label="Config File">
 
     First create a JSON file in the `custom_providers` directory:
-    - macOS/Linux: `~/.agnes/custom_providers/`
-    - Windows: `%APPDATA%\Block\Agnes\config\custom_providers\`
+    - macOS/Linux: `~/.config/agnes/custom_providers/`
+    - Windows: `%APPDATA%\Block\agnes\config\custom_providers\`
 
     Example `custom_corp_api.json` configuration file:
     ```json
@@ -496,11 +496,11 @@ Custom providers must use OpenAI, Anthropic, or Ollama compatible API formats. T
     Then use the `api_key_env` to set the key for your session. For example:
     ```bash
     export CUSTOM_CORP_API_API_KEY="your-api-key"
-    goose session start --provider custom_corp_api
+    agnes session start --provider custom_corp_api
     ```
 
     :::tip Keychain Key Storage
-    If you want to store the API key in the `Agnes` keychain, update the provider in Agnes Desktop and enter the key. This provides secure, persistent storage and allows Agnes to connect natively to the provider.
+    If you want to store the API key in the `agnes` keychain, update the provider in agnes Desktop and enter the key. This provides secure, persistent storage and allows agnes to connect natively to the provider.
     :::
 
   </TabItem>
@@ -509,7 +509,7 @@ Custom providers must use OpenAI, Anthropic, or Ollama compatible API formats. T
 **To update a custom provider:**
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
     2. Click the `Settings` button on the sidebar
     3. Click the `Models` tab
@@ -519,18 +519,18 @@ Custom providers must use OpenAI, Anthropic, or Ollama compatible API formats. T
     7. Click `Update Provider`
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     
     1. In your terminal, run the following command: 
 
        ```sh
-       goose configure
+       agnes configure
        ```
 
     2. Select `Configure Providers` from the menu and press `Enter`.
 
        ```sh
-       ┌   Agnes-configure 
+       ┌   agnes-configure 
        │
        ◆  What would you like to configure?
        // highlight-start
@@ -540,14 +540,14 @@ Custom providers must use OpenAI, Anthropic, or Ollama compatible API formats. T
        │  ○ Add Extension 
        │  ○ Toggle Extensions 
        │  ○ Remove Extension 
-       │  ○ Agnes Settings 
+       │  ○ agnes Settings 
        └  
        ```
 
     3. Select the custom provider you want to update and press `Enter`. Use the arrow keys (↑/↓) to move through the options, or start typing to filter the list.
 
        ```sh
-       ┌   Agnes-configure 
+       ┌   agnes-configure 
        │
        ◇  What would you like to configure?
        │  Configure Providers 
@@ -572,19 +572,19 @@ Custom providers must use OpenAI, Anthropic, or Ollama compatible API formats. T
   <TabItem value="config" label="Config File">
 
     Open the custom provider configuration file in the `custom_providers` directory:
-    - macOS/Linux: `~/.agnes/custom_providers/`
-    - Windows: `%APPDATA%\Block\Agnes\config\custom_providers\`
+    - macOS/Linux: `~/.config/agnes/custom_providers/`
+    - Windows: `%APPDATA%\Block\agnes\config\custom_providers\`
 
     Update the fields you want to change and save your changes.
   </TabItem>
 </Tabs>
 
-Your changes are available in your next goose session.
+Your changes are available in your next agnes session.
 
 **To remove a custom provider:**
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
     2. Click the `Settings` button on the sidebar
     3. Click the `Models` tab
@@ -594,18 +594,18 @@ Your changes are available in your next goose session.
     7. Confirm that you want to permanently remove the custom provider and its stored API key (if applicable) by clicking `Confirm Delete`
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     
     1. In your terminal, run the following command: 
 
        ```sh
-       goose configure
+       agnes configure
        ```
 
     2. Select `Custom Providers`. Use the arrow keys (↑/↓) to move through the options.
 
        ```sh
-       ┌   Agnes-configure 
+       ┌   agnes-configure 
        │
        ◆  What would you like to configure?
        │  ○ Configure Providers
@@ -615,14 +615,14 @@ Your changes are available in your next goose session.
        │  ○ Add Extension 
        │  ○ Toggle Extensions 
        │  ○ Remove Extension 
-       │  ○ Agnes Settings 
+       │  ○ agnes Settings 
        └  
        ```
 
     3. Select `Remove Custom Provider`.
 
        ```sh
-       ┌   Agnes-configure 
+       ┌   agnes-configure 
        │
        ◇  What would you like to configure?
        │  Custom Providers 
@@ -643,42 +643,42 @@ Your changes are available in your next goose session.
   <TabItem value="config" label="Config File">
 
     :::tip
-    If the provider's API key is stored in the keychain, use Agnes CLI to remove the custom provider. This also removes the stored API key.
+    If the provider's API key is stored in the keychain, use agnes CLI to remove the custom provider. This also removes the stored API key.
     :::
 
     Delete the custom provider configuration file in the `custom_providers` directory:
-    - macOS/Linux: `~/.agnes/custom_providers/`
-    - Windows: `%APPDATA%\Block\Agnes\config\custom_providers\`
+    - macOS/Linux: `~/.config/agnes/custom_providers/`
+    - Windows: `%APPDATA%\Block\agnes\config\custom_providers\`
 
   </TabItem>
 </Tabs>
 
-## Using Agnes for Free
+## Using agnes for Free
 
-Agnes is a free and open source AI agent that you can start using right away, but not all supported [LLM Providers][providers] provide a free tier. 
+agnes is a free and open source AI agent that you can start using right away, but not all supported [LLM Providers][providers] provide a free tier. 
 
 Below, we outline a couple of free options and how to get started with them.
 
 :::warning Limitations
-These free options are a great way to get started with Agnes and explore its capabilities. However, you may need to upgrade your LLM for better performance.
+These free options are a great way to get started with agnes and explore its capabilities. However, you may need to upgrade your LLM for better performance.
 :::
 
 
 ### Groq
-Groq provides free access to open source (open weight) models with high-speed inference. To use Groq with Agnes, you need an API key from [Groq Console](https://console.groq.com/keys).
+Groq provides free access to open source (open weight) models with high-speed inference. To use Groq with agnes, you need an API key from [Groq Console](https://console.groq.com/keys).
 
 Groq offers several open source models that support tool calling, including:
-- **moonshotai/kimi-k2-instruct-0905** - Mixture-of-Experts model with 1 trillion parameters, optimized for agentic intelligence and tool use
+- **moonshotai/kimi-k2-instruct-0905** - Mixture-of-Experts model withaaif-goosetrillion parameters, optimized for agentic intelligence and tool use
 - **qwen/qwen3-32b** - 32.8 billion parameter model with advanced reasoning and multilingual capabilities  
 - **llama-3.3-70b-versatile** - Meta's Llama 3.3 model for versatile applications
 - **llama-3.1-8b-instant** - Meta's Llama 3.1 model for fast inference
 
-For the complete list of supported Groq models, see [groq.json](https://github.com/aaif-goose/agnes/blob/main/crates/goose/src/providers/declarative/groq.json).
+For the complete list of supported Groq models, see [groq.json](https://github.com/aaif-goose/agnes/blob/main/crates/agnes/src/providers/declarative/groq.json).
 
-To set up Groq with Agnes, follow these steps:
+To set up Groq with agnes, follow these steps:
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
   **To update your LLM provider and API key:** 
 
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar.
@@ -690,10 +690,10 @@ To set up Groq with Agnes, follow these steps:
     7. Select the Groq model of your choice.
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     1. Run:
     ```sh
-    goose configure
+    agnes configure
     ```
     2. Select `Configure Providers` from the menu.
     3. Follow the prompts to choose `Groq` as the provider.
@@ -703,7 +703,7 @@ To set up Groq with Agnes, follow these steps:
 </Tabs>
 
 ### EmpirioLabs
-[EmpirioLabs](https://empiriolabs.ai/) provides access to frontier open and proprietary chat models through a single OpenAI-compatible API with streaming. To use EmpirioLabs with Agnes, you need an API key from [EmpirioLabs](https://platform.empiriolabs.ai/dashboard/api-keys).
+[EmpirioLabs](https://empiriolabs.ai/) provides access to frontier open and proprietary chat models through a single OpenAI-compatible API with streaming. To use EmpirioLabs with agnes, you need an API key from [EmpirioLabs](https://platform.empiriolabs.ai/dashboard/api-keys).
 
 EmpirioLabs offers models that support tool calling, including:
 - **qwen3-7-plus** - Qwen3.7 Plus with a 1M context window
@@ -714,12 +714,12 @@ EmpirioLabs offers models that support tool calling, including:
 - **kimi-k2-7-code** - Kimi K2.7 Code with a 256K context window
 - **minimax-m3** - MiniMax M3 with a 524K context window
 
-The full live catalog is available at `https://api.empiriolabs.ai/v1/models`. For the complete list of EmpirioLabs models configured in Agnes, see [empiriolabs.json](https://github.com/aaif-goose/agnes/blob/main/crates/goose/src/providers/declarative/empiriolabs.json). For more details, see the [EmpirioLabs documentation](https://docs.empiriolabs.ai).
+The full live catalog is available at `https://api.empiriolabs.ai/v1/models`. For the complete list of EmpirioLabs models configured in agnes, see [empiriolabs.json](https://github.com/aaif-goose/agnes/blob/main/crates/agnes/src/providers/declarative/empiriolabs.json). For more details, see the [EmpirioLabs documentation](https://docs.empiriolabs.ai).
 
-To set up EmpirioLabs with Agnes, follow these steps:
+To set up EmpirioLabs with agnes, follow these steps:
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
   **To update your LLM provider and API key:**
 
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar.
@@ -731,10 +731,10 @@ To set up EmpirioLabs with Agnes, follow these steps:
     7. Select the EmpirioLabs model of your choice.
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     1. Run:
     ```sh
-    goose configure
+    agnes configure
     ```
     2. Select `Configure Providers` from the menu.
     3. Follow the prompts to choose `EmpirioLabs` as the provider.
@@ -744,21 +744,21 @@ To set up EmpirioLabs with Agnes, follow these steps:
 </Tabs>
 
 ### FuturMix
-[FuturMix](https://futurmix.ai/) is a unified AI gateway providing access to models from Anthropic, Google, OpenAI, and DeepSeek through an OpenAI-compatible API. To use FuturMix with Agnes, you need an API key from [FuturMix](https://futurmix.ai/).
+[FuturMix](https://futurmix.ai/) is a unified AI gateway providing access to models from Anthropic, Google, OpenAI, and DeepSeek through an OpenAI-compatible API. To use FuturMix with agnes, you need an API key from [FuturMix](https://futurmix.ai/).
 
 FuturMix offers models that support tool calling, including:
-- **claude-sonnet-4-20250514** - Anthropic Claude Sonnet 4 with 200K context
+- **claude-sonnet-4-20250514** - Anthropic Claude Sonnetundefinedwith 200K context
 - **gpt-4o** - OpenAI GPT-4o with 128K context
 - **gemini-2.5-pro** - Google Gemini 2.5 Pro with 1M context
 - **deepseek-chat** - DeepSeek V3 with 131K context
-- **claude-haiku-4-20250514** - Anthropic Claude Haiku 4 with 200K context
+- **claude-haiku-4-20250514** - Anthropic Claude Haikuundefinedwith 200K context
 
-For the complete list of supported FuturMix models, see [futurmix.json](https://github.com/aaif-goose/agnes/blob/main/crates/goose/src/providers/declarative/futurmix.json).
+For the complete list of supported FuturMix models, see [futurmix.json](https://github.com/aaif-goose/agnes/blob/main/crates/agnes/src/providers/declarative/futurmix.json).
 
-To set up FuturMix with Agnes, follow these steps:
+To set up FuturMix with agnes, follow these steps:
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
   **To update your LLM provider and API key:** 
 
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar.
@@ -770,10 +770,10 @@ To set up FuturMix with Agnes, follow these steps:
     7. Select the FuturMix model of your choice.
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     1. Run: 
     ```sh
-    goose configure
+    agnes configure
     ```
     2. Select `Configure Providers` from the menu.
     3. Follow the prompts to choose `FuturMix` as the provider.
@@ -783,21 +783,21 @@ To set up FuturMix with Agnes, follow these steps:
 </Tabs>
 
 ### Novita AI
-[Novita AI](https://novita.ai/) provides access to 90+ open-source models via an OpenAI-compatible API with competitive pricing. To use Novita AI with Agnes, you need an API key from [Novita AI](https://novita.ai/settings#key-management).
+[Novita AI](https://novita.ai/) provides access to 90+ open-source models via an OpenAI-compatible API with competitive pricing. To use Novita AI with agnes, you need an API key from [Novita AI](https://novita.ai/settings#key-management).
 
 Novita AI offers many models that support tool calling, including:
 - **moonshotai/kimi-k2.5** - Moonshot's latest model with 262K context window
 - **minimax/minimax-m2.7** - MiniMax M2.7 with 205K context
 - **zai-org/glm-5.1** - Zhipu's GLM-5.1 with 205K context
 - **deepseek/deepseek-v3.2** - DeepSeek V3.2 with 164K context
-- **google/gemma-4-31b-it** - Google Gemma 4 31B with 262K context
+- **google/gemma-4-31b-it** - Google Gemmaundefined31B with 262K context
 
-For the complete list of supported Novita AI models, see [novita.json](https://github.com/aaif-goose/agnes/blob/main/crates/goose/src/providers/declarative/novita.json).
+For the complete list of supported Novita AI models, see [novita.json](https://github.com/aaif-goose/agnes/blob/main/crates/agnes/src/providers/declarative/novita.json).
 
-To set up Novita AI with Agnes, follow these steps:
+To set up Novita AI with agnes, follow these steps:
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
   **To update your LLM provider and API key:** 
 
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar.
@@ -809,10 +809,10 @@ To set up Novita AI with Agnes, follow these steps:
     7. Select the Novita AI model of your choice.
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     1. Run: 
     ```sh
-    goose configure
+    agnes configure
     ```
     2. Select `Configure Providers` from the menu.
     3. Follow the prompts to choose `Novita AI` as the provider.
@@ -822,19 +822,19 @@ To set up Novita AI with Agnes, follow these steps:
 </Tabs>
 
 ### Routstr
-[Routstr](https://routstr.com/) is an OpenAI-compatible aggregator that fronts dozens of upstream providers behind a single API. Payment is handled by the Routstr instance itself, so all Agnes needs is the `sk-...` bearer that instance issues you. To use Routstr with Agnes, pick an instance (the default is `https://api.routstr.com`) and obtain an API key from its payment flow.
+[Routstr](https://routstr.com/) is an OpenAI-compatible aggregator that fronts dozens of upstream providers behind a single API. Payment is handled by the Routstr instance itself, so all agnes needs is the `sk-...` bearer that instance issues you. To use Routstr with agnes, pick an instance (the default is `https://api.routstr.com`) and obtain an API key from its payment flow.
 
 Routstr aggregates models from many upstream providers, including:
 - **claude-opus-4.7** — Anthropic's Claude opus 4.7
 - **deepseek-v4-pro** — DeepSeek V4 Pro
 - **gemini-3.1-pro-preview** — gemini-3.1 Pro Preview
 
-`/v1/models` is queried at configure time, so the full catalogue your Routstr instance exposes is available in the model picker. For the static defaults shipped with Agnes, see [routstr.json](https://github.com/aaif-goose/agnes/blob/main/crates/goose/src/providers/declarative/routstr.json).
+`/v1/models` is queried at configure time, so the full catalogue your Routstr instance exposes is available in the model picker. For the static defaults shipped with agnes, see [routstr.json](https://github.com/aaif-goose/agnes/blob/main/crates/agnes/src/providers/declarative/routstr.json).
 
-To set up Routstr with Agnes, follow these steps:
+To set up Routstr with agnes, follow these steps:
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
   **To update your LLM provider and API key:**
 
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar.
@@ -846,10 +846,10 @@ To set up Routstr with Agnes, follow these steps:
     7. Select the Routstr model of your choice.
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     1. Run:
     ```sh
-    goose configure
+    agnes configure
     ```
     2. Select `Configure Providers` from the menu.
     3. Follow the prompts to choose `Routstr` as the provider.
@@ -859,12 +859,12 @@ To set up Routstr with Agnes, follow these steps:
 </Tabs>
 
 ### Google Gemini
-Google Gemini provides a free tier. To start using the Gemini API with Agnes, you need an API Key from [Google AI studio](https://aistudio.google.com/app/apikey).
+Google Gemini provides a free tier. To start using the Gemini API with agnes, you need an API Key from [Google AI studio](https://aistudio.google.com/app/apikey).
 
-To set up Google Gemini with Agnes, follow these steps:
+To set up Google Gemini with agnes, follow these steps:
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
   **To update your LLM provider and API key:** 
 
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar.
@@ -875,10 +875,10 @@ To set up Google Gemini with Agnes, follow these steps:
     6. Click `Configure`, enter your API key, and click `Submit`.
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     1. Run: 
     ```sh
-    goose configure
+    agnes configure
     ```
     2. Select `Configure Providers` from the menu.
     3. Follow the prompts to choose `Google Gemini` as the provider.
@@ -886,7 +886,7 @@ To set up Google Gemini with Agnes, follow these steps:
     5. Enter the Gemini model of your choice.
 
     ```
-    ┌   Agnes-configure
+    ┌   agnes-configure
     │
     ◇ What would you like to configure?
     │ Configure Providers
@@ -910,10 +910,10 @@ To set up Google Gemini with Agnes, follow these steps:
 
 ### Local LLMs
 
-Agnes is a local AI agent, and by using a local LLM, you keep your data private, maintain full control over your environment, and can work entirely offline without relying on cloud access. However, please note that local LLMs require a bit more set up before you can use one of them with Agnes.
+agnes is a local AI agent, and by using a local LLM, you keep your data private, maintain full control over your environment, and can work entirely offline without relying on cloud access. However, please note that local LLMs require a bit more set up before you can use one of them with agnes.
 
 :::warning Limited Support for models without tool calling
-Agnes extensively uses tool calling, so models without it can only do chat completion. If using models without tool calling, all Agnes [extensions must be disabled](/docs/getting-started/using-extensions#enablingdisabling-extensions).
+agnes extensively uses tool calling, so models without it can only do chat completion. If using models without tool calling, all agnes [extensions must be disabled](/docs/getting-started/using-extensions#enablingdisabling-extensions).
 :::
 
 Here are some local providers we support:
@@ -925,7 +925,7 @@ Here are some local providers we support:
         1. [Download Ramalama](https://github.com/containers/ramalama?tab=readme-ov-file#install).
         2. In a terminal, run any Ollama [model supporting tool-calling](https://ollama.com/search?c=tools) or [GGUF format HuggingFace Model](https://huggingface.co/search/full-text?q=%22tools+support%22+%2B+%22gguf%22&type=model):
 
-          The `--runtime-args="--jinja"` flag is required for Ramalama to work with the Agnes Ollama provider.
+          The `--runtime-args="--jinja"` flag is required for Ramalama to work with the agnes Ollama provider.
 
           Example:
 
@@ -933,16 +933,16 @@ Here are some local providers we support:
           ramalama serve --runtime-args="--jinja" ollama://qwen2.5
           ```
 
-          3. In a separate terminal window, configure with Agnes:
+          3. In a separate terminal window, configure with agnes:
 
           ```sh
-          goose configure
+          agnes configure
           ```
 
           4. Choose to `Configure Providers`
 
           ```
-          ┌   Agnes-configure
+          ┌   agnes-configure
           │
           ◆  What would you like to configure?
           │  ● Configure Providers (Change provider or update credentials)
@@ -951,10 +951,10 @@ Here are some local providers we support:
           └
           ```
 
-          5. Choose `Ollama` as the model provider since Ramalama is API compatible and can use the Agnes Ollama provider
+          5. Choose `Ollama` as the model provider since Ramalama is API compatible and can use the agnes Ollama provider
 
           ```
-          ┌   Agnes-configure
+          ┌   agnes-configure
           │
           ◇  What would you like to configure?
           │  Configure Providers
@@ -977,7 +977,7 @@ Here are some local providers we support:
           :::
 
           ```
-          ┌   Agnes-configure
+          ┌   agnes-configure
           │
           ◇  What would you like to configure?
           │  Configure Providers
@@ -994,7 +994,7 @@ Here are some local providers we support:
           7. Enter the model you have running
 
           ```
-          ┌   Agnes-configure
+          ┌   agnes-configure
           │
           ◇  What would you like to configure?
           │  Configure Providers
@@ -1014,12 +1014,12 @@ Here are some local providers we support:
           ```
 
           :::tip Context Length
-          If you notice that Agnes is having trouble using extensions or is ignoring [.agneshints](/docs/guides/context-engineering/using-goosehints), it is likely that the model's default context length of 2048 tokens is too low. Use `ramalama serve` to set the `--ctx-size, -c` option to a [higher value](https://github.com/containers/ramalama/blob/main/docs/ramalama-serve.1.md#--ctx-size--c).
+          If you notice that agnes is having trouble using extensions or is ignoring [.agneshints](/docs/guides/context-engineering/using-agneshints), it is likely that the model's default context length ofundefinedtokens is too low. Use `ramalama serve` to set the `--ctx-size, -c` option to a [higher value](https://github.com/containers/ramalama/blob/main/docs/ramalama-serve.1.md#--ctx-size--c).
           :::
 
       </TabItem>
       <TabItem value="deepseek" label="DeepSeek-R1">
-        The native `DeepSeek-r1` model doesn't support tool calling, however, we have a [custom model](https://ollama.com/michaelneale/deepseek-r1-Agnes) you can use with Agnes. 
+        The native `DeepSeek-r1` model doesn't support tool calling, however, we have a [custom model](https://ollama.com/michaelneale/deepseek-r1-agnes) you can use with agnes. 
 
         :::warning
         Note that this is a 70B model size and requires a powerful device to run smoothly.
@@ -1030,19 +1030,19 @@ Here are some local providers we support:
         2. In a terminal window, run the following command to install the custom DeepSeek-r1 model:
 
         ```sh
-        ollama run michaelneale/deepseek-r1-Agnes
+        ollama run michaelneale/deepseek-r1-agnes
         ```
 
-        3. In a separate terminal window, configure with Agnes:
+        3. In a separate terminal window, configure with agnes:
 
         ```sh
-        goose configure
+        agnes configure
         ```
 
         4. Choose to `Configure Providers`
 
         ```
-        ┌   Agnes-configure 
+        ┌   agnes-configure 
         │
         ◆  What would you like to configure?
         │  ● Configure Providers (Change provider or update credentials)
@@ -1054,7 +1054,7 @@ Here are some local providers we support:
         5. Choose `Ollama` as the model provider
 
         ```
-        ┌   Agnes-configure 
+        ┌   agnes-configure 
         │
         ◇  What would you like to configure?
         │  Configure Providers 
@@ -1073,7 +1073,7 @@ Here are some local providers we support:
         6. Enter the host where your model is running
 
         ```
-        ┌   Agnes-configure 
+        ┌   agnes-configure 
         │
         ◇  What would you like to configure?
         │  Configure Providers 
@@ -1089,7 +1089,7 @@ Here are some local providers we support:
         7. Enter the installed model from above
 
         ```
-        ┌   Agnes-configure 
+        ┌   agnes-configure 
         │
         ◇  What would you like to configure?
         │  Configure Providers 
@@ -1101,7 +1101,7 @@ Here are some local providers we support:
         │  http://localhost:11434  
         │    
         ◇  Enter a model from that provider:
-        │  michaelneale/deepseek-r1-Agnes
+        │  michaelneale/deepseek-r1-agnes
         │
         ◇  Welcome! You're all set to explore and utilize my capabilities. Let's get started on solving your problems together!
         │
@@ -1118,16 +1118,16 @@ Here are some local providers we support:
           ollama run qwen2.5
           ```
 
-        3. In a separate terminal window, configure with Agnes:
+        3. In a separate terminal window, configure with agnes:
 
           ```sh
-          goose configure
+          agnes configure
           ```
 
         4. Choose to `Configure Providers`
 
         ```
-        ┌   Agnes-configure 
+        ┌   agnes-configure 
         │
         ◆  What would you like to configure?
         │  ● Configure Providers (Change provider or update credentials)
@@ -1139,7 +1139,7 @@ Here are some local providers we support:
         5. Choose `Ollama` as the model provider
 
         ```
-        ┌   Agnes-configure 
+        ┌   agnes-configure 
         │
         ◇  What would you like to configure?
         │  Configure Providers 
@@ -1165,7 +1165,7 @@ Here are some local providers we support:
         :::
 
         ```
-        ┌   Agnes-configure 
+        ┌   agnes-configure 
         │
         ◇  What would you like to configure?
         │  Configure Providers 
@@ -1182,7 +1182,7 @@ Here are some local providers we support:
         7. Enter the model you have running
 
         ```
-        ┌   Agnes-configure 
+        ┌   agnes-configure 
         │
         ◇  What would you like to configure?
         │  Configure Providers 
@@ -1202,7 +1202,7 @@ Here are some local providers we support:
         ```
 
         :::tip Context Length
-        If you notice that Agnes is having trouble using extensions or is ignoring [.agneshints](/docs/guides/context-engineering/using-goosehints), it is likely that the model's default context length of 4096 tokens is too low. Set the `OLLAMA_CONTEXT_LENGTH` environment variable to a [higher value](https://github.com/ollama/ollama/blob/main/docs/faq.mdx#how-can-i-specify-the-context-window-size).
+        If you notice that agnes is having trouble using extensions or is ignoring [.agneshints](/docs/guides/context-engineering/using-agneshints), it is likely that the model's default context length ofundefinedtokens is too low. Set the `OLLAMA_CONTEXT_LENGTH` environment variable to a [higher value](https://github.com/ollama/ollama/blob/main/docs/faq.mdx#how-can-i-specify-the-context-window-size).
         :::
         
       </TabItem>
@@ -1215,10 +1215,10 @@ Here are some local providers we support:
     2. Open LM Studio and download a model that supports tool calling (e.g., Qwen, Llama, or Mistral variants).
     3. Start the local server in LM Studio. The server runs on `http://localhost:1234` by default
 
-    4. Configure Agnes to use LM Studio:
+    4. Configure agnes to use LM Studio:
 
     <Tabs groupId="interface">
-      <TabItem value="ui" label="Agnes Desktop" default>
+      <TabItem value="ui" label="agnes Desktop" default>
         1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar.
         2. Click the `Settings` button on the sidebar.
         3. Click the `Models` tab.
@@ -1227,17 +1227,17 @@ Here are some local providers we support:
         6. Click `Submit` (no API key is needed).
         7. Select the model you have loaded in LM Studio.
       </TabItem>
-      <TabItem value="cli" label="Agnes CLI">
+      <TabItem value="cli" label="agnes CLI">
         1. Run:
         ```sh
-        goose configure
+        agnes configure
         ```
         2. Select `Configure Providers` from the menu.
         3. Choose `LM Studio` as the provider.
         4. Enter the model name that matches the model loaded in LM Studio.
 
         ```
-        ┌   Agnes-configure
+        ┌   agnes-configure
         │
         ◇  What would you like to configure?
         │  Configure Providers
@@ -1254,7 +1254,7 @@ Here are some local providers we support:
     </Tabs>
 
     :::tip Model Name
-    Make sure the model name you enter in Agnes matches the model identifier shown in LM Studio's server panel.
+    Make sure the model name you enter in agnes matches the model identifier shown in LM Studio's server panel.
     :::
   </TabItem>
   <TabItem value="atomic-chat" label="Atomic Chat">
@@ -1264,10 +1264,10 @@ Here are some local providers we support:
     2. Open Atomic Chat and download a model that supports tool calling (e.g., Qwen, Llama, or Mistral variants).
     3. Start the local server in Atomic Chat. The server runs on `http://localhost:1337` by default
 
-    4. Configure Agnes to use Atomic Chat:
+    4. Configure agnes to use Atomic Chat:
 
     <Tabs groupId="interface">
-      <TabItem value="ui" label="Agnes Desktop" default>
+      <TabItem value="ui" label="agnes Desktop" default>
         1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar.
         2. Click the `Settings` button on the sidebar.
         3. Click the `Models` tab.
@@ -1276,17 +1276,17 @@ Here are some local providers we support:
         6. Click `Submit` (no API key is needed).
         7. Select the model you have loaded in Atomic Chat.
       </TabItem>
-      <TabItem value="cli" label="Agnes CLI">
+      <TabItem value="cli" label="agnes CLI">
         1. Run:
         ```sh
-        goose configure
+        agnes configure
         ```
         2. Select `Configure Providers` from the menu.
         3. Choose `Atomic Chat` as the provider.
         4. Enter the model name that matches the model loaded in Atomic Chat.
 
         ```
-        ┌   Agnes-configure
+        ┌   agnes-configure
         │
         ◇  What would you like to configure?
         │  Configure Providers
@@ -1303,7 +1303,7 @@ Here are some local providers we support:
     </Tabs>
 
     :::tip Model Name
-    Make sure the model name you enter in Agnes matches the model identifier shown for your server in Atomic Chat. If the API listens on a different origin than `http://localhost:1337`, set `ATOMIC_CHAT_HOST` in Agnes to match (scheme, host, and port only).
+    Make sure the model name you enter in agnes matches the model identifier shown for your server in Atomic Chat. If the API listens on a different origin than `http://localhost:1337`, set `ATOMIC_CHAT_HOST` in agnes to match (scheme, host, and port only).
     :::
   </TabItem>
   <TabItem value="docker" label="Docker Model Runner" default>
@@ -1317,16 +1317,16 @@ Here are some local providers we support:
     docker model pull hf.co/unsloth/gemma-3n-e4b-it-gguf:q6_k
     ```
 
-    4. Configure Agnes to use Docker Model Runner, using the OpenAI API compatible endpoint: 
+    4. Configure agnes to use Docker Model Runner, using the OpenAI API compatible endpoint: 
 
     ```sh
-    goose configure
+    agnes configure
     ```
 
     5. Choose to `Configure Providers`
 
     ```
-    ┌   Agnes-configure 
+    ┌   agnes-configure 
     │
     ◆  What would you like to configure?
     │  ● Configure Providers (Change provider or update credentials)
@@ -1338,7 +1338,7 @@ Here are some local providers we support:
     6. Choose `OpenAI` as the model provider: 
 
     ```
-    ┌   Agnes-configure
+    ┌   agnes-configure
     │
     ◇  What would you like to configure?
     │  Configure Providers
@@ -1354,7 +1354,7 @@ Here are some local providers we support:
     7. Configure Docker Model Runner endpoint as the `OPENAI_HOST`: 
 
     ```
-    ┌   Agnes-configure
+    ┌   agnes-configure
     │
     ◇  What would you like to configure?
     │  Configure Providers
@@ -1380,7 +1380,7 @@ Here are some local providers we support:
 
     Docker model runner uses `/engines/llama.cpp/v1/chat/completions` for the base path.
 
-    9. Finally configure the model available in Docker Model Runner to be used by Agnes: `hf.co/unsloth/gemma-3n-e4b-it-gguf:q6_k`
+    9. Finally configure the model available in Docker Model Runner to be used by agnes: `hf.co/unsloth/gemma-3n-e4b-it-gguf:q6_k`
 
     ```
     │
@@ -1399,17 +1399,17 @@ Here are some local providers we support:
 
 GitHub Copilot uses a device flow for authentication, so no API keys are required:
 
-1. Run [`goose configure`](#configure-provider-and-model) and select **GitHub Copilot**
+1. Run [`agnes configure`](#configure-provider-and-model) and select **GitHub Copilot**
 2. An eight-character code will be automatically copied to your clipboard
 3. A browser will open to GitHub's device activation page
 4. Paste the code to authorize the application
-5. When you return to Agnes, GitHub Copilot will be available as a provider in both CLI and Desktop.
+5. When you return to agnes, GitHub Copilot will be available as a provider in both CLI and Desktop.
 
 ## Azure OpenAI Authentication
 
-Agnes supports three authentication methods for Azure OpenAI:
+agnes supports three authentication methods for Azure OpenAI:
 
-1. **Entra ID Bearer Token** - Uses a pre-acquired Microsoft Entra access token from `AZURE_OPENAI_AD_TOKEN`, sent as `Authorization: Bearer <token>`. Agnes skips Azure CLI and token acquisition entirely, which suits enterprise deployments where only short-lived tokens are exposed to the runtime (e.g. obtained via `az account get-access-token --resource https://cognitiveservices.azure.com --query accessToken --output tsv`)
+1. **Entra ID Bearer Token** - Uses a pre-acquired Microsoft Entra access token from `AZURE_OPENAI_AD_TOKEN`, sent as `Authorization: Bearer <token>`. agnes skips Azure CLI and token acquisition entirely, which suits enterprise deployments where only short-lived tokens are exposed to the runtime (e.g. obtained via `az account get-access-token --resource https://cognitiveservices.azure.com --query accessToken --output tsv`)
 2. **API Key Authentication** - Uses the `AZURE_OPENAI_API_KEY` for direct authentication
 3. **Azure Credential Chain** - Uses Azure CLI credentials automatically without requiring an API key
 
@@ -1418,20 +1418,20 @@ When more than one is configured, `AZURE_OPENAI_AD_TOKEN` takes precedence over 
 To use the Azure Credential Chain:
 - Ensure you're logged in with `az login`
 - Have appropriate Azure role assignments for the Azure OpenAI service
-- Configure with `goose configure` and select Azure OpenAI, leaving the API key field empty
+- Configure with `agnes configure` and select Azure OpenAI, leaving the API key field empty
 
 This method simplifies authentication and enhances security for enterprise environments.
 
 ## Multi-Model Configuration
 
-Beyond single-model setups, Agnes supports [multi-model configurations](/docs/guides/multi-model/) that can use different models and providers for specialized tasks:
+Beyond single-model setups, agnes supports [multi-model configurations](/docs/guides/multi-model/) that can use different models and providers for specialized tasks:
 
 - **Planning Mode** - Use a dedicated planner model to create detailed project breakdowns before execution
 - **Subagents** - Delegate scoped tasks to isolated sessions to keep your primary workflow focused and efficient
 
-## Gemini 3 Thinking Levels
+## GeminiundefinedThinking Levels
 
-Gemini 3 models support configurable thinking levels to balance response latency and reasoning depth:
+Geminiundefinedmodels support configurable thinking levels to balance response latency and reasoning depth:
 - **Low** (default) - Faster responses, lighter reasoning
 - **High** - Deeper reasoning, higher latency
 
@@ -1440,14 +1440,14 @@ When thinking is enabled, you can view the model's reasoning process. See [Viewi
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
-    When selecting a Gemini 3 model, a "Thinking Level" dropdown appears automatically. Select your preference and the setting persists across sessions.
+  <TabItem value="ui" label="agnes Desktop" default>
+    When selecting a Geminiundefinedmodel, a "Thinking Level" dropdown appears automatically. Select your preference and the setting persists across sessions.
   </TabItem>
   
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     **Interactive configuration:**
     
-    When you run `goose configure` and select a Gemini 3 model, you'll be prompted to choose a thinking level:
+    When you run `agnes configure` and select a Geminiundefinedmodel, you'll be prompted to choose a thinking level:
     
     ```
     ◆  Select thinking level for Gemini 3:
@@ -1466,7 +1466,7 @@ The thinking level is determined in this order (highest to lowest priority):
 
 ## Viewing Model Reasoning
 
-Some models expose their internal reasoning or "chain of thought" as part of their response. Agnes automatically captures this reasoning output and makes it available to you. The following models and providers support reasoning output:
+Some models expose their internal reasoning or "chain of thought" as part of their response. agnes automatically captures this reasoning output and makes it available to you. The following models and providers support reasoning output:
 
 | Provider / Model | How It Works |
 |---|---|
@@ -1476,11 +1476,11 @@ Some models expose their internal reasoning or "chain of thought" as part of the
 | **Claude** (Anthropic, with [Claude thinking](/docs/guides/environment-variables#claude-thinking-configuration) enabled) | Thinking blocks captured from the API response |
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
     Reasoning output appears automatically in a collapsible **"Show reasoning"** toggle above the model's response. Click it to expand and view the model's thought process.
   </TabItem>
   
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     Reasoning output is **hidden by default** in the CLI. To display it, set the `AGNES_CLI_SHOW_THINKING` environment variable:
     
     ```bash
@@ -1501,7 +1501,7 @@ Reasoning output can be useful for understanding how the model arrived at its an
 
 ---
 
-If you have any questions or need help with a specific provider, feel free to reach out to us on [Discord](https://discord.gg/Agnes-oss) or on the [Agnes repo](https://github.com/aaif-goose/agnes).
+If you have any questions or need help with a specific provider, feel free to reach out to us on [Discord](https://discord.gg/agnes-oss) or on the [agnes repo](https://github.com/aaif-goose/agnes).
 
 
 [providers]: /docs/getting-started/providers

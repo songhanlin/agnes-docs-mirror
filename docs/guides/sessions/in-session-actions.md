@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { PanelLeft, Paperclip, Edit2, Send, GripVertical, X, ChevronUp, ChevronDown, FolderDot, Puzzle, Bot, Tornado } from 'lucide-react';
 
-Agnes provides features you can use to manage conversations and share information during sessions.
+agnes provides features you can use to manage conversations and share information during sessions.
 
 ## Edit Message
 
@@ -15,17 +15,17 @@ Edit your previously sent messages to refine conversations, correct course, or t
 
 **Example Message Flow:**
 
-Your original conversation has five messages. After editing message 3, all message and response context from messages 4 and 5 is deleted.
+Your original conversation has five messages. After editing message 3, all message and response context from messagesundefinedandundefinedis deleted.
 
 ```
 ┌─────┐   ┌─────┐   ┌─────┐   ┌─────┐   ┌─────┐
-│  1  │ → │  2  │ → │  3  │ → │  4  │ → │  5  │
+│ aaif-goose │ → │ undefined │ → │ undefined │ → │ undefined │ → │ undefined │
 └─────┘   └─────┘   └─────┘   └─────┘   └─────┘
            
                    Edit here
                        ↓
 ┌─────┐   ┌─────┐   ┌─────┐    continue from here in
-│  1  │ → │  2  │ → │  3  │ →  current session, or
+│ aaif-goose │ → │ undefined │ → │ undefined │ →  current session, or
 └─────┘   └─────┘   └─────┘    copy to new session
 ```
 
@@ -41,25 +41,25 @@ Edit in Place gives you complete control over the conversation history by overwr
 Editing in place is useful when:
 
 - You realize a prompt you sent was unclear or incomplete
-- Agnes misunderstood your intent and went in the wrong direction
+- agnes misunderstood your intent and went in the wrong direction
 
 <Tabs groupId="interface">
-    <TabItem value="ui" label="Agnes Desktop" default>
+    <TabItem value="ui" label="agnes Desktop" default>
 
         1. Hover over any of your previous messages
         2. Click the <Edit2 className="inline" size={16} /> `Edit` button that appears
         3. Make your changes in the inline editor
-        4. Click `Edit in Place` to save your changes and reprompt Agnes
+        4. Click `Edit in Place` to save your changes and reprompt agnes
 
-        Agnes removes all conversation history after the edited message and responds contextually from that point.
+        agnes removes all conversation history after the edited message and responds contextually from that point.
 
         :::warning Deleted Context
-        With Edit in Place, subsequent conversation history is permanently deleted from the session and removed from Agnes's context. Use this option only if you don't need Agnes to remember the context that follows the edited message.
+        With Edit in Place, subsequent conversation history is permanently deleted from the session and removed from agnes's context. Use this option only if you don't need agnes to remember the context that follows the edited message.
         :::
 
     </TabItem>
-    <TabItem value="cli" label="Agnes CLI">
-        Message editing options are not available in the Agnes CLI.
+    <TabItem value="cli" label="agnes CLI">
+        Message editing options are not available in the agnes CLI.
     </TabItem>
 </Tabs>
 
@@ -69,61 +69,61 @@ Fork Session creates a new session with your edited message while preserving the
 
 Forking sessions is useful to:
 - Compare different approaches to the same problem side-by-side
-- Test how different prompts affect Agnes's responses
+- Test how different prompts affect agnes's responses
 
 <Tabs groupId="interface">
-    <TabItem value="ui" label="Agnes Desktop" default>
+    <TabItem value="ui" label="agnes Desktop" default>
         1. Hover over any of your previous messages
         2. Click the <Edit2 className="inline" size={16} /> `Edit` button that appears
         3. Make your changes in the inline editor
         4. Click `Fork Session` to save your changes and start a new session (or use `Cmd+Enter` (macOS) or `Ctrl+Enter` (Windows/Linux))
 
-        Agnes creates a new session with conversation history up to and including your edited message. The new session is named "(edited)" and the original session remains unchanged.
+        agnes creates a new session with conversation history up to and including your edited message. The new session is named "(edited)" and the original session remains unchanged.
 
         :::tip Fork vs Duplicate
         - **Fork Session** (Edit button on a message): Creates a new session with history up to a specific edited message. Use this to explore different approaches from a particular point in the conversation.
         - **[Duplicate Session](/docs/guides/sessions/session-management#duplicate-sessions)** (Copy button in session list): Creates a complete copy of the entire session. Use this to preserve a working session or reuse its configuration.
         :::
 </TabItem>
-    <TabItem value="cli" label="Agnes CLI">
-    Message editing is not available in the Agnes CLI, but you can [duplicate entire sessions](/docs/guides/sessions/session-management#duplicate-sessions) using the `--fork` flag.
+    <TabItem value="cli" label="agnes CLI">
+    Message editing is not available in the agnes CLI, but you can [duplicate entire sessions](/docs/guides/sessions/session-management#duplicate-sessions) using the `--fork` flag.
     </TabItem>
 </Tabs>
 
 ### Editing Scenario Tips
 
-- **Iterative Prompt Refinement**: Start with a basic prompt, then edit and refine based on Agnes's response. This often works better than trying to craft the perfect prompt from the start.
+- **Iterative Prompt Refinement**: Start with a basic prompt, then edit and refine based on agnes's response. This often works better than trying to craft the perfect prompt from the start.
 - **When to Edit vs. Interrupt**: Editing earlier messages when a conversation has gone off track can be more effective than trying to correct course using new messages or [interruptions](#interrupt-task). By editing messages, you rewrite history. With interruptions, you only affect the conversation from the current message onwards.
 - **Preserving Progress**: Use Fork Session when you've made good progress but want to try a different approach. This way you can always return to the original if the new direction doesn't work out.
 
 ## Queue Messages
 
-Queue messages while Agnes is processing a task to manage your workflow. This is useful when:
+Queue messages while agnes is processing a task to manage your workflow. This is useful when:
 
-- You want to prepare next steps while Agnes is working
+- You want to prepare next steps while agnes is working
 - You have a sequence of related tasks to complete
 - You're using [voice dictation](#voice-dictation) and need to capture thoughts quickly
 
 :::tip
-Agnes may perform better when complex tasks are split into subtasks, a technique called [*prompt chaining*](https://www.promptingguide.ai/techniques/prompt_chaining). This structured approach can both improve accuracy and give you more control over the process.
+agnes may perform better when complex tasks are split into subtasks, a technique called [*prompt chaining*](https://www.promptingguide.ai/techniques/prompt_chaining). This structured approach can both improve accuracy and give you more control over the process.
 :::
 
 <Tabs groupId="interface">
-    <TabItem value="ui" label="Agnes Desktop" default>
+    <TabItem value="ui" label="agnes Desktop" default>
       Add a message to the queue:
-      1. While Agnes is processing a response, type your next message
+      1. While agnes is processing a response, type your next message
       2. Press `Enter` to add it to the queue (or interrupts if using [interruption keywords](#interrupt-task))
       
-      Queued messages appear as numbered cards showing the queue order. The first message in the queue is automatically sent when Agnes finishes each response.
+      Queued messages appear as numbered cards showing the queue order. The first message in the queue is automatically sent when agnes finishes each response.
       
       :::info Related Features
-      - In general, pressing `Enter` while Agnes is processing a task queues the message, but clicking `Send` sends the task immediately and [interrupts the task](#interrupt-task)
-      - When you type common interrupt keywords like "stop", "wait", or "hold on" in a queued message, Agnes pauses until you enter or send the next message and then continues processing the queue
+      - In general, pressing `Enter` while agnes is processing a task queues the message, but clicking `Send` sends the task immediately and [interrupts the task](#interrupt-task)
+      - When you type common interrupt keywords like "stop", "wait", or "hold on" in a queued message, agnes pauses until you enter or send the next message and then continues processing the queue
       :::
 
       #### Queue Management Controls
     
-      Queued messages run automatically in order as Agnes finishes each task, but you can manage the queue:
+      Queued messages run automatically in order as agnes finishes each task, but you can manage the queue:
       - **Edit a message**: Click the message text to reveal the edit controls, then type your change and click `Save`
       - **Reorder messages**: Hover over the message card to reveal the <GripVertical className="inline" size={16} /> button, then grab it and drag the message up or down
       - **Send a message**: Click the <Send className="inline" size={16} /> button to send a message immediately and interrupt the current task
@@ -137,12 +137,12 @@ Agnes may perform better when complex tasks are split into subtasks, a technique
 
       You send: "Can you refactor our authentication code to support OAuth 2.0 and add proper error handling? Also include unit tests for the OAuth flow, update the API documentation to reflect these changes, and create a migration script to help existing users transition to the new system."
 
-      This approach might lead to overwhelming responses where important details get missed or tasks are handled superficially. Even sending a single prompt with clear sequential steps doesn't allow Agnes to focus on each task individually or build context progressively.
+      This approach might lead to overwhelming responses where important details get missed or tasks are handled superficially. Even sending a single prompt with clear sequential steps doesn't allow agnes to focus on each task individually or build context progressively.
 
       **With queuing:**
 
       1. You send: "Refactor the authentication code to support OAuth 2.0"
-      2. While Agnes is working, you queue the following messages:
+      2. While agnes is working, you queue the following messages:
          - "And add proper error handling"
          - "Add unit tests for the OAuth flow"
          - "Update the API documentation" 
@@ -151,21 +151,21 @@ Agnes may perform better when complex tasks are split into subtasks, a technique
       Each task builds on the previous one.
 
     </TabItem>
-    <TabItem value="cli" label="Agnes CLI">
-        Message queuing is not available in the Agnes CLI.
+    <TabItem value="cli" label="agnes CLI">
+        Message queuing is not available in the agnes CLI.
     </TabItem>
 </Tabs>
 
 ## Interrupt Task
 
-Interrupt Agnes while it's processing a task to take control of the conversation. This is useful when:
+Interrupt agnes while it's processing a task to take control of the conversation. This is useful when:
 
-- Agnes is heading in the wrong direction
+- agnes is heading in the wrong direction
 - You realize you need to add important context  
 - You want to switch to a completely different task
 
 <Tabs groupId="interface">
-    <TabItem value="ui" label="Agnes Desktop" default>
+    <TabItem value="ui" label="agnes Desktop" default>
         
         There are two ways to interrupt a task:
 
@@ -173,7 +173,7 @@ Interrupt Agnes while it's processing a task to take control of the conversation
         1. Type a prompt that includes common interruption keywords like `stop`, `wait`, `hold on`, `actually`, or `instead`. Using keywords alone or at the beginning of sentences works best for reliable detection.
         2. Click `Send`
         
-        Agnes stops processing the current task and asks for more information.
+        agnes stops processing the current task and asks for more information.
         
         #### Provide immediate redirection
         1. Type a prompt with more context and clarification or that changes direction. For example:
@@ -181,11 +181,11 @@ Interrupt Agnes while it's processing a task to take control of the conversation
            - "Let's focus on React instead of TypeScript"
         2. Click `Send`
         
-        Agnes stops processing the current task and pivots to the new request context.
+        agnes stops processing the current task and pivots to the new request context.
         
         :::info Related features
-        - Clicking `Send` while Agnes is processing a task interrupts the task but pressing `Enter` [queues the message](#queue-messages)
-        - Typing a stop or pause keyword in a queued message also stops Agnes from processing the current task
+        - Clicking `Send` while agnes is processing a task interrupts the task but pressing `Enter` [queues the message](#queue-messages)
+        - Typing a stop or pause keyword in a queued message also stops agnes from processing the current task
         - You can also [edit a sent message](#edit-message) to provide more context and clarification or change direction during a session
         :::
 
@@ -218,21 +218,21 @@ Interrupt Agnes while it's processing a task to take control of the conversation
         </details>
 
     </TabItem>
-    <TabItem value="cli" label="Agnes CLI">
+    <TabItem value="cli" label="agnes CLI">
         1. Press `Ctrl+C` to interrupt the current task
         2. Type your prompt that provides more context or changes direction  
         3. Press `Enter`
 
-        Agnes responds contextually to your new request.
+        agnes responds contextually to your new request.
         
     </TabItem>
 </Tabs>
 
 ## Voice Dictation
-Speak to Agnes directly instead of typing your prompts.
+Speak to agnes directly instead of typing your prompts.
 
 <Tabs groupId="interface">
-    <TabItem value="ui" label="Agnes Desktop" default>
+    <TabItem value="ui" label="agnes Desktop" default>
     To enable voice dictation:
         1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
         2. Click `Settings` in the sidebar
@@ -251,9 +251,9 @@ Speak to Agnes directly instead of typing your prompts.
            - Say "submit" to send the message and continue recording your next one. To stop recording, click the microphone button.
            - Click the microphone button to stop recording, then click `Send` or press `Enter`. This option allows you to edit the message before sending.
         
-        The first time you use voice dictation, Agnes will request access to your microphone. While recording, you'll see `Listening` and `Transcribing` status indicators. Agnes transcribes your speech during natural pauses and adds the text to the chat box. 
+        The first time you use voice dictation, agnes will request access to your microphone. While recording, you'll see `Listening` and `Transcribing` status indicators. agnes transcribes your speech during natural pauses and adds the text to the chat box. 
 
-        **If you don't see the microphone**, check the [models you have configured](/docs/getting-started/providers.md). For example, using OpenAI as the voice dictation provider requires that you have an OpenAI model configured in Agnes, even if using another LLM provider for chat.
+        **If you don't see the microphone**, check the [models you have configured](/docs/getting-started/providers.md). For example, using OpenAI as the voice dictation provider requires that you have an OpenAI model configured in agnes, even if using another LLM provider for chat.
 
        #### Important Notes
         * You can record up to 50MB of audio
@@ -263,37 +263,37 @@ Speak to Agnes directly instead of typing your prompts.
         * To disable voice dictation, select `Disabled` from the provider dropdown
 
   </TabItem>
-    <TabItem value="cli" label="Agnes CLI">
-        Voice dictation is not available in the Agnes CLI. 
+    <TabItem value="cli" label="agnes CLI">
+        Voice dictation is not available in the agnes CLI. 
     </TabItem>
 </Tabs>
 
 ## Spellcheck
 
-Spellcheck is enabled by default in the Agnes Desktop chat input field.
+Spellcheck is enabled by default in the agnes Desktop chat input field.
 
 <Tabs groupId="interface">
-    <TabItem value="ui" label="Agnes Desktop" default>
+    <TabItem value="ui" label="agnes Desktop" default>
     To disable or re-enable spellcheck:
         1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
         2. Click `Settings` in the sidebar
         3. Click `Chat`
         4. Scroll down to `Enable Spellcheck` and toggle it on or off
-        5. Restart Agnes for the change to take effect
+        5. Restart agnes for the change to take effect
         
     </TabItem>
-    <TabItem value="cli" label="Agnes CLI">
-        Spellcheck is not available in the Agnes CLI.
+    <TabItem value="cli" label="agnes CLI">
+        Spellcheck is not available in the agnes CLI.
     </TabItem>
 </Tabs>
 
 ## Share Files in Session
 
-Provide Agnes with context from your codebase, documents, and other files to get more relevant and accurate assistance.
+Provide agnes with context from your codebase, documents, and other files to get more relevant and accurate assistance.
 
 <Tabs groupId="interface">
-    <TabItem value="ui" label="Agnes Desktop" default>
-        Share files with Agnes in several ways:
+    <TabItem value="ui" label="agnes Desktop" default>
+        Share files with agnes in several ways:
 
         1. **Drag and Drop**: Simply drag files from your computer's file explorer/finder and drop them anywhere in the chat window. The file paths will be automatically added to your message.
 
@@ -301,9 +301,9 @@ Provide Agnes with context from your codebase, documents, and other files to get
 
         3. **Manual Path**: Type or paste the file path directly into the chat input
 
-        4. **Quick File Search**: Use the [`@` shortcut key](/docs/guides/file-management#quick-file-search-in-Agnes-desktop) to quickly find and include files
+        4. **Quick File Search**: Use the [`@` shortcut key](/docs/guides/file-management#quick-file-search-in-agnes-desktop) to quickly find and include files
     </TabItem>
-    <TabItem value="cli" label="Agnes CLI">
+    <TabItem value="cli" label="agnes CLI">
         You can reference files by their paths directly in your messages. Since you're already in a terminal, you can use standard shell commands to help with file paths:
 
         ```bash
@@ -321,10 +321,10 @@ Provide Agnes with context from your codebase, documents, and other files to get
 
 ## Mid-Session Changes
 
-You can change some settings during a session and they will take effect immediately, rather than requiring you to start a new session. This gives you more control over context and capabilities while you're interacting with Agnes.
+You can change some settings during a session and they will take effect immediately, rather than requiring you to start a new session. This gives you more control over context and capabilities while you're interacting with agnes.
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
 
   Use the toolbar at the bottom of the app to change supported settings mid-session:
 
@@ -333,20 +333,20 @@ You can change some settings during a session and they will take effect immediat
   | **Working Directory** | <FolderDot className="inline" size={16} /> directory switcher | New sessions (after restart) |
   | [**Enabled Extensions**](/docs/getting-started/using-extensions#change-extensions-mid-session) | <Puzzle className="inline" size={16} /> icon | Current session only |
   | [**Model**](/docs/getting-started/providers#configure-provider-and-model) | <Bot className="inline" size={16} /> model switcher | New sessions |
-  | [**Agnes Mode**](/docs/guides/managing-tools/Agnes-permissions#configuring-Agnes-mode) | <Tornado className="inline" size={16} /> mode switcher | New sessions |
+  | [**agnes Mode**](/docs/guides/managing-tools/agnes-permissions#configuring-agnes-mode) | <Tornado className="inline" size={16} /> mode switcher | New sessions |
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
 
   Use the slash commands to change supported settings mid-session:
 
   | Setting | Slash Command | Persistence* |
   |---------|--------------|-------------|
   | [**Enabled Extensions**](/docs/getting-started/using-extensions#change-extensions-mid-session) | `/extension` or `/builtin` | Current session only |
-  | [**Agnes Mode**](/docs/guides/managing-tools/Agnes-permissions#configuring-Agnes-mode) | `/mode [options]` | New sessions |
+  | [**agnes Mode**](/docs/guides/managing-tools/agnes-permissions#configuring-agnes-mode) | `/mode [options]` | New sessions |
 
   :::info
-  The CLI supports [additional slash commands](/docs/guides/goose-cli-commands#slash-commands) but doesn't support mid-session changes to the working directory or model.
+  The CLI supports [additional slash commands](/docs/guides/agnes-cli-commands#slash-commands) but doesn't support mid-session changes to the working directory or model.
   :::
 
   </TabItem>

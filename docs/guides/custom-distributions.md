@@ -6,7 +6,7 @@ sidebar_label: Custom Distributions
 
 # Custom Distributions
 
-Agnes is designed to be forked and customized. You can create your own "distro" of Agnes preconfigured with specific providers, bundled extensions, custom branding, and tailored workflows for your organization or audience.
+agnes is designed to be forked and customized. You can create your own "distro" of agnes preconfigured with specific providers, bundled extensions, custom branding, and tailored workflows for your organization or audience.
 
 ## What you can customize
 
@@ -28,7 +28,7 @@ The full guide lives in the repo root since you'll need to work at the code leve
 
 It covers:
 
-- **Architecture overview** — how Agnes's layers (UI → server → core) fit together
+- **Architecture overview** — how agnes's layers (UI → server → core) fit together
 - **Configuration-only customization** — environment variables, `config.yaml`, `init-config.yaml`
 - **Extension bundling** — adding MCP servers as built-in extensions or via recipes
 - **Custom branding** — replacing icons, app names, system prompts
@@ -37,7 +37,7 @@ It covers:
 - **Recipes & subagents** — distributing preconfigured workflows
 - **Licensing & contribution guidance** — staying compliant with Apache 2.0
 
-## Quick example: ship Agnes with a local model
+## Quick example: ship agnes with a local model
 
 The simplest custom distribution just sets environment defaults:
 

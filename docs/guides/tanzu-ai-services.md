@@ -1,6 +1,6 @@
 ---
 title: VMware Tanzu Platform
-description: Connect Agnes to VMware Tanzu Platform AI Services
+description: Connect agnes to VMware Tanzu Platform AI Services
 ---
 
 import Tabs from '@theme/Tabs';
@@ -8,14 +8,14 @@ import TabItem from '@theme/TabItem';
 
 # VMware Tanzu Platform
 
-[VMware Tanzu Platform](https://techdocs.broadcom.com/us/en/vmware-tanzu/platform/ai-services/10-3/ai/index.html) provides enterprise-managed LLM access through AI Services. Agnes connects to VMware Tanzu Platform as an OpenAI-compatible provider, supporting both **single-model** and **multi-model** service plans with streaming enabled by default.
+[VMware Tanzu Platform](https://techdocs.broadcom.com/us/en/vmware-tanzu/platform/ai-services/10-3/ai/index.html) provides enterprise-managed LLM access through AI Services. agnes connects to VMware Tanzu Platform as an OpenAI-compatible provider, supporting both **single-model** and **multi-model** service plans with streaming enabled by default.
 
 ## Prerequisites
 
 - A VMware Tanzu Platform (TAS) foundation with GenAI tile installed and configured
 - Access to a CF org/space where the `genai` service is available in the marketplace
 - The CF CLI (`cf`) installed and authenticated (`cf login`)
-- Agnes v1.28.0 or later
+- agnes v1.28.0 or later
 
 ## Step 1: Check Available Plans
 
@@ -66,13 +66,13 @@ cf services
 Create a service key to generate API credentials:
 
 ```sh
-cf create-service-key my-qwen-coder my-Agnes-key --wait
+cf create-service-key my-qwen-coder my-agnes-key --wait
 ```
 
 Then retrieve the credentials:
 
 ```sh
-cf service-key my-qwen-coder my-Agnes-key
+cf service-key my-qwen-coder my-agnes-key
 ```
 
 ### Single-Model Plan Output
@@ -124,17 +124,17 @@ From the service key output, you need two values from the **`credentials.endpoin
 | **API Key** | `credentials.endpoint.api_key` | `eyJhbGciOi...` (JWT token) |
 
 :::warning Use `credentials.endpoint.api_base`, not `credentials.api_base`
-Single-model plans include a top-level `credentials.api_base` field that has an `/openai` suffix. **Do not use this value.** Always use `credentials.endpoint.api_base` (without `/openai`), because Agnes automatically appends the correct path.
+Single-model plans include a top-level `credentials.api_base` field that has an `/openai` suffix. **Do not use this value.** Always use `credentials.endpoint.api_base` (without `/openai`), because agnes automatically appends the correct path.
 
 Using the wrong value would produce a double-path URL like `.../openai/openai/v1/chat/completions`.
 :::
 
-## Step 5: Configure Agnes
+## Step 5: Configure agnes
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
 
-  1. Open Agnes Desktop
+  1. Open agnes Desktop
   2. Click the sidebar button, then **Settings** > **Models** > **Configure providers**
   3. Find **VMware Tanzu Platform** in the provider list and click **Configure**
   4. Enter your values:
@@ -144,12 +144,12 @@ Using the wrong value would produce a double-path URL like `.../openai/openai/v1
   6. Select a model from the dynamically fetched list
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
 
-  ### Option 1: Using `goose configure`
+  ### Option 1: Using `agnes configure`
 
   ```sh
-  goose configure
+  agnes configure
   ```
 
   1. Select **Configure Providers**
@@ -160,17 +160,17 @@ Using the wrong value would produce a double-path URL like `.../openai/openai/v1
 
   ### Option 2: Using environment variables
 
-  Set the following environment variables before launching Agnes:
+  Set the following environment variables before launching agnes:
 
   ```sh
   export TANZU_AI_ENDPOINT="https://genai-proxy.sys.example.com/tanzu-my-model-abc1234"
   export TANZU_AI_API_KEY="eyJhbGciOi..."
   ```
 
-  Then start Agnes:
+  Then start agnes:
 
   ```sh
-  goose session
+  agnes session
   ```
 
   :::tip
@@ -182,12 +182,12 @@ Using the wrong value would produce a double-path URL like `.../openai/openai/v1
 
 ## Step 6: Select a Model
 
-Agnes dynamically fetches available models from your Tanzu endpoint. After configuring the provider:
+agnes dynamically fetches available models from your Tanzu endpoint. After configuring the provider:
 
 - **Single-model plan**: The one available model will be listed (e.g., `Qwen/Qwen3-Coder-30B-A3B-Instruct-FP8`)
 - **Multi-model plan**: All models on the plan will be listed, and you can switch between them
 
-To change models later, use **Settings** > **Models** > **Switch models** in Desktop, or run `goose configure` in the CLI.
+To change models later, use **Settings** > **Models** > **Switch models** in Desktop, or run `agnes configure` in the CLI.
 
 :::note
 Embedding-only models (e.g., `nomic-ai/nomic-embed-text-v2-moe`) will appear in the model list but cannot be used as a chat model.
@@ -195,11 +195,11 @@ Embedding-only models (e.g., `nomic-ai/nomic-embed-text-v2-moe`) will appear in 
 
 ## Troubleshooting
 
-### "Could not contact provider" / 401 Unauthorized on models endpoint
+### "Could not contact provider" /undefinedUnauthorized on models endpoint
 
 This means the API key is not being sent correctly. Common causes:
 
-1. **Environment variables not set**: If using Agnes Desktop, env vars from your shell may not be inherited. Use the Settings UI to configure the provider instead.
+1. **Environment variables not set**: If using agnes Desktop, env vars from your shell may not be inherited. Use the Settings UI to configure the provider instead.
 2. **Wrong `api_base`**: Make sure you used `credentials.endpoint.api_base` (without `/openai`), not `credentials.api_base`.
 3. **Expired API key**: Tanzu API keys are JWT tokens that may expire. Generate a new service key with `cf create-service-key`.
 
@@ -239,6 +239,6 @@ Ensure the model name matches exactly (including the prefix, e.g., `Qwen/Qwen3-C
 To remove a service instance and its keys:
 
 ```sh
-cf delete-service-key my-qwen-coder my-Agnes-key -f
+cf delete-service-key my-qwen-coder my-agnes-key -f
 cf delete-service my-qwen-coder -f
 ```

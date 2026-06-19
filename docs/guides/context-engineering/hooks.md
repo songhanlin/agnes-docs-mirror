@@ -6,9 +6,9 @@ sidebar_label: Hooks
 
 # Hooks
 
-Hooks let you run your own scripts when key events happen during a goose session. Use hooks to log activity, send notifications, format files after edits, run checks after shell commands, or integrate Agnes with local workflows without writing a custom extension.
+Hooks let you run your own scripts when key events happen during a agnes session. Use hooks to log activity, send notifications, format files after edits, run checks after shell commands, or integrate agnes with local workflows without writing a custom extension.
 
-Agnes follows the [Open Plugins hooks specification](https://open-plugins.com/agent-builders/components/hooks). Hooks are discovered from [plugins](/docs/guides/context-engineering/plugins) on disk and run as shell commands when matching lifecycle events fire.
+agnes follows the [Open Plugins hooks specification](https://open-plugins.com/agent-builders/components/hooks). Hooks are discovered from [plugins](/docs/guides/context-engineering/plugins) on disk and run as shell commands when matching lifecycle events fire.
 
 :::warning Run trusted hooks only
 Hooks execute local commands on your machine. Only install or create hooks from sources you trust, and review hook scripts before enabling them.
@@ -16,13 +16,13 @@ Hooks execute local commands on your machine. Only install or create hooks from 
 
 ## Where Hooks Live
 
-A hook belongs to a [plugin](/docs/guides/context-engineering/plugins) directory. Agnes discovers plugins from these locations:
+A hook belongs to a [plugin](/docs/guides/context-engineering/plugins) directory. agnes discovers plugins from these locations:
 
 | Scope | Location |
 |---|---|
 | User | `~/.agents/plugins/<plugin-name>/` |
 | Project | `<project>/.agents/plugins/<plugin-name>/` |
-| Installed plugin | Agnes's plugin install directory |
+| Installed plugin | agnes's plugin install directory |
 
 Each plugin that defines hooks must include a `hooks/hooks.json` file:
 
@@ -35,7 +35,7 @@ my-plugin/
     └── notify.sh
 ```
 
-Project plugins are loaded when Agnes is started from that project. User plugins are available across projects.
+Project plugins are loaded when agnes is started from that project. User plugins are available across projects.
 
 ## Create a Hook
 
@@ -58,7 +58,7 @@ The plugin manifest identifies the plugin:
 {
   "name": "session-logger",
   "version": "0.1.0",
-  "description": "Log goose session events"
+  "description": "Log agnes session events"
 }
 ```
 
@@ -89,7 +89,7 @@ payload="$(cat)"
 session_id="$(printf '%s' "$payload" | jq -r .session_id)"
 date_str="$(date '+%Y-%m-%d %H:%M')"
 
-echo "- $date_str — session $session_id ended" >> ~/Agnes-session-log.md
+echo "- $date_str — session $session_id ended" >> ~/agnes-session-log.md
 ```
 
 Place the plugin under a discovered plugin location, such as `~/.agents/plugins/session-logger/`, and make command scripts executable when your operating system requires it.
@@ -121,11 +121,11 @@ Place the plugin under a discovered plugin location, such as `~/.agents/plugins/
 |---|---:|---|
 | `matcher` | No | Regular expression used to decide whether the rule runs for the event. If omitted, the rule runs for every event of that type. |
 | `hooks` | Yes | Actions to run when the event and matcher apply. |
-| `type` | No | Action type. Agnes currently supports `command`. If omitted, `command` is used. |
-| `command` | Yes for command hooks | Shell command to run. goose runs it with `sh -c`. |
-| `timeout` | No | Timeout in seconds for the command. Defaults to 30 seconds. |
+| `type` | No | Action type. agnes currently supports `command`. If omitted, `command` is used. |
+| `command` | Yes for command hooks | Shell command to run. agnes runs it with `sh -c`. |
+| `timeout` | No | Timeout in seconds for the command. Defaults toundefinedseconds. |
 
-Use `${PLUGIN_ROOT}` in a command to reference the plugin directory. Agnes also sets `PLUGIN_ROOT` in the hook command's environment.
+Use `${PLUGIN_ROOT}` in a command to reference the plugin directory. agnes also sets `PLUGIN_ROOT` in the hook command's environment.
 
 ## Supported Events
 
@@ -133,15 +133,15 @@ Use `${PLUGIN_ROOT}` in a command to reference the plugin directory. Agnes also 
 |---|---|---|
 | `SessionStart` | A session starts | None |
 | `SessionEnd` | A session ends | None |
-| `Stop` | Agnes receives a stop event | None |
+| `Stop` | agnes receives a stop event | None |
 | `UserPromptSubmit` | The user submits a prompt | Prompt text |
-| `PreToolUse` | Before goose runs a tool | Tool name |
+| `PreToolUse` | Before agnes runs a tool | Tool name |
 | `PostToolUse` | After a tool succeeds | Tool name |
 | `PostToolUseFailure` | After a tool fails | Tool name |
-| `BeforeReadFile` | Before Agnes reads a file | File path |
-| `AfterFileEdit` | After Agnes successfully edits a file | File path |
-| `BeforeShellExecution` | Before goose runs a shell command | Shell command |
-| `AfterShellExecution` | After Agnes successfully runs a shell command | Shell command |
+| `BeforeReadFile` | Before agnes reads a file | File path |
+| `AfterFileEdit` | After agnes successfully edits a file | File path |
+| `BeforeShellExecution` | Before agnes runs a shell command | Shell command |
+| `AfterShellExecution` | After agnes successfully runs a shell command | Shell command |
 
 The matcher is a regular expression matched against the most relevant string for the event. For example, use `"\\.rs$"` to match Rust files on `AfterFileEdit`, or `"^(cargo test|pnpm test)"` to match test commands on `AfterShellExecution`.
 
@@ -151,7 +151,7 @@ The matcher is a regular expression matched against the most relevant string for
 
 ## Hook Payload
 
-When a hook runs, Agnes writes a JSON payload to the command's stdin. The payload always includes the event name and session ID, and may include fields such as the tool name, tool input, user message, or working directory.
+When a hook runs, agnes writes a JSON payload to the command's stdin. The payload always includes the event name and session ID, and may include fields such as the tool name, tool input, user message, or working directory.
 
 Example payload for a tool event:
 
@@ -176,7 +176,7 @@ payload="$(cat)"
 event="$(printf '%s' "$payload" | jq -r .event)"
 tool="$(printf '%s' "$payload" | jq -r '.tool_name // "none"')"
 
-echo "Agnes hook: event=$event tool=$tool" >> "${PLUGIN_ROOT}/hook.log"
+echo "agnes hook: event=$event tool=$tool" >> "${PLUGIN_ROOT}/hook.log"
 ```
 
 ## Examples
@@ -205,10 +205,10 @@ echo "Agnes hook: event=$event tool=$tool" >> "${PLUGIN_ROOT}/hook.log"
 payload="$(cat)"
 tool="$(printf '%s' "$payload" | jq -r '.tool_name // "tool"')"
 
-osascript -e "display notification \"$tool failed\" with title \"Agnes\""
+osascript -e "display notification \"$tool failed\" with title \"agnes\""
 ```
 
-### Format Files After Agnes Edits Them
+### Format Files After agnes Edits Them
 
 ```json
 {
@@ -260,7 +260,7 @@ fi
         "hooks": [
           {
             "type": "command",
-            "command": "say 'Agnes finished running your command'"
+            "command": "say 'agnes finished running your command'"
           }
         ]
       }
@@ -271,14 +271,14 @@ fi
 
 ## Try the Example Plugin
 
-Agnes includes an example plugin at `examples/plugins/hello-hooks`.
+agnes includes an example plugin at `examples/plugins/hello-hooks`.
 
 ```bash
 mkdir -p ~/.agents/plugins
 cp -R examples/plugins/hello-hooks ~/.agents/plugins/hello-hooks
 chmod +x ~/.agents/plugins/hello-hooks/scripts/announce.sh
 
-goose session
+agnes session
 ```
 
 The example prints hook events to stderr and appends full payloads to:
@@ -289,9 +289,9 @@ The example prints hook events to stderr and appends full payloads to:
 
 ## Disable a Hook Plugin
 
-To disable a plugin, add its name to `disabledPlugins` in your Agnes settings file:
+To disable a plugin, add its name to `disabledPlugins` in your agnes settings file:
 
-```json title="~/.agnes/settings.json"
+```json title="~/.config/agnes/settings.json"
 {
   "disabledPlugins": ["session-logger"]
 }
@@ -300,7 +300,7 @@ To disable a plugin, add its name to `disabledPlugins` in your Agnes settings fi
 For project-specific settings, use:
 
 ```text
-<project>~/.agnes/settings.json
+<project>/.config/agnes/settings.json
 ```
 
 A plugin listed in `disabledPlugins` is skipped during plugin discovery, so its hooks will not run.
@@ -321,7 +321,7 @@ Check the following:
 
 ### My Hook Timed Out or Failed
 
-Hook failures are logged but do not crash Agnes or the tool that triggered the hook. If a hook fails or exceeds its timeout, Agnes logs the failure and continues.
+Hook failures are logged but do not crash agnes or the tool that triggered the hook. If a hook fails or exceeds its timeout, agnes logs the failure and continues.
 
 Set a larger timeout for long-running hooks:
 
@@ -350,16 +350,16 @@ Hooks run as local shell commands. Make sure any commands your script uses are i
 ## Additional Resources
 
 import ContentCardCarousel from '@site/src/components/ContentCardCarousel';
-import hooksBanner from '@site/static/img/blog/Agnes-hooks.jpg';
+import hooksBanner from '@site/static/img/blog/agnes-hooks.jpg';
 
 <ContentCardCarousel
   items={[
     {
       type: 'blog',
-      title: 'Hooks: run your own scripts on every Agnes event',
+      title: 'Hooks: run your own scripts on every agnes event',
       description: 'Learn how lifecycle hooks let you react to session, prompt, tool, file, and shell events with your own scripts.',
       thumbnailUrl: hooksBanner,
-      linkUrl: '/blog/2026/05/14/Agnes-hooks',
+      linkUrl: '/blog/2026/05/14/agnes-hooks',
       date: '2026-05-14',
       duration: '5 min read'
     }

@@ -6,20 +6,20 @@ sidebar_label: Plugins
 
 # Plugins
 
-Plugins are packages that extend Agnes with reusable components. A plugin can provide [skills](/docs/guides/context-engineering/using-skills), [hooks](/docs/guides/context-engineering/hooks), or both.
+Plugins are packages that extend agnes with reusable components. A plugin can provide [skills](/docs/guides/context-engineering/using-skills), [hooks](/docs/guides/context-engineering/hooks), or both.
 
-Use plugins when you want to install, share, or update a bundle of Agnes functionality instead of copying individual files into your local skills or hooks directories.
+Use plugins when you want to install, share, or update a bundle of agnes functionality instead of copying individual files into your local skills or hooks directories.
 
 :::warning Install trusted plugins only
-Plugins can include instructions that Agnes may load and hooks that execute local commands. Install plugins only from sources you trust, and review plugin contents before enabling them.
+Plugins can include instructions that agnes may load and hooks that execute local commands. Install plugins only from sources you trust, and review plugin contents before enabling them.
 :::
 
 ## What Plugins Can Provide
 
 | Component | What it does |
 |---|---|
-| Skills | Reusable instructions and supporting files that teach Agnes how to perform a task or follow a workflow. |
-| Hooks | Local commands that run when lifecycle events happen during a goose session. |
+| Skills | Reusable instructions and supporting files that teach agnes how to perform a task or follow a workflow. |
+| Hooks | Local commands that run when lifecycle events happen during a agnes session. |
 
 A plugin is the container. Skills and hooks are components inside that container.
 
@@ -69,7 +69,7 @@ description: Review code changes for correctness, maintainability, and test cove
 Review the code changes. Prioritize correctness issues, security concerns, missing tests, and maintainability risks. Be direct and suggest concrete fixes.
 ```
 
-For Open Plugins, Agnes namespaces imported skill names with the plugin name. The `review` skill in `my-plugin` is loaded as `my-plugin:review`.
+For Open Plugins, agnes namespaces imported skill names with the plugin name. The `review` skill in `my-plugin` is loaded as `my-plugin:review`.
 
 ### Add a Hook to a Plugin
 
@@ -106,21 +106,21 @@ For supported events, payload details, and more hook examples, see the [Hooks gu
 
 ## Plugin Locations
 
-Agnes discovers plugins from these locations:
+agnes discovers plugins from these locations:
 
 | Plugin type | Location | Notes |
 |---|---|---|
-| User plugin | `~/.agents/plugins/<plugin-name>/` | Includes plugins installed with `Agnes plugin install` and plugins manually copied into your user plugins directory. |
-| Project plugin | `<project>/.agents/plugins/<plugin-name>/` | Available when Agnes is working in that project. |
+| User plugin | `~/.agents/plugins/<plugin-name>/` | Includes plugins installed with `agnes plugin install` and plugins manually copied into your user plugins directory. |
+| Project plugin | `<project>/.agents/plugins/<plugin-name>/` | Available when agnes is working in that project. |
 
-Installed and manually placed user plugins use the same user plugins directory. Installed plugins include metadata created by `Agnes plugin install`; only installed git-backed plugins can be updated with `Agnes plugin update`.
+Installed and manually placed user plugins use the same user plugins directory. Installed plugins include metadata created by `agnes plugin install`; only installed git-backed plugins can be updated with `agnes plugin update`.
 
 ## Install a Plugin
 
 Install a plugin from a git repository with:
 
 ```bash
-Agnes plugin install https://github.com/example/my-Agnes-plugin.git
+agnes plugin install https://github.com/example/my-agnes-plugin.git
 ```
 
 The install command clones the repository, detects the plugin format, copies it into the plugins directory, and reports the imported components.
@@ -129,7 +129,7 @@ Example output:
 
 ```text
 ✓ Installed open-plugins plugin 'my-plugin' (1.0.0)
-  Source: https://github.com/example/my-Agnes-plugin.git
+  Source: https://github.com/example/my-agnes-plugin.git
   Location: /Users/you/.agents/plugins/my-plugin
   Imported skills:
     - my-plugin:review
@@ -138,18 +138,18 @@ Example output:
 
 ## Auto-Update a Plugin
 
-To let Agnes check a plugin for updates automatically, install it with `--auto-update`:
+To let agnes check a plugin for updates automatically, install it with `--auto-update`:
 
 ```bash
-Agnes plugin install --auto-update https://github.com/example/my-Agnes-plugin.git
+agnes plugin install --auto-update https://github.com/example/my-agnes-plugin.git
 ```
 
-When auto-update is enabled, Agnes checks that plugin for updates before plugin skills are loaded. Auto-update checks are rate-limited, so Agnes does not clone the repository on every session start.
+When auto-update is enabled, agnes checks that plugin for updates before plugin skills are loaded. Auto-update checks are rate-limited, so agnes does not clone the repository on every session start.
 
-If an auto-update fails, Agnes logs the failure and continues using the currently installed plugin.
+If an auto-update fails, agnes logs the failure and continues using the currently installed plugin.
 
 :::note
-Auto-update is available for git-backed plugins installed with `Agnes plugin install --auto-update`. Plugins copied manually into `.agents/plugins/` are discovered, but they are not managed by the plugin update command.
+Auto-update is available for git-backed plugins installed with `agnes plugin install --auto-update`. Plugins copied manually into `.agents/plugins/` are discovered, but they are not managed by the plugin update command.
 :::
 
 ## Update a Plugin Manually
@@ -157,22 +157,22 @@ Auto-update is available for git-backed plugins installed with `Agnes plugin ins
 To update a git-backed plugin on demand, run:
 
 ```bash
-Agnes plugin update <plugin-name>
+agnes plugin update <plugin-name>
 ```
 
 For example:
 
 ```bash
-Agnes plugin update my-plugin
+agnes plugin update my-plugin
 ```
 
 The update command fetches the plugin from its original git source, replaces the installed copy, and preserves whether auto-update was enabled for that plugin.
 
 ## Disable a Plugin
 
-To disable a plugin globally, add its name to `disabledPlugins` in your user Agnes settings file:
+To disable a plugin globally, add its name to `disabledPlugins` in your user agnes settings file:
 
-```json title="~/.agnes/settings.json"
+```json title="~/.config/agnes/settings.json"
 {
   "disabledPlugins": ["my-plugin"]
 }
@@ -181,36 +181,36 @@ To disable a plugin globally, add its name to `disabledPlugins` in your user Agn
 For project-specific settings, use:
 
 ```text
-<project>~/.agnes/settings.json
+<project>/.config/agnes/settings.json
 ```
 
 For local-only project settings that should not be shared with teammates, use:
 
 ```text
-<project>~/.agnes/settings.local.json
+<project>/.config/agnes/settings.local.json
 ```
 
 A disabled plugin is skipped during plugin discovery, so its skills are not loaded and its hooks do not run.
 
 ## Plugin Formats
 
-Agnes supports these plugin formats:
+agnes supports these plugin formats:
 
 | Format | Common files | Notes |
 |---|---|---|
 | Open Plugins | `plugin.json`, `.plugin/plugin.json`, `.agnes-plugin/plugin.json`, `skills/`, `hooks/hooks.json` | Supports Open Plugins skills and hooks. |
 | Gemini extensions | `gemini-extension.json`, `skills/` | Supports skills from Gemini-style extension repositories. |
 
-For Open Plugins, imported skill names are namespaced with the plugin name, such as `my-plugin:review`. Use that full name when explicitly loading a plugin-provided skill. Gemini extension skills keep the skill name from `SKILL.md`; Agnes does not prefix them with the extension name.
+For Open Plugins, imported skill names are namespaced with the plugin name, such as `my-plugin:review`. Use that full name when explicitly loading a plugin-provided skill. Gemini extension skills keep the skill name from `SKILL.md`; agnes does not prefix them with the extension name.
 
-Open Plugins can use `plugin.json` at the plugin root, `.plugin/plugin.json`, or `.agnes-plugin/plugin.json`. Hook-only Open Plugins can be discovered from `hooks/hooks.json`; if no manifest is present, Agnes infers the plugin name from the source or directory name.
+Open Plugins can use `plugin.json` at the plugin root, `.plugin/plugin.json`, or `.agnes-plugin/plugin.json`. Hook-only Open Plugins can be discovered from `hooks/hooks.json`; if no manifest is present, agnes infers the plugin name from the source or directory name.
 
 ## When to Use Plugins, Skills, or Hooks
 
 | Use | Best fit |
 |---|---|
-| Package and distribute reusable Agnes components | Plugin |
-| Teach Agnes a reusable procedure or domain-specific workflow | Skill |
-| Run a local command when goose session events happen | Hook |
+| Package and distribute reusable agnes components | Plugin |
+| Teach agnes a reusable procedure or domain-specific workflow | Skill |
+| Run a local command when agnes session events happen | Hook |
 
-Plugins are for packaging and distribution. Skills and hooks define the behavior Agnes can use once the plugin is installed or discovered.
+Plugins are for packaging and distribution. Skills and hooks define the behavior agnes can use once the plugin is installed or discovered.

@@ -2,22 +2,22 @@
 sidebar_position: 9
 title: ACP Providers
 sidebar_label: ACP Providers
-description: Use ACP agents like Claude Code and Codex as Agnes providers with extension support
+description: Use ACP agents like Claude Code and Codex as agnes providers with extension support
 ---
 
 # ACP Providers
 
-Agnes supports [Agent Client Protocol (ACP)](https://agentclientprotocol.com/) agents as providers. ACP is a standard protocol for communicating with coding agents, and there's a growing [registry](https://github.com/agentclientprotocol/registry) of agents that implement it.
+agnes supports [Agent Client Protocol (ACP)](https://agentclientprotocol.com/) agents as providers. ACP is a standard protocol for communicating with coding agents, and there's a growing [registry](https://github.com/agentclientprotocol/registry) of agents that implement it.
 
-ACP providers pass Agnes [extensions](/docs/getting-started/using-extensions) through to the agent as MCP servers, so the agent can call your extensions directly.
+ACP providers pass agnes [extensions](/docs/getting-started/using-extensions) through to the agent as MCP servers, so the agent can call your extensions directly.
 
 :::tip Use Your Existing Subscriptions
-ACP providers let you use Agnes with your existing Claude Code or ChatGPT Plus/Pro subscriptions — no per-token API costs. They are the recommended replacement for the deprecated [CLI providers](/docs/guides/cli-providers).
+ACP providers let you use agnes with your existing Claude Code or ChatGPT Plus/Pro subscriptions — no per-token API costs. They are the recommended replacement for the deprecated [CLI providers](/docs/guides/cli-providers).
 :::
 
 :::warning Limitations
-- **No session fork or resume**: You can start new sessions, but `goose session resume` and `goose session fork` are not supported yet.
-- **ACP session ID differs from goose session ID**: Telemetry fields may not correlate across the two.
+- **No session fork or resume**: You can start new sessions, but `agnes session resume` and `agnes session fork` are not supported yet.
+- **ACP session ID differs from agnes session ID**: Telemetry fields may not correlate across the two.
 :::
 
 ## Available ACP Providers
@@ -43,7 +43,7 @@ Wraps [claude-agent-acp](https://github.com/agentclientprotocol/claude-agent-acp
 
 ### Codex ACP
 
-Wraps [codex-acp](https://github.com/zed-industries/codex-acp), an ACP adapter for OpenAI's Codex. Uses the same ChatGPT subscription as the deprecated `codex` CLI provider. Codex's sandbox blocks network by default; Agnes automatically enables network access when HTTP MCP servers are configured.
+Wraps [codex-acp](https://github.com/zed-industries/codex-acp), an ACP adapter for OpenAI's Codex. Uses the same ChatGPT subscription as the deprecated `codex` CLI provider. Codex's sandbox blocks network by default; agnes automatically enables network access when HTTP MCP servers are configured.
 
 **Requirements:**
 - Node.js and npm
@@ -79,14 +79,14 @@ Wraps `pi-acp`, an ACP adapter for Pi. Uses your existing Pi installation.
 
    Run `amp` and follow the authentication prompts.
 
-4. **Configure Agnes**
+4. **Configure agnes**
 
    Set the provider environment variable:
    ```bash
    export AGNES_PROVIDER=amp-acp
    ```
 
-   Or configure through the Agnes CLI using `goose configure`.
+   Or configure through the agnes CLI using `agnes configure`.
 
 ### Claude ACP
 
@@ -100,17 +100,17 @@ Wraps `pi-acp`, an ACP adapter for Pi. Uses your existing Pi installation.
 
    Ensure your Claude CLI is authenticated and working
 
-3. **Configure Agnes**
+3. **Configure agnes**
 
    Set the provider environment variable:
    ```bash
    export AGNES_PROVIDER=claude-acp
    ```
 
-   Or configure through the Agnes CLI using `goose configure`:
+   Or configure through the agnes CLI using `agnes configure`:
 
    ```bash
-   ┌   Agnes-configure
+   ┌   agnes-configure
    │
    ◇  What would you like to configure?
    │  Configure Providers
@@ -136,17 +136,17 @@ Wraps `pi-acp`, an ACP adapter for Pi. Uses your existing Pi installation.
 
    Run `codex` and follow the authentication prompts. You can use your ChatGPT account or API key.
 
-3. **Configure Agnes**
+3. **Configure agnes**
 
    Set the provider environment variable:
    ```bash
    export AGNES_PROVIDER=codex-acp
    ```
 
-   Or configure through the Agnes CLI using `goose configure`:
+   Or configure through the agnes CLI using `agnes configure`:
 
    ```bash
-   ┌   Agnes-configure
+   ┌   agnes-configure
    │
    ◇  What would you like to configure?
    │  Configure Providers
@@ -170,21 +170,21 @@ Wraps `pi-acp`, an ACP adapter for Pi. Uses your existing Pi installation.
 
    Run `pi` and follow the authentication prompts.
 
-3. **Configure Agnes**
+3. **Configure agnes**
 
    Set the provider environment variable:
    ```bash
    export AGNES_PROVIDER=pi-acp
    ```
 
-   Or configure through the Agnes CLI using `goose configure`.
+   Or configure through the agnes CLI using `agnes configure`.
 
 ## Usage Examples
 
 ### Basic Usage
 
 ```bash
-goose session
+agnes session
 ```
 
 ### Using with Extensions
@@ -192,13 +192,13 @@ goose session
 Extensions configured via `--with-extension` or `--with-streamable-http-extension` are passed through to the ACP agent:
 
 ```bash
-AGNES_PROVIDER=claude-acp goose run \
+AGNES_PROVIDER=claude-acp agnes run \
   --with-extension 'npx -y @modelcontextprotocol/server-everything' \
   -t 'Use the echo tool to say hello'
 ```
 
 ```bash
-AGNES_PROVIDER=codex-acp goose run \
+AGNES_PROVIDER=codex-acp agnes run \
   --with-streamable-http-extension 'https://mcp.kiwi.com' \
   -t 'Search for flights from BKI to SYD tomorrow'
 ```
@@ -279,4 +279,4 @@ ACP providers depend on external binaries, so ensure:
 - Subscription limits are not exceeded
 - Node.js and npm are installed (for npm-distributed adapters)
 
-If Agnes can't find the binary, session startup will fail with an error. Run `which <binary>` to verify installation.
+If agnes can't find the binary, session startup will fail with an error. Run `which <binary>` to verify installation.

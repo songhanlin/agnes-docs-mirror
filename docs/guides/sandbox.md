@@ -1,17 +1,17 @@
 ---
-title: macOS Sandbox for Agnes Desktop
-sidebar_label: Sandbox for Agnes Desktop
-description: Optional sandboxing for Agnes Desktop to control file access, filter network traffic, and enforce security policies on macOS
+title: macOS Sandbox for agnes Desktop
+sidebar_label: Sandbox for agnes Desktop
+description: Optional sandboxing for agnes Desktop to control file access, filter network traffic, and enforce security policies on macOS
 ---
 
-Agnes Desktop includes an optional macOS sandbox that you can enable when you need stricter control and visibility over what Agnes can access on your system. Use it to:
+agnes Desktop includes an optional macOS sandbox that you can enable when you need stricter control and visibility over what agnes can access on your system. Use it to:
 
-- **Restrict file system access** — Block writes to SSH keys, shell configs, and Agnes configuration files
+- **Restrict file system access** — Block writes to SSH keys, shell configs, and agnes configuration files
 - **Control network connections** — Force all traffic through a filtering proxy that blocks unapproved domains
 - **Prevent security bypasses** — Block tunneling tools, raw sockets, and other techniques that could circumvent restrictions
 - **Audit and enforce policies** — Log all network activity and enforce compliance requirements
 
-goose runs with full tool access, but the sandbox uses two layers of protection:
+agnes runs with full tool access, but the sandbox uses two layers of protection:
 - **File access control** - Apple's `sandbox-exec` restricts file and network access at the system level
 - **Outbound connections** - A local egress proxy filters and logs outgoing connections
 
@@ -21,7 +21,7 @@ The sandbox relies on `/usr/bin/sandbox-exec`, which is only available on macOS 
 
 ## Quick Start
 
-To enable the sandbox, launch Agnes Desktop from the terminal with the environment variable set. For example:
+To enable the sandbox, launch agnes Desktop from the terminal with the environment variable set. For example:
 
 ```bash
 export AGNES_SANDBOX=true
@@ -32,9 +32,9 @@ When the app starts with sandboxing enabled, it will:
 
 1. Generate a seatbelt sandbox profile
 2. Start a local HTTP CONNECT proxy on localhost
-3. Launch the `goosed` backend for Agnes Desktop inside `sandbox-exec`, forcing all traffic through the proxy
+3. Launch the `agnesd` backend for agnes Desktop inside `sandbox-exec`, forcing all traffic through the proxy
 
-The sandbox remains active until you quit Agnes Desktop. To disable it, quit the app and relaunch normally (or set `AGNES_SANDBOX=false` when opening from the terminal).
+The sandbox remains active until you quit agnes Desktop. To disable it, quit the app and relaunch normally (or set `AGNES_SANDBOX=false` when opening from the terminal).
 
 ## Configuration
 
@@ -54,8 +54,8 @@ The [seatbelt sandbox profile](https://github.com/aaif-goose/agnes/blob/main/ui/
 
 - `~/.ssh/` - Prevent SSH key tampering
 - `~/.bashrc`, `~/.zshrc`, `~/.bash_profile`, `~/.zprofile` - Prevent shell config injection
-- `~/.agnes/sandbox/` - Protect sandbox config from the sandboxed process
-- `~/.agnes/config.yaml` - Protect Agnes config
+- `~/.config/agnes/sandbox/` - Protect sandbox config from the sandboxed process
+- `~/.config/agnes/config.yaml` - Protect agnes config
 
 
 #### Environment Variables
@@ -70,7 +70,7 @@ The [seatbelt sandbox profile](https://github.com/aaif-goose/agnes/blob/main/ui/
 
 The seatbelt sandbox denies all direct network access, forcing traffic through the proxy. The only allowed connections are:
 
-- **Localhost** — Allows the `goosed` process to reach the egress proxy and its own server port
+- **Localhost** — Allows the `agnesd` process to reach the egress proxy and its own server port
 - **Unix sockets** — For local inter-process communication (IPC)
 - **mDNSResponder** — For DNS resolution
 
@@ -122,7 +122,7 @@ For optional LaunchDarkly-based egress control, see [LaunchDarkly](#launchdarkly
 
 #### Managing the Domain Blocklist
 
-The file `~/.agnes/sandbox/blocked.txt` controls which domains are blocked by the proxy. It's created automatically on first run from a bundled template.
+The file `~/.config/agnes/sandbox/blocked.txt` controls which domains are blocked by the proxy. It's created automatically on first run from a bundled template.
 
 ```
 # One domain per line. Subdomains are blocked automatically.
@@ -212,7 +212,7 @@ export AGNES_SANDBOX_LD_FAILOVER=blocklist  # fall back to local blocklist if LD
   You're not on macOS, or `/usr/bin/sandbox-exec` is missing. The sandbox only works on macOS.
 
 - **Extensions or tools can't reach the network**  
-  Check if the destination domain is in `~/.agnes/sandbox/blocked.txt`, or if you need to enable `AGNES_SANDBOX_ALLOW_IP=true` for IP-based endpoints.
+  Check if the destination domain is in `~/.config/agnes/sandbox/blocked.txt`, or if you need to enable `AGNES_SANDBOX_ALLOW_IP=true` for IP-based endpoints.
 
 - **git clone over SSH fails**  
   The target host may not be in the default Git hosts allowlist. Add it with `AGNES_SANDBOX_GIT_HOSTS=your-host.com` or set `AGNES_SANDBOX_SSH_ALL_HOSTS=true`.

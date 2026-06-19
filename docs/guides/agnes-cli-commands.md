@@ -8,11 +8,11 @@ toc_max_heading_level: 4
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Agnes provides a command-line interface (CLI) with several commands for managing sessions, configurations and extensions. This guide covers all available CLI commands and interactive session features.
+agnes provides a command-line interface (CLI) with several commands for managing sessions, configurations and extensions. This guide covers all available CLI commands and interactive session features.
 
 ## Flag Naming Conventions
 
-Agnes CLI follows consistent patterns for flag naming to make commands intuitive and predictable:
+agnes CLI follows consistent patterns for flag naming to make commands intuitive and predictable:
 
 - **`--session-id`**: Used for session identifiers (e.g., `20251108_1`)
 - **`--schedule-id`**: Used for schedule job identifiers (e.g., `daily-report`)
@@ -32,71 +32,71 @@ Display the help menu.
 
 **Usage:**
 ```bash
-goose --help
+agnes --help
 ```
 
 ---
 
 #### configure
-Configure Agnes settings - providers, extensions, etc.
+Configure agnes settings - providers, extensions, etc.
 
 **Usage:**
 ```bash
-goose configure
+agnes configure
 ```
 
 :::tip Type to Filter
-When selecting from menus in `goose configure`, start typing to filter options in real-time. This works for lists of providers, extensions, and tools.
+When selecting from menus in `agnes configure`, start typing to filter options in real-time. This works for lists of providers, extensions, and tools.
 :::
 
 ---
 
 #### info [options]
-Shows goose information, including the version, configuration file location, session storage, and logs.
+Shows agnes information, including the version, configuration file location, session storage, and logs.
 
 **Options:**
 - **`-v, --verbose`**: Show detailed configuration settings, including environment variables and enabled extensions
 
 **Usage:**
 ```bash
-goose info
+agnes info
 ```
 
 ---
 
 #### version
-Check the current Agnes version you have installed.
+Check the current agnes version you have installed.
 
 **Usage:**
 ```bash
-goose --version
+agnes --version
 ```
 
 ---
 
 #### update [options]
-Update the Agnes CLI to a newer version.
+Update the agnes CLI to a newer version.
 
 **Options:**
 - **`--canary, -c`**: Update to the canary (development) version instead of the stable version
-- **`--reconfigure, -r`**: Forces Agnes to reset configuration settings during the update process
+- **`--reconfigure, -r`**: Forces agnes to reset configuration settings during the update process
 
 **Usage:**
 ```bash
 # Update to latest stable version
-goose update
+agnes update
 
 # Update to latest canary version
-goose update --canary
+agnes update --canary
 
 # Update and reconfigure settings
-goose update --reconfigure
+agnes update --reconfigure
 ```
 
 ---
 
 #### completion
-Generate shell-specific scripts to enable tab completion of Agnes commands, subcommands, and options. The script is printed to stdout, so you need to redirect it to the appropriate location for your shell and then reload or source your shell configuration.
+Generate shell-specific scripts to enable tab completion of agnes commands, subcommands, and options. The script is printed to stdout, so you need to redirect it to the appropriate location for your shell and then reload or source your shell configuration.
 
 Once installed, you can:
 - Press Tab to see available commands and subcommands
@@ -109,10 +109,10 @@ Once installed, you can:
 **Usage:**
 ```bash
 # Generate completion script for your shell (outputs to stdout)
-Agnes completion bash
-Agnes completion zsh
-Agnes completion fish
-Agnes completion nu
+agnes completion bash
+agnes completion zsh
+agnes completion fish
+agnes completion nu
 ```
 
 **Installation by Shell:**
@@ -123,7 +123,7 @@ Agnes completion nu
 Add this line to your `~/.zshrc`:
 
 ```bash
-eval "$(Agnes completion zsh)"
+eval "$(agnes completion zsh)"
 ```
 
 Then reload your shell:
@@ -137,7 +137,7 @@ source ~/.zshrc
 Add this line to your `~/.bashrc` or `~/.bash_profile`:
 
 ```bash
-eval "$(Agnes completion bash)"
+eval "$(agnes completion bash)"
 ```
 
 Then reload your shell:
@@ -149,7 +149,7 @@ source ~/.bashrc
 <TabItem value="fish" label="Fish">
 
 ```bash
-Agnes completion fish > ~/.config/fish/completions/Agnes.fish
+agnes completion fish > ~/.config/fish/completions/agnes.fish
 ```
 
 Then restart your terminal or run `exec fish`.
@@ -160,12 +160,12 @@ Then restart your terminal or run `exec fish`.
 ```nu
 let autoload_dir = ($nu.user-autoload-dirs | first)
 mkdir $autoload_dir
-Agnes completion nu | save --force ($autoload_dir | path join "Agnes.nu")
+agnes completion nu | save --force ($autoload_dir | path join "agnes.nu")
 ```
 
 Then restart Nushell or run:
 ```nu
-source (($nu.user-autoload-dirs | first) | path join "Agnes.nu")
+source (($nu.user-autoload-dirs | first) | path join "agnes.nu")
 ```
 
 </TabItem>
@@ -174,7 +174,7 @@ source (($nu.user-autoload-dirs | first) | path join "Agnes.nu")
 Add this line to your PowerShell profile:
 
 ```powershell
-Agnes completion powershell | Out-String | Invoke-Expression
+agnes completion powershell | Out-String | Invoke-Expression
 ```
 
 Then reload your profile:
@@ -186,7 +186,7 @@ Then reload your profile:
 </Tabs>
 
 :::tip Testing
-After installing and reloading your shell, test completion by typing `Agnes ` and pressing Tab to see available commands, or `goose session --` and Tab to see available options.
+After installing and reloading your shell, test completion by typing `agnes ` and pressing Tab to see available commands, or `agnes session --` and Tab to see available options.
 :::
 
 ---
@@ -194,8 +194,8 @@ After installing and reloading your shell, test completion by typing `Agnes ` an
 ### Session Management
 
 :::info Session Storage Migration
-Starting with version 1.10.0, Agnes uses a SQLite database (`sessions.db`) instead of individual `.jsonl` files.
-Your existing sessions are automatically imported to the database. Legacy `.jsonl` files remain on disk but are no longer managed by Agnes.
+Starting with version 1.10.0, agnes uses a SQLite database (`sessions.db`) instead of individual `.jsonl` files.
+Your existing sessions are automatically imported to the database. Legacy `.jsonl` files remain on disk but are no longer managed by agnes.
 :::
 
 #### session [options]
@@ -208,7 +208,7 @@ Start or resume interactive chat sessions.
 - **`-r, --resume`**: Resume a previous session
 - **`--fork`**: Create a new duplicate session with copied history. Must be used with `--resume`. Provide `--name` or `--session-id` to fork a specific session. Otherwise, forks the most recent session.
 - **`--history`**: Show previous messages when resuming a session
-- **`--container <container_id>`**: Run extensions inside a [Docker container](/docs/tutorials/Agnes-in-docker#running-extensions-in-docker-containers).
+- **`--container <container_id>`**: Run extensions inside a [Docker container](/docs/tutorials/agnes-in-docker#running-extensions-in-docker-containers).
 - **`--debug`**: Enable debug mode to output complete tool responses, detailed parameter values, and full file paths
 - **`--max-tool-repetitions <NUMBER>`**: Set the maximum number of times the same tool can be called consecutively with identical parameters. Helps prevent infinite loops.
 - **`--max-turns <NUMBER>`**: Set the maximum number of turns allowed without user input (default: 1000)
@@ -221,33 +221,33 @@ Start or resume interactive chat sessions.
 **Usage:**
 ```bash
 # Start a basic session
-goose session -n my-project
+agnes session -n my-project
 
 # Resume a previous session
-goose session --resume -n my-project
-goose session --resume --session-id 20251108_2
-goose session --resume --path ./session.json    # exported session
-goose session --resume --path ./session.jsonl   # legacy session storage
+agnes session --resume -n my-project
+agnes session --resume --session-id 20251108_2
+agnes session --resume --path ./session.json    # exported session
+agnes session --resume --path ./session.jsonl   # legacy session storage
 
 # Fork a specific session by name
-goose session --resume --fork --name my-project
+agnes session --resume --fork --name my-project
 
 # Fork the most recent session and show message history
-goose session --resume --fork --history
+agnes session --resume --fork --history
 
 # Start with extensions
-goose session --with-extension "npx -y @modelcontextprotocol/server-memory"
-goose session --with-builtin developer
-goose session --with-streamable-http-extension "http://localhost:8080/mcp"
+agnes session --with-extension "npx -y @modelcontextprotocol/server-memory"
+agnes session --with-builtin developer
+agnes session --with-streamable-http-extension "http://localhost:8080/mcp"
 
 # Advanced: Mix multiple extension types
-goose session \
+agnes session \
   --with-extension "echo hello" \
   --with-streamable-http-extension "http://localhost:8080/mcp" \
   --with-builtin "developer"
 
 # Control session behavior
-goose session -n my-session --debug --max-turns 25
+agnes session -n my-session --debug --max-turns 25
 ```
 
 ---
@@ -264,19 +264,19 @@ List all saved sessions.
 **Usage:**
 ```bash
 # List all sessions in text format (default)
-goose session list
+agnes session list
 
 # List sessions in JSON format
-goose session list --format json
+agnes session list --format json
 
 # Sort sessions by date in ascending order
-goose session list --ascending
+agnes session list --ascending
 
 # Filter sessions by working directory
-goose session list -w ~/projects/myapp
+agnes session list -w ~/projects/myapp
 
-# List only the 10 most recent sessions
-goose session list --limit 10
+# List only theundefinedmost recent sessions
+agnes session list --limit 10
 ```
 
 ---
@@ -293,23 +293,23 @@ Remove one or more saved sessions.
 **Usage:**
 ```bash
 # Interactive removal (prompts you to choose sessions)
-goose session remove
+agnes session remove
 
 # Remove a specific session by ID
-goose session remove --session-id 20251108_3
+agnes session remove --session-id 20251108_3
 
 # Remove a specific session by name
-goose session remove -n my-project
+agnes session remove -n my-project
 
 # Remove all sessions starting with "project-"
-goose session remove -r "project-.*"
+agnes session remove -r "project-.*"
 
 # Remove all sessions containing "migration"
-goose session remove -r ".*migration.*"
+agnes session remove -r ".*migration.*"
 ```
 
 :::caution
-Session removal is permanent and cannot be undone. Agnes will show which sessions will be removed and ask for confirmation before deleting.
+Session removal is permanent and cannot be undone. agnes will show which sessions will be removed and ask for confirmation before deleting.
 :::
 
 ---
@@ -332,20 +332,20 @@ Export sessions in different formats for backup, sharing, migration, or document
 **Usage:**
 ```bash
 # Interactive export
-goose session export
+agnes session export
 
 # Export specific session as JSON for backup
-goose session export -n my-session --format json -o session-backup.json
+agnes session export -n my-session --format json -o session-backup.json
 
 # Export specific session as readable markdown
-goose session export -n my-session -o session.md
+agnes session export -n my-session -o session.md
 
 # Export to stdout in different formats
-goose session export --session-id 20251108_4 --format json
-goose session export -n my-session --format yaml
+agnes session export --session-id 20251108_4 --format json
+agnes session export -n my-session --format yaml
 
 # Export session by path (legacy)
-goose session export --path ./my-session.jsonl -o exported.md
+agnes session export --path ./my-session.jsonl -o exported.md
 ```
 
 ---
@@ -368,16 +368,16 @@ Generate a comprehensive diagnostics bundle for troubleshooting issues with a sp
 **Usage:**
 ```bash
 # Generate diagnostics for a specific session by ID
-goose session diagnostics --session-id 20251108_5
+agnes session diagnostics --session-id 20251108_5
 
 # Generate diagnostics for a session by name
-goose session diagnostics -n my-project-session
+agnes session diagnostics -n my-project-session
 
 # Save diagnostics to a custom location
-goose session diagnostics --session-id 20251108_5 -o /path/to/my-diagnostics.zip
+agnes session diagnostics --session-id 20251108_5 -o /path/to/my-diagnostics.zip
 
 # Interactive selection (prompts you to choose a session)
-goose session diagnostics
+agnes session diagnostics
 ```
 
 :::warning Privacy Notice
@@ -397,7 +397,7 @@ Execute commands from an instruction file or stdin. Check out the [full guide](/
 
 **Input Options:**
 - **`-i, --instructions <FILE>`**: Path to instruction file containing commands. Use `-` for stdin
-- **`-t, --text <TEXT>`**: Input text to provide to Agnes directly
+- **`-t, --text <TEXT>`**: Input text to provide to agnes directly
 - **`--system <TEXT>`**: Provide additional system instructions to customize the agent's behavior
 - **`--recipe <RECIPE_FILE_NAME> <OPTIONS>`**: Load a custom recipe in current session
 - **`--params <KEY=VALUE>`**: Key-value parameters to pass to the recipe file. Can be specified multiple times
@@ -408,8 +408,8 @@ Execute commands from an instruction file or stdin. Check out the [full guide](/
 - **`-n, --name <name>`**: Name for this run session (e.g. `daily-tasks`)
 - **`-r, --resume`**: Resume from a previous run
 - **`--path <PATH>`**: Path for this run session (e.g. `./playground.jsonl`). Used for legacy file-based session storage.
-- **`--container <container_id>`**: Run extensions [inside a Docker container](/docs/tutorials/Agnes-in-docker#running-extensions-in-docker-containers).
-- **`--no-session`**: Run Agnes commands without creating or storing a session file
+- **`--container <container_id>`**: Run extensions [inside a Docker container](/docs/tutorials/agnes-in-docker#running-extensions-in-docker-containers).
+- **`--no-session`**: Run agnes commands without creating or storing a session file
 
 **Extension Options:**
 - **`--with-extension <COMMAND>`**: Add stdio extensions (can be used multiple times)
@@ -430,37 +430,37 @@ Execute commands from an instruction file or stdin. Check out the [full guide](/
 **Usage:**
 ```bash
 # Run from instruction file
-goose run --instructions plan.md
+agnes run --instructions plan.md
 
-# Load a recipe with a prompt that Agnes executes and then exits  
-goose run --recipe recipe.yaml
+# Load a recipe with a prompt that agnes executes and then exits  
+agnes run --recipe recipe.yaml
 
 # Load a recipe and stay in an interactive session
-goose run --recipe recipe.yaml --interactive
+agnes run --recipe recipe.yaml --interactive
 
 # Load a recipe in debug mode
-goose run --recipe recipe.yaml --debug
+agnes run --recipe recipe.yaml --debug
 
 # Show recipe details
-goose run --recipe recipe.yaml --explain
+agnes run --recipe recipe.yaml --explain
 
 # Run a recipe with parameters
-goose run --recipe recipe.yaml --params environment=production --params region=us-west-2
+agnes run --recipe recipe.yaml --params environment=production --params region=us-west-2
 
 # Run instructions from a file without session storage
-goose run --no-session -i instructions.txt
+agnes run --no-session -i instructions.txt
 
 # Run with a specified provider and model
-goose run --provider anthropic --model claude-4-sonnet -t "initial prompt"
+agnes run --provider anthropic --model claude-4-sonnet -t "initial prompt"
 
 # Run with limited turns before prompting user
-goose run --recipe recipe.yaml --max-turns 10
+agnes run --recipe recipe.yaml --max-turns 10
 ```
 
 ---
 
 #### recipe
-Used to validate recipe files, manage recipe sharing, list available recipes, and open recipes in Agnes desktop.
+Used to validate recipe files, manage recipe sharing, list available recipes, and open recipes in agnes desktop.
 
 **Commands:**
 - **`deeplink <RECIPE_NAME>`**: Generate a shareable link for a recipe file
@@ -468,41 +468,41 @@ Used to validate recipe files, manage recipe sharing, list available recipes, an
 - **`list [OPTIONS]`**: List all available recipes from local directories and configured GitHub repositories
   - **`--format <FORMAT>`**: Output format (`text` or `json`). Default is `text`
   - **`-v, --verbose`**: Show verbose information including recipe titles and full file paths
-- **`open <RECIPE_NAME>`**: Open a recipe file directly in Agnes desktop
+- **`open <RECIPE_NAME>`**: Open a recipe file directly in agnes desktop
   - **`-p, --param <KEY=VALUE>`**: Pre-fill recipe parameter (can be specified multiple times)
 - **`validate <RECIPE_NAME>`**: Validate a recipe file
 
 **Usage:**
 ```bash
 # Generate a shareable link
-goose recipe deeplink my-recipe.yaml
+agnes recipe deeplink my-recipe.yaml
 
 # Generate a deeplink and provide parameter values
-goose recipe deeplink my-recipe.yaml -p environment=production -p region=us-west-2
+agnes recipe deeplink my-recipe.yaml -p environment=production -p region=us-west-2
 
 # List all available recipes
-goose recipe list
+agnes recipe list
 
 # List recipes with detailed information
-goose recipe list --verbose
+agnes recipe list --verbose
 
 # List recipes in JSON format for automation
-goose recipe list --format json
+agnes recipe list --format json
 
-# Open a recipe in Agnes desktop
-goose recipe open my-recipe.yaml
+# Open a recipe in agnes desktop
+agnes recipe open my-recipe.yaml
 
 # Open a recipe by name
-goose recipe open my-recipe
+agnes recipe open my-recipe
 
 # Open a recipe and provide parameter value
-goose recipe open my-recipe --param name=myproject
+agnes recipe open my-recipe --param name=myproject
 
 # Validate a recipe file
-goose recipe validate my-recipe.yaml
+agnes recipe validate my-recipe.yaml
 
 # Get help about recipe commands
-goose recipe help
+agnes recipe help
 ```
 
 ---
@@ -518,13 +518,13 @@ Install and update git-backed plugins that provide skills or other Open Plugins 
 **Usage:**
 ```bash
 # Install a plugin from a git repository
-Agnes plugin install https://github.com/example/my-Agnes-plugin.git
+agnes plugin install https://github.com/example/my-agnes-plugin.git
 
 # Install a plugin and enable automatic update checks
-Agnes plugin install --auto-update https://github.com/example/my-Agnes-plugin.git
+agnes plugin install --auto-update https://github.com/example/my-agnes-plugin.git
 
 # Update an installed plugin manually
-Agnes plugin update my-plugin
+agnes plugin update my-plugin
 ```
 
 Installed plugins are stored under `~/.agents/plugins/<plugin-name>/`. For more about plugin-provided skills, hooks, and update behavior, see the [Plugins guide](/docs/guides/context-engineering/plugins).
@@ -535,7 +535,7 @@ Installed plugins are stored under `~/.agents/plugins/<plugin-name>/`. For more 
 Automate recipes by running them on a [schedule](/docs/guides/recipes/session-recipes.md#schedule-recipe).
 
 **Commands:**
-- `add <OPTIONS>`: Create a new scheduled job. Copies the current version of the recipe to `~/.local/share/Agnes/scheduled_recipes`
+- `add <OPTIONS>`: Create a new scheduled job. Copies the current version of the recipe to `~/.local/share/agnes/scheduled_recipes`
 - `list`: View all scheduled jobs
 - `remove`: Delete a scheduled job
 - `sessions`: List sessions created by a scheduled recipe
@@ -550,22 +550,22 @@ Automate recipes by running them on a [schedule](/docs/guides/recipes/session-re
 
 **Usage:**
 ```bash
-goose schedule <COMMAND>
+agnes schedule <COMMAND>
 
-# Add a new scheduled recipe which runs every day at 9 AM
-goose schedule add --schedule-id daily-report --cron "0 0 9 * * *" --recipe-source ./recipes/daily-report.yaml
+# Add a new scheduled recipe which runs every day atundefinedAM
+agnes schedule add --schedule-id daily-report --cron "0block/goose9 * * *" --recipe-source ./recipes/daily-report.yaml
 
 # List all scheduled jobs
-goose schedule list
+agnes schedule list
 
-# List the 10 most recent goose sessions created by a scheduled job
-goose schedule sessions --schedule-id daily-report -l 10
+# List theundefinedmost recent agnes sessions created by a scheduled job
+agnes schedule sessions --schedule-id daily-report -l 10
 
 # Run a recipe immediately
-goose schedule run-now --schedule-id daily-report
+agnes schedule run-now --schedule-id daily-report
 
 # Remove a scheduled job
-goose schedule remove --schedule-id daily-report
+agnes schedule remove --schedule-id daily-report
 ```
 
 ---
@@ -575,23 +575,23 @@ Run an enabled MCP server specified by `<name>` (e.g. `'Google Drive'`).
 
 **Usage:**
 ```bash
-goose mcp <name>
+agnes mcp <name>
 ```
 
 ---
 
 #### acp
-Run Agnes as an Agent Client Protocol (ACP) agent server over stdio. This enables Agnes to work with ACP-compatible clients like Zed.
+Run agnes as an Agent Client Protocol (ACP) agent server over stdio. This enables agnes to work with ACP-compatible clients like Zed.
 
 ACP is an emerging protocol specification that standardizes communication between AI agents and client applications, making it easier for clients to integrate with various AI agents.
 
 **Usage:**
 ```bash
-Agnes acp
+agnes acp
 ```
 
 :::info
-This command is automatically invoked by ACP-compatible clients and is not typically run directly by users. The client manages the lifecycle of the `Agnes acp` process. See [Using Agnes in ACP Clients](/docs/guides/acp-clients) for details.
+This command is automatically invoked by ACP-compatible clients and is not typically run directly by users. The client manages the lifecycle of the `agnes acp` process. See [Using agnes in ACP Clients](/docs/guides/acp-clients) for details.
 :::
 
 ---
@@ -605,7 +605,7 @@ Start working on your last project or create a new one. For detailed usage examp
 
 **Usage:**
 ```bash
-goose project
+agnes project
 ```
 
 ---
@@ -617,21 +617,21 @@ Choose one of your projects to start working on.
 
 **Usage:**
 ```bash
-goose projects
+agnes projects
 ```
 
 ---
 
 ### Terminal Integration
 
-#### @Agnes / @g
-Ask Agnes questions directly from your shell prompt, with command history included in the context. These aliases are created when you set up [terminal integration](/docs/guides/terminal-integration.md).
+#### @agnes / @g
+Ask agnes questions directly from your shell prompt, with command history included in the context. These aliases are created when you set up [terminal integration](/docs/guides/terminal-integration.md).
 
 **Examples:**
 ```bash
 # Ask questions with command history context
-@Agnes create a python script to process these files
-@Agnes create a PR description summarizing these changes
+@agnes create a python script to process these files
+@agnes create a PR description summarizing these changes
 @g how do I fix these permission denied errors?
 ```
 
@@ -641,16 +641,16 @@ Ask Agnes questions directly from your shell prompt, with command history includ
 
 ### Slash Commands
 
-Once you're in an interactive session (via `goose session` or `goose run --interactive`), you can use these slash commands. All commands support tab completion. Press `/ + <Tab>` to cycle through available commands.
+Once you're in an interactive session (via `agnes session` or `agnes run --interactive`), you can use these slash commands. All commands support tab completion. Press `/ + <Tab>` to cycle through available commands.
 
 **Available Commands:**
 - **`/?` or `/help`** - Display the help menu
 - **`/builtin <names>`** - Add builtin extensions by name (comma-separated)
 - **`/clear`** - Clear the current chat history
-- **`/endplan`** - Exit plan mode and return to 'normal' Agnes mode
+- **`/endplan`** - Exit plan mode and return to 'normal' agnes mode
 - **`/exit` or `/quit`** - Exit the session
 - **`/extension <command>`** - Add a stdio extension (format: ENV1=val1 command args...)
-- **`/mode <name>`** - Set the Agnes mode to use ('auto', 'approve', 'chat', 'smart_approve')
+- **`/mode <name>`** - Set the agnes mode to use ('auto', 'approve', 'chat', 'smart_approve')
 - **`/plan <message_text>`** - Enter 'plan' mode with optional message. Create a plan based on the current messages and ask user if they want to act on it
 - **`/prompt <n> [--info] [key=value...]`** - Get prompt info or execute a prompt
 - **`/prompts [--extension <name>]`** - List all available prompts, optionally filtered by extension
@@ -678,13 +678,13 @@ Once you're in an interactive session (via `goose session` or `goose run --inter
 # Clear the current conversation history
 /clear
 ```
-You can also create [custom slash commands for running recipes](/docs/guides/context-engineering/slash-commands) in Agnes Desktop or the CLI. 
+You can also create [custom slash commands for running recipes](/docs/guides/context-engineering/slash-commands) in agnes Desktop or the CLI. 
 
 ---
 
 ### Themes
 
-The `/t` command controls the syntax highlighting theme for markdown content in Agnes CLI responses. This affects the styles used for headers, code blocks, bold/italic text, and other markdown elements in the response output.
+The `/t` command controls the syntax highlighting theme for markdown content in agnes CLI responses. This affects the styles used for headers, code blocks, bold/italic text, and other markdown elements in the response output.
 
 **Commands:**
 - `/t` - Cycles through themes: `light` → `dark` → `ansi` → `light`
@@ -708,14 +708,14 @@ These accept any [bat theme name](https://github.com/sharkdp/bat#adding-new-them
 :::info
 Syntax highlighting styles only affect the font, not the overall terminal interface. The `light` and `dark` themes have subtle differences in font color and weight.
 
-The Agnes CLI theme is independent from the Agnes Desktop theme.
+The agnes CLI theme is independent from the agnes Desktop theme.
 :::
 
 **Examples:**
 ```bash
 # Set ANSI theme for the session via environment variable
 export AGNES_CLI_THEME=ansi
-goose session --name use-custom-theme
+agnes session --name use-custom-theme
 
 # Toggle theme during a session
 /t
@@ -742,13 +742,13 @@ goose session --name use-custom-theme
 
 ### External Editor Mode
 
-For composing longer prompts or working with complex code snippets, you can configure Agnes to use your preferred text editor instead of CLI input. This replaces the standard CLI input and keyboard shortcuts for the entire session.
+For composing longer prompts or working with complex code snippets, you can configure agnes to use your preferred text editor instead of CLI input. This replaces the standard CLI input and keyboard shortcuts for the entire session.
 
 **How it works:**
-1. Agnes opens your configured editor with a template file
+1. agnes opens your configured editor with a template file
 2. Type your prompt after the `# Your prompt:` heading (conversation history is shown below for context)
-3. Save the file and close/exit the editor to send your prompt to Agnes
-4. Agnes processes your prompt and reopens the editor with the response added to the conversation history
+3. Save the file and close/exit the editor to send your prompt to agnes
+4. agnes processes your prompt and reopens the editor with the response added to the conversation history
 5. Repeat steps 2-4 for each message in the conversation
 
 You can use any editor that accepts a file path argument, such as vim, nano, emacs, and VS Code.
@@ -773,7 +773,7 @@ You can use any editor that accepts a file path argument, such as vim, nano, ema
 
   Persists across all sessions unless overridden by the environment variable.
   
-  1. Navigate to the Agnes [configuration file](/docs/guides/config-files). For example, navigate to `~/.agnes/config.yaml` on macOS.
+  1. Navigate to the agnes [configuration file](/docs/guides/config-files). For example, navigate to `~/.config/agnes/config.yaml` on macOS.
   2. Add `AGNES_PROMPT_EDITOR` and set it to your preferred editor:
   
   ```yaml
@@ -789,16 +789,16 @@ You can use any editor that accepts a file path argument, such as vim, nano, ema
 
 **Using GUI Editors:**
 
-GUI editors require a `--wait` or equivalent flag to ensure Agnes waits for you to finish editing before continuing. Without this flag, the editor opens but Agnes immediately proceeds as if you're done. Terminal editors like vim and nano don't need this flag.
+GUI editors require a `--wait` or equivalent flag to ensure agnes waits for you to finish editing before continuing. Without this flag, the editor opens but agnes immediately proceeds as if you're done. Terminal editors like vim and nano don't need this flag.
 
 ---
 
 ### Command History Search
 
-The `Ctrl+R` shortcut provides interactive search through your stored CLI [command history](/docs/guides/logs#command-history). This feature makes it easy to find and reuse recent commands without retyping them. When you type a search term, Agnes searches backwards through your history for matches.
+The `Ctrl+R` shortcut provides interactive search through your stored CLI [command history](/docs/guides/logs#command-history). This feature makes it easy to find and reuse recent commands without retyping them. When you type a search term, agnes searches backwards through your history for matches.
 
 **How it works:**
-1. Press `Ctrl+R` in your Agnes CLI session
+1. Press `Ctrl+R` in your agnes CLI session
 2. Type a search term
 3. Navigate through the results using:
    - `Ctrl+R` to cycle backwards through earlier matches

@@ -1,24 +1,24 @@
 ---
-title: Quick Agnes Tips
+title: Quick agnes Tips
 sidebar_position: 30
 sidebar_label: Quick Tips
-description: Best practices for working with Agnes
+description: Best practices for working with agnes
 ---
 
-### Agnes works on your behalf
-Agnes is an AI agent, which means you can prompt Agnes to perform tasks for you like opening applications, running shell commands, automating workflows, writing code, browsing the web, and more.
+### agnes works on your behalf
+agnes is an AI agent, which means you can prompt agnes to perform tasks for you like opening applications, running shell commands, automating workflows, writing code, browsing the web, and more.
 
-### Prompt Agnes using natural language
-You don't need fancy language or special syntax to prompt Agnes. Talk with Agnes like you would talk to a friend. You can even use slang or say please and thank you; Agnes will understand.
+### Prompt agnes using natural language
+You don't need fancy language or special syntax to prompt agnes. Talk with agnes like you would talk to a friend. You can even use slang or say please and thank you; agnes will understand.
 
-### Extend Agnes's capabilities to any application
-Agnes's capabilities are extensible. As an [MCP](https://modelcontextprotocol.io/) client, Agnes can connect to your apps and services through [extensions](/extensions), allowing it to work across your entire workflow.
+### Extend agnes's capabilities to any application
+agnes's capabilities are extensible. As an [MCP](https://modelcontextprotocol.io/) client, agnes can connect to your apps and services through [extensions](/extensions), allowing it to work across your entire workflow.
 
-### Choose how much control Agnes has
-You can customize how much [supervision](/docs/guides/managing-tools/Agnes-permissions) Agnes needs. Choose between full autonomy, requiring approval before actions, or simply chatting without any actions.
+### Choose how much control agnes has
+You can customize how much [supervision](/docs/guides/managing-tools/agnes-permissions) agnes needs. Choose between full autonomy, requiring approval before actions, or simply chatting without any actions.
 
 ### Choose the right LLM
-Your experience with Agnes is shaped by your [choice of LLM](/blog/2025/03/31/goose-benchmark), as it handles all the planning while Agnes manages the execution. When choosing an LLM, consider its tool support, specific capabilities, and associated costs.
+Your experience with agnes is shaped by your [choice of LLM](/blog/2025/03/31/agnes-benchmark), as it handles all the planning while agnes manages the execution. When choosing an LLM, consider its tool support, specific capabilities, and associated costs.
 
 ### Keep sessions short
 LLMs have context windows, which are limits on how much conversation history they can retain. Once exceeded, they may forget earlier parts of the conversation. Monitor your token usage and [start new sessions](/docs/guides/sessions/session-management) as needed.
@@ -33,17 +33,17 @@ Turning on too many extensions can degrade performance. Enable only essential [e
 Consider enabling [Code Mode](/docs/guides/managing-tools/code-mode), an alternative approach to tool calling that discovers tools on demand.
 :::
 
-### Teach Agnes your preferences
-Help Agnes remember how you like to work by using [`.agneshints` or other context files](/docs/guides/context-engineering/using-goosehints) or [skills](/docs/guides/context-engineering/using-skills) for permanent project preferences and the [Memory extension](/docs/mcp/memory-mcp) for things you want Agnes to dynamically recall later. Both can help save valuable context window space while keeping your preferences available.
+### Teach agnes your preferences
+Help agnes remember how you like to work by using [`.agneshints` or other context files](/docs/guides/context-engineering/using-agneshints) or [skills](/docs/guides/context-engineering/using-skills) for permanent project preferences and the [Memory extension](/docs/mcp/memory-mcp) for things you want agnes to dynamically recall later. Both can help save valuable context window space while keeping your preferences available.
 
 ### Protect sensitive files
-Agnes is often eager to make changes. You can stop it from changing specific files by creating a [.gooseignore](/docs/guides/context-engineering/using-gooseignore) file. In this file, you can list all the file paths you want it to avoid.
+agnes is often eager to make changes. You can stop it from changing specific files by creating a [.agnesignore](/docs/guides/context-engineering/using-agnesignore) file. In this file, you can list all the file paths you want it to avoid.
 
 ### Version Control
 Commit your code changes early and often. This allows you to rollback any unexpected changes.
 
-### Control which extensions Agnes can use
-Administrators can use an [allowlist](/docs/guides/allowlist) to restrict Agnes to approved extensions only. This helps prevent risky installs from unknown MCP servers.
+### Control which extensions agnes can use
+Administrators can use an [allowlist](/docs/guides/allowlist) to restrict agnes to approved extensions only. This helps prevent risky installs from unknown MCP servers.
 
 ### Set up starter templates
 You can turn a successful session into a reusable "[recipe](/docs/guides/recipes/session-recipes)" to share with others or use again later—no need to start from scratch.
@@ -52,10 +52,10 @@ You can turn a successful session into a reusable "[recipe](/docs/guides/recipes
 You don’t need to get it right the first time. Iterating on prompts and tools is part of the workflow.
 
 ### Customize the sidebar
-Agnes Desktop lets you [customize the sidebar](/docs/guides/desktop-navigation) to match how you like to work. Adjust its position, appearance, and which items are visible.
+agnes Desktop lets you [customize the sidebar](/docs/guides/desktop-navigation) to match how you like to work. Adjust its position, appearance, and which items are visible.
 
-### Keep goose updated
-Regularly [update](/docs/guides/updating-Agnes) Agnes to benefit from the latest features, bug fixes, and performance improvements.
+### Keep agnes updated
+Regularly [update](/docs/guides/updating-agnes) agnes to benefit from the latest features, bug fixes, and performance improvements.
 
 ### Use a Dedicated Planner Model
 Use [planning mode](/docs/guides/context-engineering/creating-plans) with a dedicated planner model for complex reasoning, while keeping a faster default model for everyday execution.

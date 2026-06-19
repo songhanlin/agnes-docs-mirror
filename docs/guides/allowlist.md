@@ -1,19 +1,19 @@
 ---
 sidebar_position: 90
-title: Agnes Extension Allowlist
+title: agnes Extension Allowlist
 sidebar_label: Extension Allowlist
 ---
 
-Agnes is an extensible framework that, by default, allows you to install any MCP server. However, you may want stricter controls on which MCP servers can be installed as extensions (e.g. in a corporate setting). 
+agnes is an extensible framework that, by default, allows you to install any MCP server. However, you may want stricter controls on which MCP servers can be installed as extensions (e.g. in a corporate setting). 
 
-This guide explains how you can create an **allowlist** of safe extensions that work with Agnes Desktop and CLI. An allowlist lets administrators control which MCP servers can be installed as Agnes extensions. When enabled, Agnes will only install extensions that are on the list, and will block installation of any others.
+This guide explains how you can create an **allowlist** of safe extensions that work with agnes Desktop and CLI. An allowlist lets administrators control which MCP servers can be installed as agnes extensions. When enabled, agnes will only install extensions that are on the list, and will block installation of any others.
 
 ## How It Works
 
 1. The allowlist is a YAML file that contains a list of allowed extension commands.
-2. Agnes fetches the allowlist from a URL specified by the `AGNES_ALLOWLIST` environment variable.
-3. The allowlist is fetched when first needed and is cached. It is refetched on every restart of Agnes.
-4. When a user attempts to install an extension, Agnes checks the MCP server's installation command against the allowlist.
+2. agnes fetches the allowlist from a URL specified by the `AGNES_ALLOWLIST` environment variable.
+3. The allowlist is fetched when first needed and is cached. It is refetched on every restart of agnes.
+4. When a user attempts to install an extension, agnes checks the MCP server's installation command against the allowlist.
 5. If the command is not in the allowlist, the extension installation is rejected.
 
 ## Configuration
@@ -54,7 +54,7 @@ After creating the allowlist, you must deploy it to a URL.
 Create an environment variable called `AGNES_ALLOWLIST` and set the value to the URL of your YAML file:
 
 ```bash
-export AGNES_ALLOWLIST=https://example.com/Agnes-allowlist.yaml
+export AGNES_ALLOWLIST=https://example.com/agnes-allowlist.yaml
 ```
 
 You can also add this export to your shell configuration file (On a Mac, it's your `~/.bashrc` or `~/.zshrc` file). 

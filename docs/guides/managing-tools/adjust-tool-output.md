@@ -8,8 +8,8 @@ import TabItem from '@theme/TabItem';
 import { PanelLeft } from 'lucide-react';
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
-Response Styles customize how tool interactions are displayed in the Agnes Desktop chat window. 
+  <TabItem value="ui" label="agnes Desktop" default>
+Response Styles customize how tool interactions are displayed in the agnes Desktop chat window. 
 
 To change this setting:
 1. Click the <PanelLeft className="inline" size={16} /> button on the top-left to open the sidebar.
@@ -19,30 +19,30 @@ To change this setting:
 
 - **Concise** (Default)
     - Tool calls are collapsed by default
-    - Shows only which tool Agnes used
+    - Shows only which tool agnes used
     - Best for users focusing on results rather than technical details
 
 - **Detailed**
     - Tool calls are expanded by default
     - Shows the details of tool calls and their responses
-    - Best for debugging or learning how Agnes works
+    - Best for debugging or learning how agnes works
 
 This setting only affects the default state of tool calls in the conversation. You can always manually expand or collapse any tool call regardless of your chosen style.
 
 </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
-When working with the Agnes CLI, you can control the verbosity of tool output.
+  <TabItem value="cli" label="agnes CLI">
+When working with the agnes CLI, you can control the verbosity of tool output.
 
 To adjust the tool output, run:
 
 ```sh
-goose configure
+agnes configure
 ```
 
 Then choose `Adjust Tool Output`
 
 ```sh
-┌   Agnes-configure 
+┌   agnes-configure 
 │
 ◆  What would you like to configure?
 │  ○ Configure Providers 
@@ -57,7 +57,7 @@ Then choose `Adjust Tool Output`
 Next, choose one of the available modes:
 
 ```sh
-┌   Agnes-configure 
+┌   agnes-configure 
 │
 ◇  What would you like to configure?
 │  Adjust Tool Output 

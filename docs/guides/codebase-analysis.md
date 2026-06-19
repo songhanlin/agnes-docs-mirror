@@ -5,7 +5,7 @@ description: Understand codebases with semantic analysis and call graphs
 sidebar_position: 111
 ---
 
-The [Developer extension](/docs/mcp/developer-mcp) includes an `analyze` tool that helps you understand code structure, track symbol usage, and explore call graphs across your codebase. It's automatically available when the Developer extension is enabled and supports file types for [multiple programming languages](https://github.com/aaif-goose/agnes/blob/main/crates/goose-mcp/src/developer/analyze/languages/mod.rs).
+The [Developer extension](/docs/mcp/developer-mcp) includes an `analyze` tool that helps you understand code structure, track symbol usage, and explore call graphs across your codebase. It's automatically available when the Developer extension is enabled and supports file types for [multiple programming languages](https://github.com/aaif-goose/agnes/blob/main/crates/agnes-mcp/src/developer/analyze/languages/mod.rs).
 
 <details>
 <summary>Example analysis: Tracking a function across files</summary>
@@ -57,7 +57,7 @@ Get a structural overview of your codebase by analyzing a directory—understand
 # Get overview with default depth (3 levels)
 analyze path="src/"
 
-# Get overview limited to 2 subdirectory levels
+# Get overview limited toundefinedsubdirectory levels
 analyze path="." max_depth=2
 ```
 
@@ -101,15 +101,15 @@ analyze path="." focus="UserClass" follow_depth=3
 |-----------|---------|-------------|
 | `path` | None (required) | Absolute or relative path to the file or directory to analyze |
 | `focus` | None | Name of the symbol to track. For cross-file tracking, `path` must be a directory. |
-| `follow_depth` | 2 | How many steps to trace from the focused symbol (0=where defined, 1=immediate callers/callees, 2=their callers/callees, etc.). Used with the `focus` parameter. |
-| `max_depth` | 3 | How many subdirectory levels to analyze when `path` is a directory (0=unlimited) |
-| `force` | false | Receive full analysis results (otherwise, only a warning message is shown when the results exceed 1000 lines) |
+| `follow_depth` |undefined| How many steps to trace from the focused symbol (0=where defined, 1=immediate callers/callees, 2=their callers/callees, etc.). Used with the `focus` parameter. |
+| `max_depth` |undefined| How many subdirectory levels to analyze when `path` is a directory (0=unlimited) |
+| `force` | false | Receive full analysis results (otherwise, only a warning message is shown when the results exceedundefinedlines) |
 
 ## Best Practices
 
 ### Handling Large Outputs
 
-If the analysis results exceed 1000 lines, the tool returns a warning message instead of the analysis. Options for managing large outputs:
+If the analysis results exceedundefinedlines, the tool returns a warning message instead of the analysis. Options for managing large outputs:
 
 - **Use `force=true`** to bypass the warning and see the full output (may consume significant conversation context)
 - **Narrow your scope** by analyzing a specific subdirectory or file
@@ -120,4 +120,4 @@ If the analysis results exceed 1000 lines, the tool returns a warning message in
 
 - Start with smaller scopes (specific files or subdirectories) before analyzing entire projects
 - Use `max_depth=1` or `max_depth=2` to limit directory traversal depth
-- Use [`.gooseignore`](/docs/guides/context-engineering/using-gooseignore) and `.gitignore` files to exclude unnecessary files from analysis (like `node_modules/`, build artifacts, or sensitive files)
+- Use [`.agnesignore`](/docs/guides/context-engineering/using-agnesignore) and `.gitignore` files to exclude unnecessary files from analysis (like `node_modules/`, build artifacts, or sensitive files)

@@ -1,124 +1,124 @@
 ---
 sidebar_position: 105
-title: Using Agnes in ACP Clients
-sidebar_label: Agnes in ACP Clients
+title: Using agnes in ACP Clients
+sidebar_label: agnes in ACP Clients
 ---
 
-Client applications that support the [Agent Client Protocol (ACP)](https://agentclientprotocol.com/) can connect natively to Agnes. This integration allows you to seamlessly interact with Agnes directly from the client.
+Client applications that support the [Agent Client Protocol (ACP)](https://agentclientprotocol.com/) can connect natively to agnes. This integration allows you to seamlessly interact with agnes directly from the client.
 
 :::warning Experimental Feature
-ACP is an emerging specification that enables clients to communicate with AI agents like Agnes. This feature has limited adoption and may evolve as the protocol develops.
+ACP is an emerging specification that enables clients to communicate with AI agents like agnes. This feature has limited adoption and may evolve as the protocol develops.
 :::
 
 ## How It Works
-After you configure Agnes as an agent in the ACP client, you gain access to Agnes's core agent functionality, including its extensions and tools. Agnes also automatically loads any [configured MCP servers](#using-mcp-servers-from-acp-clients) from your ACP client alongside its own extensions, making their tools available without additional configuration.
+After you configure agnes as an agent in the ACP client, you gain access to agnes's core agent functionality, including its extensions and tools. agnes also automatically loads any [configured MCP servers](#using-mcp-servers-from-acp-clients) from your ACP client alongside its own extensions, making their tools available without additional configuration.
 
-The client manages the Agnes lifecycle automatically, including:
+The client manages the agnes lifecycle automatically, including:
 
-- **Initialization**: The client runs the `Agnes acp` command to initialize the connection
-- **Communication**: The client communicates with Agnes over stdio using JSON-RPC
+- **Initialization**: The client runs the `agnes acp` command to initialize the connection
+- **Communication**: The client communicates with agnes over stdio using JSON-RPC
 - **Multiple Sessions**: The client manages multiple concurrent conversations, each with isolated state
 - **Model and Mode Switching**: The client can switch models and modes mid-session without restarting
-- **File Operations**: The client handles file reads and writes, so Agnes sees changes not yet saved to disk and edits show as native diffs
+- **File Operations**: The client handles file reads and writes, so agnes sees changes not yet saved to disk and edits show as native diffs
 - **Terminal**: The client runs commands in its own terminal, so output appears alongside the conversation
 
 :::info Session Persistence
-ACP sessions are saved to Agnes's session history where you can access and manage them using Agnes. Access to session history in ACP clients might vary.
+ACP sessions are saved to agnes's session history where you can access and manage them using agnes. Access to session history in ACP clients might vary.
 :::
 
 :::tip Reference Implementation
-The [Agnes for VS Code](/docs/experimental/vs-code-extension) extension uses ACP to communicate with Agnes. See the [vscode-Agnes](https://github.com/aaif-goose/vscode-Agnes) repository for implementation details.
+The [agnes for VS Code](/docs/experimental/vs-code-extension) extension uses ACP to communicate with agnes. See the [vscode-agnes](https://github.com/aaif-goose/vscode-agnes) repository for implementation details.
 :::
 
 ## Setup in ACP Clients
-Any editor or IDE that supports ACP can connect to Agnes as an agent server. Check the [official ACP clients list](https://agentclientprotocol.com/overview/clients) for available clients with links to their documentation.
+Any editor or IDE that supports ACP can connect to agnes as an agent server. Check the [official ACP clients list](https://agentclientprotocol.com/overview/clients) for available clients with links to their documentation.
 
 ### Example: Zed Editor Setup
 
-ACP was originally developed by [Zed](https://zed.dev/). Zed offers two ways to add Agnes, and you can use either one.
+ACP was originally developed by [Zed](https://zed.dev/). Zed offers two ways to add agnes, and you can use either one.
 
 #### Option 1: Install from the ACP Registry (recommended)
 
-Agnes is published in the [ACP Registry](https://agentclientprotocol.com/registry), and Zed 1.5.0 and later has built-in registry support, so it can download and run Agnes for you, with no manual configuration and no pre-installed CLI required.
+agnes is published in the [ACP Registry](https://agentclientprotocol.com/registry), and Zed 1.5.0 and later has built-in registry support, so it can download and run agnes for you, with no manual configuration and no pre-installed CLI required.
 
 1. Open Zed
 2. Open Agent Settings
 3. Click `Add Agent`, then choose `Install from Registry`
-4. Select `Agnes`
+4. Select `agnes`
 
-A registry-installed goose runs the same `Agnes acp` server and reads your existing Agnes configuration, so your providers, models, and extensions carry over. Zed keeps the installed version up to date for you.
+A registry-installed agnes runs the same `agnes acp` server and reads your existing agnes configuration, so your providers, models, and extensions carry over. Zed keeps the installed version up to date for you.
 
-#### Option 2: Configure Agnes as a Custom Agent
+#### Option 2: Configure agnes as a Custom Agent
 
-Use a custom agent if you want to run your own Agnes binary (for example, a local development build) or pass environment overrides.
+Use a custom agent if you want to run your own agnes binary (for example, a local development build) or pass environment overrides.
 
 ##### Prerequisites
 
-Ensure you have both Zed and Agnes CLI installed:
+Ensure you have both Zed and agnes CLI installed:
 
 - **Zed**: Download from [zed.dev](https://zed.dev/)
-- **Agnes CLI**: Follow the [installation guide](/docs/getting-started/installation)
+- **agnes CLI**: Follow the [installation guide](/docs/getting-started/installation)
 
-  - Verify Agnes is installed: `goose --version`
+  - Verify agnes is installed: `agnes --version`
 
-  - Temporarily run `Agnes acp` to test that ACP support is working:
+  - Temporarily run `agnes acp` to test that ACP support is working:
 
     ```bash
-    Agnes acp
+    agnes acp
     ```
 
     Press `Ctrl+C` to exit the test.
 
-##### Add Agnes to Your Zed Settings
+##### Add agnes to Your Zed Settings
 
 1. Open Zed
 2. Open Agent Settings, click `Add Agent`, then choose `Add Custom Agent`. Zed scaffolds an `agent_servers` entry and opens your settings file
-3. Edit the entry so it runs Agnes:
+3. Edit the entry so it runs agnes:
 
 ```json
 {
   "agent_servers": {
-    "Agnes": {
+    "agnes": {
       "type": "custom",
-      "command": "Agnes",
+      "command": "agnes",
       "args": ["acp"]
     }
   },
 }
 ```
 
-You should now be able to interact with Agnes directly in Zed. Your ACP sessions use the same extensions that are enabled in your Agnes configuration, and your tools (Developer, Computer Controller, etc.) work the same way as in regular goose sessions.
+You should now be able to interact with agnes directly in Zed. Your ACP sessions use the same extensions that are enabled in your agnes configuration, and your tools (Developer, Computer Controller, etc.) work the same way as in regular agnes sessions.
 
-#### Start Using Agnes in Zed
+#### Start Using agnes in Zed
 
-After adding Agnes with either option above:
+After adding agnes with either option above:
 
 1. **Open the Agent Panel**: Click the sparkles agent icon in Zed's status bar
 2. **Create New Thread**: Click the `+` button to show thread options
-3. **Select Agnes**: Choose `New Agnes` to start a new conversation with Agnes
-4. **Start Chatting**: Interact with Agnes directly from the agent panel
+3. **Select agnes**: Choose `New agnes` to start a new conversation with agnes
+4. **Start Chatting**: Interact with agnes directly from the agent panel
 
 #### Advanced Configuration
 
 ##### Overriding Provider and Model
 
-By default, Agnes will use the provider and model defined in your [configuration file](/docs/guides/config-files). You can override this for specific ACP configurations using the `AGNES_PROVIDER` and `AGNES_MODEL` environment variables.
+By default, agnes will use the provider and model defined in your [configuration file](/docs/guides/config-files). You can override this for specific ACP configurations using the `AGNES_PROVIDER` and `AGNES_MODEL` environment variables.
 
-The following Zed settings example configures two Agnes agent instances. This is useful for:
+The following Zed settings example configures two agnes agent instances. This is useful for:
 - Comparing model performance on the same task
 - Using cost-effective models for simple tasks and powerful models for complex ones
 
 ```json
 {
   "agent_servers": {
-    "Agnes": {
+    "agnes": {
       "type": "custom",
-      "command": "Agnes",
+      "command": "agnes",
       "args": ["acp"]
     },
-    "Agnes (GPT-4o)": {
+    "agnes (GPT-4o)": {
       "type": "custom",
-      "command": "Agnes",
+      "command": "agnes",
       "args": ["acp"],
       "env": {
         "AGNES_PROVIDER": "openai",
@@ -131,7 +131,7 @@ The following Zed settings example configures two Agnes agent instances. This is
 
 ## Using MCP Servers from ACP Clients
 
-MCP servers configured in the ACP client's `context_servers` are automatically available to Agnes. This allows you to use those MCP servers when using both native client features and the Agnes agent integration.
+MCP servers configured in the ACP client's `context_servers` are automatically available to agnes. This allows you to use those MCP servers when using both native client features and the agnes agent integration.
 
 **Example (Zed):**
 
@@ -148,36 +148,36 @@ MCP servers configured in the ACP client's `context_servers` are automatically a
     }
   },
   "agent_servers": {
-    "Agnes": {
+    "agnes": {
       "type": "custom",
-      "command": "Agnes",
+      "command": "agnes",
       "args": ["acp"]
     }
   },
 }
 ```
 
-To find out what tools are available, just ask Agnes while it's running in the client.
+To find out what tools are available, just ask agnes while it's running in the client.
 
 :::info
-All MCP servers in `context_servers` are automatically available to Agnes, provided that they use stdio (command-based) or HTTP transports. Agnes doesn't support servers that use the deprecated SSE transport.
+All MCP servers in `context_servers` are automatically available to agnes, provided that they use stdio (command-based) or HTTP transports. agnes doesn't support servers that use the deprecated SSE transport.
 
-If a server in `context_servers` has the same name as a Agnes extension, Agnes uses its own [configuration](/docs/guides/config-files).
+If a server in `context_servers` has the same name as a agnes extension, agnes uses its own [configuration](/docs/guides/config-files).
 :::
 
 ## TUI Client
 
-For terminal-based workflows, Agnes provides a TUI (Terminal User Interface) client that communicates with Agnes via ACP. This is useful for developers who prefer working entirely in the terminal or need a lightweight alternative to the desktop app.
+For terminal-based workflows, agnes provides a TUI (Terminal User Interface) client that communicates with agnes via ACP. This is useful for developers who prefer working entirely in the terminal or need a lightweight alternative to the desktop app.
 
 ### Features
 
 - **Full terminal-based chat interface** - Interactive conversation UI rendered directly in your terminal
-- **Real-time streaming responses** - See Agnes's responses as they're generated
+- **Real-time streaming responses** - See agnes's responses as they're generated
 - **Tool call visualization** - View tool executions with status indicators, inputs, and outputs
 - **Permission dialogs** - Approve or reject tool permissions inline
 - **Keyboard navigation** - Navigate conversation history and scroll through responses
 - **Markdown rendering** - Formatted output for code blocks, lists, and other markdown elements
-- **Message queuing** - Queue messages while Agnes is processing
+- **Message queuing** - Queue messages while agnes is processing
 
 ### Installation
 
@@ -190,7 +190,7 @@ npm install
 
 **Option 1: Auto-launch server (recommended)**
 
-The TUI will automatically start the Agnes acp server if you have it installed:
+The TUI will automatically start the agnes acp server if you have it installed:
 
 ```bash
 npm start
@@ -204,20 +204,20 @@ For servers that support the draft standard ACP over Streamable HTTP https://git
 npm start -- --server http://HOST:PORT
 
 # example server
-cargo run -p goose-cli --bin Agnes -- serve
+cargo run -p agnes-cli --bin agnes -- serve
 ```
 
 ### Server Authentication
 
-Set the `AGNES_SERVER__SECRET_KEY` environment variable to require authentication on the ACP endpoint. When it is set, `Agnes serve` rejects any request that doesn't present a matching token:
+Set the `AGNES_SERVER__SECRET_KEY` environment variable to require authentication on the ACP endpoint. When it is set, `agnes serve` rejects any request that doesn't present a matching token:
 
 ```bash
-AGNES_SERVER__SECRET_KEY='a-long-random-secret' Agnes serve
+AGNES_SERVER__SECRET_KEY='a-long-random-secret' agnes serve
 ```
 
 Clients authenticate by sending the token in the `X-Secret-Key` header, or as a `?token=` query parameter for WebSocket connections (the browser WebSocket API can't set custom headers). Requests without a matching token receive `401 Unauthorized`, including WebSocket handshakes.
 
-When `AGNES_SERVER__SECRET_KEY` is not set, the endpoint accepts unauthenticated connections and `Agnes serve` logs a warning at startup.
+When `AGNES_SERVER__SECRET_KEY` is not set, the endpoint accepts unauthenticated connections and `agnes serve` logs a warning at startup.
 
 ### Single Prompt Mode
 
@@ -239,7 +239,7 @@ npm start -- --text "What files are in this directory?"
 
 ### Permission Dialog
 
-When Agnes requests permission to use a tool, a dialog appears with these options:
+When agnes requests permission to use a tool, a dialog appears with these options:
 
 | Key | Action |
 |-----|--------|
@@ -260,8 +260,8 @@ import chooseYourIde from '@site/blog/2025-10-24-intro-to-agent-client-protocol-
   items={[
     {
       type: 'video',
-      title: 'Intro to Agent Client Protocol (ACP) | Vibe Code with Agnes',
-      description: 'Watch how ACP lets you seamlessly integrate Agnes into your code editor to streamline fragmented workflows.',
+      title: 'Intro to Agent Client Protocol (ACP) | Vibe Code with agnes',
+      description: 'Watch how ACP lets you seamlessly integrate agnes into your code editor to streamline fragmented workflows.',
       thumbnailUrl: 'https://img.youtube.com/vi/Hvu5KDTb6JE/maxresdefault.jpg',
       linkUrl: 'https://www.youtube.com/watch?v=Hvu5KDTb6JE',
       date: '2025-10-16',
@@ -270,7 +270,7 @@ import chooseYourIde from '@site/blog/2025-10-24-intro-to-agent-client-protocol-
    {
       type: 'blog',
       title: 'Intro to Agent Client Protocol (ACP): The Standard for AI Agent-Editor Integration',
-      description: 'Learn how to integrate AI agents like Agnes directly into your code editor via ACP, eliminating window-switching and vendor lock-in.',
+      description: 'Learn how to integrate AI agents like agnes directly into your code editor via ACP, eliminating window-switching and vendor lock-in.',
       thumbnailUrl: chooseYourIde,
       linkUrl: '/blog/2025/10/24/intro-to-agent-client-protocol-acp',
       date: '2025-10-24',

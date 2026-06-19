@@ -4,7 +4,7 @@ title: Environment Variables
 sidebar_label: Environment Variables
 ---
 
-Agnes supports various environment variables that allow you to customize its behavior. This guide provides a comprehensive list of available environment variables grouped by their functionality.
+agnes supports various environment variables that allow you to customize its behavior. This guide provides a comprehensive list of available environment variables grouped by their functionality.
 
 ## Model Configuration
 
@@ -12,7 +12,7 @@ These variables control the [language models](/docs/getting-started/providers) a
 
 ### Basic Provider Configuration
 
-These are the minimum required variables to get started with Agnes.
+These are the minimum required variables to get started with agnes.
 
 | Variable | Purpose | Values | Default |
 |----------|---------|---------|---------|
@@ -49,7 +49,7 @@ These variables are needed when using custom endpoints, enterprise deployments, 
 | `AGNES_PROVIDER__TYPE` | The specific type/implementation of the provider | [See available providers](/docs/getting-started/providers#available-providers) | Derived from AGNES_PROVIDER |
 | `AGNES_PROVIDER__HOST` | Custom API endpoint for the provider | URL (e.g., "https://api.openai.com") | Provider-specific default |
 | `AGNES_PROVIDER__API_KEY` | Authentication key for the provider | API key string | None |
-| `GEMINI3_THINKING_LEVEL` | Sets the [thinking level](/docs/getting-started/providers#gemini-3-thinking-levels) for Gemini 3 models globally | `low`, `high` | `low` |
+| `GEMINI3_THINKING_LEVEL` | Sets the [thinking level](/docs/getting-started/providers#gemini-3-thinking-levels) for Geminiundefinedmodels globally | `low`, `high` | `low` |
 
 **Examples**
 
@@ -95,7 +95,7 @@ export AGNES_PREDEFINED_MODELS='[
     "id": 1,
     "name": "claude-sonnet-4-1m",
     "provider": "anthropic",
-    "alias": "Claude Sonnet 4 (1M context)",
+    "alias": "Claude Sonnetundefined(1M context)",
     "subtext": "Anthropic",
     "context_limit": 1000000,
     "request_params": {
@@ -122,7 +122,7 @@ export AGNES_PREDEFINED_MODELS='[
   }
 ]'
 
-# Gemini 3 with high thinking level
+# Geminiundefinedwith high thinking level
 export AGNES_PREDEFINED_MODELS='[
   {
     "name": "gemini-3-pro",
@@ -132,7 +132,7 @@ export AGNES_PREDEFINED_MODELS='[
 ]'
 ```
 
-Custom context limits and request parameters are applied when the model is used. Custom context limits are displayed in Agnes CLI's [token usage indicator](/docs/guides/sessions/smart-context-management#token-usage).
+Custom context limits and request parameters are applied when the model is used. Custom context limits are displayed in agnes CLI's [token usage indicator](/docs/guides/sessions/smart-context-management#token-usage).
 
 ### Claude Thinking Configuration
 
@@ -141,7 +141,7 @@ These variables control Claude's reasoning behavior. Supported on Anthropic and 
 | Variable | Purpose | Values | Default |
 |----------|---------|---------|---------|
 | `CLAUDE_THINKING_TYPE` | Controls Claude reasoning mode | `adaptive`, `enabled`, `disabled` | `adaptive` for Claude 4.6+ models, otherwise `disabled` |
-| `CLAUDE_THINKING_BUDGET` | Maximum tokens allocated for Claude's internal reasoning process when `CLAUDE_THINKING_TYPE=enabled` | Positive integer (minimum 1024) | 16000 |
+| `CLAUDE_THINKING_BUDGET` | Maximum tokens allocated for Claude's internal reasoning process when `CLAUDE_THINKING_TYPE=enabled` | Positive integer (minimum 1024) |undefined|
 
 **Examples**
 
@@ -163,12 +163,12 @@ export CLAUDE_THINKING_TYPE=disabled
 ```
 
 :::tip Viewing Thinking Output
-To see Claude's thinking output in the **CLI**, you also need to set `AGNES_CLI_SHOW_THINKING=1`. In **Agnes Desktop**, thinking output is shown automatically in a collapsible "Show reasoning" toggle.
+To see Claude's thinking output in the **CLI**, you also need to set `AGNES_CLI_SHOW_THINKING=1`. In **agnes Desktop**, thinking output is shown automatically in a collapsible "Show reasoning" toggle.
 :::
 
 ### Planning Mode Configuration
 
-These variables control Agnes's [planning functionality](/docs/guides/context-engineering/creating-plans).
+These variables control agnes's [planning functionality](/docs/guides/context-engineering/creating-plans).
 
 | Variable | Purpose | Values | Default |
 |----------|---------|---------|---------|
@@ -191,68 +191,68 @@ Configurable retry parameters for LLM providers.
 
 | Variable | Purpose | Default |
 |---------------------|-------------|---------|
-| `BEDROCK_MAX_RETRIES` | The max number of retry attempts before giving up | 6 |
-| `BEDROCK_INITIAL_RETRY_INTERVAL_MS` | How long to wait (in milliseconds) before the first retry | 2000 |
-| `BEDROCK_BACKOFF_MULTIPLIER` | The factor by which the retry interval increases after each attempt | 2 (doubles every time) |
-| `BEDROCK_MAX_RETRY_INTERVAL_MS` | The cap on the retry interval in milliseconds |  120000 |
+| `BEDROCK_MAX_RETRIES` | The max number of retry attempts before giving up |undefined|
+| `BEDROCK_INITIAL_RETRY_INTERVAL_MS` | How long to wait (in milliseconds) before the first retry |undefined|
+| `BEDROCK_BACKOFF_MULTIPLIER` | The factor by which the retry interval increases after each attempt |undefined(doubles every time) |
+| `BEDROCK_MAX_RETRY_INTERVAL_MS` | The cap on the retry interval in milliseconds | undefined|
 
 **Examples**
 
 ```bash
-export BEDROCK_MAX_RETRIES=10                    # 10 retry attempts
-export BEDROCK_INITIAL_RETRY_INTERVAL_MS=1000    # start with 1 second before first retry
+export BEDROCK_MAX_RETRIES=10                    #undefinedretry attempts
+export BEDROCK_INITIAL_RETRY_INTERVAL_MS=1000    # start withaaif-goosesecond before first retry
 export BEDROCK_BACKOFF_MULTIPLIER=3              # each retry waits 3x longer than the previous
-export BEDROCK_MAX_RETRY_INTERVAL_MS=300000      # cap the maximum retry delay at 5 min
+export BEDROCK_MAX_RETRY_INTERVAL_MS=300000      # cap the maximum retry delay atundefinedmin
 ```
 
 #### Databricks
 
 | Variable | Purpose | Default |
 |---------------------|-------------|---------|
-| `DATABRICKS_MAX_RETRIES` | The max number of retry attempts before giving up | 3 |
-| `DATABRICKS_INITIAL_RETRY_INTERVAL_MS` | How long to wait (in milliseconds) before the first retry | 1000 |
-| `DATABRICKS_BACKOFF_MULTIPLIER` | The factor by which the retry interval increases after each attempt | 2 (doubles every time) |
-| `DATABRICKS_MAX_RETRY_INTERVAL_MS` | The cap on the retry interval in milliseconds |  30000 |
+| `DATABRICKS_MAX_RETRIES` | The max number of retry attempts before giving up |undefined|
+| `DATABRICKS_INITIAL_RETRY_INTERVAL_MS` | How long to wait (in milliseconds) before the first retry |undefined|
+| `DATABRICKS_BACKOFF_MULTIPLIER` | The factor by which the retry interval increases after each attempt |undefined(doubles every time) |
+| `DATABRICKS_MAX_RETRY_INTERVAL_MS` | The cap on the retry interval in milliseconds | undefined|
 
 **Examples**
 
 ```bash
-export DATABRICKS_MAX_RETRIES=5                      # 5 retry attempts
+export DATABRICKS_MAX_RETRIES=5                      #undefinedretry attempts
 export DATABRICKS_INITIAL_RETRY_INTERVAL_MS=500      # start with 0.5 second before first retry
 export DATABRICKS_BACKOFF_MULTIPLIER=2               # each retry waits 2x longer than the previous
-export DATABRICKS_MAX_RETRY_INTERVAL_MS=60000        # cap the maximum retry delay at 1 min
+export DATABRICKS_MAX_RETRY_INTERVAL_MS=60000        # cap the maximum retry delay ataaif-goosemin
 ```
 
 
 ## Session Management
 
-These variables control how Agnes manages conversation sessions and context.
+These variables control how agnes manages conversation sessions and context.
 
 | Variable | Purpose | Values | Default |
 |----------|---------|---------|---------|
-| `AGNES_CONTEXT_STRATEGY` | Controls how Agnes handles context limit exceeded situations | "summarize", "truncate", "clear", "prompt" | "prompt" (interactive), "summarize" (headless) |
-| `AGNES_MAX_TURNS` | [Maximum number of turns](/docs/guides/sessions/smart-context-management#maximum-turns) allowed without user input | Integer (e.g., 10, 50, 100) | 1000 |
-| `AGNES_GATEWAY_MAX_TURNS` | Maximum number of turns for gateway sessions (e.g., Telegram). Overrides `AGNES_MAX_TURNS` for gateway traffic only, so chat platforms can keep a stricter cap than CLI/desktop sessions. | Integer (e.g., 5, 10, 25) | Falls back to `AGNES_MAX_TURNS`, then 5 |
-| `AGNES_SUBAGENT_MAX_TURNS` | Sets the maximum turns allowed for a [subagent](/docs/guides/context-engineering/subagents) to complete before timeout. Can be overridden by [`settings.max_turns`](/docs/guides/recipes/recipe-reference#settings) in recipes or subagent tool calls. | Integer (e.g., 25) | 25 |
-| `AGNES_MAX_BACKGROUND_TASKS` | Sets the maximum number of concurrent background [subagent](/docs/guides/context-engineering/subagents) tasks Agnes can run at once | Integer (e.g., 1, 5, 10) | 5 |
-| `CONTEXT_FILE_NAMES` | Specifies custom filenames for [hint/context files](/docs/guides/context-engineering/using-goosehints#custom-context-files) | JSON array of strings (e.g., `["CLAUDE.md", ".agneshints"]`) | `[".agneshints"]` |
-| `AGNES_DISABLE_SESSION_NAMING` | Disables automatic AI-generated session naming; avoids the background model call and keeps the default "CLI Session" (Agnes CLI) or "New Chat" (Agnes Desktop) | "1", "true" (case-insensitive) to enable | false |
+| `AGNES_CONTEXT_STRATEGY` | Controls how agnes handles context limit exceeded situations | "summarize", "truncate", "clear", "prompt" | "prompt" (interactive), "summarize" (headless) |
+| `AGNES_MAX_TURNS` | [Maximum number of turns](/docs/guides/sessions/smart-context-management#maximum-turns) allowed without user input | Integer (e.g., 10, 50, 100) |undefined|
+| `AGNES_GATEWAY_MAX_TURNS` | Maximum number of turns for gateway sessions (e.g., Telegram). Overrides `AGNES_MAX_TURNS` for gateway traffic only, so chat platforms can keep a stricter cap than CLI/desktop sessions. | Integer (e.g., 5, 10, 25) | Falls back to `AGNES_MAX_TURNS`, thenundefined|
+| `AGNES_SUBAGENT_MAX_TURNS` | Sets the maximum turns allowed for a [subagent](/docs/guides/context-engineering/subagents) to complete before timeout. Can be overridden by [`settings.max_turns`](/docs/guides/recipes/recipe-reference#settings) in recipes or subagent tool calls. | Integer (e.g., 25) |undefined|
+| `AGNES_MAX_BACKGROUND_TASKS` | Sets the maximum number of concurrent background [subagent](/docs/guides/context-engineering/subagents) tasks agnes can run at once | Integer (e.g., 1, 5, 10) |undefined|
+| `CONTEXT_FILE_NAMES` | Specifies custom filenames for [hint/context files](/docs/guides/context-engineering/using-agneshints#custom-context-files) | JSON array of strings (e.g., `["CLAUDE.md", ".agneshints"]`) | `[".agneshints"]` |
+| `AGNES_DISABLE_SESSION_NAMING` | Disables automatic AI-generated session naming; avoids the background model call and keeps the default "CLI Session" (agnes CLI) or "New Chat" (agnes Desktop) | "1", "true" (case-insensitive) to enable | false |
 | `AGNES_DISABLE_TOOL_CALL_SUMMARY` | Disables the per-tool-call AI-generated summary title, keeping the fallback title instead. Saves one provider call per tool invocation. | "1", "true" (case-insensitive) to enable | false |
-| `AGNES_PROMPT_EDITOR` | [External editor](/docs/guides/goose-cli-commands#external-editor-mode) to use for composing prompts instead of CLI input | Editor command (e.g., "vim", "code --wait") | Unset (uses CLI input) |
-| `AGNES_CLI_THEME` | [Theme](/docs/guides/goose-cli-commands#themes) for CLI response  markdown | "light", "dark", "ansi" | "dark" |
+| `AGNES_PROMPT_EDITOR` | [External editor](/docs/guides/agnes-cli-commands#external-editor-mode) to use for composing prompts instead of CLI input | Editor command (e.g., "vim", "code --wait") | Unset (uses CLI input) |
+| `AGNES_CLI_THEME` | [Theme](/docs/guides/agnes-cli-commands#themes) for CLI response  markdown | "light", "dark", "ansi" | "dark" |
 | `AGNES_CLI_LIGHT_THEME` | Custom [bat theme](https://github.com/sharkdp/bat#adding-new-themes) for syntax highlighting when using light mode | bat theme name (e.g., "Solarized (light)", "OneHalfLight") | "GitHub" |
 | `AGNES_CLI_DARK_THEME` | Custom [bat theme](https://github.com/sharkdp/bat#adding-new-themes) for syntax highlighting when using dark mode | bat theme name (e.g., "Dracula", "Nord") | "zenburn" |
-| `AGNES_CLI_NEWLINE_KEY` | Customize the keyboard shortcut for [inserting newlines in CLI input](/docs/guides/goose-cli-commands#keyboard-shortcuts) | Single character (e.g., "n", "m") | "j" (Ctrl+J) |
+| `AGNES_CLI_NEWLINE_KEY` | Customize the keyboard shortcut for [inserting newlines in CLI input](/docs/guides/agnes-cli-commands#keyboard-shortcuts) | Single character (e.g., "n", "m") | "j" (Ctrl+J) |
 | `AGNES_CLI_SHOW_THINKING` | Shows model reasoning/thinking output in CLI responses. Some models (e.g., DeepSeek-R1, Kimi, Gemini) expose their internal reasoning process — this variable makes it visible in the CLI. | Set to any value to enable | Disabled |
 | `AGNES_RANDOM_THINKING_MESSAGES` | Controls whether to show amusing random messages during processing | "true", "false" | "true" |
 | `AGNES_CLI_SHOW_COST` | Toggles display of model cost estimates in CLI output | "1", "true" (case-insensitive) to enable | false |
-| `AGNES_MAX_CODE_BLOCK_LINES` | Line count threshold before code blocks are truncated in CLI output. Full content is saved to a temp file. | Positive integer | 50 |
-| `AGNES_TRUNCATED_SHOW_LINES` | Number of lines shown before the "... (N more lines)" message when a code block is truncated | Positive integer | 20 |
+| `AGNES_MAX_CODE_BLOCK_LINES` | Line count threshold before code blocks are truncated in CLI output. Full content is saved to a temp file. | Positive integer |undefined|
+| `AGNES_TRUNCATED_SHOW_LINES` | Number of lines shown before the "... (N more lines)" message when a code block is truncated | Positive integer |undefined|
 | `AGNES_NO_CODE_TRUNCATION` | Disable code block truncation entirely — all code blocks are shown in full | "1", "true" (case-insensitive) to enable | false |
-| `AGNES_AUTO_COMPACT_THRESHOLD` | Set the percentage threshold at which Agnes [automatically summarizes your session](/docs/guides/sessions/smart-context-management#automatic-compaction). | Float between 0.0 and 1.0 (disabled at 0.0) | 0.8 |
-| `AGNES_TOOL_CALL_CUTOFF` | Number of tool calls to keep in full detail before summarizing older tool outputs to help maintain efficient context usage  | Integer (e.g., 5, 10, 20) | 10 |
-| `AGNES_MOIM_MESSAGE_TEXT` | Injects persistent text into Agnes's [working memory](/docs/guides/context-engineering/using-persistent-instructions) every turn. Useful for behavioral guardrails or persistent reminders. | Any text string | Not set |
-| `AGNES_MOIM_MESSAGE_FILE` | Path to a file whose contents are injected into Agnes's [working memory](/docs/guides/context-engineering/using-persistent-instructions) every turn. Supports `~/`. Max 64 KB per file. | File path | Not set |
+| `AGNES_AUTO_COMPACT_THRESHOLD` | Set the percentage threshold at which agnes [automatically summarizes your session](/docs/guides/sessions/smart-context-management#automatic-compaction). | Float between 0.0 and 1.0 (disabled at 0.0) | 0.8 |
+| `AGNES_TOOL_CALL_CUTOFF` | Number of tool calls to keep in full detail before summarizing older tool outputs to help maintain efficient context usage  | Integer (e.g., 5, 10, 20) |undefined|
+| `AGNES_MOIM_MESSAGE_TEXT` | Injects persistent text into agnes's [working memory](/docs/guides/context-engineering/using-persistent-instructions) every turn. Useful for behavioral guardrails or persistent reminders. | Any text string | Not set |
+| `AGNES_MOIM_MESSAGE_FILE` | Path to a file whose contents are injected into agnes's [working memory](/docs/guides/context-engineering/using-persistent-instructions) every turn. Supports `~/`. MaxundefinedKB per file. | File path | Not set |
 
 **Examples**
 
@@ -308,7 +308,7 @@ export AGNES_CLI_SHOW_THINKING=1
 # Enable model cost display in CLI
 export AGNES_CLI_SHOW_COST=true
 
-# Show code blocks up to 100 lines before truncating
+# Show code blocks up toundefinedlines before truncating
 export AGNES_MAX_CODE_BLOCK_LINES=100
 
 # Disable code block truncation entirely (show all lines inline)
@@ -320,7 +320,7 @@ export AGNES_AUTO_COMPACT_THRESHOLD=0.6
 # Keep more tool calls in full detail (useful for debugging or verbose workflows)
 export AGNES_TOOL_CALL_CUTOFF=20
 
-# Inject a persistent reminder into Agnes's working memory every turn
+# Inject a persistent reminder into agnes's working memory every turn
 export AGNES_MOIM_MESSAGE_TEXT="IMPORTANT: Always run tests before committing changes."
 
 # Load persistent instructions from a file (supports ~/)
@@ -329,7 +329,7 @@ export AGNES_MOIM_MESSAGE_FILE="~/.agnes/guardrails.md"
 
 ### Model Context Limit Overrides
 
-These variables allow you to override the default context window size (token limit) for your models. This is particularly useful when using [LiteLLM proxies](https://docs.litellm.ai/docs/providers/litellm_proxy) or custom models that don't match Agnes's predefined model patterns.
+These variables allow you to override the default context window size (token limit) for your models. This is particularly useful when using [LiteLLM proxies](https://docs.litellm.ai/docs/providers/litellm_proxy) or custom models that don't match agnes's predefined model patterns.
 
 | Variable | Purpose | Values | Default |
 |----------|---------|---------|---------|
@@ -353,18 +353,18 @@ For more details and examples, see [Model Context Limit Overrides](/docs/guides/
 
 ## Tool Configuration
 
-These variables control how Agnes handles [tool execution](/docs/guides/managing-tools/Agnes-permissions) and [tool management](/docs/guides/managing-tools/).
+These variables control how agnes handles [tool execution](/docs/guides/managing-tools/agnes-permissions) and [tool management](/docs/guides/managing-tools/).
 
 | Variable | Purpose | Values | Default |
 |----------|---------|---------|---------|
-| `AGNES_MODE` | Controls how Agnes handles tool execution | "auto", "approve", "chat", "smart_approve" | "smart_approve" |
+| `AGNES_MODE` | Controls how agnes handles tool execution | "auto", "approve", "chat", "smart_approve" | "smart_approve" |
 | `AGNES_TOOLSHIM` | Enables/disables tool call interpretation | "1", "true" (case-insensitive) to enable | false |
 | `AGNES_TOOLSHIM_OLLAMA_MODEL` | Specifies the model for [tool call interpretation](/docs/experimental/ollama) | Model name (e.g. llama3.2, qwen2.5) | System default |
 | `AGNES_CLI_MIN_PRIORITY` | Controls verbosity of [tool output](/docs/guides/managing-tools/adjust-tool-output) | Float between 0.0 and 1.0 | 0.0 |
-| `AGNES_CLI_TOOL_PARAMS_TRUNCATION_MAX_LENGTH` | Maximum length for tool parameter values before truncation in CLI output (not in debug mode) | Integer | 40 |
-| `AGNES_DEBUG` | Enables debug mode to show full tool parameters without truncation. Can also be toggled during a session using the `/r` [slash command](/docs/guides/goose-cli-commands#slash-commands) | "1", "true" (case-insensitive) to enable | false |
+| `AGNES_CLI_TOOL_PARAMS_TRUNCATION_MAX_LENGTH` | Maximum length for tool parameter values before truncation in CLI output (not in debug mode) | Integer |undefined|
+| `AGNES_DEBUG` | Enables debug mode to show full tool parameters without truncation. Can also be toggled during a session using the `/r` [slash command](/docs/guides/agnes-cli-commands#slash-commands) | "1", "true" (case-insensitive) to enable | false |
 | `AGNES_SEARCH_PATHS` | Prepends additional directories to PATH for extension commands | JSON array of paths (for example, `["/usr/local/bin", "~/custom/bin"]`) | System PATH only |
-| `AGNES_MAX_TOOL_RESPONSE_SIZE` | Maximum character count for a single tool response before it is written to a temporary file instead of being included inline in the conversation | Positive integer (e.g., 100000, 200000) | 200000 |
+| `AGNES_MAX_TOOL_RESPONSE_SIZE` | Maximum character count for a single tool response before it is written to a temporary file instead of being included inline in the conversation | Positive integer (e.g., 100000, 200000) |undefined|
 | `AGNES_SHELL` | Overrides the shell used for Developer extension shell commands | Shell executable path or name (for example, `/bin/zsh`, `pwsh`, `C:\cygwin64\bin\bash.exe`) | Unix: `/bin/bash` if present, otherwise `$SHELL`, otherwise `sh`. Windows: `cmd` |
 
 **Examples**
@@ -375,7 +375,7 @@ export AGNES_TOOLSHIM=true
 export AGNES_TOOLSHIM_OLLAMA_MODEL=llama3.2
 export AGNES_MODE="auto"
 export AGNES_CLI_MIN_PRIORITY=0.2  # Show only medium and high importance output
-export AGNES_CLI_TOOL_PARAMS_MAX_LENGTH=100  # Show up to 100 characters for tool parameters in CLI output
+export AGNES_CLI_TOOL_PARAMS_MAX_LENGTH=100  # Show up toundefinedcharacters for tool parameters in CLI output
 
 # Add custom tool directories for extensions
 export AGNES_SEARCH_PATHS='["/usr/local/bin", "~/custom/tools", "/opt/homebrew/bin"]'
@@ -460,15 +460,15 @@ export AGNES_TELEMETRY_ENABLED=true   # Enable telemetry
 ```
 
 :::tip
-When the keyring is disabled (or cannot be accessed and Agnes [falls back to file-based storage](/docs/troubleshooting/known-issues#keyring-cannot-be-accessed-automatic-fallback)), secrets are stored here:
+When the keyring is disabled (or cannot be accessed and agnes [falls back to file-based storage](/docs/troubleshooting/known-issues#keyring-cannot-be-accessed-automatic-fallback)), secrets are stored here:
 
-* macOS/Linux: `~/.agnes/secrets.yaml`
-* Windows: `%APPDATA%\Block\Agnes\config\secrets.yaml`
+* macOS/Linux: `~/.config/agnes/secrets.yaml`
+* Windows: `%APPDATA%\Block\agnes\config\secrets.yaml`
 :::
 
-### macOS Sandbox for Agnes Desktop
+### macOS Sandbox for agnes Desktop
 
-Optional [macOS sandbox](/docs/guides/sandbox) for Agnes Desktop that restricts file access, network connections, and process execution using Apple's `sandbox-exec` technology.
+Optional [macOS sandbox](/docs/guides/sandbox) for agnes Desktop that restricts file access, network connections, and process execution using Apple's `sandbox-exec` technology.
 
 | Variable | Purpose | Values | Default |
 |----------|---------|--------|---------|
@@ -476,11 +476,11 @@ Optional [macOS sandbox](/docs/guides/sandbox) for Agnes Desktop that restricts 
 
 ## Network Configuration
 
-These variables configure network proxy settings for Agnes.
+These variables configure network proxy settings for agnes.
 
 ### OAuth Callback Port
 
-By default, Agnes starts a temporary local server on a random port to receive OAuth callbacks. Enterprise identity providers that require exact `redirect_uri` matching (and forbid wildcard ports) will reject the callback. Set this variable to use a fixed port instead.
+By default, agnes starts a temporary local server on a random port to receive OAuth callbacks. Enterprise identity providers that require exact `redirect_uri` matching (and forbid wildcard ports) will reject the callback. Set this variable to use a fixed port instead.
 
 | Variable | Purpose | Values | Default |
 |----------|---------|---------|---------|
@@ -499,7 +499,7 @@ Then register the appropriate redirect URI in your identity provider:
 
 ### HTTP Proxy
 
-Agnes supports standard HTTP proxy environment variables for users behind corporate firewalls or proxy servers.
+agnes supports standard HTTP proxy environment variables for users behind corporate firewalls or proxy servers.
 
 | Variable | Purpose | Values | Default |
 |----------|---------|---------|---------|
@@ -523,11 +523,11 @@ Alternatively, proxy settings can be configured through your operating system's 
 
 ## Observability
 
-Beyond Agnes's built-in [logging system](/docs/guides/logs), you can export telemetry to external observability platforms for advanced monitoring, performance analysis, and production insights.
+Beyond agnes's built-in [logging system](/docs/guides/logs), you can export telemetry to external observability platforms for advanced monitoring, performance analysis, and production insights.
 
 ### Observability Configuration
 
-Configure Agnes to export telemetry to any [OpenTelemetry](https://opentelemetry.io/docs/) compatible platform.
+Configure agnes to export telemetry to any [OpenTelemetry](https://opentelemetry.io/docs/) compatible platform.
 
 To enable export, set a collector endpoint:
 
@@ -581,29 +581,29 @@ These variables configure the [Langfuse integration for observability](/docs/tut
 | `LANGFUSE_INIT_PROJECT_PUBLIC_KEY` | Alternative public key for Langfuse | String | None |
 | `LANGFUSE_INIT_PROJECT_SECRET_KEY` | Alternative secret key for Langfuse | String | None |
 
-## Agnes Server
+## agnes Server
 
-These variables configure the `goosed` server process. They are most often used when [running `goosed` on a remote machine](/docs/guides/remote-goose-server) and connecting Agnes Desktop to it, but they apply to any `goosed` invocation.
+These variables configure the `agnesd` server process. They are most often used when [running `agnesd` on a remote machine](/docs/guides/remote-agnes-server) and connecting agnes Desktop to it, but they apply to any `agnesd` invocation.
 
 | Variable | Purpose | Values | Default |
 |----------|---------|---------|---------|
 | `AGNES_HOST` | Interface the server binds to. Use `0.0.0.0` to accept connections from other machines; `localhost` or `127.0.0.1` restricts to the local machine. | Hostname or IP | `127.0.0.1` |
 | `AGNES_PORT` | TCP port the server listens on | Port number | `3000` |
-| `AGNES_TLS` | Enable TLS with a self-signed certificate. Required when connecting Agnes Desktop to a remote `goosed`. | `true`, `false` | `true` |
-| `AGNES_SERVER__SECRET_KEY` | Shared secret required in the `X-Secret-Key` header on all client requests. When set, it is also enforced on the `Agnes serve` ACP endpoint. | Secret string | Random (auto-generated) |
+| `AGNES_TLS` | Enable TLS with a self-signed certificate. Required when connecting agnes Desktop to a remote `agnesd`. | `true`, `false` | `true` |
+| `AGNES_SERVER__SECRET_KEY` | Shared secret required in the `X-Secret-Key` header on all client requests. When set, it is also enforced on the `agnes serve` ACP endpoint. | Secret string | Random (auto-generated) |
 
 **Examples**
 
 ```bash
-# Start a goosed server reachable on the local network over TLS
+# Start a agnesd server reachable on the local network over TLS
 export AGNES_HOST=0.0.0.0
 export AGNES_PORT=3000
 export AGNES_TLS=true
 export AGNES_SERVER__SECRET_KEY='a-long-random-secret'
-goosed agent
+agnesd agent
 ```
 
-When TLS is enabled, `goosed` prints a `GOOSED_CERT_FINGERPRINT=...` line on startup. Clients (such as Agnes Desktop) need this fingerprint to verify the self-signed certificate. See [Running a Remote Agnes Server](/docs/guides/remote-goose-server) for the full setup.
+When TLS is enabled, `agnesd` prints a `AGNESD_CERT_FINGERPRINT=...` line on startup. Clients (such as agnes Desktop) need this fingerprint to verify the self-signed certificate. See [Running a Remote agnes Server](/docs/guides/remote-agnes-server) for the full setup.
 
 ## Recipe Configuration
 
@@ -623,7 +623,7 @@ These variables control recipe discovery and management.
 export AGNES_RECIPE_PATH="/path/to/my/recipes:/path/to/team/recipes"
 
 # Configure GitHub recipe repository
-export AGNES_RECIPE_GITHUB_REPO="myorg/Agnes-recipes"
+export AGNES_RECIPE_GITHUB_REPO="myorg/agnes-recipes"
 
 # Set global recipe timeouts
 export AGNES_RECIPE_RETRY_TIMEOUT_SECONDS=300
@@ -632,63 +632,63 @@ export AGNES_RECIPE_ON_FAILURE_TIMEOUT_SECONDS=60
 
 ## Development & Testing
 
-These variables are primarily used for development, testing, and debugging Agnes itself.
+These variables are primarily used for development, testing, and debugging agnes itself.
 
 | Variable | Purpose | Values | Default |
 |----------|---------|---------|---------|
-| `AGNES_PATH_ROOT` | Override the root directory for all Agnes data, config, and state files | Absolute path to directory | Platform-specific defaults |
+| `AGNES_PATH_ROOT` | Override the root directory for all agnes data, config, and state files | Absolute path to directory | Platform-specific defaults |
 
 **Default locations:**
-- macOS: `~/Library/Application Support/Block/Agnes/`
-- Linux: `~/.local/share/Agnes/`
-- Windows: `%APPDATA%\Block\Agnes\`
+- macOS: `~/Library/Application Support/Block/agnes/`
+- Linux: `~/.local/share/agnes/`
+- Windows: `%APPDATA%\Block\agnes\`
 
-When set, Agnes creates `config/`, `data/`, and `state/` subdirectories under the specified path. Useful for isolating test environments, running multiple configurations, or CI/CD pipelines.
+When set, agnes creates `config/`, `data/`, and `state/` subdirectories under the specified path. Useful for isolating test environments, running multiple configurations, or CI/CD pipelines.
 
 **Examples**
 
 ```bash
 # Temporary test environment
-export AGNES_PATH_ROOT="/tmp/goose-test"
+export AGNES_PATH_ROOT="/tmp/agnes-test"
 
 # Isolated environment for a single command
-AGNES_PATH_ROOT="/tmp/Agnes-isolated" goose run --recipe my-recipe.yaml
+AGNES_PATH_ROOT="/tmp/agnes-isolated" agnes run --recipe my-recipe.yaml
 
 # CI/CD usage
-AGNES_PATH_ROOT="$(mktemp -d)" goose run --recipe integration-test.yaml
+AGNES_PATH_ROOT="$(mktemp -d)" agnes run --recipe integration-test.yaml
 
 # Use with developer tools
-AGNES_PATH_ROOT="/tmp/goose-test" ./scripts/Agnes-db-helper.sh status
+AGNES_PATH_ROOT="/tmp/agnes-test" ./scripts/agnes-db-helper.sh status
 ```
 
-## Variables Controlled by Agnes
+## Variables Controlled by agnes
 
-These variables are automatically set by Agnes during command execution.
+These variables are automatically set by agnes during command execution.
 
 | Variable | Purpose | Values | Default |
 |----------|---------|---------|---------|
-| `AGNES_TERMINAL` | Indicates that a command is being executed by Agnes, enables [customizing shell behavior](#customizing-shell-behavior) | "1" when set | Unset |
-| `AGENT` | Generic agent identifier for cross-tool compatibility, enables tools and scripts to detect when they're being run by Agnes | "Agnes" when set | Unset |
+| `AGNES_TERMINAL` | Indicates that a command is being executed by agnes, enables [customizing shell behavior](#customizing-shell-behavior) | "1" when set | Unset |
+| `AGENT` | Generic agent identifier for cross-tool compatibility, enables tools and scripts to detect when they're being run by agnes | "agnes" when set | Unset |
 | `AGENT_SESSION_ID` | The current session ID for [session-isolated workflows](#using-session-ids-in-workflows), automatically available to STDIO extensions and the Developer extension shell commands | Session ID string (e.g., `20260217_5`) | Unset (only set in extension/shell contexts) |
 
 ### Customizing Shell Behavior
 
-Sometimes you want Agnes to use different commands or have different shell behavior than your normal terminal usage. Common use cases include:
+Sometimes you want agnes to use different commands or have different shell behavior than your normal terminal usage. Common use cases include:
 - Skipping expensive shell initialization (e.g. syntax highlighting, custom prompts)
 - Blocking interactive commands that would hang the agent (e.g., `git commit`)
 - Redirecting to agent-friendly tools (e.g., `rg` instead of `find`)
 - Building cross-agent tools and scripts that detect AI agent execution
 - Integrating with MCP servers and LLM gateways
 
-This is most useful when using Agnes CLI, where shell commands are executed directly in your terminal environment.
+This is most useful when using agnes CLI, where shell commands are executed directly in your terminal environment.
 
 **How it works:**
 
-Agnes provides the `AGNES_TERMINAL` and `AGENT` variables you can use to detect whether Agnes is the executing agent.
+agnes provides the `AGNES_TERMINAL` and `AGENT` variables you can use to detect whether agnes is the executing agent.
 
-1. When goose runs commands:
+1. When agnes runs commands:
    - `AGNES_TERMINAL` is automatically set to "1"
-   - `AGENT` is automatically set to "Agnes"
+   - `AGENT` is automatically set to "agnes"
 2. Your shell configuration can detect this and change behavior while keeping your normal terminal usage unchanged
 
 **Examples:**
@@ -696,11 +696,11 @@ Agnes provides the `AGNES_TERMINAL` and `AGENT` variables you can use to detect 
 ```bash
 # In ~/.zshenv (for zsh users) or ~/.bashrc (for bash users)
 
-# Block git commit when run by Agnes
+# Block git commit when run by agnes
 if [[ -n "$AGNES_TERMINAL" ]]; then
   git() {
     if [[ "$1" == "commit" ]]; then
-      echo "❌ BLOCKED: git commit is not allowed when run by Agnes"
+      echo "❌ BLOCKED: git commit is not allowed when run by agnes"
       return 1
     fi
     command git "$@"
@@ -709,7 +709,7 @@ fi
 ```
 
 ```bash
-# Guide Agnes toward better tool choices
+# Guide agnes toward better tool choices
 if [[ -n "$AGNES_TERMINAL" ]]; then
   alias find="echo 'Use rg instead: rg --files | rg <pattern> for filenames, or rg <pattern> for content search'"
 fi
@@ -720,8 +720,8 @@ fi
 if [[ -n "$AGENT" ]]; then
   echo "Running under AI agent: $AGENT"
   # Apply agent-specific behavior if needed
-  if [[ "$AGENT" == "Agnes" ]]; then
-    echo "Detected Agnes - applying Agnes-specific settings"
+  if [[ "$AGENT" == "agnes" ]]; then
+    echo "Detected agnes - applying agnes-specific settings"
   fi
 fi
 ```
@@ -752,9 +752,9 @@ See [Environment Variables in Shell Commands](/docs/mcp/developer-mcp#environmen
 
 ## Enterprise Environments
 
-When deploying Agnes in enterprise environments, administrators might need to control behavior and infrastructure, or enforce consistent settings across teams. The following environment variables are commonly used:
+When deploying agnes in enterprise environments, administrators might need to control behavior and infrastructure, or enforce consistent settings across teams. The following environment variables are commonly used:
 
-**Network and Infrastructure** - Control how Agnes connects to external services and internal infrastructure:
+**Network and Infrastructure** - Control how agnes connects to external services and internal infrastructure:
 - [Network Configuration](#network-configuration) - Proxy configuration and network settings
 - [Advanced Provider Configuration](#advanced-provider-configuration) - Point to internal LLM endpoints (e.g., Databricks, custom deployments)
 - [Model Context Limit Overrides](#model-context-limit-overrides) - Configure context limits for LiteLLM proxies and custom models
@@ -770,5 +770,5 @@ When deploying Agnes in enterprise environments, administrators might need to co
 
 - Environment variables take precedence over configuration files.
 - For security-sensitive variables (like API keys), consider using the system keyring instead of environment variables.
-- Some variables may require restarting Agnes to take effect.
-- When using the planning mode, if planner-specific variables are not set, Agnes will fall back to the main model configuration.
+- Some variables may require restarting agnes to take effect.
+- When using the planning mode, if planner-specific variables are not set, agnes will fall back to the main model configuration.

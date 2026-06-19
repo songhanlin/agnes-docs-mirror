@@ -11,53 +11,53 @@ import WindowsDesktopInstallButtons from '@site/src/components/WindowsDesktopIns
 import LinuxDesktopInstallButtons from '@site/src/components/LinuxDesktopInstallButtons';
 import { PanelLeft } from 'lucide-react';
 
-# Install Agnes
+# Install agnes
 
 <Tabs>
   <TabItem value="mac" label="macOS" default>
-    Choose to install the Desktop and/or CLI version of Agnes:
+    Choose to install the Desktop and/or CLI version of agnes:
 
     <Tabs groupId="interface">
-      <TabItem value="ui" label="Agnes Desktop" default>
-        Install Agnes Desktop directly from the browser or with [Homebrew](https://brew.sh/).
+      <TabItem value="ui" label="agnes Desktop" default>
+        Install agnes Desktop directly from the browser or with [Homebrew](https://brew.sh/).
 
         <h3 style={{ marginTop: '1rem' }}>Option 1: Install via Download</h3>
         <MacDesktopInstallButtons/>
 
         <div style={{ marginTop: '1rem' }}>
           1. Unzip the downloaded zip file.
-          2. Run the executable file to launch the Agnes Desktop application.
+          2. Run the executable file to launch the agnes Desktop application.
 
-          :::tip Updating Agnes
-          It's best to periodically [update Agnes](/docs/guides/updating-Agnes).
+          :::tip Updating agnes
+          It's best to periodically [update agnes](/docs/guides/updating-agnes).
           :::
         </div>
         <h3>Option 2: Install via Homebrew</h3>
-        Homebrew downloads the [same app](https://github.com/Homebrew/homebrew-cask/blob/master/Casks/b/block-Agnes.rb) but can take care of updates too.
+        Homebrew downloads the [same app](https://github.com/Homebrew/homebrew-cask/blob/master/Casks/b/block-agnes.rb) but can take care of updates too.
         ```bash
-          brew install --cask block-Agnes
+          brew install --cask block-agnes
         ```
         ---
         <div style={{ marginTop: '1rem' }}>
           :::info Permissions
-          If you're on an Apple Mac M3 and the Agnes Desktop app shows no window on launch, check and update the following:
+          If you're on an Apple Mac M3 and the agnes Desktop app shows no window on launch, check and update the following:
 
           Ensure the `~/.config` directory has read and write access.
 
-          Agnes needs this access to create the log directory and file. Once permissions are granted, the app should load correctly. For steps on how to do this, refer to the  [Known Issues Guide](/docs/troubleshooting/known-issues#macos-permission-issues)
+          agnes needs this access to create the log directory and file. Once permissions are granted, the app should load correctly. For steps on how to do this, refer to the  [Known Issues Guide](/docs/troubleshooting/known-issues#macos-permission-issues)
           :::
         </div>
       </TabItem>
-      <TabItem value="cli" label="Agnes CLI">
-        Install Agnes directly from the browser or with [Homebrew](https://brew.sh/).
+      <TabItem value="cli" label="agnes CLI">
+        Install agnes directly from the browser or with [Homebrew](https://brew.sh/).
 
         <h3 style={{ marginTop: '1rem' }}>Option 1: Install via Download script</h3>
-        Run the following command to install the latest version of Agnes on macOS:
+        Run the following command to install the latest version of agnes on macOS:
 
         ```sh
         curl -fsSL https://github.com/aaif-goose/agnes/releases/download/stable/download_cli.sh | bash
         ```
-        This script will fetch the latest version of Agnes and set it up on your system.
+        This script will fetch the latest version of agnes and set it up on your system.
 
         If you'd like to install without interactive configuration, disable `CONFIGURE`:
 
@@ -65,28 +65,28 @@ import { PanelLeft } from 'lucide-react';
         curl -fsSL https://github.com/aaif-goose/agnes/releases/download/stable/download_cli.sh | CONFIGURE=false bash
         ```
 
-        :::tip Updating Agnes
-        It's best to keep goose updated. To update Agnes, run:
+        :::tip Updating agnes
+        It's best to keep agnes updated. To update agnes, run:
         ```sh
-        goose update
+        agnes update
         ```
         :::
 
         <h3>Option 2: Install via Homebrew</h3>
-        Homebrew downloads the [a precompiled CLI tool](https://github.com/Homebrew/homebrew-core/blob/master/Formula/b/block-goose-cli.rb) and can take care of updates.
+        Homebrew downloads the [a precompiled CLI tool](https://github.com/Homebrew/homebrew-core/blob/master/Formula/b/block-agnes-cli.rb) and can take care of updates.
         ```bash
-        brew install block-goose-cli
+        brew install block-agnes-cli
         ```
       </TabItem>
     </Tabs>
   </TabItem>
 
   <TabItem value="linux" label="Linux">
-    Choose to install the Desktop and/or CLI version of Agnes:
+    Choose to install the Desktop and/or CLI version of agnes:
 
     <Tabs groupId="interface">
-      <TabItem value="ui" label="Agnes Desktop" default>
-        Install Agnes Desktop directly from the browser.
+      <TabItem value="ui" label="agnes Desktop" default>
+        Install agnes Desktop directly from the browser.
 
         <h3 style={{ marginTop: '1rem' }}>Install via Download</h3>
         <LinuxDesktopInstallButtons/>
@@ -96,20 +96,20 @@ import { PanelLeft } from 'lucide-react';
           1. Download the DEB file
           2. Navigate to the directory where it is saved in a terminal
           3. Run `sudo dpkg -i (filename).deb`
-          4. Launch Agnes from the app menu
+          4. Launch agnes from the app menu
 
-          :::tip Updating Agnes
-          It's best to periodically [update Agnes](/docs/guides/updating-Agnes).
+          :::tip Updating agnes
+          It's best to periodically [update agnes](/docs/guides/updating-agnes).
           :::
         </div>
       </TabItem>
-      <TabItem value="cli" label="Agnes CLI">
-        Run the following command to install the Agnes CLI on Linux:
+      <TabItem value="cli" label="agnes CLI">
+        Run the following command to install the agnes CLI on Linux:
 
         ```sh
         curl -fsSL https://github.com/aaif-goose/agnes/releases/download/stable/download_cli.sh | bash
         ```
-        This script will fetch the latest version of Agnes and set it up on your system.
+        This script will fetch the latest version of agnes and set it up on your system.
 
         If you'd like to install without interactive configuration, disable `CONFIGURE`:
 
@@ -117,10 +117,10 @@ import { PanelLeft } from 'lucide-react';
         curl -fsSL https://github.com/aaif-goose/agnes/releases/download/stable/download_cli.sh | CONFIGURE=false bash
         ```
 
-        :::tip Updating Agnes
-        It's best to keep goose updated. To update Agnes, run:
+        :::tip Updating agnes
+        It's best to keep agnes updated. To update agnes, run:
         ```sh
-        goose update
+        agnes update
         ```
         :::
       </TabItem>
@@ -128,26 +128,26 @@ import { PanelLeft } from 'lucide-react';
   </TabItem>
 
   <TabItem value="windows" label="Windows">
-    Choose to install the Desktop and/or CLI version of Agnes:
+    Choose to install the Desktop and/or CLI version of agnes:
 
     <Tabs groupId="interface">
-      <TabItem value="ui" label="Agnes Desktop" default>
-        Install Agnes Desktop directly from the browser.
+      <TabItem value="ui" label="agnes Desktop" default>
+        Install agnes Desktop directly from the browser.
 
         <h3 style={{ marginTop: '1rem' }}>Install via Download</h3>
         <WindowsDesktopInstallButtons/>
 
         <div style={{ marginTop: '1rem' }}>
           1. Unzip the downloaded zip file.
-          2. Run the executable file to launch the Agnes Desktop application.
+          2. Run the executable file to launch the agnes Desktop application.
 
-          :::tip Updating Agnes
-          It's best to periodically [update Agnes](/docs/guides/updating-Agnes).
+          :::tip Updating agnes
+          It's best to periodically [update agnes](/docs/guides/updating-agnes).
           :::
         </div>
       </TabItem>
-      <TabItem value="cli" label="Agnes CLI">
-        To install Agnes natively on Windows, you need one of the following environments:
+      <TabItem value="cli" label="agnes CLI">
+        To install agnes natively on Windows, you need one of the following environments:
         - **Git Bash** (recommended): Comes with [Git for Windows](https://git-scm.com/download/win)
         - **MSYS2**: Available from [msys2.org](https://www.msys2.org/)
         - **PowerShell**: Available on Windows 10/11 by default
@@ -170,13 +170,13 @@ import { PanelLeft } from 'lucide-react';
         ```powershell
         Invoke-WebRequest -Uri "https://raw.githubusercontent.com/aaif-goose/agnes/main/download_cli.ps1" -OutFile "download_cli.ps1";
         ```
-        Then run the script to install Agnes:
+        Then run the script to install agnes:
         ```powershell
         .\download_cli.ps1
         ```
 
         :::info Windows PATH Setup
-        If you see a warning that Agnes is not in your PATH, you need to add Agnes to your PATH:
+        If you see a warning that agnes is not in your PATH, you need to add agnes to your PATH:
 
         <details>
           <summary>For Git Bash/MSYS2</summary>
@@ -198,13 +198,13 @@ import { PanelLeft } from 'lucide-react';
           ```
         </details>
 
-        After updating your PATH, you can run `Agnes` commands from any directory.
+        After updating your PATH, you can run `agnes` commands from any directory.
         :::
 
         <details>
         <summary>Install via Windows Subsystem for Linux (WSL)</summary>
 
-          We recommend running the Agnes CLI natively on Windows, but you can use WSL if you prefer a Linux-like environment.
+          We recommend running the agnes CLI natively on Windows, but you can use WSL if you prefer a Linux-like environment.
 
           1. Open [PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows) as Administrator and install WSL and the default Ubuntu distribution:
 
@@ -218,7 +218,7 @@ import { PanelLeft } from 'lucide-react';
           wsl -d Ubuntu
           ```
 
-          3. Run the Agnes installation script:
+          3. Run the agnes installation script:
           ```bash
           curl -fsSL https://github.com/aaif-goose/agnes/releases/download/stable/download_cli.sh | bash
           ```
@@ -236,7 +236,7 @@ import { PanelLeft } from 'lucide-react';
           curl -fsSL https://github.com/aaif-goose/agnes/releases/download/stable/download_cli.sh | CONFIGURE=false bash
           ```
 
-          If needed, add Agnes to your path:
+          If needed, add agnes to your path:
 
           ```
           echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
@@ -251,14 +251,14 @@ import { PanelLeft } from 'lucide-react';
 </Tabs>
 
 ## Set LLM Provider
-Agnes works with [supported LLM providers][providers] that give Agnes the AI intelligence it needs to understand your requests. On first use, you'll be prompted to configure your preferred provider.
+agnes works with [supported LLM providers][providers] that give agnes the AI intelligence it needs to understand your requests. On first use, you'll be prompted to configure your preferred provider.
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
-    On the welcome screen the first time you open Agnes, choose how to configure a provider:
+  <TabItem value="ui" label="agnes Desktop" default>
+    On the welcome screen the first time you open agnes, choose how to configure a provider:
     <OnboardingProviderSetup />
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     The CLI automatically enters configuration mode where you can choose how to configure a provider:
 
     - **OpenRouter Login** - Sign in with OpenRouter to automatically configure models
@@ -268,13 +268,13 @@ Agnes works with [supported LLM providers][providers] that give Agnes the AI int
     Example configuration flow:
 
     ```
-    ┌   Agnes-configure
+    ┌   agnes-configure
     │
     ◇ How would you like to set up your provider?
     │ Tetrate Agent Router Service Login
     │
     Opening browser for Tetrate Agent Router Service authentication...
-    [Agnes opens the browser and prints details]
+    [agnes opens the browser and prints details]
 
     Authentication complete!
 
@@ -285,7 +285,7 @@ Agnes works with [supported LLM providers][providers] that give Agnes the AI int
     Testing configuration...
     ✓ Configuration test passed!
     ✓ Developer extension enabled!
-    └ Tetrate Agent Router Service setup complete! You can now use Agnes.
+    └ Tetrate Agent Router Service setup complete! You can now use agnes.
   ```
 
   :::info Windows Users
@@ -295,7 +295,7 @@ Agnes works with [supported LLM providers][providers] that give Agnes the AI int
   export OPENAI_API_KEY={your_api_key}
   ```
 
-  Then run `goose configure` again. Agnes will detect the environment variable and display:
+  Then run `agnes configure` again. agnes will detect the environment variable and display:
 
   ```
   ● OPENAI_API_KEY is set via environment variable
@@ -315,23 +315,23 @@ Agnes works with [supported LLM providers][providers] that give Agnes the AI int
 :::
 
 :::info Free Credits Offer
-You'll receive $10 in free credits the first time you automatically authenticate with Tetrate through Agnes. This offer is available to both new and existing Tetrate users.
+You'll receive $10 in free credits the first time you automatically authenticate with Tetrate through agnes. This offer is available to both new and existing Tetrate users.
 :::
 
 ## Update Provider
 You can change your LLM provider and/or model or update your API key at any time.
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar.
     2. Click the `Settings` button on the sidebar.
     3. Click the `Models` tab.
     4. Choose to update your provider, switch models, or click `Reset Provider and Model` to clear your settings and return to the welcome screen. See details about these [configuration options](/docs/getting-started/providers#configure-provider-and-model).
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
     1. Run the following command:
     ```sh
-    goose configure
+    agnes configure
     ```
     2. Select `Configure Providers` from the menu.
     3. Follow the prompts to choose your LLM provider and enter or update your API key.
@@ -341,7 +341,7 @@ You can change your LLM provider and/or model or update your API key at any time
     To select an option during configuration, use the up and down arrows to highlight your choice then press Enter.
 
     ```
-    ┌   Agnes-configure
+    ┌   agnes-configure
     │
     ◇ What would you like to configure?
     │ Configure Providers
@@ -364,67 +364,67 @@ You can change your LLM provider and/or model or update your API key at any time
 
 <RateLimits />
 
-## Running Agnes
+## Running agnes
 
 <Tabs groupId="interface">
-    <TabItem value="ui" label="Agnes Desktop" default>
-        Starting a session in the Agnes Desktop is straightforward. After choosing your provider, you'll see the session interface ready for use.
+    <TabItem value="ui" label="agnes Desktop" default>
+        Starting a session in the agnes Desktop is straightforward. After choosing your provider, you'll see the session interface ready for use.
 
-        Type your questions, tasks, or instructions directly into the input field, and Agnes will get to work immediately.
+        Type your questions, tasks, or instructions directly into the input field, and agnes will get to work immediately.
     </TabItem>
-    <TabItem value="cli" label="Agnes CLI">
+    <TabItem value="cli" label="agnes CLI">
         From your terminal, navigate to the directory you'd like to start from and run:
         ```sh
-        goose session
+        agnes session
         ```
     </TabItem>
 </Tabs>
 
 ## Shared Configuration Settings
 
-The Agnes CLI and Desktop UI share all core configurations, including LLM provider settings, model selection, and extension configurations. When you install or configure extensions in either interface, the settings are stored in a central location, making them available to both the Desktop application and CLI. This makes it convenient to switch between interfaces while maintaining consistent settings. For more information, visit the [Config Files][config-files] guide.
+The agnes CLI and Desktop UI share all core configurations, including LLM provider settings, model selection, and extension configurations. When you install or configure extensions in either interface, the settings are stored in a central location, making them available to both the Desktop application and CLI. This makes it convenient to switch between interfaces while maintaining consistent settings. For more information, visit the [Config Files][config-files] guide.
 
 :::info
 While core configurations are shared between interfaces, extensions have flexibility in how they store authentication credentials. Some extensions may use the shared config files while others implement their own storage methods.
 :::
 
 <Tabs groupId="interface">
-    <TabItem value="ui" label="Agnes Desktop" default>
+    <TabItem value="ui" label="agnes Desktop" default>
         Navigate to shared configurations through:
         1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar.
         2. Click the `Settings` button on the sidebar.
     </TabItem>
-    <TabItem value="cli" label="Agnes CLI">
+    <TabItem value="cli" label="agnes CLI">
         Use the following command to manage shared configurations:
         ```sh
-        goose configure
+        agnes configure
         ```
     </TabItem>
 </Tabs>
 
-## Pin a Agnes version in CI/CD
-In CI/CD (and other automated, non-interactive environments), pin a specific version with `AGNES_VERSION` to make installs reproducible and avoid 404s when downloading the Agnes CLI binary assets if the `stable` release tag doesn’t include them.
+## Pin a agnes version in CI/CD
+In CI/CD (and other automated, non-interactive environments), pin a specific version with `AGNES_VERSION` to make installs reproducible and avoid 404s when downloading the agnes CLI binary assets if the `stable` release tag doesn’t include them.
 
 See [CI/CD Environments](/docs/tutorials/cicd) for a complete example and usage details.
 
 ## Generate manpages for Linux distributions
 
-If you're packaging Agnes for a Linux distribution or creating a custom build, you can generate Unix manpages from the CLI command definitions:
+If you're packaging agnes for a Linux distribution or creating a custom build, you can generate Unix manpages from the CLI command definitions:
 
 ```bash
 just generate-manpages
 ```
 
-This creates ROFF-formatted manpages in `target/man/` (e.g., `Agnes.1`, `Agnes-session.1`) that can be installed to `/usr/share/man/man1/` to provide offline documentation via the `man` command.
+This creates ROFF-formatted manpages in `target/man/` (e.g., `agnes.1`, `agnes-session.1`) that can be installed to `/usr/share/man/man1/` to provide offline documentation via the `man` command.
 
-Manpage generation requires the Agnes source repository and is intended for distribution packagers preparing packages for Fedora, Debian, and other Linux distributions. See the [generate_manpages.rs source](https://github.com/aaif-goose/agnes/blob/main/crates/goose-cli/src/bin/generate_manpages.rs) for implementation details.
+Manpage generation requires the agnes source repository and is intended for distribution packagers preparing packages for Fedora, Debian, and other Linux distributions. See the [generate_manpages.rs source](https://github.com/aaif-goose/agnes/blob/main/crates/agnes-cli/src/bin/generate_manpages.rs) for implementation details.
 
 ## Additional Resources
 
-You can also configure Extensions to extend Agnes's functionality, including adding new ones or toggling them on and off. For detailed instructions, visit the [Using Extensions Guide][using-extensions].
+You can also configure Extensions to extend agnes's functionality, including adding new ones or toggling them on and off. For detailed instructions, visit the [Using Extensions Guide][using-extensions].
 
 [using-extensions]: /docs/getting-started/using-extensions
 [providers]: /docs/getting-started/providers
-[handling-rate-limits]: /docs/guides/handling-llm-rate-limits-with-Agnes
+[handling-rate-limits]: /docs/guides/handling-llm-rate-limits-with-agnes
 [mcp]: https://www.anthropic.com/news/model-context-protocol
 [config-files]: /docs/guides/config-files.md

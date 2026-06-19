@@ -2,65 +2,65 @@
 sidebar_position: 56
 title: MCP Roots
 sidebar_label: MCP Roots
-description: How Agnes shares your working directory with roots-aware MCP extensions
+description: How agnes shares your working directory with roots-aware MCP extensions
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { PanelLeft } from 'lucide-react';
 
-MCP Roots lets Agnes share your session working directory with roots-aware MCP extensions.
+MCP Roots lets agnes share your session working directory with roots-aware MCP extensions.
 
 This helps extensions understand which folder to use as the active workspace for the current session.
 
 :::info
-[MCP Roots](https://modelcontextprotocol.io/specification/2025-06-18/client/roots) is a feature in the Model Context Protocol. Agnes automatically enables it for MCP extensions that support roots.
+[MCP Roots](https://modelcontextprotocol.io/specification/2025-06-18/client/roots) is a feature in the Model Context Protocol. agnes automatically enables it for MCP extensions that support roots.
 :::
 
 ## How MCP Roots Works
 
-When Agnes connects to an MCP extension, it advertises roots support during MCP initialization.
+When agnes connects to an MCP extension, it advertises roots support during MCP initialization.
 
 An extension that supports roots can then:
 
-- Request the current root list from Agnes
+- Request the current root list from agnes
 - Treat that root as the active workspace boundary
 - React if the root changes during the session
 
-In Agnes, the root list currently contains one entry:
+In agnes, the root list currently contains one entry:
 
 - Your current session working directory
 
-If you change the session working directory, goose updates the root and notifies connected extensions automatically.
+If you change the session working directory, agnes updates the root and notifies connected extensions automatically.
 
 ## Using MCP Roots
 
-There is no separate "Roots" settings screen in Agnes. MCP Roots follows the working directory you are already using for the session.
+There is no separate "Roots" settings screen in agnes. MCP Roots follows the working directory you are already using for the session.
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
 
-  In Agnes Desktop, the current working directory appears at the bottom of the chat window.
+  In agnes Desktop, the current working directory appears at the bottom of the chat window.
 
   1. Click the directory display to choose a different folder
-  2. goose updates the session working directory
+  2. agnes updates the session working directory
   3. Connected roots-aware extensions receive the updated root automatically
 
   To change directories:
 
   1. Click the <PanelLeft className="inline" size={16} /> button if needed and open a session
   2. Use the directory control shown at the bottom of the chat window
-  3. Pick the folder you want Agnes and your extensions to work in
+  3. Pick the folder you want agnes and your extensions to work in
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
 
-  In Agnes CLI, the session root follows the directory where you launch Agnes.
+  In agnes CLI, the session root follows the directory where you launch agnes.
 
-  - Start Agnes from the project folder you want to work in
-  - When resuming a session, Agnes may prompt you to switch back to that session's original working directory
+  - Start agnes from the project folder you want to work in
+  - When resuming a session, agnes may prompt you to switch back to that session's original working directory
 
-  This means roots-aware extensions see the same workspace directory that Agnes is already using in the CLI.
+  This means roots-aware extensions see the same workspace directory that agnes is already using in the CLI.
 
   </TabItem>
 </Tabs>
@@ -69,7 +69,7 @@ There is no separate "Roots" settings screen in Agnes. MCP Roots follows the wor
 
 MCP Roots is useful for extensions that need to work with local files or understand your project structure.
 
-Without roots, an extension may need to guess which folder you mean or rely on custom configuration. With roots, Agnes can tell the extension which directory is currently in scope for the session.
+Without roots, an extension may need to guess which folder you mean or rely on custom configuration. With roots, agnes can tell the extension which directory is currently in scope for the session.
 
 For example, an extension can use roots to:
 
@@ -80,12 +80,12 @@ For example, an extension can use roots to:
 
 ## Current Limitations
 
-Agnes currently exposes a single root per session rather than a multi-folder workspace. For most workflows, this maps cleanly to how Agnes already works: one active project directory at a time.
+agnes currently exposes a single root per session rather than a multi-folder workspace. For most workflows, this maps cleanly to how agnes already works: one active project directory at a time.
 
 If you want an extension to work in a different location, change the session working directory first.
 
 ## For Extension Developers
 
-If you're building an MCP extension for Agnes, support for roots allows your extension to discover the active workspace directory in a standard way instead of relying on custom configuration.
+If you're building an MCP extension for agnes, support for roots allows your extension to discover the active workspace directory in a standard way instead of relying on custom configuration.
 
 For protocol details, see the [MCP Roots specification](https://modelcontextprotocol.io/specification/2025-06-18/client/roots).

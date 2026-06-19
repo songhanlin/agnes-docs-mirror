@@ -13,23 +13,23 @@ Starting a project without a clear plan is like building a house without a bluep
 * Wasted time and effort
 * Projects that grow too big
 
-A good plan keeps everyone on track and helps measure progress. That's why the Agnes CLI includes the `/plan` prompt completion command to help break down your projects into clear, manageable steps.
+A good plan keeps everyone on track and helps measure progress. That's why the agnes CLI includes the `/plan` prompt completion command to help break down your projects into clear, manageable steps.
  
-:::tip Plans in the Agnes Desktop
-The Agnes Desktop doesn't have a `plan` keyword. If you want Agnes Desktop to create a plan for you, you need to use a prompt like:
+:::tip Plans in the agnes Desktop
+The agnes Desktop doesn't have a `plan` keyword. If you want agnes Desktop to create a plan for you, you need to use a prompt like:
 
 ```
-"Hey Agnes, can you create a plan to convert my CLI project into a locally hosted web page that gives me input fields for each CLI command I can run? Please don't start the actual work"
+"Hey agnes, can you create a plan to convert my CLI project into a locally hosted web page that gives me input fields for each CLI command I can run? Please don't start the actual work"
 ```
-Unless you ask Agnes to "create a plan", it might just start into the project work. 
+Unless you ask agnes to "create a plan", it might just start into the project work. 
 :::
 
-The Agnes CLI's plan mode is interactive, asking clarifying questions to understand your project before creating a plan. If you can provide thoughtful and informative answers to those questions, Agnes can generate a really useful and actionable plan.
+The agnes CLI's plan mode is interactive, asking clarifying questions to understand your project before creating a plan. If you can provide thoughtful and informative answers to those questions, agnes can generate a really useful and actionable plan.
 
 ## Set your planner provider and model
 In some workflows, it can be helpful to use one LLM for planning and a different one for execution. For example, GPT-4.1 tends to excel at strategic planning and breaking down complex tasks into clear, logical steps. On the other hand, Claude Sonnet 3.5 is particularly strong at writing clean, efficient code and following instructions precisely. By using GPT-4.1 to plan and Claude to execute, you can play to the strengths of both models and get better results overall.
 
-The Agnes CLI plan mode uses two configuration values:
+The agnes CLI plan mode uses two configuration values:
 
 - `AGNES_PLANNER_PROVIDER`: Which provider to use for planning
 - `AGNES_PLANNER_MODEL`: Which model to use for planning
@@ -39,37 +39,37 @@ You can combine planning mode with a different default execution model to balanc
 :::
 
 :::tip Customize Plan Format
-You can also customize how Agnes creates plans by editing the `plan.md` [prompt template](/docs/guides/context-engineering/prompt-templates).
+You can also customize how agnes creates plans by editing the `plan.md` [prompt template](/docs/guides/context-engineering/prompt-templates).
 :::
 
-### Set Agnes planner environment variables
+### Set agnes planner environment variables
 You might add these lines to your bash shell config file (.bashrc) to add the planner environment variables:
 ```bash
 export AGNES_PLANNER_PROVIDER=<my-chosen-provider>
 export AGNES_PLANNER_MODEL=<my-chosen-model>
 ```
-After you save your changes to the config file, you need to re-start your goose session so that Agnes can use the variables.
+After you save your changes to the config file, you need to re-start your agnes session so that agnes can use the variables.
 
-If these aren't set, Agnes will use your default provider and model settings. You might want to set different planning models if you find certain models are better at breaking down tasks into clear steps. However, your default model configuration is usually sufficient.
+If these aren't set, agnes will use your default provider and model settings. You might want to set different planning models if you find certain models are better at breaking down tasks into clear steps. However, your default model configuration is usually sufficient.
 
 To verify that the planner provider is set, input the following terminal command:
 
 ```bash
-~ goose info -v
+~ agnes info -v
 ```
 
 In this example, the `info` command returns the current configuration and the path to the configuration file.  
 
 ```bash
-Agnes Version:
+agnes Version:
   Version:          1.0.18
 
-Agnes Locations:
-  Config file:      /Users/alincoln/.config/Agnes/config.yaml
-  Sessions dir:     /Users/alincoln/.local/share/Agnes/sessions
-  Logs dir:         /Users/alincoln/.local/state/Agnes/logs
+agnes Locations:
+  Config file:      /Users/alincoln/.config/agnes/config.yaml
+  Sessions dir:     /Users/alincoln/.local/share/agnes/sessions
+  Logs dir:         /Users/alincoln/.local/state/agnes/logs
 
-Agnes Configuration:
+agnes Configuration:
   AGNES_PROVIDER: anthropic
   AGNES_MODEL: claude-3.5-sonnet
   AGNES_PLANNER_PROVIDER: openai
@@ -80,10 +80,10 @@ Agnes Configuration:
  If either `AGNES_PLANNER_PROVIDER` or `AGNES_PLANNER_MODEL` are not set, `AGNES_PROVIDER` and `AGNES_MODEL`are used to build your plan.  
 
 ## Describe your project
-While Agnes can handle complex project descriptions, it works best with clear, concise ones. Focus on stating your project's purpose and desired outcomes. If these aren't clear, Agnes will ask clarifying questions until it fully understands your goals. 
+While agnes can handle complex project descriptions, it works best with clear, concise ones. Focus on stating your project's purpose and desired outcomes. If these aren't clear, agnes will ask clarifying questions until it fully understands your goals. 
 
 ## A simple construction plan example
-Agnes can produce good plans for relatively simple projects such as the home construction example:
+agnes can produce good plans for relatively simple projects such as the home construction example:
 
 ```bash
 ( O)> /plan
@@ -104,7 +104,7 @@ I need to gather more information before creating a detailed house-building plan
 7. Do you have any specific sustainability or energy efficiency requirements?
 8. What is your timeline for completion?
 
-( O)> 1 construction steps and a project management timeline. 2 $600,000. 3 4,000 sq feet. 4 the lot is not yet selected. 5 one story rambler. 6 four bedrooms, two ful baths, a kitchen, diningroom, family room, and garage. 7 the house must be efficient and powered by solar energy. 8 complete in six months. 
+( O)>aaif-gooseconstruction steps and a project management timeline.undefined$600,000.undefined4,000 sq feet.undefinedthe lot is not yet selected.undefinedone story rambler.undefinedfour bedrooms, two ful baths, a kitchen, diningroom, family room, and garage.undefinedthe house must be efficient and powered by solar energy.undefinedcomplete in six months. 
 ◓  Taming tensors...                                                                                                          I'll create a detailed plan for building a 4,000 sq ft, one-story rambler with four bedrooms, two full bathrooms, kitchen, dining room, family room, garage, and home office. The house will be energy efficient with solar power, with a $600,000 budget and 6-month timeline.
 
 ◇  Do you want to clear message history & act on this plan?
@@ -145,7 +145,7 @@ Given that no extensions are currently available for more specific tools or data
 * Search for available extensions using the <function=platform__search_available_extensions>{}</function>
 
 ```
-The home construction plan remains high-level because Agnes's current models specialize in technology and software development rather than construction. This is why projects like our first example—building a web application—receive more detailed planning and specific guidance.
+The home construction plan remains high-level because agnes's current models specialize in technology and software development rather than construction. This is why projects like our first example—building a web application—receive more detailed planning and specific guidance.
 
 ### Create a separate plan for plan sub-steps
 Let's return to the home construction example. While the plan includes hiring an architect, this high-level step needs more detail – such as what type of architect to hire and how to navigate the selection process.
@@ -153,7 +153,7 @@ Let's return to the home construction example. While the plan includes hiring an
 ```
 - **Architectural Design**: Hire an architect to design the house, ensuring it meets your space requirements and is energy efficient. Consider factors like natural lighting, insulation, and window placement.
 ```
-If you exit plan mode while reviewing your construction plan, you can always resume it to continue working with Agnes. 
+If you exit plan mode while reviewing your construction plan, you can always resume it to continue working with agnes. 
 
 ```
 ( O)> /plan hire an architect
@@ -174,12 +174,12 @@ Entering plan mode. You can provide instructions to create a plan and then act o
 10. How involved do you want to be in the design process?
 ```
 
-After gathering information through clarifying questions, Agnes creates a detailed plan for hiring an architect. This sub-plan integrates with the larger home construction project, with steps that reflect and support the overall construction context.
+After gathering information through clarifying questions, agnes creates a detailed plan for hiring an architect. This sub-plan integrates with the larger home construction project, with steps that reflect and support the overall construction context.
 
 ## A development project example
-In this example, a developer has written a CLI in Python that interacts with the Contentful CMS to let a user search for strings and replace them with new strings. As a website, the search/replace feature would be more usable and also allow for a larger set of features. The developer is using the Agnes CLI to plan the conversion project.
+In this example, a developer has written a CLI in Python that interacts with the Contentful CMS to let a user search for strings and replace them with new strings. As a website, the search/replace feature would be more usable and also allow for a larger set of features. The developer is using the agnes CLI to plan the conversion project.
 
-If Agnes believes the project can be completed in many different ways and using a wide variety of components, it will ask you a clarifying question for each of these decision points. For example, if you start a plan like this:
+If agnes believes the project can be completed in many different ways and using a wide variety of components, it will ask you a clarifying question for each of these decision points. For example, if you start a plan like this:
 
 ```bash 
 ( O)> /plan
@@ -188,10 +188,10 @@ Entering plan mode. You can provide instructions to create a plan and then act o
 
 ( O)> Convert the CLI built by search_replace_routes.py into a web page
 ```
-Agnes parses your project description, consults with the LLM mode you've configured, and then if it needs more information, starts a round of clarifying questions.
+agnes parses your project description, consults with the LLM mode you've configured, and then if it needs more information, starts a round of clarifying questions.
 
 ## Clarifying questions
-Converting a Python CLI into a website seems simple enough but Agnes will have questions about things like styling, authentication, features, technology stack, and more. You might see questions like this:
+Converting a Python CLI into a website seems simple enough but agnes will have questions about things like styling, authentication, features, technology stack, and more. You might see questions like this:
 
 ```bash
 1. Should the application support any keyboard shortcuts for common actions?
@@ -204,25 +204,25 @@ Converting a Python CLI into a website seems simple enough but Agnes will have q
 You can answer the questions one at a time or you can batch your answers:
 
 ```bash
-( O)> 1 no keyboard shortcuts. 2 do not remember preferences. 3 on success, open a dialog that says "success". 4 Truncate to 30 characters before the string to replace and then 30 characters after the string to replace.5 no CI/CD requirements 
+( O)>aaif-gooseno keyboard shortcuts.undefineddo not remember preferences.undefinedon success, open a dialog that says "success".undefinedTruncate toundefinedcharacters before the string to replace and thenundefinedcharacters after the string to replace.5 no CI/CD requirements 
 ```
 
 
 :::tip
-When Agnes requests a project artifact like source code during plan mode, you'll need to paste the content directly into the chat. Simply copying the file contents and prefixing it with a brief description like 'Here's the requested code:' is sufficient. Note that providing just a file path won't work in plan mode.
+When agnes requests a project artifact like source code during plan mode, you'll need to paste the content directly into the chat. Simply copying the file contents and prefixing it with a brief description like 'Here's the requested code:' is sufficient. Note that providing just a file path won't work in plan mode.
 :::
 
-When answering multiple questions, number your responses to match each question. For example, instead of answering with a simple 'no' or 'don't remember', provide context like '2. Do not store my preferences.' This helps Agnes track which questions have been answered and prevents repeated questions.
+When answering multiple questions, number your responses to match each question. For example, instead of answering with a simple 'no' or 'don't remember', provide context like '2. Do not store my preferences.' This helps agnes track which questions have been answered and prevents repeated questions.
 
-In complex projects like converting a CLI to a website, Agnes may ask multiple rounds of clarifying questions. Each round typically stems from new information in your previous answers or when additional details are needed about specific aspects of your project.
+In complex projects like converting a CLI to a website, agnes may ask multiple rounds of clarifying questions. Each round typically stems from new information in your previous answers or when additional details are needed about specific aspects of your project.
 
-If you've answered _all_ of Agnes's questions and it has no more questions, Agnes will generate the plan. Other times, you might think Agnes will never run out of questions. If you want your plan and don't want to answer more questions, you can simply ask for a "generic" plan:
+If you've answered _all_ of agnes's questions and it has no more questions, agnes will generate the plan. Other times, you might think agnes will never run out of questions. If you want your plan and don't want to answer more questions, you can simply ask for a "generic" plan:
 
 ```bash
 I still need some critical information to create a comprehensive plan:
 
 1. What specific functionality does your Python script perform with Contentful? Could you share the actual code or describe how it interacts with the Contentful API to search and replace content?
-2. What are the 5 predefined keys/inputs you mentioned earlier?
+2. What are theundefinedpredefined keys/inputs you mentioned earlier?
 3. Should the web application include all the command-line options from the script (environment, status, case-sensitive, partial-match, dry-run)?
 4. How should the application handle errors from the Contentful API?
 5. Should the application maintain any history of previous search/replace operations?
@@ -230,7 +230,7 @@ I still need some critical information to create a comprehensive plan:
 Without this information, I can only provide a generic plan that might not accurately capture your requirements.
 ( O)> please provide a generic plan
 ```
-While Agnes creates a standardized plan format, it customizes the content based on your answers. Agnes can generate the code needed to implement the steps of the plan it produces. You should review the plan and any code that it generates before ending plan mode (`/endplan`) and asking Agnes to implement the plan. 
+While agnes creates a standardized plan format, it customizes the content based on your answers. agnes can generate the code needed to implement the steps of the plan it produces. You should review the plan and any code that it generates before ending plan mode (`/endplan`) and asking agnes to implement the plan. 
 
 Below is a sample plan for this project, with the generated website code omitted for brevity:
 
@@ -301,22 +301,22 @@ This plan provides a comprehensive framework for converting your CLI script to a
 
 
 ## Basic usage
-You need to have an active goose session before you can put the CLI into plan mode. If you are going to dedicate a session to creating a plan, you should give your new session a name as in the following example:
+You need to have an active agnes session before you can put the CLI into plan mode. If you are going to dedicate a session to creating a plan, you should give your new session a name as in the following example:
 
 ```bash
-~ goose session -n web-project-plan
+~ agnes session -n web-project-plan
 starting session | provider: databricks model: databricks-meta-llama
     session id: 20251110_5
     working directory: /Users/alincoln
 
-Agnes is running! Enter your instructions, or try asking what Agnes can do.
+agnes is running! Enter your instructions, or try asking what agnes can do.
 ```
 To enter planning mode, type `/plan`.  Optionally, you can append your plan description to the prompt completion command.
 ```bash
 ( O)> /plan  Build a four bedroom house
 ```
 
- Plan mode in the CLI is a special interaction mode where goose helps break down tasks into manageable steps.  If you want to close the plan mode and return to the active session, type `/endplan`.
+ Plan mode in the CLI is a special interaction mode where agnes helps break down tasks into manageable steps.  If you want to close the plan mode and return to the active session, type `/endplan`.
 
 ```bash
 ( O)> /endplan

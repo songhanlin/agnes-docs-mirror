@@ -30,12 +30,12 @@ import VideoCarousel from '@site/src/components/VideoCarousel';
   <div className={styles.cardGrid}>
     <Card 
       title="Reusable Recipes"
-      description="Share a goose session setup (including tools, goals, and instructions) as a reusable recipe that others can launch with a single click."
+      description="Share a agnes session setup (including tools, goals, and instructions) as a reusable recipe that others can launch with a single click."
       link="/docs/guides/recipes/session-recipes"
     />
     <Card 
       title="Recipe Reference Guide"
-      description="Complete technical reference for creating and customizing recipes in Agnes via the CLI."
+      description="Complete technical reference for creating and customizing recipes in agnes via the CLI."
       link="/docs/guides/recipes/recipe-reference"
     />
     <Card 
@@ -44,8 +44,8 @@ import VideoCarousel from '@site/src/components/VideoCarousel';
       link="/docs/guides/context-engineering/slash-commands"
     />
     <Card 
-      title="Agnes Recipes Tutorial"
-      description="Learn how to create and use goose recipes with prompts, parameters, MCP servers, and more."
+      title="agnes Recipes Tutorial"
+      description="Learn how to create and use agnes recipes with prompts, parameters, MCP servers, and more."
       link="/docs/tutorials/recipes-tutorial"
     />
     <Card 
@@ -55,7 +55,7 @@ import VideoCarousel from '@site/src/components/VideoCarousel';
     />
     <Card 
       title="Saving Recipes"
-      description="Learn how to save, organize, and find your goose recipes for easy access and reuse."
+      description="Learn how to save, organize, and find your agnes recipes for easy access and reuse."
       link="/docs/guides/recipes/storing-recipes"
     />
     <Card 
@@ -71,7 +71,7 @@ import VideoCarousel from '@site/src/components/VideoCarousel';
   <div className={styles.cardGrid}>
     <Card 
       title="Recipe Generator"
-      description="Interactive tool that creates a shareable goose recipe URL that others can use to launch a session with your predefined settings."
+      description="Interactive tool that creates a shareable agnes recipe URL that others can use to launch a session with your predefined settings."
       link="/recipe-generator"
     />
     <Card 
@@ -107,14 +107,14 @@ import VideoCarousel from '@site/src/components/VideoCarousel';
     { 
       type: 'iframe', 
       src: 'https://youtube.com/embed/1szmJSKInnU',
-      title: 'Advanced Tips for Recipes/Subrecipes in Agnes',
-      description: 'Advanced tips for using recipes and subrecipes in Agnes',
+      title: 'Advanced Tips for Recipes/Subrecipes in agnes',
+      description: 'Advanced tips for using recipes and subrecipes in agnes',
       duration: '10:07'
     },
     { 
       type: 'iframe', 
       src: 'https://youtube.com/embed/gvg7DomaJuA',
-      title: 'Headless Agnes, Scheduling a Parallel-Subagent Recipe',
+      title: 'Headless agnes, Scheduling a Parallel-Subagent Recipe',
       description: 'Schedule a recipe to run two subagents in parallel',
       duration: '5:50'
     }

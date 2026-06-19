@@ -4,19 +4,19 @@ title: Managing Projects
 sidebar_label: Managing Projects
 ---
 
-Agnes Projects automatically track your working directories and associated sessions, making it easy to resume work across multiple codebases with full context preservation.
+agnes Projects automatically track your working directories and associated sessions, making it easy to resume work across multiple codebases with full context preservation.
 
-A **project** in Agnes is a record of a working directory where you've used Agnes. Every time you run Agnes, it automatically tracks the current directory as a project, storing:
+A **project** in agnes is a record of a working directory where you've used agnes. Every time you run agnes, it automatically tracks the current directory as a project, storing:
 
 - **Path**: The absolute path to the project directory
 - **Last accessed**: When you last worked on this project  
-- **Last instruction**: The most recent command you gave to Agnes
+- **Last instruction**: The most recent command you gave to agnes
 - **Session ID**: The associated session for context continuity
 
-Projects are stored in `~/.local/share/Agnes/projects.json`.
+Projects are stored in `~/.local/share/agnes/projects.json`.
 
 :::info CLI Only Feature
-Projects are currently available only through the Agnes CLI. Desktop support is planned for future releases.
+Projects are currently available only through the agnes CLI. Desktop support is planned for future releases.
 :::
 
 ## Basic Usage
@@ -24,19 +24,19 @@ Projects are currently available only through the Agnes CLI. Desktop support is 
 **Resume your most recent project:**
 
 ```bash
-goose project  
+agnes project  
 ```
 
 **Browse all your projects:**
 
 ```bash
-goose projects  
+agnes projects  
 ```
 :::tip
 When resuming a project, you can continue the previous session or start fresh in that directory.
 :::
 
-For complete command syntax and options, see the [CLI Commands Guide](/docs/guides/goose-cli-commands#project).
+For complete command syntax and options, see the [CLI Commands Guide](/docs/guides/agnes-cli-commands#project).
 
 ## Workflow Example
 
@@ -45,33 +45,33 @@ Let's follow Sarah, a developer working on multiple projects throughout her day:
 ### Morning: API Development
 ```bash
 cd ~/projects/ecommerce-api
-goose session --name "api-auth-work"
+agnes session --name "api-auth-work"
 ```
-*Sarah asks Agnes to help implement JWT token refresh logic*
+*Sarah asks agnes to help implement JWT token refresh logic*
 
 ### Mid-Morning: Mobile App Bug Fix  
 ```bash
 cd ~/projects/mobile-app
-goose session
+agnes session
 ```
 *Sarah gets help debugging an iOS crash in the login screen*
 
 ### Afternoon: Admin Dashboard
 ```bash
 cd ~/projects/admin-dashboard  
-goose session --name "dashboard-ui"
+agnes session --name "dashboard-ui"
 ```
 *Sarah works on creating user management interface components*
 
 ### Next Day: Quick Resume
 ```bash
 # From any directory, quickly resume the most recent project
-goose project
+agnes project
 ```
 
-Agnes shows:
+agnes shows:
 ```
-┌ Agnes Project Manager
+┌ agnes Project Manager
 │
 ◆ Choose an option:
 │  ○ Resume project with session: .../admin-dashboard
@@ -85,17 +85,17 @@ Agnes shows:
 
 ### Later: Browse All Projects
 ```bash
-goose projects
+agnes projects
 ```
 
-Agnes displays:
+agnes displays:
 ```
-┌ Agnes Project Manager
+┌ agnes Project Manager
 │
 ◆ Select a project:
-│  ○ 1  .../admin-dashboard (2025-01-07 09:15:30) [create user management interface]
-│  ○ 2  .../mobile-app (2025-01-06 11:45:20) [login screen crashing on iOS]  
-│  ○ 3  .../ecommerce-api (2025-01-06 09:30:15) [JWT token refresh logic]
+│  ○aaif-goose .../admin-dashboard (2025-01-07 09:15:30) [create user management interface]
+│  ○undefined .../mobile-app (2025-01-06 11:45:20) [login screen crashing on iOS]  
+│  ○undefined .../ecommerce-api (2025-01-06 09:30:15) [JWT token refresh logic]
 │  ○ Cancel
 └
 ```

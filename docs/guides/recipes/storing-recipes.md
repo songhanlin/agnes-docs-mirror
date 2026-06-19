@@ -8,11 +8,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { PanelLeft, ChefHat } from 'lucide-react';
 
-This guide covers storing, organizing, and finding goose recipes when you need to access them again later. 
+This guide covers storing, organizing, and finding agnes recipes when you need to access them again later. 
 
 :::info Desktop UI vs CLI
-- **Agnes Desktop** has a visual Recipe Library for browsing and managing saved recipes
-- **Agnes CLI** stores recipes as files that you find using file paths or environment variables
+- **agnes Desktop** has a visual Recipe Library for browsing and managing saved recipes
+- **agnes CLI** stores recipes as files that you find using file paths or environment variables
 :::
 
 ## Understanding Recipe Storage
@@ -23,7 +23,7 @@ Before saving recipes, it's important to understand where they can be stored and
 
 | Type | Location | Availability | Best For |
 |------|----------|-------------|----------|
-| **Global** | `~/.agnes/recipes/` | All projects and sessions | Personal workflows, general-purpose recipes |
+| **Global** | `~/.config/agnes/recipes/` | All projects and sessions | Personal workflows, general-purpose recipes |
 | **Local** | `YOUR_WORKING_DIRECTORY/.agnes/recipes/` | Only when working in that project | Project-specific workflows, team recipes |
 
 **Choose Global Storage When:**
@@ -40,7 +40,7 @@ Before saving recipes, it's important to understand where they can be stored and
 ## Storing Recipes
 
 <Tabs groupId="interface">
-  <TabItem value="desktop" label="Agnes Desktop" default>
+  <TabItem value="desktop" label="agnes Desktop" default>
 
 **Save New Recipe:**
 
@@ -59,7 +59,7 @@ When you modify and save a recipe with a new name, a new recipe and new link are
 :::
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
 
     When you [create a recipe](/docs/guides/recipes/recipe-reference), it gets saved to:
 
@@ -77,7 +77,7 @@ When you modify and save a recipe with a new name, a new recipe and new link are
 ### Importing Recipes
 
 <Tabs groupId="interface">
-  <TabItem value="desktop" label="Agnes Desktop" default>
+  <TabItem value="desktop" label="agnes Desktop" default>
     Import a recipe using its deeplink or recipe file:
 
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
@@ -89,21 +89,21 @@ When you modify and save a recipe with a new name, a new recipe and new link are
     5. Click `Import Recipe` to save a copy of the recipe to your Recipe Library
 
   :::warning Recipe File Format
-  Agnes Desktop accepts `.yaml`, `.yml`, and `.json` files, but **the CLI only supports `.yaml` and `.json`**. For full compatibility across both interfaces, avoid `.yml` extensions.
+  agnes Desktop accepts `.yaml`, `.yml`, and `.json` files, but **the CLI only supports `.yaml` and `.json`**. For full compatibility across both interfaces, avoid `.yml` extensions.
 
   All recipe formats follow the same [schema structure](/docs/guides/recipes/recipe-reference#core-recipe-schema).
   :::
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
-    Recipe import is only available in Agnes Desktop.
+  <TabItem value="cli" label="agnes CLI">
+    Recipe import is only available in agnes Desktop.
   </TabItem>
 </Tabs>
 
 ## Finding Available Recipes
 
 <Tabs groupId="interface">
-  <TabItem value="desktop" label="Agnes Desktop" default>
+  <TabItem value="desktop" label="agnes Desktop" default>
 
 **Access Recipe Library:**
 1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
@@ -118,30 +118,30 @@ The Desktop Recipe Library displays all recipes you've explicitly saved or impor
 :::
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
 
-Use the `goose recipe list` command to find all available recipes from multiple sources:
+Use the `agnes recipe list` command to find all available recipes from multiple sources:
 
 **Basic Usage**
 
 ```bash
 # List all available recipes
-goose recipe list
+agnes recipe list
 
 # Show detailed information including titles and full paths
-goose recipe list --verbose
+agnes recipe list --verbose
 
 # Output in JSON format for automation
-goose recipe list --format json
+agnes recipe list --format json
 ```
 
 **Recipe Discovery Process**
 
-Agnes searches for recipes in the following locations (in order):
+agnes searches for recipes in the following locations (in order):
 
 1. **Current directory**: `.` (looks for `*.yaml` and `*.json` files)
 2. **Custom paths**: Directories specified in [`AGNES_RECIPE_PATH`](/docs/guides/environment-variables#recipe-configuration) environment variable
-3. **Global recipe library**: `~/.agnes/recipes/` (or equivalent on your OS)
+3. **Global recipe library**: `~/.config/agnes/recipes/` (or equivalent on your OS)
 4. **Local project recipes**: `./.agnes/recipes/`
 5. **GitHub repository**: If [`AGNES_RECIPE_GITHUB_REPO`](/docs/guides/environment-variables#recipe-configuration) environment variable is configured
 
@@ -149,33 +149,33 @@ Agnes searches for recipes in the following locations (in order):
 
 *Default text format:*
 ```bash
-$ goose recipe list
+$ agnes recipe list
 Available recipes:
-Agnes-self-test - A comprehensive meta-testing recipe - local: ./Agnes-self-test.yaml
-hello-world - A sample recipe demonstrating basic usage - local: ~/.agnes/recipes/hello-world.yaml
-job-finder - Find software engineering positions - local: ~/.agnes/recipes/job-finder.yaml
+agnes-self-test - A comprehensive meta-testing recipe - local: ./agnes-self-test.yaml
+hello-world - A sample recipe demonstrating basic usage - local: ~/.config/agnes/recipes/hello-world.yaml
+job-finder - Find software engineering positions - local: ~/.config/agnes/recipes/job-finder.yaml
 ```
 
 *Verbose mode:*
 ```bash
-$ goose recipe list --verbose
+$ agnes recipe list --verbose
 Available recipes:
-  Agnes-self-test - A comprehensive meta-testing recipe - local: ./Agnes-self-test.yaml
-    Title: Agnes Self-Testing Integration Suite
-    Path: ./Agnes-self-test.yaml
-  hello-world - A sample recipe demonstrating basic usage - local: ~/.agnes/recipes/hello-world.yaml
+  agnes-self-test - A comprehensive meta-testing recipe - local: ./agnes-self-test.yaml
+    Title: agnes Self-Testing Integration Suite
+    Path: ./agnes-self-test.yaml
+  hello-world - A sample recipe demonstrating basic usage - local: ~/.config/agnes/recipes/hello-world.yaml
     Title: Hello World Recipe
-    Path: /Users/username/.config/Agnes/recipes/hello-world.yaml
+    Path: /Users/username/.config/agnes/recipes/hello-world.yaml
 ```
 
 *JSON format for automation:*
 ```json
 [
   {
-    "name": "Agnes-self-test",
+    "name": "agnes-self-test",
     "source": "Local",
-    "path": "./Agnes-self-test.yaml",
-    "title": "Agnes Self-Testing Integration Suite",
+    "path": "./agnes-self-test.yaml",
+    "title": "agnes Self-Testing Integration Suite",
     "description": "A comprehensive meta-testing recipe"
   },
   {
@@ -193,13 +193,13 @@ Available recipes:
 Add custom recipe directories:
 ```bash
 export AGNES_RECIPE_PATH="/path/to/my/recipes:/path/to/team/recipes"
-goose recipe list
+agnes recipe list
 ```
 
 Configure GitHub recipe repository:
 ```bash
-export AGNES_RECIPE_GITHUB_REPO="myorg/Agnes-recipes"
-goose recipe list
+export AGNES_RECIPE_GITHUB_REPO="myorg/agnes-recipes"
+agnes recipe list
 ```
 
 See the [Environment Variables Guide](/docs/guides/environment-variables#recipe-configuration) for more configuration options.
@@ -210,7 +210,7 @@ If you need to browse recipe directories manually:
 
 ```bash
 # List recipes in default global location
-ls ~/.agnes/recipes/
+ls ~/.config/agnes/recipes/
 
 # List recipes in current project
 ls .agnes/recipes/
@@ -220,7 +220,7 @@ find . -name "*.yaml" -path "*/recipes/*" -o -name "*.json" -path "*/recipes/*"
 ```
 
 :::tip
-The `goose recipe list` command is the recommended way to find recipes as it automatically searches all configured sources and provides consistent formatting.
+The `agnes recipe list` command is the recommended way to find recipes as it automatically searches all configured sources and provides consistent formatting.
 :::
 
   </TabItem>
@@ -229,7 +229,7 @@ The `goose recipe list` command is the recommended way to find recipes as it aut
 ## Using Saved Recipes
 
 <Tabs groupId="interface">
-  <TabItem value="desktop" label="Agnes Desktop" default>
+  <TabItem value="desktop" label="agnes Desktop" default>
 
 1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
 2. Click `Recipes`
@@ -239,12 +239,12 @@ The `goose recipe list` command is the recommended way to find recipes as it aut
    - Click `Preview` to see the recipe details first, then click **Load Recipe** to run it
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
 
-Once you've located your recipe file, [run the recipe](/docs/guides/recipes/session-recipes#run-a-recipe) or [open it in Agnes Desktop](/docs/guides/goose-cli-commands#recipe).
+Once you've located your recipe file, [run the recipe](/docs/guides/recipes/session-recipes#run-a-recipe) or [open it in agnes Desktop](/docs/guides/agnes-cli-commands#recipe).
 
 :::tip Format Compatibility
-The CLI can run recipes saved from Agnes Desktop without any conversion. Both CLI-created and Desktop-saved recipes work with all recipe commands.
+The CLI can run recipes saved from agnes Desktop without any conversion. Both CLI-created and Desktop-saved recipes work with all recipe commands.
 :::
 
   </TabItem>

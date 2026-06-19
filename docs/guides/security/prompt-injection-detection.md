@@ -9,9 +9,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { PanelLeft, Settings } from 'lucide-react';
 
-Prompt injection happens when malicious instructions are hidden inside executable content. In the world of AI, prompt injection can be used to nudge AI agents (like Agnes) to run unsafe commands that compromise your environment or data.
+Prompt injection happens when malicious instructions are hidden inside executable content. In the world of AI, prompt injection can be used to nudge AI agents (like agnes) to run unsafe commands that compromise your environment or data.
 
-You can help protect your Agnes workflows by enabling prompt injection detection. This feature uses pattern matching to detect common attack techniques, including:
+You can help protect your agnes workflows by enabling prompt injection detection. This feature uses pattern matching to detect common attack techniques, including:
 - Attempts to delete system files or directories
 - Commands that download and execute remote scripts
 - Attempts to access or exfiltrate sensitive data like SSH keys
@@ -25,9 +25,9 @@ These checks provide a safeguard, not a guarantee. They detect known patterns bu
 
 ## How Detection Works
 
-When enabled, Agnes uses a multi-layered approach to detect threats before they run:
+When enabled, agnes uses a multi-layered approach to detect threats before they run:
 
-1. **Tool call is intercepted and analyzed** - When Agnes prepares to execute a tool, the security system extracts the tool parameter text and checks it against [threat patterns](https://github.com/aaif-goose/agnes/blob/main/crates/goose/src/security/patterns.rs). If ML-based detection is enabled, it also uses machine learning to analyze the semantic content of the tool call and recent conversation messages to better understand context and reduce false positives.
+1. **Tool call is intercepted and analyzed** - When agnes prepares to execute a tool, the security system extracts the tool parameter text and checks it against [threat patterns](https://github.com/aaif-goose/agnes/blob/main/crates/agnes/src/security/patterns.rs). If ML-based detection is enabled, it also uses machine learning to analyze the semantic content of the tool call and recent conversation messages to better understand context and reduce false positives.
 2. **Risk is assessed** - Detected threats are assigned confidence scores
 3. **Execution pauses** - Threats that exceed your configured threshold need your decision
 4. **Security alert appears** - The alert displays the confidence level, a description of the finding, and a unique finding ID. For example:
@@ -35,13 +35,13 @@ When enabled, Agnes uses a multi-layered approach to detect threats before they 
    🔒 Security Alert: This tool call has been flagged as potentially dangerous.
    
    Confidence: 95%
-   Explanation: Detected 1 security threat: Recursive file deletion with rm -rf
+   Explanation: Detectedaaif-goosesecurity threat: Recursive file deletion with rm -rf
    Finding ID: SEC-abc123...
    
    [Allow Once] [Deny]
    ```
 5. **You choose** whether to proceed or cancel after reviewing the alert details. Note that:
-   - Each decision is logged with its finding ID in the [Agnes system logs](/docs/guides/logs#system-logs)
+   - Each decision is logged with its finding ID in the [agnes system logs](/docs/guides/logs#system-logs)
    - Allowed commands still run with your full permissions
 
 **Responding to Alerts:**
@@ -56,7 +56,7 @@ When in doubt, deny.
 ## Enabling Detection
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
     
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
     2. Click `Settings` on the sidebar
@@ -70,7 +70,7 @@ When in doubt, deny.
           - `API Token`: Authentication token if required by your service
 
   </TabItem>
-  <TabItem value="config" label="Agnes config file">
+  <TabItem value="config" label="agnes config file">
 
     Add security prompt settings to your [`config.yaml`](/docs/guides/config-files):
 
@@ -88,7 +88,7 @@ When in doubt, deny.
 </Tabs>
 
 :::info Other Security Features
-Beyond prompt injection detection, Agnes automatically:
+Beyond prompt injection detection, agnes automatically:
 - Warns you before running new or updated recipes
 - Warns you when importing recipes that contain invisible Unicode Tag Block characters
 - [Checks for known malware](/docs/troubleshooting/known-issues#malicious-package-detected) when installing extensions for locally-run MCP servers
@@ -128,5 +128,5 @@ If you want to run your own classification endpoint, see the [Classification API
 
 ## See Also
 
-- [Agnes Permission Modes](/docs/guides/managing-tools/Agnes-permissions) - Control Agnes's autonomy level
+- [agnes Permission Modes](/docs/guides/managing-tools/agnes-permissions) - Control agnes's autonomy level
 - [Managing Tool Permissions](/docs/guides/managing-tools/tool-permissions) - Fine-grained tool control

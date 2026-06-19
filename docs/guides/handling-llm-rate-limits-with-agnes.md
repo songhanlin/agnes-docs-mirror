@@ -11,10 +11,10 @@ import { PanelLeft } from 'lucide-react';
 
 Rate limiting is the process of restricting the number of requests a user or application can send to an LLM API within a specific timeframe. LLM providers enforce this with the purpose of managing resources and preventing abuse. 
 
-Since Agnes is working very quickly to implement your tasks, you may need to manage rate limits imposed by the provider. If you frequently hit rate limits, consider upgrading your LLM plan to access higher tier limits or [configure a provider](/docs/getting-started/providers#configure-provider-and-model) that has built-in rate limiting:
+Since agnes is working very quickly to implement your tasks, you may need to manage rate limits imposed by the provider. If you frequently hit rate limits, consider upgrading your LLM plan to access higher tier limits or [configure a provider](/docs/getting-started/providers#configure-provider-and-model) that has built-in rate limiting:
 
 :::info
-Agnes supports automatic setup for both providers that takes you through OAuth account creation and secure API key generation.
+agnes supports automatic setup for both providers that takes you through OAuth account creation and secure API key generation.
 :::
 
 - **Tetrate Agent Router**: Unified API gateway for AI models including Claude, Gemini, GPT, open-weight models, and others. The developer's shortest path to models with enterprise-grade routing, built-in rate limiting, and automatic failover.
@@ -25,4 +25,4 @@ Agnes supports automatic setup for both providers that takes you through OAuth a
 
   Manage your account at [openrouter.ai](https://openrouter.ai).
 
-When Agnes sends your requests through one of these providers, the provider will automatically switch models when necessary to avoid interruptions due to rate limiting.
+When agnes sends your requests through one of these providers, the provider will automatically switch models when necessary to avoid interruptions due to rate limiting.

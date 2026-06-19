@@ -9,24 +9,24 @@ import TabItem from '@theme/TabItem';
 import { ScrollText } from 'lucide-react';
 import { PanelLeft } from 'lucide-react';
 
-When working with [Large Language Models (LLMs)](/docs/getting-started/providers), there are limits to how much conversation history they can process at once. Agnes provides smart context management features to help handle context and conversation limits so you can maintain productive sessions. Here are some key concepts:
+When working with [Large Language Models (LLMs)](/docs/getting-started/providers), there are limits to how much conversation history they can process at once. agnes provides smart context management features to help handle context and conversation limits so you can maintain productive sessions. Here are some key concepts:
 
 - **Context Length**: The amount of conversation history the LLM can consider, also referred to as the context window
 - **Context Limit**: The maximum number of tokens the model can process
-- **Context Management**: How Agnes handles conversations approaching these limits
-- **Turn**: One complete prompt-response interaction between Agnes and the LLM
+- **Context Management**: How agnes handles conversations approaching these limits
+- **Turn**: One complete prompt-response interaction between agnes and the LLM
 
-## How Agnes Manages Context
-Agnes uses a two-tiered approach to context management:
+## How agnes Manages Context
+agnes uses a two-tiered approach to context management:
 
 1. **Auto-Compaction**: Proactively summarizes conversation when approaching token limits
 2. **Context Strategies**: Backup strategy used if the context limit is still exceeded after auto-compaction
 
-This layered approach lets Agnes handle token and context limits gracefully.
+This layered approach lets agnes handle token and context limits gracefully.
 
 ## Automatic Compaction
-Agnes automatically compacts (summarizes) older parts of your conversation when approaching token limits, allowing you to maintain long-running sessions without manual intervention. 
-Auto-compaction is triggered by default when you reach 80% of the token limit in Agnes Desktop and the Agnes CLI.
+agnes automatically compacts (summarizes) older parts of your conversation when approaching token limits, allowing you to maintain long-running sessions without manual intervention. 
+Auto-compaction is triggered by default when you reach 80% of the token limit in agnes Desktop and the agnes CLI.
 
 Control the auto-compaction behavior with the `AGNES_AUTO_COMPACT_THRESHOLD` [environment variable](/docs/guides/environment-variables.md#session-management). 
 Disable this feature by setting the value to `0.0`.
@@ -37,35 +37,35 @@ export AGNES_AUTO_COMPACT_THRESHOLD=0.6
 ```
 
 When you reach the auto-compaction threshold:
-  1. Agnes will automatically start compacting the conversation to make room.
+  1. agnes will automatically start compacting the conversation to make room.
   2. Once complete, you'll see a confirmation message that the conversation was compacted and summarized.
-  3. Continue the session. Your previous conversation remains visible, but only the compacted conversion is included in the active context for Agnes.
+  3. Continue the session. Your previous conversation remains visible, but only the compacted conversion is included in the active context for agnes.
 
 :::tip Customize Compaction
-You can customize how Agnes summarizes conversations during compaction by editing the `compaction.md` [prompt template](/docs/guides/context-engineering/prompt-templates).
+You can customize how agnes summarizes conversations during compaction by editing the `compaction.md` [prompt template](/docs/guides/context-engineering/prompt-templates).
 :::
 
 :::tip Tool Output Summarization
-To help maintain efficient context usage, Agnes summarizes older tool call outputs in the background while keeping recent calls in full detail. By default, this happens when you have more than 10 tool calls in a session. For advanced tuning, see [`AGNES_TOOL_CALL_CUTOFF`](/docs/guides/environment-variables#session-management).
+To help maintain efficient context usage, agnes summarizes older tool call outputs in the background while keeping recent calls in full detail. By default, this happens when you have more thanundefinedtool calls in a session. For advanced tuning, see [`AGNES_TOOL_CALL_CUTOFF`](/docs/guides/environment-variables#session-management).
 :::
 
 ### Manual Compaction
 You can also trigger compaction manually before reaching context or token limits:
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
 
   1. Point to the token usage indicator dot next to the model name at the bottom of the app
   2. Click <ScrollText className="inline" size={16} /> `Compact now` in the context window that appears
   3. Once complete, you'll see a confirmation message that the conversation was compacted and summarized.
-  4. Continue the session. Your previous conversation remains visible, but only the compacted conversion is included in the active context for Agnes.
+  4. Continue the session. Your previous conversation remains visible, but only the compacted conversion is included in the active context for agnes.
 
   :::info 
   You must send at least one message in the chat before the `Compact now` button is enabled. 
   :::
 
 </TabItem>
-<TabItem value="cli" label="Agnes CLI" default>
+<TabItem value="cli" label="agnes CLI" default>
 
 To proactively trigger summarization before reaching context limits, use the `/summarize` command:
 
@@ -84,7 +84,7 @@ Key information has been preserved while reducing context length.
 
 ## Context Limit Strategies
 
-When auto-compaction is disabled, or if a conversation still exceeds the context limit, Agnes offers different ways to handle it:
+When auto-compaction is disabled, or if a conversation still exceeds the context limit, agnes offers different ways to handle it:
 
 | Feature | Description | Best For | Availability | Impact |
 |---------|-------------|-----------|-----------|---------|
@@ -94,20 +94,20 @@ When auto-compaction is disabled, or if a conversation still exceeds the context
 | **Prompt** | Asks user to choose from the above options | Control over each decision in interactive sessions | CLI only | Depends on choice made |
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
 
-Agnes Desktop exclusively uses summarization by compacting the conversation to manage context, preserving key information while reducing size.
+agnes Desktop exclusively uses summarization by compacting the conversation to manage context, preserving key information while reducing size.
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
 
 The CLI supports all context limit strategies: `summarize`, `truncate`, `clear`, and `prompt`. 
 
 The default behavior depends on the mode you're running in:
 - **Interactive mode**: Prompts user to choose (equivalent to `prompt`)
-- **Headless mode** (`goose run`): Automatically summarizes (equivalent to `summarize`)
+- **Headless mode** (`agnes run`): Automatically summarizes (equivalent to `summarize`)
 
-You can configure how Agnes handles context limits by setting the `AGNES_CONTEXT_STRATEGY` environment variable:
+You can configure how agnes handles context limits by setting the `AGNES_CONTEXT_STRATEGY` environment variable:
 
 ```bash
 # Set automatic strategy (choose one)
@@ -135,21 +135,21 @@ final_summary: [A summary of your conversation will appear here]
 
 Context maxed out
 --------------------------------------------------
-Agnes summarized messages for you.
+agnes summarized messages for you.
 ```
 
-**With `AGNES_CONTEXT_STRATEGY` configured**, Agnes will automatically apply your chosen strategy:
+**With `AGNES_CONTEXT_STRATEGY` configured**, agnes will automatically apply your chosen strategy:
 
 ```sh
 # Example with AGNES_CONTEXT_STRATEGY=summarize
 Context maxed out - automatically summarized messages.
 --------------------------------------------------
-Agnes automatically summarized messages for you.
+agnes automatically summarized messages for you.
 
 # Example with AGNES_CONTEXT_STRATEGY=truncate
 Context maxed out - automatically truncated messages.
 --------------------------------------------------
-Agnes tried its best to truncate messages for you.
+agnes tried its best to truncate messages for you.
 
 # Example with AGNES_CONTEXT_STRATEGY=clear
 Context maxed out - automatically cleared session.
@@ -159,7 +159,7 @@ Context maxed out - automatically cleared session.
 </Tabs>
 
 ## Maximum Turns
-The `Max Turns` limit is the maximum number of consecutive turns that Agnes can take without user input (default: 1000). When the limit is reached, Agnes stops and prompts: "I've reached the maximum number of actions I can do without user input. Would you like me to continue?" If the user answers in the affirmative, Agnes continues until the limit is reached and then prompts again.
+The `Max Turns` limit is the maximum number of consecutive turns that agnes can take without user input (default: 1000). When the limit is reached, agnes stops and prompts: "I've reached the maximum number of actions I can do without user input. Would you like me to continue?" If the user answers in the affirmative, agnes continues until the limit is reached and then prompts again.
 
 This feature gives you control over agent autonomy and prevents infinite loops and runaway behavior, which could have significant cost consequences or damaging impact in production environments. Use it for:
 
@@ -170,7 +170,7 @@ This feature gives you control over agent autonomy and prevents infinite loops a
 This setting is stored as the `AGNES_MAX_TURNS` environment variable in your [config.yaml file](/docs/guides/config-files). You can configure it using the Desktop app or CLI.
 
 <Tabs groupId="interface">
-    <TabItem value="ui" label="Agnes Desktop" default>
+    <TabItem value="ui" label="agnes Desktop" default>
 
       1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
       2. Click the `Settings` button on the sidebar
@@ -178,16 +178,16 @@ This setting is stored as the `AGNES_MAX_TURNS` environment variable in your [co
       4. Scroll to `Conversation Limits` and enter a value for `Max Turns`
         
     </TabItem>
-    <TabItem value="cli" label="Agnes CLI">
+    <TabItem value="cli" label="agnes CLI">
 
       1. Run the `configuration` command:
       ```sh
-      goose configure
+      agnes configure
       ```
 
-      2. Select `Agnes settings`:
+      2. Select `agnes settings`:
       ```sh
-      ┌   Agnes-configure
+      ┌   agnes-configure
       │
       ◆  What would you like to configure?
       │  ○ Configure Providers
@@ -195,20 +195,20 @@ This setting is stored as the `AGNES_MAX_TURNS` environment variable in your [co
       │  ○ Toggle Extensions
       │  ○ Remove Extension
       // highlight-start
-      │  ● Agnes settings (Set the Agnes mode, Tool Output, Tool Permissions, Experiment, goose recipe github repo and more)
+      │  ● agnes settings (Set the agnes mode, Tool Output, Tool Permissions, Experiment, agnes recipe github repo and more)
       // highlight-end
       └ 
       ```
 
       3. Select `Max Turns`:
       ```sh
-      ┌   Agnes-configure
+      ┌   agnes-configure
       │
       ◇  What would you like to configure?
-      │  Agnes settings
+      │  agnes settings
       │
       ◆  What setting would you like to configure?
-      │  ○ Agnes mode 
+      │  ○ agnes mode 
       │  ○ Router Tool Selection Strategy 
       │  ○ Tool Permission 
       │  ○ Tool Output 
@@ -216,17 +216,17 @@ This setting is stored as the `AGNES_MAX_TURNS` environment variable in your [co
       │  ● Max Turns (Set maximum number of turns without user input)
       // highlight-end
       │  ○ Toggle Experiment 
-      │  ○ goose recipe github repo 
+      │  ○ agnes recipe github repo 
       │  ○ Scheduler Type 
       └ 
       ```
 
       4. Enter the maximum number of turns:
       ```sh
-      ┌   Agnes-configure 
+      ┌   agnes-configure 
       │
       ◇  What would you like to configure?
-      │  Agnes settings 
+      │  agnes settings 
       │
       ◇  What setting would you like to configure?
       │  Max Turns 
@@ -236,11 +236,11 @@ This setting is stored as the `AGNES_MAX_TURNS` environment variable in your [co
       │  10
         // highlight-end
       │
-      └  Set maximum turns to 10 - Agnes will ask for input after 10 consecutive actions
+      └  Set maximum turns toundefined- agnes will ask for input afterundefinedconsecutive actions
       ```
 
       :::tip
-      In addition to the persistent `Max Turns` setting, you can provide a runtime override for a specific session or task via the `goose session --max-turns` and `goose run --max-turns` [CLI commands](/docs/guides/goose-cli-commands).
+      In addition to the persistent `Max Turns` setting, you can provide a runtime override for a specific session or task via the `agnes session --max-turns` and `agnes run --max-turns` [CLI commands](/docs/guides/agnes-cli-commands).
       :::
 
     </TabItem>
@@ -253,15 +253,15 @@ The appropriate max turns value depends on your use case and comfort level with 
 
 - **5-10 turns**: Good for exploratory tasks, debugging, or when you want frequent check-ins. For example, "analyze this codebase and suggest improvements" where you want to review each step
 - **25-50 turns**: Effective for well-defined tasks with moderate complexity, such as "refactor this module to use the new API" or "set up a basic CI/CD pipeline"
-- **100+ turns**: More suitable for complex, multi-step automation where you trust Agnes to work independently, like "migrate this entire project from React 16 to React 18" or "implement comprehensive test coverage for this service"
+- **100+ turns**: More suitable for complex, multi-step automation where you trust agnes to work independently, like "migrate this entire project from Reactundefinedto React 18" or "implement comprehensive test coverage for this service"
 
-Remember that even simple-seeming tasks often require multiple turns. For example, asking Agnes to "fix the failing tests" might involve analyzing test output (1 turn), identifying the root cause (1 turn), making code changes (1 turn), and verifying the fix (1 turn).
+Remember that even simple-seeming tasks often require multiple turns. For example, asking agnes to "fix the failing tests" might involve analyzing test output (1 turn), identifying the root cause (1 turn), making code changes (1 turn), and verifying the fix (1 turn).
 
 ## Token Usage
-After sending your first message, Agnes Desktop and Agnes CLI display token usage.
+After sending your first message, agnes Desktop and agnes CLI display token usage.
 
 <Tabs groupId="interface">
-    <TabItem value="ui" label="Agnes Desktop" default>
+    <TabItem value="ui" label="agnes Desktop" default>
     The Desktop displays a colored circle next to the model name at the bottom of the session window. The color provides a visual indicator of your token usage for the session. 
       - **Green**: Normal usage - Plenty of context space available
       - **Orange**: Warning state - Approaching limit (80% of capacity)
@@ -274,7 +274,7 @@ After sending your first message, Agnes Desktop and Agnes CLI display token usag
       - A progress bar showing your current token usage
         
     </TabItem>
-    <TabItem value="cli" label="Agnes CLI">
+    <TabItem value="cli" label="agnes CLI">
     The CLI displays a context label above each command prompt, showing:
       - A visual indicator using dots (●○) and colors to represent your token usage:
         - **Green**: Below 50% usage
@@ -288,7 +288,7 @@ After sending your first message, Agnes Desktop and Agnes CLI display token usag
 
 ## Model Context Limit Overrides
 
-Context limits are automatically detected based on your model name, but Agnes provides settings to override the default limits:
+Context limits are automatically detected based on your model name, but agnes provides settings to override the default limits:
 
 | Model | Description | Best For | Setting |
 |-------|-------------|----------|---------|
@@ -301,12 +301,12 @@ This setting only affects the displayed token usage and progress indicators. Act
 
 This feature is particularly useful with:
 
-- **LiteLLM Proxy Models**: When using LiteLLM with custom model names that don't match Agnes's patterns
+- **LiteLLM Proxy Models**: When using LiteLLM with custom model names that don't match agnes's patterns
 - **Enterprise Deployments**: Custom model deployments with non-standard naming  
 - **Fine-tuned Models**: Custom models with different context limits than their base versions
 - **Development/Testing**: Temporarily adjusting context limits for testing purposes
 
-Agnes resolves context limits with the following precedence (highest to lowest):
+agnes resolves context limits with the following precedence (highest to lowest):
 
 1. Explicit context_limit in model configuration (if set programmatically)
 2. Specific environment variable (e.g., `AGNES_PLANNER_CONTEXT_LIMIT`)
@@ -317,18 +317,18 @@ Agnes resolves context limits with the following precedence (highest to lowest):
 **Configuration**
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Agnes Desktop" default>
+  <TabItem value="ui" label="agnes Desktop" default>
 
-     Model context limit overrides are not yet available in the Agnes Desktop app.
+     Model context limit overrides are not yet available in the agnes Desktop app.
 
   </TabItem>
-  <TabItem value="cli" label="Agnes CLI">
+  <TabItem value="cli" label="agnes CLI">
 
     Context limit overrides only work as [environment variables](/docs/guides/environment-variables#model-context-limit-overrides), not in the config file.
 
     ```bash
     export AGNES_CONTEXT_LIMIT=1000
-    goose session
+    agnes session
     ```
 
   </TabItem>
@@ -364,7 +364,7 @@ export AGNES_PLANNER_CONTEXT_LIMIT=1000000
 
 ## Credit Balance Monitoring
 
-Agnes monitors your API provider balance and warns you when credits are running low or exhausted. When this happens, you'll see an **Insufficient Credits** notification.
+agnes monitors your API provider balance and warns you when credits are running low or exhausted. When this happens, you'll see an **Insufficient Credits** notification.
 
 For providers that support it (such as [Tetrate Agent Router Service](https://router.tetrate.ai)), the notification includes an **Add credits** button that takes you directly to your provider's billing page.
 
@@ -374,30 +374,30 @@ For providers that support it (such as [Tetrate Agent Router Service](https://ro
 3. Once credits are added, resend your message to continue the conversation
 
 :::tip
-Agnes detects low balance conditions automatically, so you won't lose your conversation context—just add credits and pick up where you left off.
+agnes detects low balance conditions automatically, so you won't lose your conversation context—just add credits and pick up where you left off.
 :::
 
-**Supported providers:** Tetrate Agent Router Service, OpenRouter, and other providers that report balance information via HTTP 402 responses.
+**Supported providers:** Tetrate Agent Router Service, OpenRouter, and other providers that report balance information via HTTPundefinedresponses.
 
 ## Cost Tracking
 Display real-time estimated costs of your session.
 
 <Tabs groupId="interface">
-    <TabItem value="ui" label="Agnes Desktop" default>
+    <TabItem value="ui" label="agnes Desktop" default>
 To manage live cost tracking:
   1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
   2. Click the `Settings` button on the sidebar
   3. Click the `App` tab 
   4. Toggle `Cost Tracking` on/off
 
-The session cost is shown at the bottom of the Agnes window and updates dynamically as tokens are consumed. Hover over the cost to see a detailed breakdown of token usage. If multiple models are used in the session, this includes a cost breakdown by model. Ollama and local deployments always show a cost of $0.00.
+The session cost is shown at the bottom of the agnes window and updates dynamically as tokens are consumed. Hover over the cost to see a detailed breakdown of token usage. If multiple models are used in the session, this includes a cost breakdown by model. Ollama and local deployments always show a cost of $0.00.
 
 Pricing data is regularly fetched from the OpenRouter API and cached locally. The `Advanced settings` tab shows when the data was last updated and allows you to refresh. 
 
 These costs are estimates only, and not connected to your actual provider bill. The cost shown is an approximation based on token counts and public pricing data.
 </TabItem>
-    <TabItem value="cli" label="Agnes CLI">
-    Show estimated cost in the Agnes CLI by setting the `AGNES_CLI_SHOW_COST` [environment variable](/docs/guides/environment-variables.md#session-management) or including it in the [configuration file](/docs/guides/config-files.md).
+    <TabItem value="cli" label="agnes CLI">
+    Show estimated cost in the agnes CLI by setting the `AGNES_CLI_SHOW_COST` [environment variable](/docs/guides/environment-variables.md#session-management) or including it in the [configuration file](/docs/guides/config-files.md).
 
   ```
   # Set environment variable

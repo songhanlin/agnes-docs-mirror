@@ -4,23 +4,23 @@ sidebar_position: 3
 sidebar_label: Agent Skills
 ---
 
-Skills are reusable sets of instructions and resources that teach Agnes how to perform specific tasks. A skill can range from a simple checklist to a detailed workflow with domain expertise, and can include supporting files like scripts or templates. Example use cases include deployment procedures, code review checklists, and API integration guides.
+Skills are reusable sets of instructions and resources that teach agnes how to perform specific tasks. A skill can range from a simple checklist to a detailed workflow with domain expertise, and can include supporting files like scripts or templates. Example use cases include deployment procedures, code review checklists, and API integration guides.
 
 :::info
 This functionality requires the built-in [Summon extension](/docs/mcp/summon-mcp), available in v1.25.0+.
 :::
 
-When a session starts, Agnes adds any skills that it discovers to its instructions. During the session, Agnes automatically loads a skill when:
+When a session starts, agnes adds any skills that it discovers to its instructions. During the session, agnes automatically loads a skill when:
 - Your request clearly matches a skill's purpose
 - You explicitly ask to use a skill, for example:
   - "Use the code-review skill to review this PR"
   - "Follow the new-service skill to set up the auth service"
   - "Apply the deployment skill"
 
-You can also ask Agnes what skills are available, or use the CLI `/skills` command to list available skills and load one or more by name (e.g. `/skills code-review edge-case-finder`).
+You can also ask agnes what skills are available, or use the CLI `/skills` command to list available skills and load one or more by name (e.g. `/skills code-review edge-case-finder`).
 
 :::info Claude Compatibility
-Agnes skills are compatible with Claude Desktop and other [agents that support Agent Skills](https://agentskills.io/home#adoption).
+agnes skills are compatible with Claude Desktop and other [agents that support Agent Skills](https://agentskills.io/home#adoption).
 :::
 
 ## Skill Locations
@@ -34,7 +34,7 @@ Skills can be stored globally, per-project, or in installed plugins:
 Place a `SKILL.md` file inside a named subdirectory. For example, a global skill called
 `code-review` goes in `~/.agents/skills/code-review/SKILL.md`.
 
-> **Backward compatibility:** Agnes also discovers skills from `.agnes/skills/`,
+> **Backward compatibility:** agnes also discovers skills from `.agnes/skills/`,
 > `.claude/skills/`, `~/.claude/skills/`, and platform-specific config directories,
 > but `agents/skills/` is the recommended standard.
 
@@ -102,7 +102,7 @@ Skills can include supporting files like scripts, templates, or configuration fi
         └── config.template.json
 ```
 
-When Agnes loads the skill, it sees the supporting files and can access them using the [Developer extension's](/docs/mcp/developer-mcp) file tools.
+When agnes loads the skill, it sees the supporting files and can access them using the [Developer extension's](/docs/mcp/developer-mcp) file tools.
 
 <details>
 <summary>Example Skill with Supporting Files</summary>
@@ -177,14 +177,14 @@ description: Safe deployment procedure for production environment
 
 ## Pre-deployment
 1. Ensure all tests pass
-2. Get approval from at least 2 reviewers
+2. Get approval from at leastundefinedreviewers
 3. Notify #deployments channel
 
 ## Deploy
 1. Create release branch from main
 2. Run `npm run build:prod`
 3. Deploy to staging, verify, then production
-4. Monitor error rates for 30 minutes
+4. Monitor error rates forundefinedminutes
 
 ## Rollback
 If error rate exceeds 1%:
@@ -260,16 +260,16 @@ Always verify webhook signatures. See `src/webhooks/square.js` for our handler p
 
 </details>
 
-:::tip Other Agnes features that support reuse
-- [.agneshints](/docs/guides/context-engineering/using-goosehints): Best for general preferences, project context, and repeated instructions like "Always use TypeScript"
+:::tip Other agnes features that support reuse
+- [.agneshints](/docs/guides/context-engineering/using-agneshints): Best for general preferences, project context, and repeated instructions like "Always use TypeScript"
 - [recipes](/docs/guides/recipes/session-recipes): Shareable configurations that package instructions, prompts, and settings together
 :::
 
 ## Best Practices
 
 - **Keep skills focused** — One skill per workflow or domain. If a skill is getting long, consider splitting it.
-- **Write for clarity** — Skills are instructions for Agnes. Use clear, direct language and numbered steps.
-- **Include verification steps** — Help Agnes confirm the workflow completed successfully.
+- **Write for clarity** — Skills are instructions for agnes. Use clear, direct language and numbered steps.
+- **Include verification steps** — Help agnes confirm the workflow completed successfully.
 
 ## Additional Resources
 

@@ -2,28 +2,28 @@
 sidebar_position: 8
 title: CLI Providers
 sidebar_label: CLI Providers
-description: Use Claude Code, Codex, Cursor Agent, or Gemini CLI subscriptions in Agnes
+description: Use Claude Code, Codex, Cursor Agent, or Gemini CLI subscriptions in agnes
 ---
 
 # CLI Providers
 
 :::warning Deprecated — Use ACP Providers
-The Claude Code (`claude-code`), Codex (`codex`), and Gemini CLI (`gemini-cli`) providers are deprecated. Use the [ACP providers](/docs/guides/acp-providers) (`claude-acp`, `codex-acp`) instead, which support Agnes extensions via MCP and use the standardized Agent Client Protocol. For Gemini, use the `Gemini` (`gemini_oauth`) provider which authenticates via OAuth. CLI providers are kept for backward compatibility only.
+The Claude Code (`claude-code`), Codex (`codex`), and Gemini CLI (`gemini-cli`) providers are deprecated. Use the [ACP providers](/docs/guides/acp-providers) (`claude-acp`, `codex-acp`) instead, which support agnes extensions via MCP and use the standardized Agent Client Protocol. For Gemini, use the `Gemini` (`gemini_oauth`) provider which authenticates via OAuth. CLI providers are kept for backward compatibility only.
 :::
 
-Agnes can make use of pass-through providers that integrate with existing CLI tools from Anthropic, OpenAI, Cursor, and Google. These providers allow you to use your existing Claude Code, Codex, Cursor Agent, and Google Gemini CLI subscriptions through Agnes's interface, adding session management, persistence, and workflow integration capabilities to these tools.
+agnes can make use of pass-through providers that integrate with existing CLI tools from Anthropic, OpenAI, Cursor, and Google. These providers allow you to use your existing Claude Code, Codex, Cursor Agent, and Google Gemini CLI subscriptions through agnes's interface, adding session management, persistence, and workflow integration capabilities to these tools.
 
 :::warning Limitations
-These providers don’t fully support all Agnes features, may have platform or capability limitations, and can sometimes require advanced debugging if issues arise. They’re included here purely as a convenience.
+These providers don’t fully support all agnes features, may have platform or capability limitations, and can sometimes require advanced debugging if issues arise. They’re included here purely as a convenience.
 :::
 
 ## Why Use CLI Providers?
 
 CLI providers are useful if you:
 
-- already have a Claude Code, Codex, Cursor, or Google Gemini CLI subscription and want to use it through Agnes instead of paying per token
+- already have a Claude Code, Codex, Cursor, or Google Gemini CLI subscription and want to use it through agnes instead of paying per token
 - need session persistence to save, resume, and export conversation history
-- want to use goose recipes and scheduled tasks to create repeatable workflows
+- want to use agnes recipes and scheduled tasks to create repeatable workflows
 - prefer unified commands across different AI providers
 - want to [use multiple models together](#combining-with-planner-models) in your tasks
 
@@ -35,16 +35,16 @@ CLI providers are useful if you:
 - **Session organization**: Manage multiple conversation threads
 
 #### Workflow Integration  
-- **Recipe compatibility**: Use CLI providers in automated goose recipes
+- **Recipe compatibility**: Use CLI providers in automated agnes recipes
 - **Scheduling support**: Include in scheduled tasks and workflows
 - **Hybrid configurations**: Combine with planning mode and model-specific workflows
 
 #### Interface Consistency
-- **Unified commands**: Use the same `goose session` interface across all providers
-- **Consistent configuration**: Manage all providers through Agnes's configuration system
+- **Unified commands**: Use the same `agnes session` interface across all providers
+- **Consistent configuration**: Manage all providers through agnes's configuration system
 
 :::warning Extensions
-CLI providers do **not** give you access to Agnes's extension ecosystem (MCP servers, third-party integrations, etc.). They use their own built-in tools to prevent conflicts. If you need Agnes's extensions, use standard [API providers](/docs/getting-started/providers#available-providers) instead.
+CLI providers do **not** give you access to agnes's extension ecosystem (MCP servers, third-party integrations, etc.). They use their own built-in tools to prevent conflicts. If you need agnes's extensions, use standard [API providers](/docs/getting-started/providers#available-providers) instead.
 :::
 
 
@@ -57,7 +57,7 @@ The Claude Code provider integrates with Anthropic's [Claude CLI tool](https://c
 **Features:**
 - Uses Claude's latest models
 - 200,000 token context limit
-- Automatic filtering of Agnes extensions from system prompts (since Claude Code has its own tool ecosystem)
+- Automatic filtering of agnes extensions from system prompts (since Claude Code has its own tool ecosystem)
 - Streaming JSON (NDJSON) protocol for persistent, multi-turn sessions
 
 **Requirements:**
@@ -74,7 +74,7 @@ The Codex provider integrates with OpenAI's [Codex CLI tool](https://developers.
 - Configurable reasoning effort levels (`low`, `medium`, `high`, `xhigh`; `none` is only supported on non-codex models like `gpt-5.2`)
 - Optional skills support for enhanced capabilities
 - JSON output parsing for structured responses
-- Automatic filtering of Agnes extensions from system prompts
+- Automatic filtering of agnes extensions from system prompts
 
 **Requirements:**
 - Codex CLI tool installed (`npm i -g @openai/codex` or `brew install --cask codex`)
@@ -119,17 +119,17 @@ The Gemini CLI provider integrates with Google's [Gemini CLI tool](https://ai.go
    
    Ensure your Claude CLI is authenticated and working
 
-3. **Configure Agnes**
+3. **Configure agnes**
    
    Set the provider environment variable:
    ```bash
    export AGNES_PROVIDER=claude-code
    ```
    
-   Or configure through the Agnes CLI using `goose configure`:
+   Or configure through the agnes CLI using `agnes configure`:
 
    ```bash
-   ┌   Agnes-configure 
+   ┌   agnes-configure 
    │
    ◇  What would you like to configure?
    │  Configure Providers 
@@ -157,17 +157,17 @@ The Gemini CLI provider integrates with Google's [Gemini CLI tool](https://ai.go
 
    Run `codex` and follow the authentication prompts. You can use your ChatGPT account or API key.
 
-3. **Configure Agnes**
+3. **Configure agnes**
 
    Set the provider environment variable:
    ```bash
    export AGNES_PROVIDER=codex
    ```
 
-   Or configure through the Agnes CLI using `goose configure`:
+   Or configure through the agnes CLI using `agnes configure`:
 
    ```bash
-   ┌   Agnes-configure
+   ┌   agnes-configure
    │
    ◇  What would you like to configure?
    │  Configure Providers
@@ -191,7 +191,7 @@ The Gemini CLI provider integrates with Google's [Gemini CLI tool](https://ai.go
 
    Ensure your Cursor Agent is authenticated and working
 
-3. **Configure Agnes**
+3. **Configure agnes**
 
    Set the provider environment variable:
 
@@ -199,10 +199,10 @@ The Gemini CLI provider integrates with Google's [Gemini CLI tool](https://ai.go
    export AGNES_PROVIDER=cursor-agent
    ```
 
-   Or configure through the Agnes CLI using `goose configure`:
+   Or configure through the agnes CLI using `agnes configure`:
 
    ```bash
-   ┌   Agnes-configure
+   ┌   agnes-configure
    │
    ◇  What would you like to configure?
    │  Configure Providers
@@ -226,17 +226,17 @@ The Gemini CLI provider integrates with Google's [Gemini CLI tool](https://ai.go
    
    Ensure your Gemini CLI is authenticated and working.
 
-3. **Configure Agnes**
+3. **Configure agnes**
    
    Set the provider environment variable:
    ```bash
    export AGNES_PROVIDER=gemini-cli
    ```
    
-   Or configure through the Agnes CLI using `goose configure`:
+   Or configure through the agnes CLI using `agnes configure`:
 
    ```bash
-   ┌   Agnes-configure 
+   ┌   agnes-configure 
    │
    ◇  What would you like to configure?
    │  Configure Providers 
@@ -254,10 +254,10 @@ The Gemini CLI provider integrates with Google's [Gemini CLI tool](https://ai.go
 
 ### Basic Usage
 
-Once configured, you can start a goose session using these providers just like any others:
+Once configured, you can start a agnes session using these providers just like any others:
 
 ```bash
-goose session
+agnes session
 ```
 
 ### Combining with Planner Models
@@ -271,7 +271,7 @@ export AGNES_MODEL=default
 export AGNES_PLANNER_PROVIDER=openai
 export AGNES_PLANNER_MODEL=gpt-4o
 
-goose session
+agnes session
 ```
 
 ## Configuration Options
@@ -302,17 +302,17 @@ The following models are recognized and passed to the Claude CLI via the `--mode
 | `chat` | (none) | Default Claude Code behavior |
 
 :::tip Approve Mode Integration
-When using `approve` or `smart_approve` mode with Claude Code, Agnes routes Claude Code's permission prompts through Agnes's confirmation interface. This means:
+When using `approve` or `smart_approve` mode with Claude Code, agnes routes Claude Code's permission prompts through agnes's confirmation interface. This means:
 
-- **Sensitive operations** (file writes, shell commands, etc.) trigger approval prompts in Agnes
-- **You review and approve/deny** directly in the Agnes CLI or Desktop interface
+- **Sensitive operations** (file writes, shell commands, etc.) trigger approval prompts in agnes
+- **You review and approve/deny** directly in the agnes CLI or Desktop interface
 - **Denied operations** are communicated back to Claude Code, which adapts accordingly
 
-This provides a consistent permission experience across all Agnes providers while leveraging Claude Code's built-in safety checks.
+This provides a consistent permission experience across all agnes providers while leveraging Claude Code's built-in safety checks.
 
 Example with approve mode:
 ```bash
-AGNES_PROVIDER=claude-code AGNES_MODE=approve goose session
+AGNES_PROVIDER=claude-code AGNES_MODE=approve agnes session
 ```
 :::
 
@@ -367,13 +367,13 @@ These are the default models supported by Codex CLI v0.77.0. To access older or 
 
 ### System Prompt Filtering
 
-The CLI providers automatically filter out Agnes's extension information from system prompts since these CLI tools have their own tool ecosystems. This prevents conflicts and ensures clean interaction with the underlying CLI tools.
+The CLI providers automatically filter out agnes's extension information from system prompts since these CLI tools have their own tool ecosystems. This prevents conflicts and ensures clean interaction with the underlying CLI tools.
 
 ### Message Translation
 
-- **Claude Code**: Converts Agnes messages to text content blocks with role prefixes (Human:/Assistant:), similar to Codex and Gemini CLI
+- **Claude Code**: Converts agnes messages to text content blocks with role prefixes (Human:/Assistant:), similar to Codex and Gemini CLI
 - **Codex**: Converts messages to simple text prompts with role prefixes (Human:/Assistant:), similar to Gemini CLI
-- **Cursor Agent**: Converts Agnes messages to Cursor's JSON message format, handling tool calls and responses appropriately
+- **Cursor Agent**: Converts agnes messages to Cursor's JSON message format, handling tool calls and responses appropriately
 - **Gemini CLI**: Converts messages to simple text prompts with role prefixes (Human:/Assistant:)
 
 ### Response Processing
@@ -395,4 +395,4 @@ CLI providers depend on external tools, so ensure:
 
 ---
 
-CLI providers offer a way to use existing AI tool subscriptions through Agnes's interface, adding session management and workflow integration capabilities. They're particularly valuable for users with existing CLI subscriptions who want unified session management and recipe integration.
+CLI providers offer a way to use existing AI tool subscriptions through agnes's interface, adding session management and workflow integration capabilities. They're particularly valuable for users with existing CLI subscriptions who want unified session management and recipe integration.

@@ -1,7 +1,7 @@
 ---
 title: Rich Interactive Chat with MCP Apps and MCP-UI
 hide_title: true
-description: Build interactive UI applications that render inside Agnes Desktop using MCP Apps and MCP-UI
+description: Build interactive UI applications that render inside agnes Desktop using MCP Apps and MCP-UI
 ---
 
 import Card from '@site/src/components/Card';
@@ -10,7 +10,7 @@ import VideoCarousel from '@site/src/components/VideoCarousel';
 
 <h1 className={styles.pageTitle}>Rich Interactive Chat with MCP Apps and MCP-UI</h1>
 <p className={styles.pageDescription}>
-  Agnes Desktop supports extensions that transform text-only responses into graphical, interactive experiences. Instead of reading through lists and descriptions, you can click, explore, and interact with UI components directly in your conversations.
+  agnes Desktop supports extensions that transform text-only responses into graphical, interactive experiences. Instead of reading through lists and descriptions, you can click, explore, and interact with UI components directly in your conversations.
 </p>
 
  <div className="video-container margin-bottom--lg">
@@ -29,17 +29,17 @@ import VideoCarousel from '@site/src/components/VideoCarousel';
   <div className={styles.cardGrid}>
     <Card 
       title="Building MCP Apps"
-      description="Step-by-step tutorial to create interactive UI applications that render inside Agnes Desktop."
+      description="Step-by-step tutorial to create interactive UI applications that render inside agnes Desktop."
       link="/docs/tutorials/building-mcp-apps"
     />
     <Card 
       title="Using MCP Apps and MCP-UI"
-      description="Agnes transforms text-based responses into engaging graphical and interactive user experiences."
+      description="agnes transforms text-based responses into engaging graphical and interactive user experiences."
       link="/docs/guides/interactive-chat/mcp-ui"
     />
     <Card 
       title="Auto Visualiser Extension"
-      description="Generate interactive data visualizations automatically in Agnes."
+      description="Generate interactive data visualizations automatically in agnes."
       link="/docs/mcp/autovisualiser-mcp"
     />
   </div>
@@ -50,17 +50,17 @@ import VideoCarousel from '@site/src/components/VideoCarousel';
   <div className={styles.cardGrid}>
     <Card      
       title="From MCP-UI to MCP Apps: Evolving Interactive Agent UIs"
-      description="A practical migration guide to MCP Apps: the 4 key changes, what broke, and why this shift matters."
+      description="A practical migration guide to MCP Apps: theundefinedkey changes, what broke, and why this shift matters."
       link="/blog/2026/01/22/mcp-ui-to-mcp-apps"
     />
     <Card      
-      title="Agnes Lands MCP Apps"
-      description="Agnes ships early support for the draft MCP Apps specification, aligning with the emerging standard for interactive UIs."
+      title="agnes Lands MCP Apps"
+      description="agnes ships early support for the draft MCP Apps specification, aligning with the emerging standard for interactive UIs."
       link="/blog/2026/01/06/mcp-apps"
     />
     <Card      
       title="MCP UI: Bringing the Browser into the Agent"
-      description="MCP-UI servers return content that Agnes Desktop renders as rich, embeddable UI."
+      description="MCP-UI servers return content that agnes Desktop renders as rich, embeddable UI."
       link="/blog/2025/08/11/mcp-ui-post-browser-world"
     />
     <Card      
@@ -110,7 +110,7 @@ import VideoCarousel from '@site/src/components/VideoCarousel';
       type: 'iframe', 
       src: 'https://youtube.com/embed/GS-kmreZDgU',
       title: 'Livestream - MCP-UI: The Future of Agentic Interfaces',
-      description: 'The Agnes team talks with MCP-UI creators about the future of visual interfaces',
+      description: 'The agnes team talks with MCP-UI creators about the future of visual interfaces',
       duration: '55:32'
     }
   ]}

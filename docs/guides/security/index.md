@@ -1,15 +1,15 @@
 ---
-title: Staying Safe with Agnes
+title: Staying Safe with agnes
 hide_title: true
-description: Keep your Agnes workflows safe with built-in security features and best practices
+description: Keep your agnes workflows safe with built-in security features and best practices
 ---
 
 import Card from '@site/src/components/Card';
 import styles from '@site/src/components/Card/styles.module.css';
 
-<h1 className={styles.pageTitle}>Staying Safe with Agnes</h1>
+<h1 className={styles.pageTitle}>Staying Safe with agnes</h1>
 <p className={styles.pageDescription}>
-  Understanding security risks and following best practices can help you secure your workflows with Agnes.
+  Understanding security risks and following best practices can help you secure your workflows with agnes.
 </p>
 
 <div className={styles.categorySection}>
@@ -31,8 +31,8 @@ import styles from '@site/src/components/Card/styles.module.css';
       link="/docs/guides/security/classification-api-spec"
     />
     <Card 
-      title="macOS Sandbox for Agnes Desktop"
-      description="Control file access, network connections, and process restrictions for Agnes Desktop using Apple's sandbox technology."
+      title="macOS Sandbox for agnes Desktop"
+      description="Control file access, network connections, and process restrictions for agnes Desktop using Apple's sandbox technology."
       link="/docs/guides/sandbox"
     />
   </div>

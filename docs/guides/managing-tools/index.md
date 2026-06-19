@@ -1,7 +1,7 @@
 ---
 title: Managing Tools
 hide_title: true
-description: Control and configure the tools and extensions that power your Agnes workflows
+description: Control and configure the tools and extensions that power your agnes workflows
 ---
 
 import Card from '@site/src/components/Card';
@@ -9,20 +9,20 @@ import styles from '@site/src/components/Card/styles.module.css';
 
 <h1 className={styles.pageTitle}>Managing Tools</h1>
 <p className={styles.pageDescription}>
-  Tools are specific functions within <a href="/docs/getting-started/using-extensions">extensions</a> that give Agnes its capabilities. Learn to control and customize how these tools work for you.
+  Tools are specific functions within <a href="/docs/getting-started/using-extensions">extensions</a> that give agnes its capabilities. Learn to control and customize how these tools work for you.
 </p>
 
 <div className={styles.categorySection}>
   <h2 className={styles.categoryTitle}>📚 Documentation & Guides</h2>
   <div className={styles.cardGrid}>
     <Card 
-      title="Agnes Permissions"
-      description="Choose how much autonomy Agnes has when using tools, editing files, and taking action in a session."
-      link="/docs/guides/managing-tools/Agnes-permissions"
+      title="agnes Permissions"
+      description="Choose how much autonomy agnes has when using tools, editing files, and taking action in a session."
+      link="/docs/guides/managing-tools/agnes-permissions"
     />
     <Card 
       title="Tool Permissions"
-      description="Configure fine-grained permissions to control which tools Agnes can use and when, ensuring secure and controlled automation."
+      description="Configure fine-grained permissions to control which tools agnes can use and when, ensuring secure and controlled automation."
       link="/docs/guides/managing-tools/tool-permissions"
     />
     <Card 
@@ -48,7 +48,7 @@ import styles from '@site/src/components/Card/styles.module.css';
   <div className={styles.cardGrid}>
     <Card
       title="Agentic AI and the MCP Ecosystem"
-      description="A 101 introduction to AI agents, tool calling, and how tools work with LLMs to enable powerful automation."
+      description="Aundefinedintroduction to AI agents, tool calling, and how tools work with LLMs to enable powerful automation."
       link="/blog/2025/02/17/agentic-ai-mcp"
     />
     <Card

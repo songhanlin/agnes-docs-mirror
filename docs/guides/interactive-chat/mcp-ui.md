@@ -2,21 +2,21 @@
 sidebar_position: 1
 title: Using MCP Apps and MCP-UI
 sidebar_label: Using MCP Apps and MCP-UI
-description: Learn how Agnes renders interactive UI components from MCP Apps and MCP-UI extensions
+description: Learn how agnes renders interactive UI components from MCP Apps and MCP-UI extensions
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import AgnesDesktopInstaller from '@site/src/components/AgnesDesktopInstaller';
 import CLIExtensionInstructions from '@site/src/components/CLIExtensionInstructions';
 import { PanelLeft } from 'lucide-react';
 
 # Using MCP Apps and MCP-UI
 
-Extensions built with MCP Apps or MCP-UI allow Agnes Desktop to provide interactive and engaging user experiences. Instead of reading text responses and typing prompts, you can interact with a graphical and clickable UI.
+Extensions built with MCP Apps or MCP-UI allow agnes Desktop to provide interactive and engaging user experiences. Instead of reading text responses and typing prompts, you can interact with a graphical and clickable UI.
 
 :::info MCP Apps is the official specification
-[MCP Apps](/docs/tutorials/building-mcp-apps) is now the official MCP specification for interactive UIs. MCP-UI extensions still work in Agnes, but MCP Apps is the recommended path for new extensions.
+[MCP Apps](/docs/tutorials/building-mcp-apps) is now the official MCP specification for interactive UIs. MCP-UI extensions still work in agnes, but MCP Apps is the recommended path for new extensions.
 :::
 
 :::warning Experimental Features
@@ -25,11 +25,11 @@ The features described in this topic are experimental and in active development.
 
 ## MCP Apps
 
-MCP Apps bring interactive interfaces to Agnes through the official [MCP Apps specification](https://github.com/modelcontextprotocol/ext-apps). Depending on the extension, apps can be launched in standalone, sandboxed windows or embedded in your chat window.
+MCP Apps bring interactive interfaces to agnes through the official [MCP Apps specification](https://github.com/modelcontextprotocol/ext-apps). Depending on the extension, apps can be launched in standalone, sandboxed windows or embedded in your chat window.
 
 ### Launching Apps in Standalone Windows
 
-Some MCP Apps can be launched in their own windows, allowing you to jump straight to the interface without sending messages to Agnes.
+Some MCP Apps can be launched in their own windows, allowing you to jump straight to the interface without sending messages to agnes.
 
 1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
 2. Click `Apps` in the sidebar
@@ -40,7 +40,7 @@ Some MCP Apps can be launched in their own windows, allowing you to jump straigh
 To see the `Apps` page in the sidebar, the [Apps extension](/docs/mcp/apps-mcp) must be enabled from the `Extensions` page. You can also use it to create custom standalone apps.
 :::
 
-The `Apps` page displays custom HTML apps you created using the Apps extension, imported HTML apps, and apps from your enabled MCP Apps extensions. The app interface lets you click buttons, fill forms, or use other controls. Apps can call tools and read resources through MCP (if enabled through CORS), but cannot communicate with Agnes (e.g. via chat).
+The `Apps` page displays custom HTML apps you created using the Apps extension, imported HTML apps, and apps from your enabled MCP Apps extensions. The app interface lets you click buttons, fill forms, or use other controls. Apps can call tools and read resources through MCP (if enabled through CORS), but cannot communicate with agnes (e.g. via chat).
 
 #### Import an HTML App
 
@@ -52,9 +52,9 @@ Import apps that were created with the Apps extension and shared with you.
 
 ### Using Apps in Chat Windows
 
-Some MCP Apps render directly in your conversation when Agnes calls a tool that returns UI. The interactive interface appears inline with the chat, letting you make selections, fill forms, or trigger actions without leaving the conversation flow.
+Some MCP Apps render directly in your conversation when agnes calls a tool that returns UI. The interactive interface appears inline with the chat, letting you make selections, fill forms, or trigger actions without leaving the conversation flow.
 
-If needed, you can just ask Agnes whether the UI can be loaded in the chat window.
+If needed, you can just ask agnes whether the UI can be loaded in the chat window.
 
 <div style={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}>
   <video 
@@ -73,15 +73,15 @@ If needed, you can just ask Agnes whether the UI can be loaded in the chat windo
 
 ## MCP-UI
 
-MCP-UI is an earlier specification for interactive UIs that renders content embedded in your chat. While MCP Apps is now the recommended approach, MCP-UI extensions continue to work in Agnes.
+MCP-UI is an earlier specification for interactive UIs that renders content embedded in your chat. While MCP Apps is now the recommended approach, MCP-UI extensions continue to work in agnes.
 
 ### Try It Out
 
-See how interactive responses work in Agnes. For this exercise, we'll add an extension that connects to [MCP-UI Demos](https://mcp-aharvard.netlify.app/) provided by Andrew Harvard.
+See how interactive responses work in agnes. For this exercise, we'll add an extension that connects to [MCP-UI Demos](https://mcp-aharvard.netlify.app/) provided by Andrew Harvard.
 
   <Tabs groupId="interface">
-    <TabItem value="ui" label="Agnes Desktop" default>
-      <GooseDesktopInstaller
+    <TabItem value="ui" label="agnes Desktop" default>
+      <AgnesDesktopInstaller
         extensionId="richdemo"
         extensionName="Rich Demo"
         description="Demo interactive extension"
@@ -89,7 +89,7 @@ See how interactive responses work in Agnes. For this exercise, we'll add an ext
         url="https://mcp-aharvard.netlify.app/mcp"
       />
     </TabItem>
-    <TabItem value="cli" label="Agnes CLI">
+    <TabItem value="cli" label="agnes CLI">
         <CLIExtensionInstructions
           name="rich_demo"
           description="Demo interactive extension"
@@ -100,7 +100,7 @@ See how interactive responses work in Agnes. For this exercise, we'll add an ext
     </TabItem>
   </Tabs>
 
-In Agnes Desktop, ask:
+In agnes Desktop, ask:
 
 - `Help me select seats for my flight`
 

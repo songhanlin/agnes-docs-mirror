@@ -72,9 +72,9 @@ export AGNES_EDITOR_MODEL="your-model"
 
 When the `str_replace` tool is used to edit code:
 
-1. **Configuration Check**: Agnes checks if all three environment variables are properly set and non-empty.
+1. **Configuration Check**: agnes checks if all three environment variables are properly set and non-empty.
 
-2. **With AI Enabled**: If configured, Agnes sends the original code and your requested change to the configured AI model for processing.
+2. **With AI Enabled**: If configured, agnes sends the original code and your requested change to the configured AI model for processing.
 
 3. **Fallback**: If the AI API is not configured or the API call fails, it falls back to simple string replacement.
 

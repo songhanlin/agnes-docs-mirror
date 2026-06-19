@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- Agnes CLI built from the `feat/tanzu-ai-provider` branch
+- agnes CLI built from the `feat/tanzu-ai-provider` branch
 - A Tanzu AI Services endpoint and API key (single-model or multi-model plan)
 
 ## Locate the CLI Binary
@@ -10,7 +10,7 @@
 **macOS:**
 ```bash
 # If built from source:
-export AGNES_CLI=~/claude/Agnes-fork/target/release/Agnes
+export AGNES_CLI=~/claude/agnes-fork/target/release/agnes
 
 # Verify:
 $AGNES_CLI --version
@@ -19,10 +19,10 @@ $AGNES_CLI --version
 **Linux:**
 ```bash
 # If installed via .deb:
-export AGNES_CLI=/usr/bin/Agnes
+export AGNES_CLI=/usr/bin/agnes
 
 # If built from source:
-export AGNES_CLI=~/Agnes-fork/target/release/Agnes
+export AGNES_CLI=~/agnes-fork/target/release/agnes
 
 # Verify:
 $AGNES_CLI --version
@@ -31,7 +31,7 @@ $AGNES_CLI --version
 ## Test 1: Configure VMware Tanzu Platform Provider
 
 ```bash
-goose configure
+agnes configure
 ```
 
 1. Select **Configure Providers**
@@ -50,12 +50,12 @@ goose configure
 export TANZU_AI_ENDPOINT="https://genai-proxy.sys.tas-tdc.kuhn-labs.com/tanzu-Qwen3-Coder-30B-A3B-vllm-v1-f3b0d18"
 export TANZU_AI_API_KEY="<your-jwt-token>"
 
-goose session
+agnes session
 ```
 
 Type a simple prompt:
 ```
-> What is 2 + 2?
+> What isundefined+ 2?
 ```
 
 **Expected:** The model responds with an answer. If streaming is enabled, tokens appear incrementally.
@@ -66,10 +66,10 @@ Type a simple prompt:
 export TANZU_AI_ENDPOINT="https://genai-proxy.sys.tas-tdc.kuhn-labs.com/tanzu-all-models-a8a9e22"
 export TANZU_AI_API_KEY="<your-jwt-token>"
 
-goose session
+agnes session
 ```
 
-**Expected:** Session starts with whichever model was selected during `goose configure`.
+**Expected:** Session starts with whichever model was selected during `agnes configure`.
 
 ## Test 4: Verify Streaming
 
@@ -84,7 +84,7 @@ With streaming enabled (`supports_streaming: true`), responses should appear tok
 ## Test 5: Verify Dynamic Model Fetching
 
 ```bash
-goose configure
+agnes configure
 ```
 
 Select **Configure Providers** > **VMware Tanzu Platform**.
@@ -97,14 +97,14 @@ Select **Configure Providers** > **VMware Tanzu Platform**.
 ### Missing API Key
 ```bash
 unset TANZU_AI_API_KEY
-goose session
+agnes session
 ```
 **Expected:** Clear error message: "Required API key TANZU_AI_API_KEY is not set."
 
 ### Missing Endpoint
 ```bash
 unset TANZU_AI_ENDPOINT
-goose session
+agnes session
 ```
 **Expected:** Clear error message about TANZU_AI_ENDPOINT not being set.
 
@@ -112,23 +112,23 @@ goose session
 ```bash
 export TANZU_AI_ENDPOINT="https://genai-proxy.sys.example.com/nonexistent"
 export TANZU_AI_API_KEY="invalid-key"
-goose session
+agnes session
 ```
 **Expected:** Connection or authentication error, not a crash.
 
 ## Test 7: Switch Between Plans
 
 1. Configure with multi-model endpoint, select a model, start a session, verify it works
-2. Run `goose configure` again
+2. Run `agnes configure` again
 3. Change TANZU_AI_ENDPOINT to the single-model endpoint
 4. Select the single model
 5. Start a new session, verify it works
 
-**Expected:** Both plans work without needing to restart Agnes.
+**Expected:** Both plans work without needing to restart agnes.
 
 ## Quick Curl Verification
 
-Before testing with Agnes, you can verify endpoints directly:
+Before testing with agnes, you can verify endpoints directly:
 
 ```bash
 # Test models endpoint

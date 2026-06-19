@@ -3,7 +3,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Talk to Agnes directly from your shell prompt. Instead of switching to a separate REPL session, stay in your terminal and call Agnes when you need it.
+Talk to agnes directly from your shell prompt. Instead of switching to a separate REPL session, stay in your terminal and call agnes when you need it.
 
 ## Setup
 
@@ -12,7 +12,7 @@ Talk to Agnes directly from your shell prompt. Instead of switching to a separat
 
 Add to `~/.zshrc`:
 ```bash
-eval "$(Agnes term init zsh)"
+eval "$(agnes term init zsh)"
 ```
 
 </TabItem>
@@ -20,7 +20,7 @@ eval "$(Agnes term init zsh)"
 
 Add to `~/.bashrc`:
 ```bash
-eval "$(Agnes term init bash)"
+eval "$(agnes term init bash)"
 ```
 
 </TabItem>
@@ -28,7 +28,7 @@ eval "$(Agnes term init bash)"
 
 Add to `~/.config/fish/config.fish`:
 ```fish
-Agnes term init fish | source
+agnes term init fish | source
 ```
 
 </TabItem>
@@ -36,9 +36,9 @@ Agnes term init fish | source
 
 Add to `~/.config/nushell/config.nu`:
 ```nu
-let goose_term_init = ($nu.cache-dir | path join "Agnes-term-init.nu")
-^Agnes term init nu | save --force $goose_term_init
-source $goose_term_init
+let agnes_term_init = ($nu.cache-dir | path join "agnes-term-init.nu")
+^agnes term init nu | save --force $agnes_term_init
+source $agnes_term_init
 ```
 
 </TabItem>
@@ -46,7 +46,7 @@ source $goose_term_init
 
 Add to `$PROFILE`:
 ```powershell
-Invoke-Expression (Agnes term init powershell)
+Invoke-Expression (agnes term init powershell)
 ```
 
 </TabItem>
@@ -56,104 +56,104 @@ Restart your terminal or source the config, and that's it!
 
 ## Usage
 
-Just type `@Agnes` (or `@g` for short) followed by your question:
+Just type `@agnes` (or `@g` for short) followed by your question:
 
 ```bash
 npm install express
     npm ERR! code EACCES
     npm ERR! permission denied
 
-@Agnes "how do I fix this error?"
+@agnes "how do I fix this error?"
 ```
 
-Agnes automatically sees the commands you've run since your last question, so you don't need to explain what you've been doing. Use quotes around your prompt if it contains special characters like `?`, `*`, or `'`:
+agnes automatically sees the commands you've run since your last question, so you don't need to explain what you've been doing. Use quotes around your prompt if it contains special characters like `?`, `*`, or `'`:
 
 ```bash
-@Agnes "what's in this directory?"
+@agnes "what's in this directory?"
 @g "analyze the error: 'permission denied'"
 ```
 
 ## Named Sessions
-By default, each terminal gets its own goose session that lasts until you close it. Named sessions let you continue conversations across terminal restarts and share context between windows.
+By default, each terminal gets its own agnes session that lasts until you close it. Named sessions let you continue conversations across terminal restarts and share context between windows.
 
 <Tabs groupId="shells">
 <TabItem value="zsh" label="zsh" default>
 
 ```bash
-eval "$(Agnes term init zsh --name my-project)"
+eval "$(agnes term init zsh --name my-project)"
 ```
 
 </TabItem>
 <TabItem value="bash" label="bash">
 
 ```bash
-eval "$(Agnes term init bash --name my-project)"
+eval "$(agnes term init bash --name my-project)"
 ```
 
 </TabItem>
 <TabItem value="fish" label="fish">
 
 ```fish
-Agnes term init fish --name my-project | source
+agnes term init fish --name my-project | source
 ```
 
 </TabItem>
 <TabItem value="nu" label="Nushell">
 
 ```nu
-let goose_term_init = ($nu.cache-dir | path join "Agnes-term-init.nu")
-^Agnes term init nu --name my-project | save --force $goose_term_init
-source $goose_term_init
+let agnes_term_init = ($nu.cache-dir | path join "agnes-term-init.nu")
+^agnes term init nu --name my-project | save --force $agnes_term_init
+source $agnes_term_init
 ```
 
 </TabItem>
 <TabItem value="powershell" label="PowerShell">
 
 ```powershell
-Invoke-Expression (Agnes term init powershell --name my-project)
+Invoke-Expression (agnes term init powershell --name my-project)
 ```
 
 </TabItem>
 </Tabs>
 
-Named sessions persist in Agnes's database, so they're available anytime, even after restarting your computer. Reopen later and run the same command to continue:
+Named sessions persist in agnes's database, so they're available anytime, even after restarting your computer. Reopen later and run the same command to continue:
 
 ```bash
 # Start debugging
-eval "$(Agnes term init zsh --name auth-bug)"
-@goose help me debug this login timeout
+eval "$(agnes term init zsh --name auth-bug)"
+@agnes help me debug this login timeout
 
 # Close terminal, come back later
-eval "$(Agnes term init zsh --name auth-bug)"
-@Agnes "what was the solution we discussed?"
+eval "$(agnes term init zsh --name auth-bug)"
+@agnes "what was the solution we discussed?"
 # Continues the same conversation with context
 ```
 
 ## Default Handler
 
-Use `--default` if you want Agnes to answer commands your shell cannot resolve.
+Use `--default` if you want agnes to answer commands your shell cannot resolve.
 
 <Tabs groupId="default-shells">
 <TabItem value="zsh" label="zsh" default>
 
 ```bash
-eval "$(Agnes term init zsh --default)"
+eval "$(agnes term init zsh --default)"
 ```
 
 </TabItem>
 <TabItem value="bash" label="bash">
 
 ```bash
-eval "$(Agnes term init bash --default)"
+eval "$(agnes term init bash --default)"
 ```
 
 </TabItem>
 <TabItem value="nu" label="Nushell">
 
 ```nu
-let goose_term_init = ($nu.cache-dir | path join "Agnes-term-init.nu")
-^Agnes term init nu --default | save --force $goose_term_init
-source $goose_term_init
+let agnes_term_init = ($nu.cache-dir | path join "agnes-term-init.nu")
+^agnes term init nu --default | save --force $agnes_term_init
+source $agnes_term_init
 ```
 
 </TabItem>
@@ -161,20 +161,20 @@ source $goose_term_init
 
 ## Show Context Status in Your Prompt
 
-Add `Agnes term info` to your prompt to see how much context you've used and which model is active during a terminal goose session. 
+Add `agnes term info` to your prompt to see how much context you've used and which model is active during a terminal agnes session. 
 
 <Tabs groupId="shells">
 <TabItem value="zsh" label="zsh" default>
 
 ```bash
-PROMPT='$(Agnes term info) %~ $ '
+PROMPT='$(agnes term info) %~ $ '
 ```
 
 </TabItem>
 <TabItem value="bash" label="bash">
 
 ```bash
-PS1='$(Agnes term info) \w $ '
+PS1='$(agnes term info) \w $ '
 ```
 
 </TabItem>
@@ -182,7 +182,7 @@ PS1='$(Agnes term info) \w $ '
 
 ```fish
 function fish_prompt
-    Agnes term info
+    agnes term info
     echo -n ' '(prompt_pwd)' $ '
 end
 ```
@@ -191,7 +191,7 @@ end
 <TabItem value="nu" label="Nushell">
 
 ```nu
-$env.PROMPT_COMMAND = {|| $"(Agnes term info) (pwd)> " }
+$env.PROMPT_COMMAND = {|| $"(agnes term info) (pwd)> " }
 ```
 
 </TabItem>
@@ -199,28 +199,28 @@ $env.PROMPT_COMMAND = {|| $"(Agnes term info) (pwd)> " }
 
 ```powershell
 function prompt {
-    $gooseInfo = & Agnes term info
-    "$gooseInfo $(Get-Location) PS> "
+    $agnesInfo = & agnes term info
+    "$agnesInfo $(Get-Location) PS> "
 }
 ```
 
 </TabItem>
 </Tabs>
 
-Your terminal prompt now shows the context usage and model name (shortened for readability) for the active goose session. For example:
+Your terminal prompt now shows the context usage and model name (shortened for readability) for the active agnes session. For example:
 
 ```bash
 ●●○○○ sonnet ~/projects $
 ```
-## Shell Completion for Agnes Commands
+## Shell Completion for agnes Commands
 
-`@Agnes` provides context-aware assistance based on your command history. To enable tab completion of Agnes CLI commands (like `goose session`, `goose run`, etc.), see the [shell completion documentation](/docs/guides/goose-cli-commands#completion).
+`@agnes` provides context-aware assistance based on your command history. To enable tab completion of agnes CLI commands (like `agnes session`, `agnes run`, etc.), see the [shell completion documentation](/docs/guides/agnes-cli-commands#completion).
 
 ## Troubleshooting
 
-**Agnes doesn't see recent commands:**
-If you run commands but Agnes says it doesn't see any recent activity, check if terminal integration is properly [set up in your shell config](#setup).
-You can also check the id of the goose session in your current terminal:
+**agnes doesn't see recent commands:**
+If you run commands but agnes says it doesn't see any recent activity, check if terminal integration is properly [set up in your shell config](#setup).
+You can also check the id of the agnes session in your current terminal:
 ```bash
 # Check if session ID exists
 echo $AGENT_SESSION_ID
@@ -234,14 +234,14 @@ $env.AGENT_SESSION_ID
 To share context across terminal windows, use a [named session](#named-sessions) instead.
 
 **Session getting too full** (prompt shows `●●●●●`):
-If Agnes's responses are getting slow or hitting context limits, start a fresh goose session in the terminal. The new goose session sees your command history, but not the conversation history from the previous session. 
+If agnes's responses are getting slow or hitting context limits, start a fresh agnes session in the terminal. The new agnes session sees your command history, but not the conversation history from the previous session. 
 ```bash
-# Start a new goose session in the same shell
-eval "$(Agnes term init zsh)"
+# Start a new agnes session in the same shell
+eval "$(agnes term init zsh)"
 ```
 ```nu
 # Nushell
-let goose_term_init = ($nu.cache-dir | path join "Agnes-term-init.nu")
-^Agnes term init nu | save --force $goose_term_init
-source $goose_term_init
+let agnes_term_init = ($nu.cache-dir | path join "agnes-term-init.nu")
+^agnes term init nu | save --force $agnes_term_init
+source $agnes_term_init
 ```

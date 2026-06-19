@@ -4,13 +4,13 @@
 
 ## Getting Started
 
-### [Install Agnes](docs/getting-started/installation.md)
+### [Install agnes](docs/getting-started/installation.md)
 
 * Set LLM Provider
 * Update Provider
-* Running Agnes
+* Running agnes
 * Shared Configuration Settings
-* Pin a Agnes version in CI/CD
+* Pin a agnes version in CI/CD
 * Generate manpages for Linux distributions
 * Additional Resources
 
@@ -25,7 +25,7 @@
     * Example Configurations
     * Setup Instructions
 * Configure Custom Provider
-* Using Agnes for Free
+* Using agnes for Free
   * Groq
   * EmpirioLabs
   * FuturMix
@@ -36,7 +36,7 @@
 * GitHub Copilot Authentication
 * Azure OpenAI Authentication
 * Multi-Model Configuration
-* Gemini 3 Thinking Levels
+* GeminiundefinedThinking Levels
 * Viewing Model Reasoning
 
 ### [Using Extensions](docs/getting-started/using-extensions.md)
@@ -54,15 +54,15 @@
   * Change Extensions Mid-Session
 * Automatically Enabled Extensions
   * Automatic Detection
-    * Agnes Prompt
-    * Agnes Output
-    * Agnes Prompt
-    * Agnes Output
+    * agnes Prompt
+    * agnes Output
+    * agnes Prompt
+    * agnes Output
   * Direct Request
-    * Agnes Prompt
-    * Agnes Output
-    * Agnes Prompt
-    * Agnes Output
+    * agnes Prompt
+    * agnes Output
+    * agnes Prompt
+    * agnes Output
 * Updating Extension Properties
 * Removing Extensions
 * Starting Session with Extensions
@@ -75,16 +75,16 @@
 
 ## Guides
 
-### [Using Agnes in ACP Clients](docs/guides/acp-clients.md)
+### [Using agnes in ACP Clients](docs/guides/acp-clients.md)
 
 * How It Works
 * Setup in ACP Clients
   * Example: Zed Editor Setup
     * Option 1: Install from the ACP Registry (recommended)
-    * Option 2: Configure Agnes as a Custom Agent
+    * Option 2: Configure agnes as a Custom Agent
       * Prerequisites
-      * Add Agnes to Your Zed Settings
-    * Start Using Agnes in Zed
+      * Add agnes to Your Zed Settings
+    * Start Using agnes in Zed
     * Advanced Configuration
       * Overriding Provider and Model
 * Using MCP Servers from ACP Clients
@@ -120,7 +120,43 @@
   * Pi ACP Configuration
 * Error Handling
 
-### [Agnes Extension Allowlist](docs/guides/allowlist.md)
+### [CLI Commands](docs/guides/agnes-cli-commands.md)
+
+* Flag Naming Conventions
+  * Core Commands
+    * help
+    * configure
+    * info [options]
+    * version
+    * update [options]
+    * completion
+  * Session Management
+    * session [options]
+    * session list [options]
+    * session remove [options]
+    * session export [options]
+    * session diagnostics [options]
+  * Task Execution
+    * run [options]
+    * recipe
+    * plugin
+    * schedule
+    * mcp
+    * acp
+  * Project Management
+    * project
+    * projects
+  * Terminal Integration
+    * @agnes / @g
+* Interactive Session Features
+  * Slash Commands
+  * Themes
+* Navigation and Controls
+  * Keyboard Shortcuts
+  * External Editor Mode
+  * Command History Search
+
+### [agnes Extension Allowlist](docs/guides/allowlist.md)
 
 * How It Works
 * Configuration
@@ -193,7 +229,7 @@
 ### [Creating Plans Before Working](docs/guides/context-engineering/creating-plans.md)
 
 * Set your planner provider and model
-  * Set Agnes planner environment variables
+  * Set agnes planner environment variables
 * Describe your project
 * A simple construction plan example
   * Introduction to Building a 4,000 Sq Ft Rambler
@@ -228,7 +264,7 @@
 * Hook Payload
 * Examples
   * Notify When a Tool Fails
-  * Format Files After Agnes Edits Them
+  * Format Files After agnes Edits Them
   * React to Long-Running Commands
 * Try the Example Plugin
 * Disable a Hook Plugin
@@ -293,7 +329,7 @@
   * Restricted Operations
 * Additional Resources
 
-### [Providing Hints to Agnes](docs/guides/context-engineering/using-goosehints.md)
+### [Providing Hints to agnes](docs/guides/context-engineering/using-agneshints.md)
 
 * Creating Your Hints File
 * Setting Up Hints
@@ -305,10 +341,10 @@
 * Custom Context Files
   * Configuration
 
-### [Prevent Agnes from Accessing Files](docs/guides/context-engineering/using-gooseignore.md)
+### [Prevent agnes from Accessing Files](docs/guides/context-engineering/using-agnesignore.md)
 
-* Creating your `.gooseignore` file
-* Example `.gooseignore` file
+* Creating your `.agnesignore` file
+* Example `.agnesignore` file
 * Negation Patterns
 * Ignore File Types and Priority
   * When You Have Ignore Files
@@ -330,7 +366,7 @@
   * Environment-Specific Behavior
   * Project-Specific Workflows
   * Temporary Reminders
-* Persistent Instructions vs goosehints
+* Persistent Instructions vs agneshints
 * Best Practices
 
 ### [Agent Skills](docs/guides/context-engineering/using-skills.md)
@@ -366,7 +402,7 @@
 
 * What you can customize
 * Getting started
-* Quick example: ship Agnes with a local model
+* Quick example: ship agnes with a local model
 
 ### [Customizing the Sidebar](docs/guides/desktop-navigation.md)
 
@@ -398,17 +434,17 @@
 * Tool Configuration
   * Enhanced Code Editing
 * Security and Privacy
-  * macOS Sandbox for Agnes Desktop
+  * macOS Sandbox for agnes Desktop
 * Network Configuration
   * OAuth Callback Port
   * HTTP Proxy
 * Observability
   * Observability Configuration
   * Langfuse Integration
-* Agnes Server
+* agnes Server
 * Recipe Configuration
 * Development & Testing
-* Variables Controlled by Agnes
+* Variables Controlled by agnes
   * Customizing Shell Behavior
   * Using Session IDs in Workflows
 * Environment Variable Passthrough
@@ -418,50 +454,14 @@
 ### [File Access and Management](docs/guides/file-management.md)
 
 * File Access
-  * Quick File Search in Agnes Desktop
+  * Quick File Search in agnes Desktop
 * File Management Best Practices
   * Version Control
   * Validation and Testing
   * Change Review
   * Codebase Organization
 
-### [CLI Commands](docs/guides/goose-cli-commands.md)
-
-* Flag Naming Conventions
-  * Core Commands
-    * help
-    * configure
-    * info [options]
-    * version
-    * update [options]
-    * completion
-  * Session Management
-    * session [options]
-    * session list [options]
-    * session remove [options]
-    * session export [options]
-    * session diagnostics [options]
-  * Task Execution
-    * run [options]
-    * recipe
-    * plugin
-    * schedule
-    * mcp
-    * acp
-  * Project Management
-    * project
-    * projects
-  * Terminal Integration
-    * @Agnes / @g
-* Interactive Session Features
-  * Slash Commands
-  * Themes
-* Navigation and Controls
-  * Keyboard Shortcuts
-  * External Editor Mode
-  * Command History Search
-
-### [Set LLM Rate Limits](docs/guides/handling-llm-rate-limits-with-goose.md)
+### [Set LLM Rate Limits](docs/guides/handling-llm-rate-limits-with-agnes.md)
 
 ### [Rich Interactive Chat with MCP Apps and MCP-UI](docs/guides/interactive-chat/index.md)
 
@@ -475,7 +475,7 @@
   * Try It Out
 * For Extension Developers
 
-### [Agnes Logging System](docs/guides/logs.md)
+### [agnes Logging System](docs/guides/logs.md)
 
 * Command History
 * Session Records
@@ -500,17 +500,17 @@
 
   * Toggle Parameter Truncation
 
+### [agnes Permission Modes](docs/guides/managing-tools/agnes-permissions.md)
+
+* Permission Modes
+* Configuring agnes mode
+* CLI Provider Permission Integration
+
 ### [Code Mode](docs/guides/managing-tools/code-mode.md)
 
 * How Code Mode Works
   * Traditional vs. Code Mode Tool Calling
 * Additional Resources
-
-### [Agnes Permission Modes](docs/guides/managing-tools/goose-permissions.md)
-
-* Permission Modes
-* Configuring Agnes mode
-* CLI Provider Permission Integration
 
 ### [Managing Tools](docs/guides/managing-tools/index.md)
 
@@ -636,14 +636,14 @@
 * Best Practices
 * Learn More
 
-### [Running a Remote Agnes Server](docs/guides/remote-goose-server.md)
+### [Running a Remote agnes Server](docs/guides/remote-agnes-server.md)
 
 * Initial Setup
-  * 1. Start the `goosed` server
+  * 1. Start the `agnesd` server
   * 2. Verify the server is up
   * 3. Find the certificate fingerprint
-  * 4. Configure Agnes Desktop
-* Running `goosed` as a Background Service (macOS)
+  * 4. Configure agnes Desktop
+* Running `agnesd` as a Background Service (macOS)
 * Troubleshooting
   * Server only accepts local connections
   * TLS is not enabled
@@ -672,7 +672,7 @@
   * Development Workflows
   * Combining Options
 
-### [macOS Sandbox for Agnes Desktop](docs/guides/sandbox.md)
+### [macOS Sandbox for agnes Desktop](docs/guides/sandbox.md)
 
 * Quick Start
 * Configuration
@@ -714,7 +714,7 @@
     * Status Codes
     * Example
 
-### [Staying Safe with Agnes](docs/guides/security/index.md)
+### [Staying Safe with agnes](docs/guides/security/index.md)
 
 ### [Prompt Injection Detection](docs/guides/security/prompt-injection-detection.md)
 
@@ -755,7 +755,7 @@
 
 ### [Smart Context Management](docs/guides/sessions/smart-context-management.md)
 
-* How Agnes Manages Context
+* How agnes Manages Context
 * Automatic Compaction
   * Manual Compaction
 * Context Limit Strategies
@@ -776,10 +776,10 @@
   * Single-Model Plan Output
   * Multi-Model Plan Output
 * Step 4: Identify Your Endpoint and API Key
-* Step 5: Configure Agnes
+* Step 5: Configure agnes
 * Step 6: Select a Model
 * Troubleshooting
-  * "Could not contact provider" / 401 Unauthorized on models endpoint
+  * "Could not contact provider" /undefinedUnauthorized on models endpoint
   * Verify your endpoint manually
   * Streaming
   * Model not found
@@ -808,32 +808,32 @@
 * Named Sessions
 * Default Handler
 * Show Context Status in Your Prompt
-* Shell Completion for Agnes Commands
+* Shell Completion for agnes Commands
 * Troubleshooting
 
-### [Quick Agnes Tips](docs/guides/tips.md)
+### [Quick agnes Tips](docs/guides/tips.md)
 
-  * Agnes works on your behalf
-  * Prompt Agnes using natural language
-  * Extend Agnes's capabilities to any application
-  * Choose how much control Agnes has
+  * agnes works on your behalf
+  * Prompt agnes using natural language
+  * Extend agnes's capabilities to any application
+  * Choose how much control agnes has
   * Choose the right LLM
   * Keep sessions short
   * Use Quick Launcher for faster session starts
   * Turn off unnecessary extensions or tool
-  * Teach Agnes your preferences
+  * Teach agnes your preferences
   * Protect sensitive files
   * Version Control
-  * Control which extensions Agnes can use
+  * Control which extensions agnes can use
   * Set up starter templates
   * Embrace an experimental mindset
   * Customize the sidebar
-  * Keep goose updated
+  * Keep agnes updated
   * Use a Dedicated Planner Model
   * Make Recipes Safe to Re-run
   * Add Logging to Recipes
 
-### [Updating Agnes](docs/guides/updating-goose.md)
+### [Updating agnes](docs/guides/updating-agnes.md)
 
 ### [Anonymous Usage Data](docs/guides/usage-data.md)
 
@@ -841,5 +841,3 @@
 * Change Your Preference
 
 ---
-
-> Full docs: https://goose-docs.ai/
