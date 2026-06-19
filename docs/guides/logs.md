@@ -1,10 +1,3 @@
----
-title: agnes Logging System
-sidebar_label: Logging System
-sidebar_position: 65
----
-
-
 agnes uses a unified storage system for conversations and interactions. All conversations and interactions (both CLI and Desktop) are stored **locally** in the following locations:
 
 | **Type**            | **Unix-like (macOS, Linux)**              | **Windows**                              |

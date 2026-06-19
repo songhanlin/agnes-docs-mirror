@@ -1,12 +1,3 @@
----
-title: Staying Safe with agnes
-hide_title: true
-description: Keep your agnes workflows safe with built-in security features and best practices
----
-
-import Card from '@site/src/components/Card';
-import styles from '@site/src/components/Card/styles.module.css';
-
 <h1 className={styles.pageTitle}>Staying Safe with agnes</h1>
 <p className={styles.pageDescription}>
   Understanding security risks and following best practices can help you secure your workflows with agnes.

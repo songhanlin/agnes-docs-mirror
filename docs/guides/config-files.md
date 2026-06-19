@@ -1,9 +1,3 @@
----
-sidebar_position: 10
-title: Configuration Files
-sidebar_label: Configuration Files
----
-
 # Configuration Overview
 
 agnes uses YAML [configuration files](#configuration-files) to manage settings and extensions. The primary config file is located at:

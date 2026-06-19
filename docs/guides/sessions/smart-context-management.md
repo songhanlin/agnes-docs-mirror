@@ -1,14 +1,3 @@
----
-title: Smart Context Management
-sidebar_position: 3
-sidebar_label: Smart Context Management
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { ScrollText } from 'lucide-react';
-import { PanelLeft } from 'lucide-react';
-
 When working with [Large Language Models (LLMs)](/docs/getting-started/providers), there are limits to how much conversation history they can process at once. agnes provides smart context management features to help handle context and conversation limits so you can maintain productive sessions. Here are some key concepts:
 
 - **Context Length**: The amount of conversation history the LLM can consider, also referred to as the context window
@@ -33,7 +22,6 @@ Disable this feature by setting the value to `0.0`.
 
 ```
 # Automatically compact sessions when 60% of available tokens are used
-export AGNES_AUTO_COMPACT_THRESHOLD=0.6
 ```
 
 When you reach the auto-compaction threshold:
@@ -111,12 +99,8 @@ You can configure how agnes handles context limits by setting the `AGNES_CONTEXT
 
 ```bash
 # Set automatic strategy (choose one)
-export AGNES_CONTEXT_STRATEGY=summarize  # Automatically summarize (recommended)
-export AGNES_CONTEXT_STRATEGY=truncate   # Automatically remove oldest messages
-export AGNES_CONTEXT_STRATEGY=clear      # Automatically clear session
 
 # Set to prompt the user
-export AGNES_CONTEXT_STRATEGY=prompt
 ```
 
 When you hit the context limit, the behavior depends on your configuration:
@@ -341,25 +325,18 @@ agnes resolves context limits with the following precedence (highest to lowest):
 
 ```bash
 # LiteLLM proxy with custom model name
-export AGNES_PROVIDER="openai"
-export AGNES_MODEL="my-custom-gpt4-proxy"
-export AGNES_CONTEXT_LIMIT=200000  # Override the 32k default
 ```
 
 2. Planner setup with a different context limit
 
 ```bash
 # Set a larger context window for planning
-export AGNES_PLANNER_MODEL="claude-opus-custom"
-export AGNES_PLANNER_CONTEXT_LIMIT=500000
 ```
 
 3. Planner with large context
 
 ```bash
 # Large context for complex planning
-export AGNES_PLANNER_MODEL="gpt-4-custom"
-export AGNES_PLANNER_CONTEXT_LIMIT=1000000
 ```
 
 ## Credit Balance Monitoring

@@ -1,9 +1,3 @@
----
-sidebar_position: 75
-title: Running Tasks
-sidebar_label: Run Tasks
----
-
 When working with the agnes CLI, you can pass files and instructions to the `agnes run` command to execute tasks and workflows. This could be a simple one-liner command or a complex set of instructions stored in a file.
 
 ## Basic Usage

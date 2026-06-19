@@ -1,13 +1,3 @@
----
-sidebar_position: 3
-title: Code Mode
-sidebar_label: Code Mode
-description: Understanding how Code Mode handles tool discovery and tool calling
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 Code Mode is a method of interacting with MCP tools programmatically instead of calling them directly. Code Mode is particularly useful when working with many enabled extensions, as it can help manage context window usage more efficiently.
 
 :::info
@@ -45,9 +35,6 @@ Code Mode only supports text content from tool results. Images, binary data, and
 
 ## Additional Resources
 
-import ContentCardCarousel from '@site/src/components/ContentCardCarousel';
-import agnesCodeMode from '@site/blog/2025-12-15-code-mode-mcp/header-image.jpg';
-import notMcpReplacement from '@site/blog/2025-12-21-code-mode-doesnt-replace-mcp/header-image.png';
 
 <ContentCardCarousel
   items={[

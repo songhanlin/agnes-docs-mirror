@@ -1,13 +1,3 @@
----
-sidebar_position: 1
-title: Session Management
-sidebar_label: Session Management
----
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { AppWindow, PanelLeft, FolderDot, Paperclip, Copy, Edit2, Trash2, Download, Upload, ChefHat, History } from 'lucide-react';
-
-
 A session is a single, continuous interaction between you and agnes, providing a space to ask questions and prompt action. This guide covers how to manage the session lifecycle.
 
 ## Start Session 

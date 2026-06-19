@@ -1,9 +1,3 @@
----
-sidebar_position: 105
-title: Using agnes in ACP Clients
-sidebar_label: agnes in ACP Clients
----
-
 Client applications that support the [Agent Client Protocol (ACP)](https://agentclientprotocol.com/) can connect natively to agnes. This integration allows you to seamlessly interact with agnes directly from the client.
 
 :::warning Experimental Feature
@@ -253,8 +247,6 @@ When agnes requests permission to use a tool, a dialog appears with these option
 
 ## Additional Resources
 
-import ContentCardCarousel from '@site/src/components/ContentCardCarousel';
-import chooseYourIde from '@site/blog/2025-10-24-intro-to-agent-client-protocol-acp/choose-your-ide.png';
 
 <ContentCardCarousel
   items={[

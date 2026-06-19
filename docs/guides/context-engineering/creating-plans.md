@@ -1,12 +1,3 @@
----
-sidebar_position: 2
-title: Creating Plans Before Working
-sidebar_label: Creating Plans
----
-
-import Card from '@site/src/components/Card';
-import styles from '@site/src/components/Card/styles.module.css';
-
 Starting a project without a clear plan is like building a house without a blueprint. It can lead to:
 
 * Confusion about what to do
@@ -45,8 +36,6 @@ You can also customize how agnes creates plans by editing the `plan.md` [prompt 
 ### Set agnes planner environment variables
 You might add these lines to your bash shell config file (.bashrc) to add the planner environment variables:
 ```bash
-export AGNES_PLANNER_PROVIDER=<my-chosen-provider>
-export AGNES_PLANNER_MODEL=<my-chosen-model>
 ```
 After you save your changes to the config file, you need to re-start your agnes session so that agnes can use the variables.
 
@@ -324,8 +313,6 @@ To enter planning mode, type `/plan`.  Optionally, you can append your plan desc
 
 ## Additional Resources
 
-import ContentCardCarousel from '@site/src/components/ContentCardCarousel';
-import blogBanner from '@site/blog/2025-12-19-does-your-ai-agent-need-a-plan/blog-banner.png';
 
 <ContentCardCarousel
   items={[

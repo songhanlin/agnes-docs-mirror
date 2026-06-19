@@ -1,13 +1,3 @@
----
-sidebar_position: 7
-title: CLI Commands
-sidebar_label: CLI Commands
-toc_max_heading_level: 4
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 agnes provides a command-line interface (CLI) with several commands for managing sessions, configurations and extensions. This guide covers all available CLI commands and interactive session features.
 
 ## Flag Naming Conventions
@@ -714,7 +704,6 @@ The agnes CLI theme is independent from the agnes Desktop theme.
 **Examples:**
 ```bash
 # Set ANSI theme for the session via environment variable
-export AGNES_CLI_THEME=ansi
 agnes session --name use-custom-theme
 
 # Toggle theme during a session

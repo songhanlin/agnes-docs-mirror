@@ -1,9 +1,3 @@
----
-title: macOS Sandbox for agnes Desktop
-sidebar_label: Sandbox for agnes Desktop
-description: Optional sandboxing for agnes Desktop to control file access, filter network traffic, and enforce security policies on macOS
----
-
 agnes Desktop includes an optional macOS sandbox that you can enable when you need stricter control and visibility over what agnes can access on your system. Use it to:
 
 - **Restrict file system access** — Block writes to SSH keys, shell configs, and agnes configuration files
@@ -24,7 +18,6 @@ The sandbox relies on `/usr/bin/sandbox-exec`, which is only available on macOS 
 To enable the sandbox, launch agnes Desktop from the terminal with the environment variable set. For example:
 
 ```bash
-export AGNES_SANDBOX=true
 open -a Agnes
 ```
 
@@ -145,10 +138,8 @@ By default, SSH is only allowed to well-known git hosting domains (e.g. GitHub, 
 
 ```bash
 # Add custom git hosts
-export AGNES_SANDBOX_GIT_HOSTS="github.com,gitlab.com,your-gitea.internal.com"
 
 # Or allow SSH to all hosts
-export AGNES_SANDBOX_SSH_ALL_HOSTS=true
 ```
 
 ----
@@ -169,41 +160,27 @@ For enterprise environments, LaunchDarkly provides optional dynamic egress contr
 ### Maximum security
 
 ```bash
-export AGNES_SANDBOX=true
 # All protections enabled (defaults)
 ```
 
 ### Allow raw IP connections (e.g. for internal APIs)
 
 ```bash
-export AGNES_SANDBOX=true
-export AGNES_SANDBOX_ALLOW_IP=true
 ```
 
 ### Disable SSH entirely
 
 ```bash
-export AGNES_SANDBOX=true
-export AGNES_SANDBOX_ALLOW_SSH=false
 ```
 
 ### Relaxed mode (fewer restrictions)
 
 ```bash
-export AGNES_SANDBOX=true
-export AGNES_SANDBOX_PROTECT_FILES=false
-export AGNES_SANDBOX_BLOCK_RAW_SOCKETS=false
-export AGNES_SANDBOX_BLOCK_TUNNELING=false
-export AGNES_SANDBOX_ALLOW_IP=true
-export AGNES_SANDBOX_SSH_ALL_HOSTS=true
 ```
 
 ### With LaunchDarkly egress control
 
 ```bash
-export AGNES_SANDBOX=true
-export LAUNCHDARKLY_CLIENT_ID=sdk-your-key-here
-export AGNES_SANDBOX_LD_FAILOVER=blocklist  # fall back to local blocklist if LD is down
 ```
 
 ## Troubleshooting

@@ -1,14 +1,3 @@
----
-title: Set LLM Rate Limits
-sidebar_label: LLM Rate Limits
-sidebar_position: 60
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft } from 'lucide-react';
-
-
 Rate limiting is the process of restricting the number of requests a user or application can send to an LLM API within a specific timeframe. LLM providers enforce this with the purpose of managing resources and preventing abuse. 
 
 Since agnes is working very quickly to implement your tasks, you may need to manage rate limits imposed by the provider. If you frequently hit rate limits, consider upgrading your LLM plan to access higher tier limits or [configure a provider](/docs/getting-started/providers#configure-provider-and-model) that has built-in rate limiting:

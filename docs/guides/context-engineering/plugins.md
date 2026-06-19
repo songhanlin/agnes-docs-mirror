@@ -1,9 +1,3 @@
----
-title: Plugins
-sidebar_position: 6
-sidebar_label: Plugins
----
-
 # Plugins
 
 Plugins are packages that extend agnes with reusable components. A plugin can provide [skills](/docs/guides/context-engineering/using-skills), [hooks](/docs/guides/context-engineering/hooks), or both.

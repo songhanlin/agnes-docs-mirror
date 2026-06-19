@@ -1,16 +1,3 @@
----
-sidebar_position: 6
-title: Updating agnes
-sidebar_label: Updating agnes
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { DesktopAutoUpdateSteps } from '@site/src/components/DesktopAutoUpdateSteps';
-import MacDesktopInstallButtons from '@site/src/components/MacDesktopInstallButtons';
-import WindowsDesktopInstallButtons from '@site/src/components/WindowsDesktopInstallButtons';
-import LinuxDesktopInstallButtons from '@site/src/components/LinuxDesktopInstallButtons';
-
 The agnes CLI and desktop apps are under active and continuous development. To get the newest features and fixes, you should periodically update your agnes client using the following instructions.
 
 <Tabs>

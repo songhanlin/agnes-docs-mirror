@@ -1,9 +1,3 @@
----
-title: Agent Skills
-sidebar_position: 3
-sidebar_label: Agent Skills
----
-
 Skills are reusable sets of instructions and resources that teach agnes how to perform specific tasks. A skill can range from a simple checklist to a detailed workflow with domain expertise, and can include supporting files like scripts or templates. Example use cases include deployment procedures, code review checklists, and API integration guides.
 
 :::info
@@ -273,8 +267,6 @@ Always verify webhook signatures. See `src/webhooks/square.js` for our handler p
 
 ## Additional Resources
 
-import ContentCardCarousel from '@site/src/components/ContentCardCarousel';
-import skillsvsmcp from '@site/blog/2025-12-22-agent-skills-vs-mcp/skills-vs-mcp.png';
 
 <ContentCardCarousel
   items={[

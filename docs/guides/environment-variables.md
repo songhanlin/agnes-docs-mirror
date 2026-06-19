@@ -1,9 +1,3 @@
----
-sidebar_position: 11
-title: Environment Variables
-sidebar_label: Environment Variables
----
-
 agnes supports various environment variables that allow you to customize its behavior. This guide provides a comprehensive list of available environment variables grouped by their functionality.
 
 ## Model Configuration
@@ -26,18 +20,12 @@ These are the minimum required variables to get started with agnes.
 
 ```bash
 # Basic model configuration
-export AGNES_PROVIDER="anthropic"
-export AGNES_MODEL="claude-sonnet-4-5-20250929"
-export AGNES_TEMPERATURE=0.7
 
 # Override the fast model used for auxiliary calls (tool-selection, classification, etc.)
-export AGNES_FAST_MODEL="gpt-4o-mini"
 
 # Set a lower limit for shorter interactions
-export AGNES_MAX_TOKENS=4096
 
 # Set a higher limit for tasks requiring longer output (e.g. code generation)
-export AGNES_MAX_TOKENS=16000
 ```
 
 ### Advanced Provider Configuration
@@ -55,9 +43,6 @@ These variables are needed when using custom endpoints, enterprise deployments, 
 
 ```bash
 # Advanced provider configuration
-export AGNES_PROVIDER__TYPE="anthropic"
-export AGNES_PROVIDER__HOST="https://api.anthropic.com"
-export AGNES_PROVIDER__API_KEY="your-api-key-here"
 ```
 
 ### Custom Model Definitions
@@ -90,7 +75,6 @@ When a custom model's `context_limit` is specified, it takes precedence over pat
 
 ```bash
 # Enable Anthropic's 1M context window with beta header
-export AGNES_PREDEFINED_MODELS='[
   {
     "id": 1,
     "name": "claude-sonnet-4-1m",
@@ -105,7 +89,6 @@ export AGNES_PREDEFINED_MODELS='[
 ]'
 
 # Define multiple custom models
-export AGNES_PREDEFINED_MODELS='[
   {
     "id": 1,
     "name": "gpt-4-custom",
@@ -123,7 +106,6 @@ export AGNES_PREDEFINED_MODELS='[
 ]'
 
 # Geminiundefinedwith high thinking level
-export AGNES_PREDEFINED_MODELS='[
   {
     "name": "gemini-3-pro",
     "provider": "google",
@@ -147,19 +129,12 @@ These variables control Claude's reasoning behavior. Supported on Anthropic and 
 
 ```bash
 # Claude 4.6 adaptive thinking
-export AGNES_PROVIDER=anthropic
-export AGNES_MODEL=claude-sonnet-4-6
-export CLAUDE_THINKING_TYPE=adaptive
 
 # Explicit extended thinking with the default budget
-export CLAUDE_THINKING_TYPE=enabled
 
 # Explicit extended thinking with a larger budget for complex tasks
-export CLAUDE_THINKING_TYPE=enabled
-export CLAUDE_THINKING_BUDGET=32000
 
 # Disable Claude thinking entirely
-export CLAUDE_THINKING_TYPE=disabled
 ```
 
 :::tip Viewing Thinking Output
@@ -179,8 +154,6 @@ These variables control agnes's [planning functionality](/docs/guides/context-en
 
 ```bash
 # Planning mode with different model
-export AGNES_PLANNER_PROVIDER="openai"
-export AGNES_PLANNER_MODEL="gpt-4"
 ```
 
 ### Provider Retries
@@ -199,10 +172,6 @@ Configurable retry parameters for LLM providers.
 **Examples**
 
 ```bash
-export BEDROCK_MAX_RETRIES=10                    #undefinedretry attempts
-export BEDROCK_INITIAL_RETRY_INTERVAL_MS=1000    # start withaaif-goosesecond before first retry
-export BEDROCK_BACKOFF_MULTIPLIER=3              # each retry waits 3x longer than the previous
-export BEDROCK_MAX_RETRY_INTERVAL_MS=300000      # cap the maximum retry delay atundefinedmin
 ```
 
 #### Databricks
@@ -217,10 +186,6 @@ export BEDROCK_MAX_RETRY_INTERVAL_MS=300000      # cap the maximum retry delay a
 **Examples**
 
 ```bash
-export DATABRICKS_MAX_RETRIES=5                      #undefinedretry attempts
-export DATABRICKS_INITIAL_RETRY_INTERVAL_MS=500      # start with 0.5 second before first retry
-export DATABRICKS_BACKOFF_MULTIPLIER=2               # each retry waits 2x longer than the previous
-export DATABRICKS_MAX_RETRY_INTERVAL_MS=60000        # cap the maximum retry delay ataaif-goosemin
 ```
 
 
@@ -258,73 +223,50 @@ These variables control how agnes manages conversation sessions and context.
 
 ```bash
 # Automatically summarize when context limit is reached
-export AGNES_CONTEXT_STRATEGY=summarize
 
 # Always prompt user to choose (default for interactive mode)
-export AGNES_CONTEXT_STRATEGY=prompt
 
 # Set a low limit for step-by-step control
-export AGNES_MAX_TURNS=5
 
 # Set a moderate limit for controlled automation
-export AGNES_MAX_TURNS=25
 
 # Set a reasonable limit for production
-export AGNES_MAX_TURNS=100
 
 # Raise the per-gateway cap without changing CLI/desktop limits
 # (applies to Telegram and other gateway sessions only)
-export AGNES_GATEWAY_MAX_TURNS=15
 
 # Customize the default subagent turn limit
 # Note: This can be overridden per-recipe or per-subagent using the max_turns setting
-export AGNES_SUBAGENT_MAX_TURNS=50
 
 # Use multiple context files
-export CONTEXT_FILE_NAMES='["CLAUDE.md", ".agneshints", ".cursorrules", "project_rules.txt"]'
 
 # Disable automatic AI-generated session naming (useful for CI/headless runs)
-export AGNES_DISABLE_SESSION_NAMING=true
 
 # Use vim for composing prompts
-export AGNES_PROMPT_EDITOR=vim
 
 # Set the ANSI theme for the session
-export AGNES_CLI_THEME=ansi
 
 # Customize syntax highlighting themes (uses bat themes)
-export AGNES_CLI_LIGHT_THEME="Solarized (light)"
-export AGNES_CLI_DARK_THEME="Dracula"
 
 # Use Ctrl+N instead of Ctrl+J for newline
-export AGNES_CLI_NEWLINE_KEY=n
 
 # Disable random thinking messages for less distraction
-export AGNES_RANDOM_THINKING_MESSAGES=false
 
 # Show reasoning/thinking output from models that support it (e.g., DeepSeek-R1, Kimi, Gemini)
-export AGNES_CLI_SHOW_THINKING=1
 
 # Enable model cost display in CLI
-export AGNES_CLI_SHOW_COST=true
 
 # Show code blocks up toundefinedlines before truncating
-export AGNES_MAX_CODE_BLOCK_LINES=100
 
 # Disable code block truncation entirely (show all lines inline)
-export AGNES_NO_CODE_TRUNCATION=true
 
 # Automatically compact sessions when 60% of available tokens are used
-export AGNES_AUTO_COMPACT_THRESHOLD=0.6
 
 # Keep more tool calls in full detail (useful for debugging or verbose workflows)
-export AGNES_TOOL_CALL_CUTOFF=20
 
 # Inject a persistent reminder into agnes's working memory every turn
-export AGNES_MOIM_MESSAGE_TEXT="IMPORTANT: Always run tests before committing changes."
 
 # Load persistent instructions from a file (supports ~/)
-export AGNES_MOIM_MESSAGE_FILE="~/.agnes/guardrails.md"
 ```
 
 ### Model Context Limit Overrides
@@ -341,12 +283,9 @@ These variables allow you to override the default context window size (token lim
 
 ```bash
 # Set context limit for main model (useful for LiteLLM proxies)
-export AGNES_CONTEXT_LIMIT=200000
 # Override ollama input prompt limit
-export AGNES_INPUT_LIMIT=32000
 
 # Set context limit for planner
-export AGNES_PLANNER_CONTEXT_LIMIT=1000000
 ```
 
 For more details and examples, see [Model Context Limit Overrides](/docs/guides/sessions/smart-context-management#model-context-limit-overrides).
@@ -371,20 +310,12 @@ These variables control how agnes handles [tool execution](/docs/guides/managing
 
 ```bash
 # Enable tool interpretation
-export AGNES_TOOLSHIM=true
-export AGNES_TOOLSHIM_OLLAMA_MODEL=llama3.2
-export AGNES_MODE="auto"
-export AGNES_CLI_MIN_PRIORITY=0.2  # Show only medium and high importance output
-export AGNES_CLI_TOOL_PARAMS_MAX_LENGTH=100  # Show up toundefinedcharacters for tool parameters in CLI output
 
 # Add custom tool directories for extensions
-export AGNES_SEARCH_PATHS='["/usr/local/bin", "~/custom/tools", "/opt/homebrew/bin"]'
 
 # Lower the tool response size limit for smaller-context models
-export AGNES_MAX_TOOL_RESPONSE_SIZE=100000
 
 # Use zsh for Developer extension shell commands
-export AGNES_SHELL=/bin/zsh
 ```
 
 ```bat
@@ -408,19 +339,10 @@ This feature works with any OpenAI-compatible API endpoint, for example:
 
 ```bash
 # OpenAI configuration
-export AGNES_EDITOR_API_KEY="sk-..."
-export AGNES_EDITOR_HOST="https://api.openai.com/v1"
-export AGNES_EDITOR_MODEL="gpt-4o"
 
 # Anthropic configuration (via OpenAI-compatible proxy)
-export AGNES_EDITOR_API_KEY="sk-ant-..."
-export AGNES_EDITOR_HOST="https://api.anthropic.com/v1"
-export AGNES_EDITOR_MODEL="claude-sonnet-4-20250514"
 
 # Local model configuration
-export AGNES_EDITOR_API_KEY="your-key"
-export AGNES_EDITOR_HOST="http://localhost:8000/v1"
-export AGNES_EDITOR_MODEL="your-model"
 ```
 
 ## Security and Privacy
@@ -442,21 +364,12 @@ These variables control security features, credential storage, and anonymous usa
 
 ```bash
 # Enable prompt injection detection with default threshold
-export SECURITY_PROMPT_ENABLED=true
 
 # Enable with custom threshold (stricter)
-export SECURITY_PROMPT_ENABLED=true
-export SECURITY_PROMPT_THRESHOLD=0.9
 
 # Enable ML-based detection with external endpoint
-export SECURITY_PROMPT_ENABLED=true
-export SECURITY_PROMPT_CLASSIFIER_ENABLED=true
-export SECURITY_PROMPT_CLASSIFIER_ENDPOINT="https://your-endpoint.com/classify"
-export SECURITY_PROMPT_CLASSIFIER_TOKEN="your-auth-token"
 
 # Control anonymous usage data collection
-export AGNES_TELEMETRY_ENABLED=false  # Disable telemetry
-export AGNES_TELEMETRY_ENABLED=true   # Enable telemetry
 ```
 
 :::tip
@@ -490,7 +403,6 @@ By default, agnes starts a temporary local server on a random port to receive OA
 
 ```bash
 # Use a fixed port so your IdP's redirect_uri whitelist can match exactly
-export AGNES_OAUTH_CALLBACK_PORT=8080
 ```
 
 Then register the appropriate redirect URI in your identity provider:
@@ -511,12 +423,8 @@ agnes supports standard HTTP proxy environment variables for users behind corpor
 
 ```bash
 # Configure proxy for all connections
-export HTTPS_PROXY="http://proxy.company.com:8080"
-export NO_PROXY="localhost,127.0.0.1,.internal,.local,10.0.0.0/8"
 
 # Or with authentication
-export HTTPS_PROXY="http://username:password@proxy.company.com:8080"
-export NO_PROXY="localhost,127.0.0.1,.internal"
 ```
 
 Alternatively, proxy settings can be configured through your operating system's network settings. If you encounter connection issues, see [Corporate Proxy or Firewall Issues](/docs/troubleshooting/known-issues#corporate-proxy-or-firewall-issues) for troubleshooting steps.
@@ -532,7 +440,6 @@ Configure agnes to export telemetry to any [OpenTelemetry](https://opentelemetry
 To enable export, set a collector endpoint:
 
 ```bash
-export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318"
 ```
 
 You can control each signal (traces, metrics, logs) independently with `OTEL_{SIGNAL}_EXPORTER`:
@@ -551,20 +458,12 @@ See the [OTel environment variable spec][otel-env] for the full list.
 **Examples:**
 ```bash
 # Export everything to a local collector
-export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318"
 
 # Export only traces, disable metrics and logs
-export OTEL_TRACES_EXPORTER="otlp"
-export OTEL_METRICS_EXPORTER="none"
-export OTEL_LOGS_EXPORTER="none"
-export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318"
 
 # Debug traces to console (no collector needed)
-export OTEL_TRACES_EXPORTER="console"
 
 # Sample 10% of traces (reduce volume in production)
-export OTEL_TRACES_SAMPLER="parentbased_traceidratio"
-export OTEL_TRACES_SAMPLER_ARG="0.1"
 ```
 
 [otel-env]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/
@@ -596,10 +495,6 @@ These variables configure the `agnesd` server process. They are most often used 
 
 ```bash
 # Start a agnesd server reachable on the local network over TLS
-export AGNES_HOST=0.0.0.0
-export AGNES_PORT=3000
-export AGNES_TLS=true
-export AGNES_SERVER__SECRET_KEY='a-long-random-secret'
 agnesd agent
 ```
 
@@ -620,14 +515,10 @@ These variables control recipe discovery and management.
 
 ```bash
 # Add custom recipe directories
-export AGNES_RECIPE_PATH="/path/to/my/recipes:/path/to/team/recipes"
 
 # Configure GitHub recipe repository
-export AGNES_RECIPE_GITHUB_REPO="myorg/agnes-recipes"
 
 # Set global recipe timeouts
-export AGNES_RECIPE_RETRY_TIMEOUT_SECONDS=300
-export AGNES_RECIPE_ON_FAILURE_TIMEOUT_SECONDS=60
 ```
 
 ## Development & Testing
@@ -649,7 +540,6 @@ When set, agnes creates `config/`, `data/`, and `state/` subdirectories under th
 
 ```bash
 # Temporary test environment
-export AGNES_PATH_ROOT="/tmp/agnes-test"
 
 # Isolated environment for a single command
 AGNES_PATH_ROOT="/tmp/agnes-isolated" agnes run --recipe my-recipe.yaml

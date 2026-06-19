@@ -1,9 +1,3 @@
----
-sidebar_position: 5
-title: Managing Projects
-sidebar_label: Managing Projects
----
-
 agnes Projects automatically track your working directories and associated sessions, making it easy to resume work across multiple codebases with full context preservation.
 
 A **project** in agnes is a record of a working directory where you've used agnes. Every time you run agnes, it automatically tracks the current directory as a project, storing:

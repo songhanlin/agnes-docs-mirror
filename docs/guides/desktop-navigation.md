@@ -1,11 +1,3 @@
----
-title: Customizing the Sidebar
-sidebar_label: Customizing the Sidebar
-description: Personalize how you navigate agnes Desktop by changing the sidebar's look, position, and behavior
----
-
-import { PanelLeft, Menu } from 'lucide-react';
-
 :::info Desktop Only
 Sidebar customization is available only in agnes Desktop.
 :::

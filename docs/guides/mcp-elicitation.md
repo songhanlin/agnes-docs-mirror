@@ -1,13 +1,3 @@
----
-sidebar_position: 55
-title: MCP Elicitation
-sidebar_label: MCP Elicitation
-description: How extensions can request structured information from you during a task
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 MCP Elicitation allows agnes to pause and ask you for specific information when an extension needs it. Instead of guessing or making assumptions, agnes presents a form requesting exactly what's needed to continue.
 
 This feature is automatically enabled in agnes. When an extension that supports elicitation needs information from you, a form will appear in your session.

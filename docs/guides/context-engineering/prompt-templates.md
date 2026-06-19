@@ -1,14 +1,3 @@
----
-sidebar_position: 6
-title: Customizing Prompt Templates
-sidebar_label: Prompt Templates
-description: Learn how to customize the prompt templates that define agnes's behavior in different situations
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft } from 'lucide-react';
-
 agnes comes with built-in prompt templates that guide its behavior in different situations. You can edit these templates to customize how agnes responds, creates plans, decides what to save during compaction, and more.
 
 ## How It Works
@@ -126,8 +115,6 @@ Be careful when modifying template variables, as incorrect changes can break fun
 
 ## Additional Resources
 
-import ContentCardCarousel from '@site/src/components/ContentCardCarousel';
-import promptBanner from '@site/blog/2025-03-19-better-ai-prompting/prompt.png';
 
 <ContentCardCarousel
   items={[

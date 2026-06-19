@@ -1,10 +1,3 @@
----
-title: Enhanced Code Editing with AI Models
-sidebar_label: Enhanced Code Editing
-description: Use AI models to intelligently apply code changes
-sidebar_position: 110
----
-
 The [Developer extension](/docs/mcp/developer-mcp) supports using AI models for enhanced code editing through the `str_replace` command. When configured, it intelligently applies code changes using an AI model instead of simple string replacement.
 
 The use of models specializing in code editing can reduce the load on the main LLM providers while increasing accuracy, quality, and speed and lowering cost. This enhanced approach provides:
@@ -20,9 +13,6 @@ The use of models specializing in code editing can reduce the load on the main L
 Set these [environment variables](/docs/guides/environment-variables#enhanced-code-editing) to enable AI-powered code editing:
 
 ```bash
-export AGNES_EDITOR_API_KEY="your-api-key-here"
-export AGNES_EDITOR_HOST="https://api.openai.com/v1"
-export AGNES_EDITOR_MODEL="gpt-4o"
 ```
 
 **All three environment variables must be set and non-empty for the feature to activate.** 
@@ -35,37 +25,22 @@ Any OpenAI-compatible API endpoint should work. Examples:
 
 **OpenAI:**
 ```bash
-export AGNES_EDITOR_API_KEY="sk-..."
-export AGNES_EDITOR_HOST="https://api.openai.com/v1"
-export AGNES_EDITOR_MODEL="gpt-4o"
 ```
 
 **Anthropic (via OpenAI-compatible proxy):**
 ```bash
-export AGNES_EDITOR_API_KEY="sk-ant-..."
-export AGNES_EDITOR_HOST="https://api.anthropic.com/v1"
-export AGNES_EDITOR_MODEL="claude-3-5-sonnet-20241022"
 ```
 
 **Morph:**
 ```bash
-export AGNES_EDITOR_API_KEY="sk-..."
-export AGNES_EDITOR_HOST="https://api.morphllm.com/v1"
-export AGNES_EDITOR_MODEL="morph-v0"
 ```
 
 **Relace:**
 ```bash
-export AGNES_EDITOR_API_KEY="rlc-..."
-export AGNES_EDITOR_HOST="https://instantapply.endpoint.relace.run/v1/apply"
-export AGNES_EDITOR_MODEL="auto"
 ```
 
 **Local/Custom endpoints:**
 ```bash
-export AGNES_EDITOR_API_KEY="your-key"
-export AGNES_EDITOR_HOST="http://localhost:8000/v1"
-export AGNES_EDITOR_MODEL="your-model"
 ```
 
 ## How It Works

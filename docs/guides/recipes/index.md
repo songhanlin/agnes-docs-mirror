@@ -1,13 +1,3 @@
----
-title: Recipes
-hide_title: true
-description: Reusable and shareable AI workflows
----
-
-import Card from '@site/src/components/Card';
-import styles from '@site/src/components/Card/styles.module.css';
-import VideoCarousel from '@site/src/components/VideoCarousel';
-
 <h1 className={styles.pageTitle}>Recipes</h1>
 <p className={styles.pageDescription}>
   Recipes are reusable workflows that package extensions, prompts, and settings together. Share proven workflows with your team and reproduce successful results consistently.

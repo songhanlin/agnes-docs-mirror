@@ -1,12 +1,3 @@
----
-sidebar_position: 3
-title: Using Extensions
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft, Settings, Puzzle } from 'lucide-react';
-
 Extensions are add-ons that provide a way to extend the functionality of agnes by connecting with applications and tools you already use in your workflow. These extensions can be used to add new features, access data and resources, or integrate with other systems.
 
 Extensions are based on the [Model Context Protocol (MCP)](https://github.com/modelcontextprotocol), so you can connect

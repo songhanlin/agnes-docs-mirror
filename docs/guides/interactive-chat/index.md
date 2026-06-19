@@ -1,13 +1,3 @@
----
-title: Rich Interactive Chat with MCP Apps and MCP-UI
-hide_title: true
-description: Build interactive UI applications that render inside agnes Desktop using MCP Apps and MCP-UI
----
-
-import Card from '@site/src/components/Card';
-import styles from '@site/src/components/Card/styles.module.css';
-import VideoCarousel from '@site/src/components/VideoCarousel';
-
 <h1 className={styles.pageTitle}>Rich Interactive Chat with MCP Apps and MCP-UI</h1>
 <p className={styles.pageDescription}>
   agnes Desktop supports extensions that transform text-only responses into graphical, interactive experiences. Instead of reading through lists and descriptions, you can click, explore, and interact with UI components directly in your conversations.

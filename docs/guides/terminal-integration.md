@@ -1,7 +1,5 @@
 # Terminal Integration
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 Talk to agnes directly from your shell prompt. Instead of switching to a separate REPL session, stay in your terminal and call agnes when you need it.
 

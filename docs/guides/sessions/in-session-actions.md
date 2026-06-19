@@ -1,12 +1,3 @@
----
-sidebar_position: 2
-title: In-Session Actions
-sidebar_label: In-Session Actions
----
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft, Paperclip, Edit2, Send, GripVertical, X, ChevronUp, ChevronDown, FolderDot, Puzzle, Bot, Tornado } from 'lucide-react';
-
 agnes provides features you can use to manage conversations and share information during sessions.
 
 ## Edit Message

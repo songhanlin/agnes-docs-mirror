@@ -1,13 +1,3 @@
----
-title: Saving Recipes
-sidebar_position: 4
-sidebar_label: Saving Recipes
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft, ChefHat } from 'lucide-react';
-
 This guide covers storing, organizing, and finding agnes recipes when you need to access them again later. 
 
 :::info Desktop UI vs CLI
@@ -192,13 +182,11 @@ Available recipes:
 
 Add custom recipe directories:
 ```bash
-export AGNES_RECIPE_PATH="/path/to/my/recipes:/path/to/team/recipes"
 agnes recipe list
 ```
 
 Configure GitHub recipe repository:
 ```bash
-export AGNES_RECIPE_GITHUB_REPO="myorg/agnes-recipes"
 agnes recipe list
 ```
 

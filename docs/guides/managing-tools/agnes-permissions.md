@@ -1,13 +1,3 @@
----
-sidebar_position: 20
-title: agnes Permission Modes
-sidebar_label: agnes Permissions
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft, Tornado } from 'lucide-react';
-
 agnes’s permissions determine how much autonomy it has when modifying files, using extensions, and performing automated actions. By selecting a permission mode, you have full control over how agnes interacts with your development environment.
 
 <details>

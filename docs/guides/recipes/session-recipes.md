@@ -1,14 +1,3 @@
----
-sidebar_position: 1
-title: Reusable Recipes
-description: "Share a agnes session setup (including tools, goals, and instructions) as a reusable recipe that others can launch with a single click"
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft, ChefHat, SquarePen, Link, Clock, Terminal, Share2 } from 'lucide-react';
-import RecipeFields from '@site/src/components/RecipeFields';
-
 Sometimes you finish a task in agnes and realize, "Hey, this setup could be useful again." Maybe you have curated a great combination of tools, defined a clear goal, and want to preserve that flow. Or maybe you're trying to help someone else replicate what you just did without walking them through it step by step. 
 
 You can turn your current agnes session into a reusable recipe that includes the tools, goals, and setup you're using right now and package it into a new Agent that others (or future you) can launch with a single click.

@@ -1,9 +1,3 @@
----
-title: Custom Distributions
-sidebar_position: 60
-sidebar_label: Custom Distributions
----
-
 # Custom Distributions
 
 agnes is designed to be forked and customized. You can create your own "distro" of agnes preconfigured with specific providers, bundled extensions, custom branding, and tailored workflows for your organization or audience.
@@ -42,8 +36,6 @@ It covers:
 The simplest custom distribution just sets environment defaults:
 
 ```bash
-export AGNES_PROVIDER=ollama
-export AGNES_MODEL=qwen3-coder:latest
 ```
 
 Or create an `init-config.yaml` applied on first run:

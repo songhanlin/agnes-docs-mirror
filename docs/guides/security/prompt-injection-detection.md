@@ -1,14 +1,3 @@
----
-sidebar_position: 1
-title: Prompt Injection Detection
-sidebar_label: Prompt Injection Detection
-description: Protect your workflow by detecting potentially harmful commands before they run.
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft, Settings } from 'lucide-react';
-
 Prompt injection happens when malicious instructions are hidden inside executable content. In the world of AI, prompt injection can be used to nudge AI agents (like agnes) to run unsafe commands that compromise your environment or data.
 
 You can help protect your agnes workflows by enabling prompt injection detection. This feature uses pattern matching to detect common attack techniques, including:

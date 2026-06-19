@@ -1,15 +1,3 @@
----
-title: Multi-Model Configuration
-hide_title: true
-description: Approaches for configuring model-switching behavior to optimize for cost, performance, and results.
----
-
-import Card from '@site/src/components/Card';
-import styles from '@site/src/components/Card/styles.module.css';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import VideoCarousel from '@site/src/components/VideoCarousel';
-
 <h1 className={styles.pageTitle}>Multi-Model Configuration</h1>
 <p className={styles.pageDescription}>
   agnes supports several approaches for using different models within a single session, allowing you to optimize for cost, performance, and task specialization. Strategies range from manual or turn-based model selection to dynamic, context-aware switching.

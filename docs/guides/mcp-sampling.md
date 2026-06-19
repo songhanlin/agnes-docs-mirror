@@ -1,13 +1,3 @@
----
-sidebar_position: 54
-title: MCP Sampling Extensions
-sidebar_label: MCP Sampling
-description: Transforms MCP servers into intelligent agents that can think, analyze, and make decisions using agnes's AI
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 MCP Sampling can transform extensions from simple data providers into intelligent agents. Instead of just returning raw information for agnes to interpret, extensions can leverage agnes's AI capabilities to provide expert-level guidance, perform contextual analysis, and create entirely new interaction patterns.
 
 This feature is automatically enabled in agnes, no configuration required! Any MCP server extension that supports sampling will automatically have access to the LLM that agnes is using. This means:
@@ -83,8 +73,6 @@ Want to add MCP Sampling to your own extensions? See our [Building Custom Extens
 
 ## Additional Resources
 
-import ContentCardCarousel from '@site/src/components/ContentCardCarousel';
-import mcpSampling from '@site/blog/2025-12-04-mcp-sampling/mcp-sampling.png';
 
 <ContentCardCarousel
   items={[

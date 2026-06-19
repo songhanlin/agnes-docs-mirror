@@ -10,7 +10,6 @@
 **macOS:**
 ```bash
 # If built from source:
-export AGNES_CLI=~/claude/agnes-fork/target/release/agnes
 
 # Verify:
 $AGNES_CLI --version
@@ -19,10 +18,8 @@ $AGNES_CLI --version
 **Linux:**
 ```bash
 # If installed via .deb:
-export AGNES_CLI=/usr/bin/agnes
 
 # If built from source:
-export AGNES_CLI=~/agnes-fork/target/release/agnes
 
 # Verify:
 $AGNES_CLI --version
@@ -47,8 +44,6 @@ agnes configure
 ## Test 2: Start a Session (Single-Model Plan)
 
 ```bash
-export TANZU_AI_ENDPOINT="https://genai-proxy.sys.tas-tdc.kuhn-labs.com/tanzu-Qwen3-Coder-30B-A3B-vllm-v1-f3b0d18"
-export TANZU_AI_API_KEY="<your-jwt-token>"
 
 agnes session
 ```
@@ -63,8 +58,6 @@ Type a simple prompt:
 ## Test 3: Start a Session (Multi-Model Plan)
 
 ```bash
-export TANZU_AI_ENDPOINT="https://genai-proxy.sys.tas-tdc.kuhn-labs.com/tanzu-all-models-a8a9e22"
-export TANZU_AI_API_KEY="<your-jwt-token>"
 
 agnes session
 ```
@@ -110,8 +103,6 @@ agnes session
 
 ### Wrong Endpoint
 ```bash
-export TANZU_AI_ENDPOINT="https://genai-proxy.sys.example.com/nonexistent"
-export TANZU_AI_API_KEY="invalid-key"
 agnes session
 ```
 **Expected:** Connection or authentication error, not a crash.

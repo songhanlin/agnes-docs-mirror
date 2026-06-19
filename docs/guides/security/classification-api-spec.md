@@ -1,9 +1,3 @@
----
-sidebar_position: 2
-title: Classification API Specification
-description: API specification for self-hosting ML-based prompt injection detection endpoints.
----
-
 This API specification defines the API that agnes uses for ML-based [prompt injection detection](/docs/guides/security/prompt-injection-detection).
 
 :::info For Self-Hosting Only

@@ -1,11 +1,3 @@
----
-title: VMware Tanzu Platform
-description: Connect agnes to VMware Tanzu Platform AI Services
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # VMware Tanzu Platform
 
 [VMware Tanzu Platform](https://techdocs.broadcom.com/us/en/vmware-tanzu/platform/ai-services/10-3/ai/index.html) provides enterprise-managed LLM access through AI Services. agnes connects to VMware Tanzu Platform as an OpenAI-compatible provider, supporting both **single-model** and **multi-model** service plans with streaming enabled by default.

@@ -1,12 +1,3 @@
----
-title: Context Engineering
-hide_title: true
-description: Provide agnes with the knowledge, preferences, and workflows it needs to work effectively
----
-
-import Card from '@site/src/components/Card';
-import styles from '@site/src/components/Card/styles.module.css';
-
 <h1 className={styles.pageTitle}>Context Engineering</h1>
 <p className={styles.pageDescription}>
   Context engineering is about building background knowledge, preferences, and workflows that help agnes work more effectively. Instead of repeating instructions, you define them once and teach agnes how you work.

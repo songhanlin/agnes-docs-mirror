@@ -2,6 +2,33 @@ const fs = require('fs');
 const path = require('path');
 const cfg = require('./config');
 
+// 对齐 goose-docs.ai 的格式:剥掉 docusaurus frontmatter 和 import 语句,保留 JSX 与正文
+function cleanDoc(md) {
+  return md
+    .replace(/^---\n[\s\S]*?\n---\n/, '') // 去掉开头 frontmatter
+    .replace(/^import\s+.*\n/gm, '') // 去掉 MDX import 语句
+    .replace(/^export\s+.*\n/gm, '') // 去掉 MDX export 语句
+    .replace(/^\s+/, ''); // 去掉清理后开头多余空行
+}
+
+function publishDir(srcDir, destDir) {
+  fs.rmSync(destDir, { recursive: true, force: true });
+  for (const entry of fs.readdirSync(srcDir, { withFileTypes: true })) {
+    const src = path.join(srcDir, entry.name);
+    const dest = path.join(destDir, entry.name);
+    if (entry.isDirectory()) {
+      publishDir(src, dest);
+    } else {
+      fs.mkdirSync(path.dirname(dest), { recursive: true });
+      if (entry.name.endsWith('.md')) {
+        fs.writeFileSync(dest, cleanDoc(fs.readFileSync(src, 'utf-8')));
+      } else {
+        fs.copyFileSync(src, dest);
+      }
+    }
+  }
+}
+
 function run() {
   const stagingDocs = path.join(cfg.STAGING_DIR, 'docs');
   const stagingMap = path.join(cfg.STAGING_DIR, cfg.MAP_FILENAME);
@@ -11,28 +38,14 @@ function run() {
     process.exit(1);
   }
 
-  // 发布 docs/(先清掉旧的,保证删除的源文件不残留)
   const publishDocs = path.join(cfg.PUBLISH_ROOT, 'docs');
-  fs.rmSync(publishDocs, { recursive: true, force: true });
-  fs.cpSync(stagingDocs, publishDocs, { recursive: true });
+  publishDir(stagingDocs, publishDocs);
 
-  // 发布地图到项目根
   const publishMap = path.join(cfg.PUBLISH_ROOT, cfg.MAP_FILENAME);
   fs.copyFileSync(stagingMap, publishMap);
 
-  const count = countFiles(publishDocs);
-  console.log(`[copy] 已发布 ${count} 个页面 → ${publishDocs}`);
+  console.log(`[copy] 已发布(已剥离 frontmatter/import)→ ${publishDocs}`);
   console.log(`[copy] 已发布地图 → ${publishMap}`);
-  console.log('[copy] 现在可以提交并 push 本项目,raw 地址即文档基址。');
-}
-
-function countFiles(dir) {
-  let n = 0;
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (entry.isDirectory()) n += countFiles(path.join(dir, entry.name));
-    else if (entry.name.endsWith('.md')) n++;
-  }
-  return n;
 }
 
 run();

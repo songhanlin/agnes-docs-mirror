@@ -1,16 +1,3 @@
----
-sidebar_position: 1
-title: Using MCP Apps and MCP-UI
-sidebar_label: Using MCP Apps and MCP-UI
-description: Learn how agnes renders interactive UI components from MCP Apps and MCP-UI extensions
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import AgnesDesktopInstaller from '@site/src/components/AgnesDesktopInstaller';
-import CLIExtensionInstructions from '@site/src/components/CLIExtensionInstructions';
-import { PanelLeft } from 'lucide-react';
-
 # Using MCP Apps and MCP-UI
 
 Extensions built with MCP Apps or MCP-UI allow agnes Desktop to provide interactive and engaging user experiences. Instead of reading text responses and typing prompts, you can interact with a graphical and clickable UI.

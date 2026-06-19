@@ -1,9 +1,3 @@
----
-title: Hooks
-sidebar_position: 5
-sidebar_label: Hooks
----
-
 # Hooks
 
 Hooks let you run your own scripts when key events happen during a agnes session. Use hooks to log activity, send notifications, format files after edits, run checks after shell commands, or integrate agnes with local workflows without writing a custom extension.
@@ -349,8 +343,6 @@ Hooks run as local shell commands. Make sure any commands your script uses are i
 
 ## Additional Resources
 
-import ContentCardCarousel from '@site/src/components/ContentCardCarousel';
-import hooksBanner from '@site/static/img/blog/agnes-hooks.jpg';
 
 <ContentCardCarousel
   items={[

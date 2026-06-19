@@ -1,14 +1,3 @@
----
-sidebar_position: 2
-title: Configure LLM Provider
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft } from 'lucide-react';
-import { ModelSelectionTip } from '@site/src/components/ModelSelectionTip';
-import { OnboardingProviderSetup } from '@site/src/components/OnboardingProviderSetup';
-
 # Supported LLM Providers
 
 agnes is compatible with a wide range of LLM providers, allowing you to choose and integrate your preferred model.

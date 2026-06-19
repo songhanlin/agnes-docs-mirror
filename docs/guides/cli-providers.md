@@ -1,10 +1,3 @@
----
-sidebar_position: 8
-title: CLI Providers
-sidebar_label: CLI Providers
-description: Use Claude Code, Codex, Cursor Agent, or Gemini CLI subscriptions in agnes
----
-
 # CLI Providers
 
 :::warning Deprecated — Use ACP Providers
@@ -266,10 +259,6 @@ CLI providers also work well with planning mode when you want one model for stra
 
 ```bash
 # Use Claude Code for execution, OpenAI for planning
-export AGNES_PROVIDER=claude-code
-export AGNES_MODEL=default
-export AGNES_PLANNER_PROVIDER=openai
-export AGNES_PLANNER_MODEL=gpt-4o
 
 agnes session
 ```

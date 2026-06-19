@@ -1,13 +1,3 @@
----
-title: Providing Hints to agnes
-sidebar_position: 1
-sidebar_label: Using agneshints
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { Menu } from 'lucide-react';
-
 `.agneshints` is a text file used to provide additional context about your project and improve the communication with agnes. The use of `.agneshints` ensures that agnes understands your requirements better and can execute tasks more effectively.
 
 <details>
@@ -240,11 +230,8 @@ Set the `CONTEXT_FILE_NAMES` environment variable to a JSON array of filenames. 
 
 ```bash
 # Single custom file
-export CONTEXT_FILE_NAMES='["AGENTS.md"]'
 
 # Project toolchain files
-export CONTEXT_FILE_NAMES='[".cursorrules", "AGENTS.md"]'
 
 # Multiple files
-export CONTEXT_FILE_NAMES='["CLAUDE.md", ".agneshints", "project_rules.txt"]'
 ```

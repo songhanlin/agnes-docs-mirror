@@ -1,13 +1,3 @@
----
-title: Managing Tool Permissions
-sidebar_position: 1
-sidebar_label: Tool Permissions
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft, Tornado, Settings } from 'lucide-react';
-
 Tool permissions provide fine-grained control over how agnes uses different tools within extensions. This guide will help you understand and configure these permissions effectively.
 
 ## Understanding Tools and Extensions

@@ -1,12 +1,3 @@
----
-sidebar_position: 2
-title: Adjusting Tool Output Verbosity
-sidebar_label: Adjust Tool Output
----
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft } from 'lucide-react';
-
 <Tabs groupId="interface">
   <TabItem value="ui" label="agnes Desktop" default>
 Response Styles customize how tool interactions are displayed in the agnes Desktop chat window. 

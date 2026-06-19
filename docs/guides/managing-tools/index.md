@@ -1,12 +1,3 @@
----
-title: Managing Tools
-hide_title: true
-description: Control and configure the tools and extensions that power your agnes workflows
----
-
-import Card from '@site/src/components/Card';
-import styles from '@site/src/components/Card/styles.module.css';
-
 <h1 className={styles.pageTitle}>Managing Tools</h1>
 <p className={styles.pageDescription}>
   Tools are specific functions within <a href="/docs/getting-started/using-extensions">extensions</a> that give agnes its capabilities. Learn to control and customize how these tools work for you.

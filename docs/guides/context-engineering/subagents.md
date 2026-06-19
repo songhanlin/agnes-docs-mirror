@@ -1,12 +1,3 @@
----
-title: Subagents
-sidebar_position: 2
-sidebar_label: Subagents
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 Subagents are independent instances that execute tasks while keeping your main conversation clean and focused. Think of them as temporary assistants that handle specific jobs, bringing process isolation and context preservation by offloading work to separate instances.
 
 <details>
@@ -360,9 +351,6 @@ Subagents can browse extensions for suggestions but cannot enable them to avoid 
 
 ## Additional Resources
 
-import ContentCardCarousel from '@site/src/components/ContentCardCarousel';
-import subagentsVsSubrecipes from '@site/blog/2025-09-26-subagents-vs-subrecipes/subrecipes-vs-subagents.png';
-import agentCoordination from '@site/blog/2025-08-14-agent-coordination-patterns/agent-coordination.png';
 
 <ContentCardCarousel
   items={[

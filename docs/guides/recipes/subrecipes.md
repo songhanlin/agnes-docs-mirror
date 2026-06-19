@@ -1,10 +1,3 @@
----
-sidebar_position: 4
-title: Subrecipes For Specialized Tasks
-sidebar_label: Subrecipes
-description: Learn how a recipe can use subrecipes to perform specific tasks
----
-
 Subrecipes are recipes that are used by another recipe to perform specific tasks. They enable:
 - **Multi-step workflows** - Break complex tasks into distinct phases with specialized expertise
 - **Reusable components** - Create common tasks that can be used in various workflows

@@ -1,10 +1,3 @@
----
-title: Prevent agnes from Accessing Files
-sidebar_label: Using agnesignore
-sidebar_position: 9
----
-
-
 `.agnesignore` is a text file that defines patterns for files and directories that agnes will not access. This means agnes cannot read, modify, delete, or run shell commands on these files when using the Developer extension's tools.
 
 :::info Developer extension only

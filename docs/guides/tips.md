@@ -1,10 +1,3 @@
----
-title: Quick agnes Tips
-sidebar_position: 30
-sidebar_label: Quick Tips
-description: Best practices for working with agnes
----
-
 ### agnes works on your behalf
 agnes is an AI agent, which means you can prompt agnes to perform tasks for you like opening applications, running shell commands, automating workflows, writing code, browsing the web, and more.
 

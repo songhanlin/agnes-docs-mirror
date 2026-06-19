@@ -1,14 +1,3 @@
----
-sidebar_position: 4
-title: Custom Slash Commands
-sidebar_title: Slash Commands
-description: "Create custom shortcuts to quickly apply reusable instructions in any agnes chat session"
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft, Terminal } from 'lucide-react';
-
 Custom slash commands are personalized shortcuts to run [recipes](/docs/guides/recipes). If you have a recipe that runs a daily report, you can create a custom slash command to invoke that recipe from within a session:
 
 ```
@@ -90,7 +79,6 @@ When you run a recipe using a slash command, the recipe's instructions and promp
 
 ## Additional Resources
 
-import ContentCardCarousel from '@site/src/components/ContentCardCarousel';
 
 <ContentCardCarousel
   items={[

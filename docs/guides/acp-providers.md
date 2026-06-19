@@ -1,10 +1,3 @@
----
-sidebar_position: 9
-title: ACP Providers
-sidebar_label: ACP Providers
-description: Use ACP agents like Claude Code and Codex as agnes providers with extension support
----
-
 # ACP Providers
 
 agnes supports [Agent Client Protocol (ACP)](https://agentclientprotocol.com/) agents as providers. ACP is a standard protocol for communicating with coding agents, and there's a growing [registry](https://github.com/agentclientprotocol/registry) of agents that implement it.

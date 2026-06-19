@@ -1,9 +1,3 @@
----
-sidebar_position: 90
-title: agnes Extension Allowlist
-sidebar_label: Extension Allowlist
----
-
 agnes is an extensible framework that, by default, allows you to install any MCP server. However, you may want stricter controls on which MCP servers can be installed as extensions (e.g. in a corporate setting). 
 
 This guide explains how you can create an **allowlist** of safe extensions that work with agnes Desktop and CLI. An allowlist lets administrators control which MCP servers can be installed as agnes extensions. When enabled, agnes will only install extensions that are on the list, and will block installation of any others.
@@ -54,7 +48,6 @@ After creating the allowlist, you must deploy it to a URL.
 Create an environment variable called `AGNES_ALLOWLIST` and set the value to the URL of your YAML file:
 
 ```bash
-export AGNES_ALLOWLIST=https://example.com/agnes-allowlist.yaml
 ```
 
 You can also add this export to your shell configuration file (On a Mac, it's your `~/.bashrc` or `~/.zshrc` file). 

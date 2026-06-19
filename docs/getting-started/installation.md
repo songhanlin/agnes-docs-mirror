@@ -1,16 +1,3 @@
----
-sidebar_position: 1
----
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { RateLimits } from '@site/src/components/RateLimits';
-import { OnboardingProviderSetup } from '@site/src/components/OnboardingProviderSetup';
-import { ModelSelectionTip } from '@site/src/components/ModelSelectionTip';
-import MacDesktopInstallButtons from '@site/src/components/MacDesktopInstallButtons';
-import WindowsDesktopInstallButtons from '@site/src/components/WindowsDesktopInstallButtons';
-import LinuxDesktopInstallButtons from '@site/src/components/LinuxDesktopInstallButtons';
-import { PanelLeft } from 'lucide-react';
-
 # Install agnes
 
 <Tabs>

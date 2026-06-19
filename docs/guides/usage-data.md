@@ -1,13 +1,3 @@
----
-title: Anonymous Usage Data
-sidebar_label: Usage Data
-sidebar_position: 66
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft } from 'lucide-react';
-
 On first use, agnes asks for permission to collect anonymous usage data to help improve the product. You can change this setting at any time.
 
 ## Usage data collected

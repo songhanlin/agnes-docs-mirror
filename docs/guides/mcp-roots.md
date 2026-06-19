@@ -1,14 +1,3 @@
----
-sidebar_position: 56
-title: MCP Roots
-sidebar_label: MCP Roots
-description: How agnes shares your working directory with roots-aware MCP extensions
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import { PanelLeft } from 'lucide-react';
-
 MCP Roots lets agnes share your session working directory with roots-aware MCP extensions.
 
 This helps extensions understand which folder to use as the active workspace for the current session.

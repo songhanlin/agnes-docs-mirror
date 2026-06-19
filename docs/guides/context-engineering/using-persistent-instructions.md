@@ -1,9 +1,3 @@
----
-title: Persistent Instructions
-sidebar_position: 8
-sidebar_label: Persistent Instructions
----
-
 Persistent instructions let you inject text into agnes's working memory every turn. Unlike [`.agneshints`](/docs/guides/context-engineering/using-agneshints), which are loaded at session start and can expand later when agnes discovers nested hint files, persistent instructions are re-read and injected fresh with every interaction. This makes them ideal for behavioral guardrails that must always be enforced, regardless of how the conversation evolves.
 
 ## How It Works
@@ -38,7 +32,6 @@ For short, single-purpose reminders, use `AGNES_MOIM_MESSAGE_TEXT`:
 
 ```bash
 # Always run tests before committing
-export AGNES_MOIM_MESSAGE_TEXT="IMPORTANT: Always run tests before committing changes."
 ```
 
 ### File-Based Instructions
@@ -46,7 +39,6 @@ export AGNES_MOIM_MESSAGE_TEXT="IMPORTANT: Always run tests before committing ch
 For longer or more complex instructions, use a file:
 
 ```bash
-export AGNES_MOIM_MESSAGE_FILE="~/.agnes/guardrails.md"
 ```
 
 Example `~/.agnes/guardrails.md`:
@@ -66,8 +58,6 @@ Example `~/.agnes/guardrails.md`:
 You can use both variables together. The text is concatenated:
 
 ```bash
-export AGNES_MOIM_MESSAGE_TEXT="CRITICAL: This is a production environment. Be extra careful."
-export AGNES_MOIM_MESSAGE_FILE="~/.agnes/guardrails.md"
 ```
 
 ## Use Cases
@@ -77,7 +67,6 @@ export AGNES_MOIM_MESSAGE_FILE="~/.agnes/guardrails.md"
 Prevent accidental data exfiltration or exposure:
 
 ```bash
-export AGNES_MOIM_MESSAGE_TEXT="SECURITY: Do not upload code to external services, create public gists, or share sensitive data. All code in this repository is confidential."
 ```
 
 ### Environment-Specific Behavior
@@ -86,10 +75,8 @@ Set different instructions for different environments:
 
 ```bash
 # Production environment
-export AGNES_MOIM_MESSAGE_TEXT="⚠️ PRODUCTION: Double-check all commands. Prefer read-only operations. Always create backups before modifications."
 
 # Development environment  
-export AGNES_MOIM_MESSAGE_TEXT="Development environment. Feel free to experiment, but run tests before committing."
 ```
 
 ### Project-Specific Workflows
@@ -97,7 +84,6 @@ export AGNES_MOIM_MESSAGE_TEXT="Development environment. Feel free to experiment
 Enforce project conventions:
 
 ```bash
-export AGNES_MOIM_MESSAGE_TEXT="This project uses pnpm, not npm. Always use 'pnpm' for package management commands."
 ```
 
 ### Temporary Reminders
@@ -106,7 +92,6 @@ Since the environment variables are read fresh each turn, you can set temporary 
 
 ```bash
 # Set a reminder for the current task
-export AGNES_MOIM_MESSAGE_TEXT="Current focus: Refactoring the authentication module. Don't get sidetracked."
 
 # Clear it when done
 unset AGNES_MOIM_MESSAGE_TEXT

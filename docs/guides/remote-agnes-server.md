@@ -1,9 +1,3 @@
----
-sidebar_position: 90
-title: Running a Remote agnes Server
-sidebar_label: Remote Server
----
-
 # Running a Remote agnes Server
 
 agnes Desktop normally runs its own `agnesd` server process in the background on the same machine. You can also run `agnesd` separately — for example, on a remote VM or a different machine on your network — and point agnes Desktop at it.

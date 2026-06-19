@@ -1,10 +1,3 @@
----
-title: File Access and Management
-sidebar_position: 70
-sidebar_label: File Management
-description: Efficiently find and reference files in agnes Desktop and follow best practices for safe file operations
----
-
 As an autonomous agent, agnes is designed to carry out tasks following specified instructions. This often involves working with local files - both finding the right files to work with and modifying them safely.
 
 This guide covers how to efficiently access and reference files in agnes. It also includes essential best practices for safe file operations, such as monitoring changes and reverting them when necessary, to maintain the integrity of your codebase.

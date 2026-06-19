@@ -1,10 +1,3 @@
----
-sidebar_position: 2
-title: Adversary Mode
-sidebar_label: Adversary Mode
-description: An independent agent reviewer that silently watches tool calls to protect you in case the agent goes rogue.
----
-
 Adversary mode adds a silent, independent agent reviewer that watches tool calls before they execute. It acts as a second pair of eyes — protecting you in case the main agent is compromised, manipulated by a prompt injection, or simply doing something that doesn't match what you asked for.
 
 Unlike [pattern-based detection](/docs/guides/security/prompt-injection-detection), the adversary reviewer understands context. It knows what you originally asked for, what you've said recently, and can judge whether a tool call makes sense for your task.

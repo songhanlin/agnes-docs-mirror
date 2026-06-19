@@ -1,13 +1,3 @@
----
-sidebar_position: 2
-title: Recipe Reference Guide
-sidebar_label: Recipe Reference
-description: Complete technical reference for creating and customizing recipes in agnes
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 Recipes are reusable agnes configurations that package up instructions and settings so the setup can be easily shared and launched by others.
 
 ## Recipe File Format
