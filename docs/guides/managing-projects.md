@@ -87,9 +87,9 @@ agnes displays:
 ┌ agnes Project Manager
 │
 ◆ Select a project:
-│  ○aaif-goose .../admin-dashboard (2025-01-07 09:15:30) [create user management interface]
-│  ○undefined .../mobile-app (2025-01-06 11:45:20) [login screen crashing on iOS]  
-│  ○undefined .../ecommerce-api (2025-01-06 09:30:15) [JWT token refresh logic]
+│  ○ 1  .../admin-dashboard (2025-01-07 09:15:30) [create user management interface]
+│  ○ 2  .../mobile-app (2025-01-06 11:45:20) [login screen crashing on iOS]  
+│  ○ 3  .../ecommerce-api (2025-01-06 09:30:15) [JWT token refresh logic]
 │  ○ Cancel
 └
 ```

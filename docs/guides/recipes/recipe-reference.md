@@ -436,8 +436,8 @@ The `retry` field enables recipes to automatically retry execution if success cr
 |-------|------|----------|-------------|
 | `max_retries` | Number | ✅ | Maximum number of retry attempts |
 | `checks` | Array | ✅ | List of success check configurations |
-| `timeout_seconds` | Number | - | Timeout for success check commands (default:undefinedseconds) |
-| `on_failure_timeout_seconds` | Number | - | Timeout for on_failure commands (default:undefinedseconds) |
+| `timeout_seconds` | Number | - | Timeout for success check commands (default: 300 seconds) |
+| `on_failure_timeout_seconds` | Number | - | Timeout for on_failure commands (default: 600 seconds) |
 | `on_failure` | String | - | Shell command to run when a retry attempt fails |
 
 #### Success Check Configuration
@@ -447,7 +447,7 @@ Each success check in the `checks` array has the following schema:
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | `type` | String | ✅ | Type of check - currently only "shell" is supported |
-| `command` | String | ✅ | Shell command to execute for validation (must exit with codeblock/goosefor success) |
+| `command` | String | ✅ | Shell command to execute for validation (must exit with code 0 for success) |
 
 #### How Retry Logic Works
 
@@ -475,7 +475,7 @@ retry:
   checks:
     - type: shell
       command: "test $(cat /tmp/counter.txt 2>/dev/null || echo 0) -ge 3"
-  on_failure: "echo 'Counter is at:' $(cat /tmp/counter.txt 2>/dev/null || echo 0) '(needundefinedto succeed)'"
+  on_failure: "echo 'Counter is at:' $(cat /tmp/counter.txt 2>/dev/null || echo 0) '(need 3 to succeed)'"
 ```
 
 #### Advanced Retry Example
@@ -528,7 +528,7 @@ The `max_turns` setting controls how many iterations an agent can perform before
 1. Subagent tool call override
 2. Recipe `settings.max_turns`
 3. `AGNES_SUBAGENT_MAX_TURNS` environment variable
-4. Default value (1000 for main recipes,undefinedfor subagents)
+4. Default value (1000 for main recipes, 25 for subagents)
 
 **Common use cases:** Limit execution time for automated workflows, prevent runaway subagents, control resource usage in scheduled jobs.
 

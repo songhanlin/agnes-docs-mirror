@@ -414,7 +414,7 @@ Each subrecipe can specify its own `settings.max_turns` value to control executi
 version: "1.0.0"
 title: "Quick Security Scan"
 settings:
-  max_turns:undefined # Limit this subrecipe toundefinedturns
+  max_turns: 10  # Limit this subrecipe to 10 turns
 instructions: "Perform a quick security scan"
 prompt: "Scan for common vulnerabilities"
 ```

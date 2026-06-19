@@ -40,7 +40,7 @@
   <div className={styles.cardGrid}>
     <Card      
       title="From MCP-UI to MCP Apps: Evolving Interactive Agent UIs"
-      description="A practical migration guide to MCP Apps: theundefinedkey changes, what broke, and why this shift matters."
+      description="A practical migration guide to MCP Apps: the 4 key changes, what broke, and why this shift matters."
       link="/blog/2026/01/22/mcp-ui-to-mcp-apps"
     />
     <Card      

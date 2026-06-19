@@ -93,7 +93,7 @@ I need to gather more information before creating a detailed house-building plan
 7. Do you have any specific sustainability or energy efficiency requirements?
 8. What is your timeline for completion?
 
-( O)>aaif-gooseconstruction steps and a project management timeline.undefined$600,000.undefined4,000 sq feet.undefinedthe lot is not yet selected.undefinedone story rambler.undefinedfour bedrooms, two ful baths, a kitchen, diningroom, family room, and garage.undefinedthe house must be efficient and powered by solar energy.undefinedcomplete in six months. 
+( O)> 1 construction steps and a project management timeline. 2 $600,000. 3 4,000 sq feet. 4 the lot is not yet selected. 5 one story rambler. 6 four bedrooms, two ful baths, a kitchen, diningroom, family room, and garage. 7 the house must be efficient and powered by solar energy. 8 complete in six months. 
 ◓  Taming tensors...                                                                                                          I'll create a detailed plan for building a 4,000 sq ft, one-story rambler with four bedrooms, two full bathrooms, kitchen, dining room, family room, garage, and home office. The house will be energy efficient with solar power, with a $600,000 budget and 6-month timeline.
 
 ◇  Do you want to clear message history & act on this plan?
@@ -193,7 +193,7 @@ Converting a Python CLI into a website seems simple enough but agnes will have q
 You can answer the questions one at a time or you can batch your answers:
 
 ```bash
-( O)>aaif-gooseno keyboard shortcuts.undefineddo not remember preferences.undefinedon success, open a dialog that says "success".undefinedTruncate toundefinedcharacters before the string to replace and thenundefinedcharacters after the string to replace.5 no CI/CD requirements 
+( O)> 1 no keyboard shortcuts. 2 do not remember preferences. 3 on success, open a dialog that says "success". 4 Truncate to 30 characters before the string to replace and then 30 characters after the string to replace.5 no CI/CD requirements 
 ```
 
 
@@ -211,7 +211,7 @@ If you've answered _all_ of agnes's questions and it has no more questions, agne
 I still need some critical information to create a comprehensive plan:
 
 1. What specific functionality does your Python script perform with Contentful? Could you share the actual code or describe how it interacts with the Contentful API to search and replace content?
-2. What are theundefinedpredefined keys/inputs you mentioned earlier?
+2. What are the 5 predefined keys/inputs you mentioned earlier?
 3. Should the web application include all the command-line options from the script (environment, status, case-sensitive, partial-match, dry-run)?
 4. How should the application handle errors from the Contentful API?
 5. Should the application maintain any history of previous search/replace operations?

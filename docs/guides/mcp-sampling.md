@@ -26,12 +26,12 @@ This feature allows extensions to provide more specialized contextual responses 
        ```
        Query times: 2.3s, 1.8s, 5.2s, 0.3s, 8.1s
        Table sizes: users (1M rows), orders (5M rows)
-       Indexes:undefinedon users,aaif-gooseon orders
+       Indexes: 3 on users, 1 on orders
        ```
 
     4. agnes responds to you with general recommendations:
        ```
-       Your database seems slow. Some queries are taking overundefinedseconds. You might need more indexes.
+       Your database seems slow. Some queries are taking over 5 seconds. You might need more indexes.
        ```
 
   </TabItem>
@@ -44,7 +44,7 @@ This feature allows extensions to provide more specialized contextual responses 
        ```
        Query times: 2.3s, 1.8s, 5.2s, 0.3s, 8.1s
        Table sizes: users (1M rows), orders (5M rows)
-       Indexes:undefinedon users,aaif-gooseon orders
+       Indexes: 3 on users, 1 on orders
        ```
 
        Then, the tool:

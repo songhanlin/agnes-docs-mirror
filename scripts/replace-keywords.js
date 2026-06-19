@@ -2,12 +2,12 @@ const fs = require('fs');
 const path = require('path');
 const cfg = require('./config');
 
-// 占位符保护:仅用于「真实存在的外部 GitHub 地址」,避免被替换成不存在的仓库
+// 占位符保护:用绝不会出现在 markdown 正文里的标记,避免和正文「空格+数字」冲突
 function makeProtector() {
   const stash = [];
   return {
-    protect: (token) => ` ${stash.push(token) - 1} `,
-    restore: (text) => text.replace(/ (\d+) /g, (_, i) => stash[Number(i)]),
+    protect: (token) => `@@KEEP${stash.push(token) - 1}@@`,
+    restore: (text) => text.replace(/@@KEEP(\d+)@@/g, (_, i) => stash[Number(i)]),
   };
 }
 
@@ -45,7 +45,8 @@ function walk(dir) {
 
 function run() {
   const stagingDocs = path.join(cfg.STAGING_DIR, 'docs');
-  fs.rmSync(stagingDocs, { recursive: true, force: true });
+  // 整个 .staging 清掉,避免改名/旧产物残留
+  fs.rmSync(cfg.STAGING_DIR, { recursive: true, force: true });
 
   let processed = 0;
   let copied = 0;
@@ -57,6 +58,9 @@ function run() {
     }
     for (const file of walk(srcRoot)) {
       const rel = path.relative(cfg.SOURCE_DOCS, file);
+      if ((cfg.EXCLUDE || []).includes(rel)) {
+        continue; // 隐藏:安装/下载/分发类
+      }
       // .mdx 改名为 .md(地图 URL 用 .md);文件名里的 goose 也大小写保留替换
       const destRel = rel
         .replace(/\.mdx$/, '.md')

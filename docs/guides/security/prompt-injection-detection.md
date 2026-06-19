@@ -24,7 +24,7 @@ When enabled, agnes uses a multi-layered approach to detect threats before they 
    🔒 Security Alert: This tool call has been flagged as potentially dangerous.
    
    Confidence: 95%
-   Explanation: Detectedaaif-goosesecurity threat: Recursive file deletion with rm -rf
+   Explanation: Detected 1 security threat: Recursive file deletion with rm -rf
    Finding ID: SEC-abc123...
    
    [Allow Once] [Deny]

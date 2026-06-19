@@ -144,7 +144,7 @@ If you start agnes in `my-project/`, the root-level hints are loaded immediately
 2. <details>
      <summary>`frontend/.agneshints`</summary>
         ```
-        This frontend uses Reactundefinedwith TypeScript and Tailwind CSS.
+        This frontend uses React 18 with TypeScript and Tailwind CSS.
 
         @package.json                      # Dependencies and scripts
         @docs/frontend-architecture.md     # Frontend structure and patterns

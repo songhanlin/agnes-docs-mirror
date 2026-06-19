@@ -34,7 +34,7 @@ You can customize how agnes summarizes conversations during compaction by editin
 :::
 
 :::tip Tool Output Summarization
-To help maintain efficient context usage, agnes summarizes older tool call outputs in the background while keeping recent calls in full detail. By default, this happens when you have more thanundefinedtool calls in a session. For advanced tuning, see [`AGNES_TOOL_CALL_CUTOFF`](/docs/guides/environment-variables#session-management).
+To help maintain efficient context usage, agnes summarizes older tool call outputs in the background while keeping recent calls in full detail. By default, this happens when you have more than 10 tool calls in a session. For advanced tuning, see [`AGNES_TOOL_CALL_CUTOFF`](/docs/guides/environment-variables#session-management).
 :::
 
 ### Manual Compaction
@@ -220,7 +220,7 @@ This setting is stored as the `AGNES_MAX_TURNS` environment variable in your [co
       │  10
         // highlight-end
       │
-      └  Set maximum turns toundefined- agnes will ask for input afterundefinedconsecutive actions
+      └  Set maximum turns to 10 - agnes will ask for input after 10 consecutive actions
       ```
 
       :::tip
@@ -237,7 +237,7 @@ The appropriate max turns value depends on your use case and comfort level with 
 
 - **5-10 turns**: Good for exploratory tasks, debugging, or when you want frequent check-ins. For example, "analyze this codebase and suggest improvements" where you want to review each step
 - **25-50 turns**: Effective for well-defined tasks with moderate complexity, such as "refactor this module to use the new API" or "set up a basic CI/CD pipeline"
-- **100+ turns**: More suitable for complex, multi-step automation where you trust agnes to work independently, like "migrate this entire project from Reactundefinedto React 18" or "implement comprehensive test coverage for this service"
+- **100+ turns**: More suitable for complex, multi-step automation where you trust agnes to work independently, like "migrate this entire project from React 16 to React 18" or "implement comprehensive test coverage for this service"
 
 Remember that even simple-seeming tasks often require multiple turns. For example, asking agnes to "fix the failing tests" might involve analyzing test output (1 turn), identifying the root cause (1 turn), making code changes (1 turn), and verifying the fix (1 turn).
 
@@ -354,7 +354,7 @@ For providers that support it (such as [Tetrate Agent Router Service](https://ro
 agnes detects low balance conditions automatically, so you won't lose your conversation context—just add credits and pick up where you left off.
 :::
 
-**Supported providers:** Tetrate Agent Router Service, OpenRouter, and other providers that report balance information via HTTPundefinedresponses.
+**Supported providers:** Tetrate Agent Router Service, OpenRouter, and other providers that report balance information via HTTP 402 responses.
 
 ## Cost Tracking
 Display real-time estimated costs of your session.

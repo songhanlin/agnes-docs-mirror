@@ -30,7 +30,7 @@ The following settings can be configured at the root level of your config.yaml f
 | `AGNES_TEMPERATURE` | Model response randomness | Float between 0.0 and 1.0 | Model-specific | No |
 | `AGNES_MAX_TOKENS` | Maximum number of tokens for each model response (truncates longer responses) | Positive integer | Model-specific | No |
 | `AGNES_MODE` | [Tool execution behavior](/docs/guides/managing-tools/agnes-permissions) | "auto", "approve", "chat", "smart_approve" | "auto" | No |
-| `AGNES_MAX_TURNS` | [Maximum number of turns](/docs/guides/sessions/smart-context-management#maximum-turns) allowed without user input | Integer (e.g., 10, 50, 100) |undefined| No |
+| `AGNES_MAX_TURNS` | [Maximum number of turns](/docs/guides/sessions/smart-context-management#maximum-turns) allowed without user input | Integer (e.g., 10, 50, 100) | 1000 | No |
 | `AGNES_PLANNER_PROVIDER` | Provider for [planning mode](/docs/guides/context-engineering/creating-plans) | Same as `AGNES_PROVIDER` options | Falls back to `AGNES_PROVIDER` | No |
 | `AGNES_PLANNER_MODEL` | Model for planning mode | Model name | Falls back to `AGNES_MODEL` | No |
 | `AGNES_TOOLSHIM` | Enable tool interpretation | true/false | false | No |
@@ -112,7 +112,7 @@ extensions:
     display_name: "Name"      # Human-readable name (optional)
     enabled: true/false       # Whether the extension is active
     name: "extension_name"    # Internal name
-    timeout:undefined             # Operation timeout in seconds
+    timeout: 300              # Operation timeout in seconds
     type: "builtin"/"stdio"   # Extension type
     available_tools: []       # Filter to specific tools (empty = all)
     
@@ -148,7 +148,7 @@ Configure agnes to export telemetry to [OpenTelemetry](https://opentelemetry.io/
 | Setting | Purpose | Values | Default |
 |---------|---------|--------|---------|
 | `otel_exporter_otlp_endpoint` | OTLP endpoint URL | URL (e.g., `http://localhost:4318`) | None |
-| `otel_exporter_otlp_timeout` | Export timeout in milliseconds | Integer (ms) |undefined|
+| `otel_exporter_otlp_timeout` | Export timeout in milliseconds | Integer (ms) | 10000 |
 
 ```yaml
 otel_exporter_otlp_endpoint: "http://localhost:4318"

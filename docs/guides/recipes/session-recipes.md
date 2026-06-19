@@ -130,7 +130,7 @@ You can turn your current agnes session into a reusable recipe that includes the
    - key: complexity_threshold
      input_type: number
      requirement: optional
-     default:undefined# default is required for optional parameters
+     default: 20 # default is required for optional parameters
      description: a threshold that defines the maximum allowed complexity
    - key: test_coverage
      input_type: number
@@ -511,7 +511,7 @@ Automate agnes recipes by running them on a schedule. When creating a schedule, 
 - **Name**: A descriptive name for the schedule
 - **Source**: The recipe to run
 - **Execution mode**: Whether the recipe runs in the background (no window, results saved) or foreground (opens window if agnes Desktop is running, otherwise runs in background)
-- **Frequency and time**: When to run the recipe (e.g. everyundefinedminutes, weekly atundefinedAM on Friday). Your selection is converted into a [cron expression](https://en.wikipedia.org/wiki/Cron#Cron_expression) used by agnes.
+- **Frequency and time**: When to run the recipe (e.g. every 20 minutes, weekly at 10 AM on Friday). Your selection is converted into a [cron expression](https://en.wikipedia.org/wiki/Cron#Cron_expression) used by agnes.
 
 **Schedule from Recipe Library:**
 
@@ -545,8 +545,8 @@ At the bottom of the `Schedule Details` page you can view the list of sessions c
   Automate agnes recipes by scheduling them to run with a [cron expression](https://en.wikipedia.org/wiki/Cron#Cron_expression).
 
   ```bash
-  # Add a new scheduled recipe which runs every day atundefinedAM
-  agnes schedule add --schedule-id daily-report --cron "0block/goose9 * * *" --recipe-source ./recipes/daily-report.yaml
+  # Add a new scheduled recipe which runs every day at 9 AM
+  agnes schedule add --schedule-id daily-report --cron "0 0 9 * * *" --recipe-source ./recipes/daily-report.yaml
   ```
   You can use either a 5, 6, or 7-digit cron expression for full scheduling precision, following the format "seconds minutes hours day-of-month month day-of-week year".
 
@@ -658,7 +658,7 @@ response:
 ```bash
 # Run recipe and extract JSON output
 agnes run --recipe analysis.yaml --params project_path=./src > output.log
-RESULT=$(tail -naaif-gooseoutput.log)
+RESULT=$(tail -n 1 output.log)
 echo "Analysis Status: $(echo $RESULT | jq -r '.build_status')"
 echo "Issues Found: $(echo $RESULT | jq -r '.tests_failed')"
 ```

@@ -9,6 +9,17 @@ module.exports = {
   // 只镜像这两个目录(技能的 docs-map 只收录这两类)
   SECTIONS: ['getting-started', 'guides'],
 
+  // 排除:安装/下载/分发/厂商基础设施类(对 Agnes 多为错误事实,隐藏不镜像)。
+  // 路径相对 SOURCE_DOCS,用源文件名(改名前,仍含 goose)。
+  EXCLUDE: [
+    'getting-started/installation.md',
+    'guides/custom-distributions.md',
+    'guides/updating-goose.md',
+    'guides/tanzu-ai-services.md',
+    'guides/tanzu-cli-testing-guide.md',
+    'guides/remote-goose-server.md',
+  ],
+
   // 中间产物(替换后的文档 + 地图),会被 build 复制到发布位置;已 gitignore
   STAGING_DIR: path.join(PROJECT_ROOT, '.staging'),
 

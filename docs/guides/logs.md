@@ -121,4 +121,4 @@ LLM request logs capture the raw request and response data sent to language mode
 * Unix-like: `~/.local/state/agnes/logs/llm_request.*.jsonl`
 * Windows: `%APPDATA%\Block\agnes\data\logs\llm_request.*.jsonl`
 
-These logs use a numbered rotation system that keeps theundefinedmost recent completed requests (`llm_request.0.jsonl` through `llm_request.9.jsonl`). Each log contains the model configuration, input payload, response data, and token usage information.
+These logs use a numbered rotation system that keeps the 10 most recent completed requests (`llm_request.0.jsonl` through `llm_request.9.jsonl`). Each log contains the model configuration, input payload, response data, and token usage information.

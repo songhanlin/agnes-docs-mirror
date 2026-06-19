@@ -4,16 +4,6 @@
 
 ## Getting Started
 
-### [Install agnes](docs/getting-started/installation.md)
-
-* Set LLM Provider
-* Update Provider
-* Running agnes
-* Shared Configuration Settings
-* Pin a agnes version in CI/CD
-* Generate manpages for Linux distributions
-* Additional Resources
-
 ### [Configure LLM Provider](docs/getting-started/providers.md)
 
 * Available Providers
@@ -36,7 +26,7 @@
 * GitHub Copilot Authentication
 * Azure OpenAI Authentication
 * Multi-Model Configuration
-* GeminiundefinedThinking Levels
+* Gemini 3 Thinking Levels
 * Viewing Model Reasoning
 
 ### [Using Extensions](docs/getting-started/using-extensions.md)
@@ -398,12 +388,6 @@
 * Best Practices
 * Additional Resources
 
-### [Custom Distributions](docs/guides/custom-distributions.md)
-
-* What you can customize
-* Getting started
-* Quick example: ship agnes with a local model
-
 ### [Customizing the Sidebar](docs/guides/desktop-navigation.md)
 
 * Style
@@ -636,21 +620,6 @@
 * Best Practices
 * Learn More
 
-### [Running a Remote agnes Server](docs/guides/remote-agnes-server.md)
-
-* Initial Setup
-  * 1. Start the `agnesd` server
-  * 2. Verify the server is up
-  * 3. Find the certificate fingerprint
-  * 4. Configure agnes Desktop
-* Running `agnesd` as a Background Service (macOS)
-* Troubleshooting
-  * Server only accepts local connections
-  * TLS is not enabled
-  * Client cannot authenticate (401 / Unauthorized)
-  * Certificate fingerprint mismatch
-* Related
-
 ### [Running Tasks](docs/guides/running-tasks.md)
 
 * Basic Usage
@@ -765,42 +734,6 @@
 * Credit Balance Monitoring
 * Cost Tracking
 
-### [VMware Tanzu Platform](docs/guides/tanzu-ai-services.md)
-
-* Prerequisites
-* Step 1: Check Available Plans
-* Step 2: Create a Service Instance
-  * Option A: Single-Model Plan
-  * Option B: Multi-Model Plan
-* Step 3: Create a Service Key
-  * Single-Model Plan Output
-  * Multi-Model Plan Output
-* Step 4: Identify Your Endpoint and API Key
-* Step 5: Configure agnes
-* Step 6: Select a Model
-* Troubleshooting
-  * "Could not contact provider" /undefinedUnauthorized on models endpoint
-  * Verify your endpoint manually
-  * Streaming
-  * Model not found
-  * Cleaning up
-
-### [VMware Tanzu Platform - CLI Testing Guide](docs/guides/tanzu-cli-testing-guide.md)
-
-* Prerequisites
-* Locate the CLI Binary
-* Test 1: Configure VMware Tanzu Platform Provider
-* Test 2: Start a Session (Single-Model Plan)
-* Test 3: Start a Session (Multi-Model Plan)
-* Test 4: Verify Streaming
-* Test 5: Verify Dynamic Model Fetching
-* Test 6: Verify Error Messages
-  * Missing API Key
-  * Missing Endpoint
-  * Wrong Endpoint
-* Test 7: Switch Between Plans
-* Quick Curl Verification
-
 ### [Terminal Integration](docs/guides/terminal-integration.md)
 
 * Setup
@@ -832,8 +765,6 @@
   * Use a Dedicated Planner Model
   * Make Recipes Safe to Re-run
   * Add Logging to Recipes
-
-### [Updating agnes](docs/guides/updating-agnes.md)
 
 ### [Anonymous Usage Data](docs/guides/usage-data.md)
 

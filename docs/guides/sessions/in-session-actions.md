@@ -6,17 +6,17 @@ Edit your previously sent messages to refine conversations, correct course, or t
 
 **Example Message Flow:**
 
-Your original conversation has five messages. After editing message 3, all message and response context from messagesundefinedandundefinedis deleted.
+Your original conversation has five messages. After editing message 3, all message and response context from messages 4 and 5 is deleted.
 
 ```
 ┌─────┐   ┌─────┐   ┌─────┐   ┌─────┐   ┌─────┐
-│ aaif-goose │ → │ undefined │ → │ undefined │ → │ undefined │ → │ undefined │
+│  1  │ → │  2  │ → │  3  │ → │  4  │ → │  5  │
 └─────┘   └─────┘   └─────┘   └─────┘   └─────┘
            
                    Edit here
                        ↓
 ┌─────┐   ┌─────┐   ┌─────┐    continue from here in
-│ aaif-goose │ → │ undefined │ → │ undefined │ →  current session, or
+│  1  │ → │  2  │ → │  3  │ →  current session, or
 └─────┘   └─────┘   └─────┘    copy to new session
 ```
 

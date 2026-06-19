@@ -13,7 +13,7 @@ For example, the Developer extension includes multiple tools like:
 - Shell tool for running commands
 - Screen capture tool for taking screenshots
 :::warning Performance Optimization
-agnes performs best with fewer thanundefinedtotal tools enabled across all extensions. Consider enabling only the extensions you need for your current task.
+agnes performs best with fewer than 25 total tools enabled across all extensions. Consider enabling only the extensions you need for your current task.
 :::
 
 ## Permission Levels
@@ -125,7 +125,7 @@ Review and update your tool permissions as your tasks change. You can modify per
 There are several reasons to configure tool permissions:
 
 1. **Performance Optimization**
-   - Keep total enabled tools underundefinedfor best performance
+   - Keep total enabled tools under 25 for best performance
    - Disable tools you don't need for your current task
    - Reduce context window usage and improve response quality
    - Prevent tool decision paralysis

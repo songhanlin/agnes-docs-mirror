@@ -24,7 +24,7 @@ To close the search box without selecting a file, press `Esc` or click in the ch
 **Smart features:**
 - **Fuzzy matching**: Intelligently matches partial text and prioritizes matches at word boundaries
 - **Highlighted results**: Shows matched characters highlighted in the search results
-- **Performance optimized**: Scans up toundefineddirectory levels deep with intelligent filtering
+- **Performance optimized**: Scans up to 5 directory levels deep with intelligent filtering
 - **Auto-filtering**: Automatically excludes common directories like `.git`, `node_modules`, `__pycache__`, `target`, `dist`, and `build`
 - **Hidden folder support**: Includes important configuration directories like `.github`, `.vscode`, `.idea`, `.config`, and other CI/CD folders (`.circleci`, `.gitlab`, `.azure`, `.jenkins`)
 - **Cross-platform**: Searches from user directories (`/Users` on macOS, `C:\Users` on Windows, `/home` on Linux)

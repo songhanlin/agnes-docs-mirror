@@ -16,7 +16,7 @@ In your first session, agnes prompts you to [set up an LLM (Large Language Model
         2. Click `Home` or `Chat` in the sidebar
         3. Send your first prompt from the chat box
 
-        agnes Desktop supports working with multiple active chat sessions in the same window. Your new sessions are added to the `Chat` section of the sidebar, so you can quickly switch between yourundefinedmost recent sessions. Just click a session to [continue working](#resume-session) in that session.
+        agnes Desktop supports working with multiple active chat sessions in the same window. Your new sessions are added to the `Chat` section of the sidebar, so you can quickly switch between your 10 most recent sessions. Just click a session to [continue working](#resume-session) in that session.
         
         To change your working directory, click the <FolderDot className="inline" size={16} /> directory switcher at the bottom of the app.
 
@@ -80,7 +80,7 @@ In your first session, agnes prompts you to [set up an LLM (Large Language Model
         2. Hover over the session you'd like to rename
         3. Click the <Edit2 className="inline" size={16} /> button that appears on the session card
         4. In the "Edit Session Description" modal that opens:
-           - Enter your new session description (up toundefinedcharacters)
+           - Enter your new session description (up to 200 characters)
            - Press `Enter` to save or `Escape` to cancel
            - Or click the `Save` or `Cancel` buttons
         5. A success toast notification will confirm the change
@@ -176,7 +176,7 @@ Search allows you to find specific content within sessions or find specific sess
     3. Enter your search term
     4. Use keyboard shortcuts and search bar buttons to navigate the results (`Cmd+E` not supported)
 
-    This searches the content of messages in your conversations. The search is limited to theundefinedmost recent matching messages across sessions. If your search term appears in many messages, the search will only return a subset of sessions.
+    This searches the content of messages in your conversations. The search is limited to the 10 most recent matching messages across sessions. If your search term appears in many messages, the search will only return a subset of sessions.
 
     :::tip Ask agnes directly
     You can also use the built-in [Chat Recall extension](/docs/mcp/chatrecall-mcp) to ask agnes to search your conversation history:
@@ -277,7 +277,7 @@ Search allows you to find specific content within sessions or find specific sess
 
     #### Resume from Session History
 
-    To find and resume sessions beyond yourundefinedmost recent:
+    To find and resume sessions beyond your 10 most recent:
 
     1. Click <History className="inline" size={16} /> `Session History` in the sidebar
     2. Find the session you'd like to resume. agnes provides [search features](#search-sessions) to help you find the session.

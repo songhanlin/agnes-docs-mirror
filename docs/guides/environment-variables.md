@@ -37,7 +37,7 @@ These variables are needed when using custom endpoints, enterprise deployments, 
 | `AGNES_PROVIDER__TYPE` | The specific type/implementation of the provider | [See available providers](/docs/getting-started/providers#available-providers) | Derived from AGNES_PROVIDER |
 | `AGNES_PROVIDER__HOST` | Custom API endpoint for the provider | URL (e.g., "https://api.openai.com") | Provider-specific default |
 | `AGNES_PROVIDER__API_KEY` | Authentication key for the provider | API key string | None |
-| `GEMINI3_THINKING_LEVEL` | Sets the [thinking level](/docs/getting-started/providers#gemini-3-thinking-levels) for Geminiundefinedmodels globally | `low`, `high` | `low` |
+| `GEMINI3_THINKING_LEVEL` | Sets the [thinking level](/docs/getting-started/providers#gemini-3-thinking-levels) for Gemini 3 models globally | `low`, `high` | `low` |
 
 **Examples**
 
@@ -79,7 +79,7 @@ When a custom model's `context_limit` is specified, it takes precedence over pat
     "id": 1,
     "name": "claude-sonnet-4-1m",
     "provider": "anthropic",
-    "alias": "Claude Sonnetundefined(1M context)",
+    "alias": "Claude Sonnet 4 (1M context)",
     "subtext": "Anthropic",
     "context_limit": 1000000,
     "request_params": {
@@ -105,7 +105,7 @@ When a custom model's `context_limit` is specified, it takes precedence over pat
   }
 ]'
 
-# Geminiundefinedwith high thinking level
+# Gemini 3 with high thinking level
   {
     "name": "gemini-3-pro",
     "provider": "google",
@@ -123,7 +123,7 @@ These variables control Claude's reasoning behavior. Supported on Anthropic and 
 | Variable | Purpose | Values | Default |
 |----------|---------|---------|---------|
 | `CLAUDE_THINKING_TYPE` | Controls Claude reasoning mode | `adaptive`, `enabled`, `disabled` | `adaptive` for Claude 4.6+ models, otherwise `disabled` |
-| `CLAUDE_THINKING_BUDGET` | Maximum tokens allocated for Claude's internal reasoning process when `CLAUDE_THINKING_TYPE=enabled` | Positive integer (minimum 1024) |undefined|
+| `CLAUDE_THINKING_BUDGET` | Maximum tokens allocated for Claude's internal reasoning process when `CLAUDE_THINKING_TYPE=enabled` | Positive integer (minimum 1024) | 16000 |
 
 **Examples**
 
@@ -164,10 +164,10 @@ Configurable retry parameters for LLM providers.
 
 | Variable | Purpose | Default |
 |---------------------|-------------|---------|
-| `BEDROCK_MAX_RETRIES` | The max number of retry attempts before giving up |undefined|
-| `BEDROCK_INITIAL_RETRY_INTERVAL_MS` | How long to wait (in milliseconds) before the first retry |undefined|
-| `BEDROCK_BACKOFF_MULTIPLIER` | The factor by which the retry interval increases after each attempt |undefined(doubles every time) |
-| `BEDROCK_MAX_RETRY_INTERVAL_MS` | The cap on the retry interval in milliseconds | undefined|
+| `BEDROCK_MAX_RETRIES` | The max number of retry attempts before giving up | 6 |
+| `BEDROCK_INITIAL_RETRY_INTERVAL_MS` | How long to wait (in milliseconds) before the first retry | 2000 |
+| `BEDROCK_BACKOFF_MULTIPLIER` | The factor by which the retry interval increases after each attempt | 2 (doubles every time) |
+| `BEDROCK_MAX_RETRY_INTERVAL_MS` | The cap on the retry interval in milliseconds |  120000 |
 
 **Examples**
 
@@ -178,10 +178,10 @@ Configurable retry parameters for LLM providers.
 
 | Variable | Purpose | Default |
 |---------------------|-------------|---------|
-| `DATABRICKS_MAX_RETRIES` | The max number of retry attempts before giving up |undefined|
-| `DATABRICKS_INITIAL_RETRY_INTERVAL_MS` | How long to wait (in milliseconds) before the first retry |undefined|
-| `DATABRICKS_BACKOFF_MULTIPLIER` | The factor by which the retry interval increases after each attempt |undefined(doubles every time) |
-| `DATABRICKS_MAX_RETRY_INTERVAL_MS` | The cap on the retry interval in milliseconds | undefined|
+| `DATABRICKS_MAX_RETRIES` | The max number of retry attempts before giving up | 3 |
+| `DATABRICKS_INITIAL_RETRY_INTERVAL_MS` | How long to wait (in milliseconds) before the first retry | 1000 |
+| `DATABRICKS_BACKOFF_MULTIPLIER` | The factor by which the retry interval increases after each attempt | 2 (doubles every time) |
+| `DATABRICKS_MAX_RETRY_INTERVAL_MS` | The cap on the retry interval in milliseconds |  30000 |
 
 **Examples**
 
@@ -196,10 +196,10 @@ These variables control how agnes manages conversation sessions and context.
 | Variable | Purpose | Values | Default |
 |----------|---------|---------|---------|
 | `AGNES_CONTEXT_STRATEGY` | Controls how agnes handles context limit exceeded situations | "summarize", "truncate", "clear", "prompt" | "prompt" (interactive), "summarize" (headless) |
-| `AGNES_MAX_TURNS` | [Maximum number of turns](/docs/guides/sessions/smart-context-management#maximum-turns) allowed without user input | Integer (e.g., 10, 50, 100) |undefined|
-| `AGNES_GATEWAY_MAX_TURNS` | Maximum number of turns for gateway sessions (e.g., Telegram). Overrides `AGNES_MAX_TURNS` for gateway traffic only, so chat platforms can keep a stricter cap than CLI/desktop sessions. | Integer (e.g., 5, 10, 25) | Falls back to `AGNES_MAX_TURNS`, thenundefined|
-| `AGNES_SUBAGENT_MAX_TURNS` | Sets the maximum turns allowed for a [subagent](/docs/guides/context-engineering/subagents) to complete before timeout. Can be overridden by [`settings.max_turns`](/docs/guides/recipes/recipe-reference#settings) in recipes or subagent tool calls. | Integer (e.g., 25) |undefined|
-| `AGNES_MAX_BACKGROUND_TASKS` | Sets the maximum number of concurrent background [subagent](/docs/guides/context-engineering/subagents) tasks agnes can run at once | Integer (e.g., 1, 5, 10) |undefined|
+| `AGNES_MAX_TURNS` | [Maximum number of turns](/docs/guides/sessions/smart-context-management#maximum-turns) allowed without user input | Integer (e.g., 10, 50, 100) | 1000 |
+| `AGNES_GATEWAY_MAX_TURNS` | Maximum number of turns for gateway sessions (e.g., Telegram). Overrides `AGNES_MAX_TURNS` for gateway traffic only, so chat platforms can keep a stricter cap than CLI/desktop sessions. | Integer (e.g., 5, 10, 25) | Falls back to `AGNES_MAX_TURNS`, then 5 |
+| `AGNES_SUBAGENT_MAX_TURNS` | Sets the maximum turns allowed for a [subagent](/docs/guides/context-engineering/subagents) to complete before timeout. Can be overridden by [`settings.max_turns`](/docs/guides/recipes/recipe-reference#settings) in recipes or subagent tool calls. | Integer (e.g., 25) | 25 |
+| `AGNES_MAX_BACKGROUND_TASKS` | Sets the maximum number of concurrent background [subagent](/docs/guides/context-engineering/subagents) tasks agnes can run at once | Integer (e.g., 1, 5, 10) | 5 |
 | `CONTEXT_FILE_NAMES` | Specifies custom filenames for [hint/context files](/docs/guides/context-engineering/using-agneshints#custom-context-files) | JSON array of strings (e.g., `["CLAUDE.md", ".agneshints"]`) | `[".agneshints"]` |
 | `AGNES_DISABLE_SESSION_NAMING` | Disables automatic AI-generated session naming; avoids the background model call and keeps the default "CLI Session" (agnes CLI) or "New Chat" (agnes Desktop) | "1", "true" (case-insensitive) to enable | false |
 | `AGNES_DISABLE_TOOL_CALL_SUMMARY` | Disables the per-tool-call AI-generated summary title, keeping the fallback title instead. Saves one provider call per tool invocation. | "1", "true" (case-insensitive) to enable | false |
@@ -211,13 +211,13 @@ These variables control how agnes manages conversation sessions and context.
 | `AGNES_CLI_SHOW_THINKING` | Shows model reasoning/thinking output in CLI responses. Some models (e.g., DeepSeek-R1, Kimi, Gemini) expose their internal reasoning process — this variable makes it visible in the CLI. | Set to any value to enable | Disabled |
 | `AGNES_RANDOM_THINKING_MESSAGES` | Controls whether to show amusing random messages during processing | "true", "false" | "true" |
 | `AGNES_CLI_SHOW_COST` | Toggles display of model cost estimates in CLI output | "1", "true" (case-insensitive) to enable | false |
-| `AGNES_MAX_CODE_BLOCK_LINES` | Line count threshold before code blocks are truncated in CLI output. Full content is saved to a temp file. | Positive integer |undefined|
-| `AGNES_TRUNCATED_SHOW_LINES` | Number of lines shown before the "... (N more lines)" message when a code block is truncated | Positive integer |undefined|
+| `AGNES_MAX_CODE_BLOCK_LINES` | Line count threshold before code blocks are truncated in CLI output. Full content is saved to a temp file. | Positive integer | 50 |
+| `AGNES_TRUNCATED_SHOW_LINES` | Number of lines shown before the "... (N more lines)" message when a code block is truncated | Positive integer | 20 |
 | `AGNES_NO_CODE_TRUNCATION` | Disable code block truncation entirely — all code blocks are shown in full | "1", "true" (case-insensitive) to enable | false |
 | `AGNES_AUTO_COMPACT_THRESHOLD` | Set the percentage threshold at which agnes [automatically summarizes your session](/docs/guides/sessions/smart-context-management#automatic-compaction). | Float between 0.0 and 1.0 (disabled at 0.0) | 0.8 |
-| `AGNES_TOOL_CALL_CUTOFF` | Number of tool calls to keep in full detail before summarizing older tool outputs to help maintain efficient context usage  | Integer (e.g., 5, 10, 20) |undefined|
+| `AGNES_TOOL_CALL_CUTOFF` | Number of tool calls to keep in full detail before summarizing older tool outputs to help maintain efficient context usage  | Integer (e.g., 5, 10, 20) | 10 |
 | `AGNES_MOIM_MESSAGE_TEXT` | Injects persistent text into agnes's [working memory](/docs/guides/context-engineering/using-persistent-instructions) every turn. Useful for behavioral guardrails or persistent reminders. | Any text string | Not set |
-| `AGNES_MOIM_MESSAGE_FILE` | Path to a file whose contents are injected into agnes's [working memory](/docs/guides/context-engineering/using-persistent-instructions) every turn. Supports `~/`. MaxundefinedKB per file. | File path | Not set |
+| `AGNES_MOIM_MESSAGE_FILE` | Path to a file whose contents are injected into agnes's [working memory](/docs/guides/context-engineering/using-persistent-instructions) every turn. Supports `~/`. Max 64 KB per file. | File path | Not set |
 
 **Examples**
 
@@ -256,7 +256,7 @@ These variables control how agnes manages conversation sessions and context.
 
 # Enable model cost display in CLI
 
-# Show code blocks up toundefinedlines before truncating
+# Show code blocks up to 100 lines before truncating
 
 # Disable code block truncation entirely (show all lines inline)
 
@@ -300,10 +300,10 @@ These variables control how agnes handles [tool execution](/docs/guides/managing
 | `AGNES_TOOLSHIM` | Enables/disables tool call interpretation | "1", "true" (case-insensitive) to enable | false |
 | `AGNES_TOOLSHIM_OLLAMA_MODEL` | Specifies the model for [tool call interpretation](/docs/experimental/ollama) | Model name (e.g. llama3.2, qwen2.5) | System default |
 | `AGNES_CLI_MIN_PRIORITY` | Controls verbosity of [tool output](/docs/guides/managing-tools/adjust-tool-output) | Float between 0.0 and 1.0 | 0.0 |
-| `AGNES_CLI_TOOL_PARAMS_TRUNCATION_MAX_LENGTH` | Maximum length for tool parameter values before truncation in CLI output (not in debug mode) | Integer |undefined|
+| `AGNES_CLI_TOOL_PARAMS_TRUNCATION_MAX_LENGTH` | Maximum length for tool parameter values before truncation in CLI output (not in debug mode) | Integer | 40 |
 | `AGNES_DEBUG` | Enables debug mode to show full tool parameters without truncation. Can also be toggled during a session using the `/r` [slash command](/docs/guides/agnes-cli-commands#slash-commands) | "1", "true" (case-insensitive) to enable | false |
 | `AGNES_SEARCH_PATHS` | Prepends additional directories to PATH for extension commands | JSON array of paths (for example, `["/usr/local/bin", "~/custom/bin"]`) | System PATH only |
-| `AGNES_MAX_TOOL_RESPONSE_SIZE` | Maximum character count for a single tool response before it is written to a temporary file instead of being included inline in the conversation | Positive integer (e.g., 100000, 200000) |undefined|
+| `AGNES_MAX_TOOL_RESPONSE_SIZE` | Maximum character count for a single tool response before it is written to a temporary file instead of being included inline in the conversation | Positive integer (e.g., 100000, 200000) | 200000 |
 | `AGNES_SHELL` | Overrides the shell used for Developer extension shell commands | Shell executable path or name (for example, `/bin/zsh`, `pwsh`, `C:\cygwin64\bin\bash.exe`) | Unix: `/bin/bash` if present, otherwise `$SHELL`, otherwise `sh`. Windows: `cmd` |
 
 **Examples**

@@ -117,7 +117,7 @@ Place the plugin under a discovered plugin location, such as `~/.agents/plugins/
 | `hooks` | Yes | Actions to run when the event and matcher apply. |
 | `type` | No | Action type. agnes currently supports `command`. If omitted, `command` is used. |
 | `command` | Yes for command hooks | Shell command to run. agnes runs it with `sh -c`. |
-| `timeout` | No | Timeout in seconds for the command. Defaults toundefinedseconds. |
+| `timeout` | No | Timeout in seconds for the command. Defaults to 30 seconds. |
 
 Use `${PLUGIN_ROOT}` in a command to reference the plugin directory. agnes also sets `PLUGIN_ROOT` in the hook command's environment.
 

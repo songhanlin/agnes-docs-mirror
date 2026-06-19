@@ -39,7 +39,7 @@
   <div className={styles.cardGrid}>
     <Card
       title="Agentic AI and the MCP Ecosystem"
-      description="Aundefinedintroduction to AI agents, tool calling, and how tools work with LLMs to enable powerful automation."
+      description="A 101 introduction to AI agents, tool calling, and how tools work with LLMs to enable powerful automation."
       link="/blog/2025/02/17/agentic-ai-mcp"
     />
     <Card

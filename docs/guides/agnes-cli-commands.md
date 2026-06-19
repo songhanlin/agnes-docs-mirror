@@ -265,7 +265,7 @@ agnes session list --ascending
 # Filter sessions by working directory
 agnes session list -w ~/projects/myapp
 
-# List only theundefinedmost recent sessions
+# List only the 10 most recent sessions
 agnes session list --limit 10
 ```
 
@@ -542,13 +542,13 @@ Automate recipes by running them on a [schedule](/docs/guides/recipes/session-re
 ```bash
 agnes schedule <COMMAND>
 
-# Add a new scheduled recipe which runs every day atundefinedAM
-agnes schedule add --schedule-id daily-report --cron "0block/goose9 * * *" --recipe-source ./recipes/daily-report.yaml
+# Add a new scheduled recipe which runs every day at 9 AM
+agnes schedule add --schedule-id daily-report --cron "0 0 9 * * *" --recipe-source ./recipes/daily-report.yaml
 
 # List all scheduled jobs
 agnes schedule list
 
-# List theundefinedmost recent agnes sessions created by a scheduled job
+# List the 10 most recent agnes sessions created by a scheduled job
 agnes schedule sessions --schedule-id daily-report -l 10
 
 # Run a recipe immediately

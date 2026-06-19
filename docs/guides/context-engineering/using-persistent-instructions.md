@@ -21,7 +21,7 @@ Configure persistent instructions using environment variables:
 When both variables are set, their contents are concatenated. The extension reads [environment variables](/docs/guides/environment-variables#session-management) fresh every turn, so you can update them without restarting your session.
 
 :::info Size Limit
-Content is capped atundefinedKB with UTF-8 safe truncation. Keep your instructions concise to avoid hitting this limit and to minimize token usage.
+Content is capped at 64 KB with UTF-8 safe truncation. Keep your instructions concise to avoid hitting this limit and to minimize token usage.
 :::
 
 ## Examples

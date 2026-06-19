@@ -38,7 +38,7 @@ When an extension needs information, agnes pauses and presents a form for you to
 </Tabs>
 
 :::info Timeout
-Elicitation requests timeout afterundefinedminutes. If you don't respond in time, the request is cancelled and agnes will continue without the information.
+Elicitation requests timeout after 5 minutes. If you don't respond in time, the request is cancelled and agnes will continue without the information.
 :::
 
 ## For Extension Developers

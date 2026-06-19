@@ -22,7 +22,7 @@ agnes is compatible with a wide range of LLM providers, allowing you to choose a
 | [Docker Model Runner](https://docs.docker.com/ai/model-runner/)                             | Local models running in Docker Desktop or Docker CE with OpenAI-compatible API endpoints. **Because this provider runs locally, you must first [download a model](#local-llms).**                     | `OPENAI_HOST`, `OPENAI_BASE_PATH`   |
 | [EmpirioLabs](https://empiriolabs.ai/)                                      | Frontier open and proprietary chat models (Qwen, DeepSeek, GLM, Kimi, MiniMax) through one OpenAI-compatible API with streaming. Catalog available at `https://api.empiriolabs.ai/v1/models`.        | `EMPIRIOLABS_API_KEY`                                                                                                                                                              |
 | [FuturMix](https://futurmix.ai/)                                            | Unified AI gateway providing access to models from Anthropic, Google, OpenAI, and DeepSeek through an OpenAI-compatible API.                                                                          | `FUTURMIX_API_KEY`                                                                                                                                                                  |
-| [Gemini](https://ai.google.dev/gemini-api/docs)                             | Advanced LLMs by Google with multimodal capabilities (text, images). Geminiundefinedmodels support configurable [thinking levels](#gemini-3-thinking-levels).                                                                                                | `GOOGLE_API_KEY`, `GEMINI3_THINKING_LEVEL` (optional)                                                                                                                              |
+| [Gemini](https://ai.google.dev/gemini-api/docs)                             | Advanced LLMs by Google with multimodal capabilities (text, images). Gemini 3 models support configurable [thinking levels](#gemini-3-thinking-levels).                                                                                                | `GOOGLE_API_KEY`, `GEMINI3_THINKING_LEVEL` (optional)                                                                                                                              |
 | [GCP Vertex AI](https://cloud.google.com/vertex-ai)                         | Google Cloud's Vertex AI platform, supporting Gemini and Claude models. **Credentials must be [configured in advance](https://cloud.google.com/vertex-ai/docs/authentication).** Filters for allowed models by organization policy (if configured). | `GCP_PROJECT_ID`, `GCP_LOCATION` and optionally `GCP_MAX_RATE_LIMIT_RETRIES` (5), `GCP_MAX_OVERLOADED_RETRIES` (5), `GCP_INITIAL_RETRY_INTERVAL_MS` (5000), `GCP_BACKOFF_MULTIPLIER` (2.0), `GCP_MAX_RETRY_INTERVAL_MS` (320_000). |
 | [GitHub Copilot](https://docs.github.com/en/copilot/using-github-copilot/ai-models) | Access to AI models from OpenAI, Anthropic, Google, and other providers through GitHub's Copilot infrastructure. **GitHub account with Copilot access required.** | No manual key. Uses [device flow authentication](#github-copilot-authentication) for both CLI and Desktop. |
 | [Groq](https://groq.com/)                                                   | High-performance inference hardware and tools for LLMs.                                                                                                                                                                   | `GROQ_API_KEY`                                                                                                                                                                      |
@@ -657,7 +657,7 @@ These free options are a great way to get started with agnes and explore its cap
 Groq provides free access to open source (open weight) models with high-speed inference. To use Groq with agnes, you need an API key from [Groq Console](https://console.groq.com/keys).
 
 Groq offers several open source models that support tool calling, including:
-- **moonshotai/kimi-k2-instruct-0905** - Mixture-of-Experts model withaaif-goosetrillion parameters, optimized for agentic intelligence and tool use
+- **moonshotai/kimi-k2-instruct-0905** - Mixture-of-Experts model with 1 trillion parameters, optimized for agentic intelligence and tool use
 - **qwen/qwen3-32b** - 32.8 billion parameter model with advanced reasoning and multilingual capabilities  
 - **llama-3.3-70b-versatile** - Meta's Llama 3.3 model for versatile applications
 - **llama-3.1-8b-instant** - Meta's Llama 3.1 model for fast inference
@@ -736,11 +736,11 @@ To set up EmpirioLabs with agnes, follow these steps:
 [FuturMix](https://futurmix.ai/) is a unified AI gateway providing access to models from Anthropic, Google, OpenAI, and DeepSeek through an OpenAI-compatible API. To use FuturMix with agnes, you need an API key from [FuturMix](https://futurmix.ai/).
 
 FuturMix offers models that support tool calling, including:
-- **claude-sonnet-4-20250514** - Anthropic Claude Sonnetundefinedwith 200K context
+- **claude-sonnet-4-20250514** - Anthropic Claude Sonnet 4 with 200K context
 - **gpt-4o** - OpenAI GPT-4o with 128K context
 - **gemini-2.5-pro** - Google Gemini 2.5 Pro with 1M context
 - **deepseek-chat** - DeepSeek V3 with 131K context
-- **claude-haiku-4-20250514** - Anthropic Claude Haikuundefinedwith 200K context
+- **claude-haiku-4-20250514** - Anthropic Claude Haiku 4 with 200K context
 
 For the complete list of supported FuturMix models, see [futurmix.json](https://github.com/aaif-goose/agnes/blob/main/crates/agnes/src/providers/declarative/futurmix.json).
 
@@ -779,7 +779,7 @@ Novita AI offers many models that support tool calling, including:
 - **minimax/minimax-m2.7** - MiniMax M2.7 with 205K context
 - **zai-org/glm-5.1** - Zhipu's GLM-5.1 with 205K context
 - **deepseek/deepseek-v3.2** - DeepSeek V3.2 with 164K context
-- **google/gemma-4-31b-it** - Google Gemmaundefined31B with 262K context
+- **google/gemma-4-31b-it** - Google Gemma 4 31B with 262K context
 
 For the complete list of supported Novita AI models, see [novita.json](https://github.com/aaif-goose/agnes/blob/main/crates/agnes/src/providers/declarative/novita.json).
 
@@ -1003,7 +1003,7 @@ Here are some local providers we support:
           ```
 
           :::tip Context Length
-          If you notice that agnes is having trouble using extensions or is ignoring [.agneshints](/docs/guides/context-engineering/using-agneshints), it is likely that the model's default context length ofundefinedtokens is too low. Use `ramalama serve` to set the `--ctx-size, -c` option to a [higher value](https://github.com/containers/ramalama/blob/main/docs/ramalama-serve.1.md#--ctx-size--c).
+          If you notice that agnes is having trouble using extensions or is ignoring [.agneshints](/docs/guides/context-engineering/using-agneshints), it is likely that the model's default context length of 2048 tokens is too low. Use `ramalama serve` to set the `--ctx-size, -c` option to a [higher value](https://github.com/containers/ramalama/blob/main/docs/ramalama-serve.1.md#--ctx-size--c).
           :::
 
       </TabItem>
@@ -1191,7 +1191,7 @@ Here are some local providers we support:
         ```
 
         :::tip Context Length
-        If you notice that agnes is having trouble using extensions or is ignoring [.agneshints](/docs/guides/context-engineering/using-agneshints), it is likely that the model's default context length ofundefinedtokens is too low. Set the `OLLAMA_CONTEXT_LENGTH` environment variable to a [higher value](https://github.com/ollama/ollama/blob/main/docs/faq.mdx#how-can-i-specify-the-context-window-size).
+        If you notice that agnes is having trouble using extensions or is ignoring [.agneshints](/docs/guides/context-engineering/using-agneshints), it is likely that the model's default context length of 4096 tokens is too low. Set the `OLLAMA_CONTEXT_LENGTH` environment variable to a [higher value](https://github.com/ollama/ollama/blob/main/docs/faq.mdx#how-can-i-specify-the-context-window-size).
         :::
         
       </TabItem>
@@ -1418,9 +1418,9 @@ Beyond single-model setups, agnes supports [multi-model configurations](/docs/gu
 - **Planning Mode** - Use a dedicated planner model to create detailed project breakdowns before execution
 - **Subagents** - Delegate scoped tasks to isolated sessions to keep your primary workflow focused and efficient
 
-## GeminiundefinedThinking Levels
+## Gemini 3 Thinking Levels
 
-Geminiundefinedmodels support configurable thinking levels to balance response latency and reasoning depth:
+Gemini 3 models support configurable thinking levels to balance response latency and reasoning depth:
 - **Low** (default) - Faster responses, lighter reasoning
 - **High** - Deeper reasoning, higher latency
 
@@ -1430,13 +1430,13 @@ When thinking is enabled, you can view the model's reasoning process. See [Viewi
 
 <Tabs groupId="interface">
   <TabItem value="ui" label="agnes Desktop" default>
-    When selecting a Geminiundefinedmodel, a "Thinking Level" dropdown appears automatically. Select your preference and the setting persists across sessions.
+    When selecting a Gemini 3 model, a "Thinking Level" dropdown appears automatically. Select your preference and the setting persists across sessions.
   </TabItem>
   
   <TabItem value="cli" label="agnes CLI">
     **Interactive configuration:**
     
-    When you run `agnes configure` and select a Geminiundefinedmodel, you'll be prompted to choose a thinking level:
+    When you run `agnes configure` and select a Gemini 3 model, you'll be prompted to choose a thinking level:
     
     ```
     ◆  Select thinking level for Gemini 3:

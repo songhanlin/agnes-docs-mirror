@@ -74,7 +74,7 @@ Direct prompts provided for one-off tasks using natural language prompts. The ma
 
 **agnes Prompt:**
 ```
-"Useundefinedsubagents to create hello.html with 'Hello World' content and goodbye.html with 'Goodbye World' content in parallel"
+"Use 2 subagents to create hello.html with 'Hello World' content and goodbye.html with 'Goodbye World' content in parallel"
 ```
 
 **Tool Output:**
@@ -262,8 +262,8 @@ Subagents use the following pre-configured settings, but you can override any de
 ### Default Settings
 | Parameter | Default | How to Customize |
 |-----------|---------|------------------|
-| **Max Turns** |undefined| Use natural language, set `AGNES_SUBAGENT_MAX_TURNS`, or configure `settings.max_turns` in [recipes](/docs/guides/recipes/recipe-reference#settings) or subagent tool calls |
-| **Timeout** |undefinedminutes | Request longer timeout in your prompt |
+| **Max Turns** | 25 | Use natural language, set `AGNES_SUBAGENT_MAX_TURNS`, or configure `settings.max_turns` in [recipes](/docs/guides/recipes/recipe-reference#settings) or subagent tool calls |
+| **Timeout** | 5 minutes | Request longer timeout in your prompt |
 | **Extensions** | Inherited from parent | Specify which extensions to use in your prompt |
 | **Return Mode** | All subagent information provided in main session | Specify how much detail you want in your prompt |
 
@@ -277,11 +277,11 @@ You can override any default by including the setting in your natural language r
 
 **Examples:**
 ```
-"Use subagents to analyze code, limit each toundefinedturns"
+"Use subagents to analyze code, limit each to 5 turns"
 ```
 
 ```
-"Use a research subagent withundefinedturns and 20-minute timeout to investigate quantum computing trends"
+"Use a research subagent with 30 turns and 20-minute timeout to investigate quantum computing trends"
 ```
 
 **Environment variable:** Set `AGNES_SUBAGENT_MAX_TURNS` to change the default max turns for all subagents.
@@ -365,8 +365,8 @@ Subagents can browse extensions for suggestions but cannot enable them to avoid 
     },
     {
       type: 'video',
-      title: 'How I Built an App withundefinedSubagents',
-      description: 'Deep dive into agnes subagents. Walk through building an app usingundefinedspecialized AI agents for advanced workflow automation and development.',
+      title: 'How I Built an App with 6 Subagents',
+      description: 'Deep dive into agnes subagents. Walk through building an app using 6 specialized AI agents for advanced workflow automation and development.',
       thumbnailUrl: 'https://img.youtube.com/vi/yIBrD5AxtTc/maxresdefault.jpg',
       linkUrl: 'https://www.youtube.com/watch?v=yIBrD5AxtTc',
       date: '2025-10-01',

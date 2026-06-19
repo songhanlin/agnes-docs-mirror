@@ -171,14 +171,14 @@ description: Safe deployment procedure for production environment
 
 ## Pre-deployment
 1. Ensure all tests pass
-2. Get approval from at leastundefinedreviewers
+2. Get approval from at least 2 reviewers
 3. Notify #deployments channel
 
 ## Deploy
 1. Create release branch from main
 2. Run `npm run build:prod`
 3. Deploy to staging, verify, then production
-4. Monitor error rates forundefinedminutes
+4. Monitor error rates for 30 minutes
 
 ## Rollback
 If error rate exceeds 1%:
