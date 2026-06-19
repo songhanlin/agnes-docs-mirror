@@ -21,7 +21,7 @@ ACP sessions are saved to agnes's session history where you can access and manag
 :::
 
 :::tip Reference Implementation
-The [agnes for VS Code](/docs/experimental/vs-code-extension) extension uses ACP to communicate with agnes. See the [vscode-agnes](https://github.com/aaif-goose/vscode-agnes) repository for implementation details.
+The [agnes for VS Code](/docs/experimental/vs-code-extension) extension uses ACP to communicate with agnes. See the vscode-agnes repository for implementation details.
 :::
 
 ## Setup in ACP Clients

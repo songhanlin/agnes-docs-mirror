@@ -769,7 +769,7 @@ Built-in template parameters are automatically supported and don't need to be de
 
 ## Validation Rules
 
-Validation rules from [`validate_recipe.rs`](https://github.com/aaif-goose/agnes/blob/main/crates/agnes/src/recipe/validate_recipe.rs) are enforced when loading recipes and used by the [`agnes recipe validate`](/docs/guides/agnes-cli-commands#recipe) subcommand:
+Validation rules from `validate_recipe.rs` are enforced when loading recipes and used by the [`agnes recipe validate`](/docs/guides/agnes-cli-commands#recipe) subcommand:
 
 ### Recipe-Level Validation
 

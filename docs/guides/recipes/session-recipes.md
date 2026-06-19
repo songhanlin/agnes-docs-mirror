@@ -303,9 +303,9 @@ You can customize how agnes generates recipes by editing the `recipe.md` [prompt
        ◇  What setting would you like to configure?
        │  agnes recipe github repo 
        │
-       ◆  Enter your agnes recipe GitHub repo (owner/repo): eg: my_org/agnes-recipes
+       ◆  Enter your agnes recipe GitHub repo (owner/repo): eg: your-org/recipes
        // highlight-start
-       │  squareup/agnes-recipes (default)
+       │  your-org/recipes (default)
        // highlight-end
        └  
        ```

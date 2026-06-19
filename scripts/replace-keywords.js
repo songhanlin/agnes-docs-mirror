@@ -14,6 +14,13 @@ function makeProtector() {
 function applyReplacements(text) {
   const { protect, restore } = makeProtector();
 
+  // 移除「看源码」外部链接(github.com/aaif-goose/...),只保留链接文字。
+  // 地图已提供文档相对路径导航,这些源码链接对 AI 检索无用,且会把 goose org 名带回正文。
+  text = text.replace(/\[([^\]]+)\]\(https?:\/\/github\.com\/aaif-goose\/[^)]*\)/g, '$1');
+
+  // recipe 库示例仓库 → 中性占位(没有自有配方仓库,避免指向不存在的仓库)
+  text = text.replace(/[A-Za-z0-9_.-]+\/goose-recipes\b/g, 'your-org/recipes');
+
   // 先把 Agnes 发布仓库引用定向(owner 保留、仓库名改 agnes)
   text = text.replace(/aaif-goose\/goose\b/g, 'aaif-goose/agnes');
 

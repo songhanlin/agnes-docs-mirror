@@ -73,7 +73,7 @@ AGNES_TOOLSHIM: true
 AGNES_CLI_MIN_PRIORITY: 0.2
 
 # Recipe Configuration
-AGNES_RECIPE_GITHUB_REPO: "aaif-goose/agnes-recipes"
+AGNES_RECIPE_GITHUB_REPO: "your-org/recipes"
 
 # Search Path Configuration
 AGNES_SEARCH_PATHS:
