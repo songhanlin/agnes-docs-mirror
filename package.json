@@ -1,0 +1,17 @@
+{
+  "name": "agnes-docs-mirror",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mirror of Agnes (goose fork) docs for the agnes-doc-guide skill: extract guides/getting-started from agnes-code, replace goose keywords, regenerate the docs map, and publish as raw markdown over a stable URL structure.",
+  "type": "commonjs",
+  "scripts": {
+    "replace": "node scripts/replace-keywords.js",
+    "map": "node scripts/generate-docs-map.js",
+    "copy": "node scripts/build.js",
+    "build": "node scripts/replace-keywords.js && node scripts/generate-docs-map.js && node scripts/build.js"
+  },
+  "dependencies": {
+    "globby": "^14.0.0",
+    "gray-matter": "^4.0.3"
+  }
+}
